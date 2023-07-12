@@ -20,6 +20,10 @@
 		BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */; };
 		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
+		BBBBC7712A5E3D4800F39E2B /* Empty.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7702A5E3D4800F39E2B /* Empty.md */; };
+		BBBBC7742A5E3D6D00F39E2B /* Empty.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7732A5E3D6D00F39E2B /* Empty.md */; };
+		BBBBC7762A5E3D7500F39E2B /* Empty.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7752A5E3D7500F39E2B /* Empty.md */; };
+		BBBBC7792A5E3D8300F39E2B /* Empty.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7722A5E3D5E00F39E2B /* Empty.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 		BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameView.swift; sourceTree = "<group>"; };
 		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		BBBBC7702A5E3D4800F39E2B /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		BBBBC7722A5E3D5E00F39E2B /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		BBBBC7732A5E3D6D00F39E2B /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		BBBBC7752A5E3D7500F39E2B /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +161,6 @@
 				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
 				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
 				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
-				BBBBC76C2A5E3C4200F39E2B /* UserData.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +168,7 @@
 		BBBBC72F2A5E324800F39E2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC76C2A5E3C4200F39E2B /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 		BBBBC7302A5E325700F39E2B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7752A5E3D7500F39E2B /* Empty.md */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,6 +184,7 @@
 		BBBBC7312A5E325E00F39E2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7732A5E3D6D00F39E2B /* Empty.md */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -182,6 +192,7 @@
 		BBBBC7322A5E326400F39E2B /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7722A5E3D5E00F39E2B /* Empty.md */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -189,6 +200,7 @@
 		BBBBC7332A5E329200F39E2B /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7702A5E3D4800F39E2B /* Empty.md */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -299,6 +311,10 @@
 			files = (
 				73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */,
 				73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */,
+				BBBBC7792A5E3D8300F39E2B /* Empty.md in Resources */,
+				BBBBC7742A5E3D6D00F39E2B /* Empty.md in Resources */,
+				BBBBC7712A5E3D4800F39E2B /* Empty.md in Resources */,
+				BBBBC7762A5E3D7500F39E2B /* Empty.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
