@@ -94,8 +94,13 @@
 		73FA051E2A5E301A00EB176B /* SeaYa */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7332A5E329200F39E2B /* Service */,
+				BBBBC7322A5E326400F39E2B /* DesignSystem */,
+				BBBBC7312A5E325E00F39E2B /* Utils */,
+				BBBBC7302A5E325700F39E2B /* ViewModel */,
+				BBBBC72F2A5E324800F39E2B /* Model */,
+				BBBBC72E2A5E322500F39E2B /* View */,
 				73FA051F2A5E301A00EB176B /* SeaYaApp.swift */,
-				73FA05212A5E301A00EB176B /* ContentView.swift */,
 				73FA05232A5E301C00EB176B /* Assets.xcassets */,
 				73FA05252A5E301C00EB176B /* Preview Content */,
 			);
@@ -125,6 +130,49 @@
 				73FA053C2A5E301C00EB176B /* SeaYaUITestsLaunchTests.swift */,
 			);
 			path = SeaYaUITests;
+			sourceTree = "<group>";
+		};
+		BBBBC72E2A5E322500F39E2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73FA05212A5E301A00EB176B /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BBBBC72F2A5E324800F39E2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BBBBC7302A5E325700F39E2B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BBBBC7312A5E325E00F39E2B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BBBBC7322A5E326400F39E2B /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		BBBBC7332A5E329200F39E2B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
