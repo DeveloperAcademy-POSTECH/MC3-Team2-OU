@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA051F2A5E301A00EB176B /* SeaYaApp.swift */; };
-		73FA05222A5E301A00EB176B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA05212A5E301A00EB176B /* ContentView.swift */; };
 		73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05232A5E301C00EB176B /* Assets.xcassets */; };
 		73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05262A5E301C00EB176B /* Preview Assets.xcassets */; };
 		73FA05312A5E301C00EB176B /* SeaYaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA05302A5E301C00EB176B /* SeaYaTests.swift */; };
 		73FA053B2A5E301C00EB176B /* SeaYaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA053A2A5E301C00EB176B /* SeaYaUITests.swift */; };
 		73FA053D2A5E301C00EB176B /* SeaYaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA053C2A5E301C00EB176B /* SeaYaUITestsLaunchTests.swift */; };
+		BBBBC7462A5E34D400F39E2B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7402A5E34D400F39E2B /* MainView.swift */; };
+		BBBBC7472A5E34D400F39E2B /* FixedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7412A5E34D400F39E2B /* FixedTimeView.swift */; };
+		BBBBC7482A5E34D400F39E2B /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7422A5E34D400F39E2B /* NickNameView.swift */; };
+		BBBBC7492A5E34D400F39E2B /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7432A5E34D400F39E2B /* LaunchScreenView.swift */; };
+		BBBBC74A2A5E34D400F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7442A5E34D400F39E2B /* UserData.swift */; };
+		BBBBC74B2A5E34D400F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7452A5E34D400F39E2B /* OnboardingView.swift */; };
+		BBBBC74D2A5E34E400F39E2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC74C2A5E34E400F39E2B /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,6 @@
 /* Begin PBXFileReference section */
 		73FA051C2A5E301A00EB176B /* SeaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FA051F2A5E301A00EB176B /* SeaYaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaApp.swift; sourceTree = "<group>"; };
-		73FA05212A5E301A00EB176B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		73FA05232A5E301C00EB176B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FA05262A5E301C00EB176B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		73FA052C2A5E301C00EB176B /* SeaYaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeaYaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +49,13 @@
 		73FA05362A5E301C00EB176B /* SeaYaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeaYaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FA053A2A5E301C00EB176B /* SeaYaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaUITests.swift; sourceTree = "<group>"; };
 		73FA053C2A5E301C00EB176B /* SeaYaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BBBBC7402A5E34D400F39E2B /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = ../../../../HaniSeaya/HaniSeaya/MainView.swift; sourceTree = "<group>"; };
+		BBBBC7412A5E34D400F39E2B /* FixedTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FixedTimeView.swift; path = ../../../../HaniSeaya/HaniSeaya/FixedTimeView.swift; sourceTree = "<group>"; };
+		BBBBC7422A5E34D400F39E2B /* NickNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NickNameView.swift; path = ../../../../HaniSeaya/HaniSeaya/NickNameView.swift; sourceTree = "<group>"; };
+		BBBBC7432A5E34D400F39E2B /* LaunchScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchScreenView.swift; path = ../../../../HaniSeaya/HaniSeaya/LaunchScreenView.swift; sourceTree = "<group>"; };
+		BBBBC7442A5E34D400F39E2B /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = ../../../../HaniSeaya/HaniSeaya/UserData.swift; sourceTree = "<group>"; };
+		BBBBC7452A5E34D400F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = ../../../../HaniSeaya/HaniSeaya/OnboardingView.swift; sourceTree = "<group>"; };
+		BBBBC74C2A5E34E400F39E2B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../../../../HaniSeaya/HaniSeaya/ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +147,13 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				73FA05212A5E301A00EB176B /* ContentView.swift */,
+				BBBBC74C2A5E34E400F39E2B /* ContentView.swift */,
+				BBBBC7412A5E34D400F39E2B /* FixedTimeView.swift */,
+				BBBBC7432A5E34D400F39E2B /* LaunchScreenView.swift */,
+				BBBBC7402A5E34D400F39E2B /* MainView.swift */,
+				BBBBC7422A5E34D400F39E2B /* NickNameView.swift */,
+				BBBBC7452A5E34D400F39E2B /* OnboardingView.swift */,
+				BBBBC7442A5E34D400F39E2B /* UserData.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,8 +323,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73FA05222A5E301A00EB176B /* ContentView.swift in Sources */,
+				BBBBC7472A5E34D400F39E2B /* FixedTimeView.swift in Sources */,
+				BBBBC7482A5E34D400F39E2B /* NickNameView.swift in Sources */,
+				BBBBC74A2A5E34D400F39E2B /* UserData.swift in Sources */,
+				BBBBC7462A5E34D400F39E2B /* MainView.swift in Sources */,
+				BBBBC74D2A5E34E400F39E2B /* ContentView.swift in Sources */,
+				BBBBC74B2A5E34D400F39E2B /* OnboardingView.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
+				BBBBC7492A5E34D400F39E2B /* LaunchScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
