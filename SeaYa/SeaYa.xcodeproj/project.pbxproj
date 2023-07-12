@@ -13,13 +13,17 @@
 		73FA05312A5E301C00EB176B /* SeaYaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA05302A5E301C00EB176B /* SeaYaTests.swift */; };
 		73FA053B2A5E301C00EB176B /* SeaYaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA053A2A5E301C00EB176B /* SeaYaUITests.swift */; };
 		73FA053D2A5E301C00EB176B /* SeaYaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA053C2A5E301C00EB176B /* SeaYaUITestsLaunchTests.swift */; };
-		BBBBC7462A5E34D400F39E2B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7402A5E34D400F39E2B /* MainView.swift */; };
-		BBBBC7472A5E34D400F39E2B /* FixedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7412A5E34D400F39E2B /* FixedTimeView.swift */; };
-		BBBBC7482A5E34D400F39E2B /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7422A5E34D400F39E2B /* NickNameView.swift */; };
-		BBBBC7492A5E34D400F39E2B /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7432A5E34D400F39E2B /* LaunchScreenView.swift */; };
-		BBBBC74A2A5E34D400F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7442A5E34D400F39E2B /* UserData.swift */; };
-		BBBBC74B2A5E34D400F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7452A5E34D400F39E2B /* OnboardingView.swift */; };
-		BBBBC74D2A5E34E400F39E2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC74C2A5E34E400F39E2B /* ContentView.swift */; };
+		BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */; };
+		BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */; };
+		BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */; };
+		BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7662A5E3BFC00F39E2B /* MainView.swift */; };
+		BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */; };
+		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
+		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
+		BBBBC7712A5E3D4800F39E2B /* Empty.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7702A5E3D4800F39E2B /* Empty.md */; };
+		BBBBC7742A5E3D6D00F39E2B /* Empty.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7732A5E3D6D00F39E2B /* Empty.md */; };
+		BBBBC7762A5E3D7500F39E2B /* Empty.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7752A5E3D7500F39E2B /* Empty.md */; };
+		BBBBC7792A5E3D8300F39E2B /* Empty.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7722A5E3D5E00F39E2B /* Empty.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,13 +53,17 @@
 		73FA05362A5E301C00EB176B /* SeaYaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeaYaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FA053A2A5E301C00EB176B /* SeaYaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaUITests.swift; sourceTree = "<group>"; };
 		73FA053C2A5E301C00EB176B /* SeaYaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BBBBC7402A5E34D400F39E2B /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = ../../../../HaniSeaya/HaniSeaya/MainView.swift; sourceTree = "<group>"; };
-		BBBBC7412A5E34D400F39E2B /* FixedTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FixedTimeView.swift; path = ../../../../HaniSeaya/HaniSeaya/FixedTimeView.swift; sourceTree = "<group>"; };
-		BBBBC7422A5E34D400F39E2B /* NickNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NickNameView.swift; path = ../../../../HaniSeaya/HaniSeaya/NickNameView.swift; sourceTree = "<group>"; };
-		BBBBC7432A5E34D400F39E2B /* LaunchScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchScreenView.swift; path = ../../../../HaniSeaya/HaniSeaya/LaunchScreenView.swift; sourceTree = "<group>"; };
-		BBBBC7442A5E34D400F39E2B /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = ../../../../HaniSeaya/HaniSeaya/UserData.swift; sourceTree = "<group>"; };
-		BBBBC7452A5E34D400F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = ../../../../HaniSeaya/HaniSeaya/OnboardingView.swift; sourceTree = "<group>"; };
-		BBBBC74C2A5E34E400F39E2B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../../../../HaniSeaya/HaniSeaya/ContentView.swift; sourceTree = "<group>"; };
+		BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedTimeView.swift; sourceTree = "<group>"; };
+		BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		BBBBC7662A5E3BFC00F39E2B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameView.swift; sourceTree = "<group>"; };
+		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		BBBBC7702A5E3D4800F39E2B /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		BBBBC7722A5E3D5E00F39E2B /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		BBBBC7732A5E3D6D00F39E2B /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		BBBBC7752A5E3D7500F39E2B /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,13 +155,12 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BBBBC74C2A5E34E400F39E2B /* ContentView.swift */,
-				BBBBC7412A5E34D400F39E2B /* FixedTimeView.swift */,
-				BBBBC7432A5E34D400F39E2B /* LaunchScreenView.swift */,
-				BBBBC7402A5E34D400F39E2B /* MainView.swift */,
-				BBBBC7422A5E34D400F39E2B /* NickNameView.swift */,
-				BBBBC7452A5E34D400F39E2B /* OnboardingView.swift */,
-				BBBBC7442A5E34D400F39E2B /* UserData.swift */,
+				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
+				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
+				BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */,
+				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
+				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
+				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +168,7 @@
 		BBBBC72F2A5E324800F39E2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC76C2A5E3C4200F39E2B /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 		BBBBC7302A5E325700F39E2B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7752A5E3D7500F39E2B /* Empty.md */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,6 +184,7 @@
 		BBBBC7312A5E325E00F39E2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7732A5E3D6D00F39E2B /* Empty.md */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -182,6 +192,7 @@
 		BBBBC7322A5E326400F39E2B /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7722A5E3D5E00F39E2B /* Empty.md */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -189,6 +200,7 @@
 		BBBBC7332A5E329200F39E2B /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7702A5E3D4800F39E2B /* Empty.md */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -299,6 +311,10 @@
 			files = (
 				73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */,
 				73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */,
+				BBBBC7792A5E3D8300F39E2B /* Empty.md in Resources */,
+				BBBBC7742A5E3D6D00F39E2B /* Empty.md in Resources */,
+				BBBBC7712A5E3D4800F39E2B /* Empty.md in Resources */,
+				BBBBC7762A5E3D7500F39E2B /* Empty.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,14 +339,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBBBC7472A5E34D400F39E2B /* FixedTimeView.swift in Sources */,
-				BBBBC7482A5E34D400F39E2B /* NickNameView.swift in Sources */,
-				BBBBC74A2A5E34D400F39E2B /* UserData.swift in Sources */,
-				BBBBC7462A5E34D400F39E2B /* MainView.swift in Sources */,
-				BBBBC74D2A5E34E400F39E2B /* ContentView.swift in Sources */,
-				BBBBC74B2A5E34D400F39E2B /* OnboardingView.swift in Sources */,
+				BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */,
+				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
+				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
+				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
-				BBBBC7492A5E34D400F39E2B /* LaunchScreenView.swift in Sources */,
+				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
+				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
+				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
