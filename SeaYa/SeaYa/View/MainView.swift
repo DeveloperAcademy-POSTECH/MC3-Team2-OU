@@ -1,8 +1,8 @@
 //
 //  MainView.swift
-//  HaniSeaya
+//  SeaYa
 //
-//  Created by 김하은 on 2023/07/11.
+//  Created by 김하은 on 2023/07/12.
 //
 
 import SwiftUI
@@ -19,4 +19,5 @@ struct MainView: View {
         }
     }
 }
+
 
