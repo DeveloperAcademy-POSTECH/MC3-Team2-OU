@@ -24,6 +24,8 @@ DerivedData/
 
 ## Obj-C/Swift specific
 *.hmap
+### macOs ###
+.DS_Store
 
 ## App packaging
 *.ipa
