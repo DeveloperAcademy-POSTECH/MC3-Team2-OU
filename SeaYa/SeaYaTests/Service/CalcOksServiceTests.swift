@@ -16,14 +16,18 @@ final class CalcOksServiceTests: XCTestCase {
         
     }
     
-    func testExample() throws {
+    func json파일_로딩_확인() throws {
         XCTAssertNotNil(members)
         XCTAssertTrue(members!.first!.name == "member1")
     }
     
-    func testExample2() async throws {
+    func 필터링_알고리즘_적용_하루() async throws {
         let manager = CalcOksService()
-        try await manager.performCalculation(members!)
-        XCTAssertTrue(manager.result?.first?.timeInt == 940617)
+        let boundDate = BoundedDate(
+            start: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 12,  minute: 00))!,
+            end:   Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 18,  minute: 30))!
+            )
+        try await manager.performCalculation(members!, by: [boundDate])
+        XCTAssertTrue(manager.result?.last?.timeInt == 940624)
     }
 }
