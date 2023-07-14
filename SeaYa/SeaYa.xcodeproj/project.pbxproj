@@ -11,6 +11,11 @@
 		7308AA252A604F8E0078A9F2 /* CalcOksServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308AA242A604F8E0078A9F2 /* CalcOksServiceTests.swift */; };
 		73365AA32A605267007B4104 /* TimeOks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73365AA22A605267007B4104 /* TimeOks.swift */; };
 		738F12FF2A5F7A92009C70A2 /* DateMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738F12FE2A5F7A92009C70A2 /* DateMember.swift */; };
+		1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */; };
+		1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */; };
+		1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD732A60DE4D00D4F6D3 /* Event.swift */; };
+		1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */; };
+		1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD772A60DE8100D4F6D3 /* WeekDay.swift */; };
 		73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA051F2A5E301A00EB176B /* SeaYaApp.swift */; };
 		73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05232A5E301C00EB176B /* Assets.xcassets */; };
 		73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05262A5E301C00EB176B /* Preview Assets.xcassets */; };
@@ -53,6 +58,11 @@
 		7308AA242A604F8E0078A9F2 /* CalcOksServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksServiceTests.swift; sourceTree = "<group>"; };
 		73365AA22A605267007B4104 /* TimeOks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOks.swift; sourceTree = "<group>"; };
 		738F12FE2A5F7A92009C70A2 /* DateMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMember.swift; sourceTree = "<group>"; };
+		1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCalendarRepository.swift; sourceTree = "<group>"; };
+		1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCalendarRepository.swift; sourceTree = "<group>"; };
+		1092DD732A60DE4D00D4F6D3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalEvent.swift; sourceTree = "<group>"; };
+		1092DD772A60DE8100D4F6D3 /* WeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		73FA051C2A5E301A00EB176B /* SeaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FA051F2A5E301A00EB176B /* SeaYaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaApp.swift; sourceTree = "<group>"; };
 		73FA05232A5E301C00EB176B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +125,13 @@
 				7308AA242A604F8E0078A9F2 /* CalcOksServiceTests.swift */,
 			);
 			path = Service;
+		1092DD6E2A60DE0300D4F6D3 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */,
+				1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		73FA05132A5E301A00EB176B = {
@@ -140,6 +157,7 @@
 		73FA051E2A5E301A00EB176B /* SeaYa */ = {
 			isa = PBXGroup;
 			children = (
+				1092DD6E2A60DE0300D4F6D3 /* Repository */,
 				BBBBC7332A5E329200F39E2B /* Service */,
 				BBBBC7322A5E326400F39E2B /* DesignSystem */,
 				BBBBC7312A5E325E00F39E2B /* Utils */,
@@ -196,6 +214,9 @@
 		BBBBC72F2A5E324800F39E2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1092DD772A60DE8100D4F6D3 /* WeekDay.swift */,
+				1092DD732A60DE4D00D4F6D3 /* Event.swift */,
+				1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */,
 				BBBBC76C2A5E3C4200F39E2B /* UserData.swift */,
 				738F12FE2A5F7A92009C70A2 /* DateMember.swift */,
 				73365AA22A605267007B4104 /* TimeOks.swift */,
@@ -371,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */,
+				1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */,
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
@@ -382,6 +404,12 @@
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				73FDB3B12A5F7D4800B94626 /* DateEvent.swift in Sources */,
+				1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */,
+				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
+				1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */,
+				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
+				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
+				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
