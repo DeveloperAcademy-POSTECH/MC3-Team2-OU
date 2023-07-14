@@ -12,6 +12,7 @@
 		1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD732A60DE4D00D4F6D3 /* Event.swift */; };
 		1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */; };
 		1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD772A60DE8100D4F6D3 /* WeekDay.swift */; };
+		1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD792A60E39800D4F6D3 /* DateUtil.swift */; };
 		73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA051F2A5E301A00EB176B /* SeaYaApp.swift */; };
 		73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05232A5E301C00EB176B /* Assets.xcassets */; };
 		73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05262A5E301C00EB176B /* Preview Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		1092DD732A60DE4D00D4F6D3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalEvent.swift; sourceTree = "<group>"; };
 		1092DD772A60DE8100D4F6D3 /* WeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
+		1092DD792A60E39800D4F6D3 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		73FA051C2A5E301A00EB176B /* SeaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FA051F2A5E301A00EB176B /* SeaYaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaApp.swift; sourceTree = "<group>"; };
 		73FA05232A5E301C00EB176B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		BBBBC7312A5E325E00F39E2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
 				BBBBC7732A5E3D6D00F39E2B /* Utils.md */,
 			);
 			path = Utils;
@@ -375,6 +378,7 @@
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
+				1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
