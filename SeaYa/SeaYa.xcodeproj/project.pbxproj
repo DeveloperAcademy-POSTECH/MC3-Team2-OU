@@ -14,6 +14,7 @@
 		1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD772A60DE8100D4F6D3 /* WeekDay.swift */; };
 		1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD792A60E39800D4F6D3 /* DateUtil.swift */; };
 		1092DD892A64DB0900D4F6D3 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD882A64DB0900D4F6D3 /* CalendarService.swift */; };
+		1092DD8B2A64DBFE00D4F6D3 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD8A2A64DBFE00D4F6D3 /* TimeTable.swift */; };
 		739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB682A613BCF0022386D /* CalcOksService.swift */; };
 		739FBB6B2A613C050022386D /* DateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6A2A613C050022386D /* DateEvent.swift */; };
 		739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6C2A613C150022386D /* BoundedDate.swift */; };
@@ -63,6 +64,7 @@
 		1092DD772A60DE8100D4F6D3 /* WeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		1092DD792A60E39800D4F6D3 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		1092DD882A64DB0900D4F6D3 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		1092DD8A2A64DBFE00D4F6D3 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
 		739FBB682A613BCF0022386D /* CalcOksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksService.swift; sourceTree = "<group>"; };
 		739FBB6A2A613C050022386D /* DateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEvent.swift; sourceTree = "<group>"; };
 		739FBB6C2A613C150022386D /* BoundedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedDate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 				1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		1092DD8C2A64DC0300D4F6D3 /* TimeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				1092DD8A2A64DBFE00D4F6D3 /* TimeTable.swift */,
+			);
+			path = TimeTableView;
 			sourceTree = "<group>";
 		};
 		739FBB722A613CA80022386D /* Resources */ = {
@@ -207,6 +217,7 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1092DD8C2A64DC0300D4F6D3 /* TimeTableView */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
 				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
 				BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */,
@@ -418,6 +429,7 @@
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
 				1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */,
+				1092DD8B2A64DBFE00D4F6D3 /* TimeTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
