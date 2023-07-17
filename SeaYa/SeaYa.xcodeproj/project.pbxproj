@@ -13,6 +13,7 @@
 		1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */; };
 		1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD772A60DE8100D4F6D3 /* WeekDay.swift */; };
 		1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD792A60E39800D4F6D3 /* DateUtil.swift */; };
+		1092DD892A64DB0900D4F6D3 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD882A64DB0900D4F6D3 /* CalendarService.swift */; };
 		739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB682A613BCF0022386D /* CalcOksService.swift */; };
 		739FBB6B2A613C050022386D /* DateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6A2A613C050022386D /* DateEvent.swift */; };
 		739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6C2A613C150022386D /* BoundedDate.swift */; };
@@ -61,6 +62,7 @@
 		1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalEvent.swift; sourceTree = "<group>"; };
 		1092DD772A60DE8100D4F6D3 /* WeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		1092DD792A60E39800D4F6D3 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		1092DD882A64DB0900D4F6D3 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		739FBB682A613BCF0022386D /* CalcOksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksService.swift; sourceTree = "<group>"; };
 		739FBB6A2A613C050022386D /* DateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEvent.swift; sourceTree = "<group>"; };
 		739FBB6C2A613C150022386D /* BoundedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedDate.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				739FBB682A613BCF0022386D /* CalcOksService.swift */,
+				1092DD882A64DB0900D4F6D3 /* CalendarService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */,
 				1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */,
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
+				1092DD892A64DB0900D4F6D3 /* CalendarService.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
