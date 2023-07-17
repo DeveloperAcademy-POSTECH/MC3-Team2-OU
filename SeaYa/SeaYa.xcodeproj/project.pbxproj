@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
+		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
+		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
 		1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */; };
 		1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */; };
 		1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD732A60DE4D00D4F6D3 /* Event.swift */; };
@@ -58,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
+		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCalendarRepository.swift; sourceTree = "<group>"; };
 		1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCalendarRepository.swift; sourceTree = "<group>"; };
 		1092DD732A60DE4D00D4F6D3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -119,6 +125,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EEFB6512A64D85900F5C5D2 /* Host */ = {
+			isa = PBXGroup;
+			children = (
+				0EEFB6522A64D85F00F5C5D2 /* Group */,
+			);
+			path = Host;
+			sourceTree = "<group>";
+		};
+		0EEFB6522A64D85F00F5C5D2 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */,
+				0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */,
+			);
+			name = Group;
+			sourceTree = "<group>";
+		};
 		1092DD6E2A60DE0300D4F6D3 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +244,7 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0EEFB6512A64D85900F5C5D2 /* Host */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
 				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
 				BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */,
@@ -260,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
+				0EEFB6582A64D8C300F5C5D2 /* Date+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -421,14 +446,17 @@
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
+				0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */,
 				1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */,
 				739FBB712A613C3F0022386D /* DateMember.swift in Sources */,
+				0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
 				739FBB6B2A613C050022386D /* DateEvent.swift in Sources */,
 				1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */,
 				73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */,
 				739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */,
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
+				0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */,
 				739FBB6F2A613C240022386D /* TimeOks.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
