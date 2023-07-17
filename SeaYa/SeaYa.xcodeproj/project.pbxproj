@@ -13,7 +13,13 @@
 		1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */; };
 		1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD772A60DE8100D4F6D3 /* WeekDay.swift */; };
 		1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD792A60E39800D4F6D3 /* DateUtil.swift */; };
-		1092DD7C2A60E3C700D4F6D3 /* RemoteCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD7B2A60E3C700D4F6D3 /* RemoteCalendarRepository.swift */; };
+		739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB682A613BCF0022386D /* CalcOksService.swift */; };
+		739FBB6B2A613C050022386D /* DateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6A2A613C050022386D /* DateEvent.swift */; };
+		739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6C2A613C150022386D /* BoundedDate.swift */; };
+		739FBB6F2A613C240022386D /* TimeOks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6E2A613C240022386D /* TimeOks.swift */; };
+		739FBB712A613C3F0022386D /* DateMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB702A613C3F0022386D /* DateMember.swift */; };
+		739FBB742A613CD80022386D /* CLMTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 739FBB732A613CD80022386D /* CLMTest.json */; };
+		739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB762A613D100022386D /* CalcOksServiceTest.swift */; };
 		73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA051F2A5E301A00EB176B /* SeaYaApp.swift */; };
 		73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05232A5E301C00EB176B /* Assets.xcassets */; };
 		73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05262A5E301C00EB176B /* Preview Assets.xcassets */; };
@@ -27,8 +33,6 @@
 		BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */; };
 		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
-		BBBBC7712A5E3D4800F39E2B /* Service.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7702A5E3D4800F39E2B /* Service.md */; };
-		BBBBC7742A5E3D6D00F39E2B /* Utils.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7732A5E3D6D00F39E2B /* Utils.md */; };
 		BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7752A5E3D7500F39E2B /* ViewModel.md */; };
 		BBBBC7792A5E3D8300F39E2B /* DesignSystem.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */; };
 /* End PBXBuildFile section */
@@ -57,7 +61,13 @@
 		1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalEvent.swift; sourceTree = "<group>"; };
 		1092DD772A60DE8100D4F6D3 /* WeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		1092DD792A60E39800D4F6D3 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
-		1092DD7B2A60E3C700D4F6D3 /* RemoteCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemoteCalendarRepository.swift; path = ../../../../calendarTest/calendarTest/calendar/RemoteCalendarRepository.swift; sourceTree = "<group>"; };
+		739FBB682A613BCF0022386D /* CalcOksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksService.swift; sourceTree = "<group>"; };
+		739FBB6A2A613C050022386D /* DateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEvent.swift; sourceTree = "<group>"; };
+		739FBB6C2A613C150022386D /* BoundedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedDate.swift; sourceTree = "<group>"; };
+		739FBB6E2A613C240022386D /* TimeOks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOks.swift; sourceTree = "<group>"; };
+		739FBB702A613C3F0022386D /* DateMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMember.swift; sourceTree = "<group>"; };
+		739FBB732A613CD80022386D /* CLMTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CLMTest.json; sourceTree = "<group>"; };
+		739FBB762A613D100022386D /* CalcOksServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksServiceTest.swift; sourceTree = "<group>"; };
 		73FA051C2A5E301A00EB176B /* SeaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FA051F2A5E301A00EB176B /* SeaYaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaApp.swift; sourceTree = "<group>"; };
 		73FA05232A5E301C00EB176B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,9 +84,7 @@
 		BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameView.swift; sourceTree = "<group>"; };
 		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		BBBBC7702A5E3D4800F39E2B /* Service.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Service.md; sourceTree = "<group>"; };
 		BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DesignSystem.md; sourceTree = "<group>"; };
-		BBBBC7732A5E3D6D00F39E2B /* Utils.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Utils.md; sourceTree = "<group>"; };
 		BBBBC7752A5E3D7500F39E2B /* ViewModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModel.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,11 +116,26 @@
 		1092DD6E2A60DE0300D4F6D3 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				1092DD7B2A60E3C700D4F6D3 /* RemoteCalendarRepository.swift */,
 				1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */,
 				1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		739FBB722A613CA80022386D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				739FBB732A613CD80022386D /* CLMTest.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		739FBB752A613CF30022386D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				739FBB762A613D100022386D /* CalcOksServiceTest.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		73FA05132A5E301A00EB176B = {
@@ -163,7 +186,9 @@
 		73FA052F2A5E301C00EB176B /* SeaYaTests */ = {
 			isa = PBXGroup;
 			children = (
+				739FBB752A613CF30022386D /* Service */,
 				73FA05302A5E301C00EB176B /* SeaYaTests.swift */,
+				739FBB722A613CA80022386D /* Resources */,
 			);
 			path = SeaYaTests;
 			sourceTree = "<group>";
@@ -197,6 +222,10 @@
 				1092DD732A60DE4D00D4F6D3 /* Event.swift */,
 				1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */,
 				BBBBC76C2A5E3C4200F39E2B /* UserData.swift */,
+				739FBB6A2A613C050022386D /* DateEvent.swift */,
+				739FBB6C2A613C150022386D /* BoundedDate.swift */,
+				739FBB6E2A613C240022386D /* TimeOks.swift */,
+				739FBB702A613C3F0022386D /* DateMember.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
-				BBBBC7732A5E3D6D00F39E2B /* Utils.md */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -229,7 +257,7 @@
 		BBBBC7332A5E329200F39E2B /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				BBBBC7702A5E3D4800F39E2B /* Service.md */,
+				739FBB682A613BCF0022386D /* CalcOksService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -341,8 +369,6 @@
 				73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */,
 				73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */,
 				BBBBC7792A5E3D8300F39E2B /* DesignSystem.md in Resources */,
-				BBBBC7742A5E3D6D00F39E2B /* Utils.md in Resources */,
-				BBBBC7712A5E3D4800F39E2B /* Service.md in Resources */,
 				BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				739FBB742A613CD80022386D /* CLMTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,16 +400,20 @@
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
+				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
 				1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */,
+				739FBB712A613C3F0022386D /* DateMember.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
+				739FBB6B2A613C050022386D /* DateEvent.swift in Sources */,
 				1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */,
+				739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */,
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
+				739FBB6F2A613C240022386D /* TimeOks.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
 				1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */,
-				1092DD7C2A60E3C700D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */,
 				73FA05312A5E301C00EB176B /* SeaYaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
