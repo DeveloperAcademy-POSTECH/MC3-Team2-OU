@@ -12,12 +12,19 @@ struct MainView: View {
     var body: some View {
         VStack {
               Text("안녕하세요, \(userData.nickname) 님")
-                  .font(.title)
-                  .fontWeight(.bold)
+                    .title(textColor: Color.primary)
+                 
                   .padding()
-              // 나머지 메인 페이지 내용 추가
+                Text("hello")
+                    .title(textColor: Color.primary)
         }
     }
 }
-
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        let userData = UserData() // UserData 객체를 생성하여 nickname 설정
+        
+        return MainView().environmentObject(userData)
+    }
+}
 

@@ -21,9 +21,10 @@
 		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
 		BBBBC7712A5E3D4800F39E2B /* Service.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7702A5E3D4800F39E2B /* Service.md */; };
-		BBBBC7742A5E3D6D00F39E2B /* Utils.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7732A5E3D6D00F39E2B /* Utils.md */; };
 		BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7752A5E3D7500F39E2B /* ViewModel.md */; };
-		BBBBC7792A5E3D8300F39E2B /* DesignSystem.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */; };
+		BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC77A2A60E05F00F39E2B /* Typography.swift */; };
+		BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7802A60F1CD00F39E2B /* Color.swift */; };
+		BBBBC7832A65235B00F39E2B /* Card1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7822A65235B00F39E2B /* Card1View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,9 +62,10 @@
 		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BBBBC7702A5E3D4800F39E2B /* Service.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Service.md; sourceTree = "<group>"; };
-		BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DesignSystem.md; sourceTree = "<group>"; };
-		BBBBC7732A5E3D6D00F39E2B /* Utils.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Utils.md; sourceTree = "<group>"; };
 		BBBBC7752A5E3D7500F39E2B /* ViewModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModel.md; sourceTree = "<group>"; };
+		BBBBC77A2A60E05F00F39E2B /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		BBBBC7802A60F1CD00F39E2B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		BBBBC7822A65235B00F39E2B /* Card1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card1View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +186,7 @@
 		BBBBC7312A5E325E00F39E2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BBBBC7732A5E3D6D00F39E2B /* Utils.md */,
+				BBBBC7822A65235B00F39E2B /* Card1View.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -192,7 +194,8 @@
 		BBBBC7322A5E326400F39E2B /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */,
+				BBBBC77A2A60E05F00F39E2B /* Typography.swift */,
+				BBBBC7802A60F1CD00F39E2B /* Color.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -311,8 +314,6 @@
 			files = (
 				73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */,
 				73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */,
-				BBBBC7792A5E3D8300F39E2B /* DesignSystem.md in Resources */,
-				BBBBC7742A5E3D6D00F39E2B /* Utils.md in Resources */,
 				BBBBC7712A5E3D4800F39E2B /* Service.md in Resources */,
 				BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */,
 			);
@@ -342,11 +343,14 @@
 				BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */,
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
+				BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
+				BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
+				BBBBC7832A65235B00F39E2B /* Card1View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
