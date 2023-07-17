@@ -7,8 +7,10 @@
 
 import Foundation
 // 기본 event 모델
-protocol Event{
-    var title:String{get}
-    var start:Date{get}
-    var end:Date{get}
+struct Event{
+    var title: String
+    
+    var start: Date
+    
+    var end: Date
 }
