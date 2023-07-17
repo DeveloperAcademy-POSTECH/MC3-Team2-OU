@@ -35,6 +35,8 @@
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
 		BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7752A5E3D7500F39E2B /* ViewModel.md */; };
 		BBBBC7792A5E3D8300F39E2B /* DesignSystem.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */; };
+		EE14DBC12A64CF22004ECD86 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC02A64CF22004ECD86 /* SettingView.swift */; };
+		EE14DBC32A64CFE6004ECD86 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DesignSystem.md; sourceTree = "<group>"; };
 		BBBBC7752A5E3D7500F39E2B /* ViewModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModel.md; sourceTree = "<group>"; };
+		EE14DBC02A64CF22004ECD86 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,7 @@
 				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
 				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
 				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
+				EE14DBC02A64CF22004ECD86 /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
+				EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */,
+				EE14DBC12A64CF22004ECD86 /* SettingView.swift in Sources */,
 				1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */,
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
@@ -403,6 +410,7 @@
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
+				EE14DBC32A64CFE6004ECD86 /* HapticsManager.swift in Sources */,
 				1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */,
 				739FBB712A613C3F0022386D /* DateMember.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
