@@ -17,7 +17,6 @@
 		1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD772A60DE8100D4F6D3 /* WeekDay.swift */; };
 		1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD792A60E39800D4F6D3 /* DateUtil.swift */; };
 		7369F97D2A64CB470050EB8F /* ListUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7369F97C2A64CB470050EB8F /* ListUpView.swift */; };
-		7369F9802A64D4DA0050EB8F /* ListUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7369F97F2A64D4DA0050EB8F /* ListUpView.swift */; };
 		739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB682A613BCF0022386D /* CalcOksService.swift */; };
 		739FBB6B2A613C050022386D /* DateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6A2A613C050022386D /* DateEvent.swift */; };
 		739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6C2A613C150022386D /* BoundedDate.swift */; };
@@ -26,6 +25,7 @@
 		739FBB742A613CD80022386D /* CLMTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 739FBB732A613CD80022386D /* CLMTest.json */; };
 		739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB762A613D100022386D /* CalcOksServiceTest.swift */; };
 		73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */; };
+		73CD8FAF2A6593E8003A274D /* ListUpElementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */; };
 		73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA051F2A5E301A00EB176B /* SeaYaApp.swift */; };
 		73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05232A5E301C00EB176B /* Assets.xcassets */; };
 		73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FA05262A5E301C00EB176B /* Preview Assets.xcassets */; };
@@ -71,7 +71,6 @@
 		1092DD772A60DE8100D4F6D3 /* WeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		1092DD792A60E39800D4F6D3 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		7369F97C2A64CB470050EB8F /* ListUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpView.swift; sourceTree = "<group>"; };
-		7369F97F2A64D4DA0050EB8F /* ListUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpView.swift; sourceTree = "<group>"; };
 		739FBB682A613BCF0022386D /* CalcOksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksService.swift; sourceTree = "<group>"; };
 		739FBB6A2A613C050022386D /* DateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEvent.swift; sourceTree = "<group>"; };
 		739FBB6C2A613C150022386D /* BoundedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedDate.swift; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		739FBB732A613CD80022386D /* CLMTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CLMTest.json; sourceTree = "<group>"; };
 		739FBB762A613D100022386D /* CalcOksServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksServiceTest.swift; sourceTree = "<group>"; };
 		73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementView.swift; sourceTree = "<group>"; };
+		73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementDetailView.swift; sourceTree = "<group>"; };
 		73FA051C2A5E301A00EB176B /* SeaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FA051F2A5E301A00EB176B /* SeaYaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaYaApp.swift; sourceTree = "<group>"; };
 		73FA05232A5E301C00EB176B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,15 +151,6 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		7369F97E2A64D4C90050EB8F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7369F97F2A64D4DA0050EB8F /* ListUpView.swift */,
-			);
-			name = View;
-			path = "퍋ㅈ";
-			sourceTree = "<group>";
-		};
 		739FBB722A613CA80022386D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +165,16 @@
 				739FBB762A613D100022386D /* CalcOksServiceTest.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		73CD8FE82A65A935003A274D /* ListUpView */ = {
+			isa = PBXGroup;
+			children = (
+				7369F97C2A64CB470050EB8F /* ListUpView.swift */,
+				73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */,
+				73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */,
+			);
+			path = ListUpView;
 			sourceTree = "<group>";
 		};
 		73FA05132A5E301A00EB176B = {
@@ -224,7 +225,6 @@
 		73FA052F2A5E301C00EB176B /* SeaYaTests */ = {
 			isa = PBXGroup;
 			children = (
-				7369F97E2A64D4C90050EB8F /* View */,
 				739FBB752A613CF30022386D /* Service */,
 				73FA05302A5E301C00EB176B /* SeaYaTests.swift */,
 				739FBB722A613CA80022386D /* Resources */,
@@ -251,8 +251,7 @@
 				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
 				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
 				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
-				7369F97C2A64CB470050EB8F /* ListUpView.swift */,
-				73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */,
+				73CD8FE82A65A935003A274D /* ListUpView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -449,6 +448,7 @@
 				0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */,
 				1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */,
 				739FBB712A613C3F0022386D /* DateMember.swift in Sources */,
+				73CD8FAF2A6593E8003A274D /* ListUpElementDetailView.swift in Sources */,
 				0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
 				739FBB6B2A613C050022386D /* DateEvent.swift in Sources */,
@@ -469,7 +469,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7369F9802A64D4DA0050EB8F /* ListUpView.swift in Sources */,
 				739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */,
 				73FA05312A5E301C00EB176B /* SeaYaTests.swift in Sources */,
 			);
