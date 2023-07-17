@@ -15,3 +15,24 @@ extension Date {
         return formatter.string(from: day)
     }
 }
+
+extension Int? {
+    func dayOfWeek() -> String{
+        switch self {
+        case 1:
+            return "일"
+        case 2 :
+            return "월"
+        case 3 :
+            return "화"
+        case 4 :
+            return "수"
+        case 5 :
+            return "목"
+        case 6 :
+            return "금"
+        default :
+            return "토"
+        }
+    }
+}
