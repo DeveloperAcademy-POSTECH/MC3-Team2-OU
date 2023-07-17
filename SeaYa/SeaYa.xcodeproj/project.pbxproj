@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104555712A64EB8E00562B98 /* TimeTableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555702A64EB8E00562B98 /* TimeTableService.swift */; };
 		1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */; };
 		1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */; };
 		1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD732A60DE4D00D4F6D3 /* Event.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		104555702A64EB8E00562B98 /* TimeTableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableService.swift; sourceTree = "<group>"; };
 		1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCalendarRepository.swift; sourceTree = "<group>"; };
 		1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCalendarRepository.swift; sourceTree = "<group>"; };
 		1092DD732A60DE4D00D4F6D3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				739FBB682A613BCF0022386D /* CalcOksService.swift */,
 				1092DD882A64DB0900D4F6D3 /* CalendarService.swift */,
+				104555702A64EB8E00562B98 /* TimeTableService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				739FBB6F2A613C240022386D /* TimeOks.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
+				104555712A64EB8E00562B98 /* TimeTableService.swift in Sources */,
 				1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */,
 				1092DD8B2A64DBFE00D4F6D3 /* TimeTable.swift in Sources */,
 			);
