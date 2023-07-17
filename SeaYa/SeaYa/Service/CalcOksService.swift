@@ -76,7 +76,7 @@ class CalcOksService: ObservableObject {
         
         // startDate endDate 범위 정보 들어올 경우 해당 Date 범위만큼 [TimeOks] 배열 형성, 상단 countMembersOkTime 에서 해당 배열을 뺄셈하기
         let boundedDatesMapped = boundedDates.map(getStride).flatMap{$0}
-        let memberTimeOks = boundedDatesMapped.map{getOKtimesBySubtract($0, using: countMembersOkTime)}.sorted(by: Nearest)
+        let memberTimeOks = boundedDatesMapped.map{getOKtimesBySubtract($0, using: countMembersOkTime)}.filter{$0.Oks != 0}.sorted(by: Nearest)
         
         //주어진 시간만큼 필터링하기
 //        let memberMinTimeOks = getMemberTimeOks(memberTimeOks, self.theTime)
@@ -91,5 +91,17 @@ class CalcOksService: ObservableObject {
         ///    let time = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date(timeIntervalSince1970: TimeInterval(TimeOks.timeInt*1800)))
         ///    print(time.year!, time.month!, time.day!, time.hour!, time.minute!, TimeOks.Oks)}
         ///print(sortedMemberOks.last?.timeInt)
+        
         return sortedMemberOks}
+    
+    func groupByconsecutiveTime(_ sortedMemberTimeOks : [TimeOks]) -> [[TimeOks]]{
+        let groupedNumbers = sortedMemberTimeOks.reduce(into: [[TimeOks]]()) { result, number in
+            if let lastGroup = result.last, let lastNumber = lastGroup.last, lastNumber.timeInt == number.timeInt - 1 {
+                result[result.count - 1].append(number)
+            } else {
+                result.append([number])
+            }
+        }
+        return groupedNumbers
+    }
 }
