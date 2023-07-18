@@ -50,7 +50,7 @@ final class CalcOksServiceTest: XCTestCase {
             )
         try await manager.performCalculation(members!, by: [boundDate])
         let result = manager.result!
-        print(manager.groupByconsecutiveTime(result))
+        print(manager.groupByConsecutiveTime(result))
         XCTAssertTrue(manager.result?.last?.timeInt == 940624)
     }
     
