@@ -94,7 +94,7 @@ class CalcOksService: ObservableObject {
         
         return sortedMemberOks}
     
-    func groupByconsecutiveTime(_ sortedMemberTimeOks : [TimeOks]) -> [[TimeOks]]{
+    func groupByConsecutiveTime(_ sortedMemberTimeOks : [TimeOks]) -> [[TimeOks]]{
         let groupedNumbers = sortedMemberTimeOks.reduce(into: [[TimeOks]]()) { result, number in
             if let lastGroup = result.last, let lastNumber = lastGroup.last, lastNumber.timeInt == number.timeInt - 1 {
                 result[result.count - 1].append(number)
