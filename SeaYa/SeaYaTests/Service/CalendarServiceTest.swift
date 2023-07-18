@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import SeaYa
 
 final class CalendarServiceTest: XCTestCase {
     let service = CalendarService.shared

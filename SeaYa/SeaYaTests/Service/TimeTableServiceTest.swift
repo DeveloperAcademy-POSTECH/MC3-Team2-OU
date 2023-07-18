@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import SeaYa
 
 final class TimeTableServiceTest: XCTestCase {
     typealias Calendar = Dictionary<String,[Event]>

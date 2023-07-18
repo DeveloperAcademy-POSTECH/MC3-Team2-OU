@@ -7,19 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		104555712A64EB8E00562B98 /* TimeTableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555702A64EB8E00562B98 /* TimeTableService.swift */; };
-		104555732A64ECBA00562B98 /* LocalCalendarRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555722A64ECBA00562B98 /* LocalCalendarRepositoryTest.swift */; };
-		104555752A64ED8E00562B98 /* RemoteCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */; };
-		104555762A64ED9100562B98 /* LocalCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */; };
-		104555772A65077300562B98 /* LocalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */; };
-		104555782A65077600562B98 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD732A60DE4D00D4F6D3 /* Event.swift */; };
-		104555792A65077900562B98 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD772A60DE8100D4F6D3 /* WeekDay.swift */; };
-		1045557A2A65078100562B98 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD792A60E39800D4F6D3 /* DateUtil.swift */; };
-		1045557C2A650DAE00562B98 /* RemoteCalendarRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045557B2A650DAE00562B98 /* RemoteCalendarRepositoryTest.swift */; };
-		1045557E2A6510C100562B98 /* CalendarServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045557D2A6510C100562B98 /* CalendarServiceTest.swift */; };
-		1045557F2A65113900562B98 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD882A64DB0900D4F6D3 /* CalendarService.swift */; };
-		104555812A65954600562B98 /* TimeTableServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555802A65954600562B98 /* TimeTableServiceTest.swift */; };
-		104555822A66106200562B98 /* TimeTableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555702A64EB8E00562B98 /* TimeTableService.swift */; };
+		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
+		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
+		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
 		1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */; };
 		1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */; };
 		1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD732A60DE4D00D4F6D3 /* Event.swift */; };
@@ -28,6 +18,12 @@
 		1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD792A60E39800D4F6D3 /* DateUtil.swift */; };
 		1092DD892A64DB0900D4F6D3 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD882A64DB0900D4F6D3 /* CalendarService.swift */; };
 		1092DD8B2A64DBFE00D4F6D3 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD8A2A64DBFE00D4F6D3 /* TimeTable.swift */; };
+		73858AE82A6638260082BE75 /* LocalCalendarRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73858AE72A6638260082BE75 /* LocalCalendarRepositoryTest.swift */; };
+		73858AEA2A6638390082BE75 /* RemoteCalendarRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73858AE92A6638390082BE75 /* RemoteCalendarRepositoryTest.swift */; };
+		73858AEC2A6638C80082BE75 /* TimeTableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73858AEB2A6638C80082BE75 /* TimeTableService.swift */; };
+		73858AF12A6639B80082BE75 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73858AF02A6639B80082BE75 /* TimeTable.swift */; };
+		73858AF32A663A540082BE75 /* CalendarServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73858AF22A663A540082BE75 /* CalendarServiceTest.swift */; };
+		73858AF52A663A680082BE75 /* TimeTableServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73858AF42A663A680082BE75 /* TimeTableServiceTest.swift */; };
 		739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB682A613BCF0022386D /* CalcOksService.swift */; };
 		739FBB6B2A613C050022386D /* DateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6A2A613C050022386D /* DateEvent.swift */; };
 		739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6C2A613C150022386D /* BoundedDate.swift */; };
@@ -70,11 +66,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		104555702A64EB8E00562B98 /* TimeTableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableService.swift; sourceTree = "<group>"; };
-		104555722A64ECBA00562B98 /* LocalCalendarRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCalendarRepositoryTest.swift; sourceTree = "<group>"; };
-		1045557B2A650DAE00562B98 /* RemoteCalendarRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCalendarRepositoryTest.swift; sourceTree = "<group>"; };
-		1045557D2A6510C100562B98 /* CalendarServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarServiceTest.swift; sourceTree = "<group>"; };
-		104555802A65954600562B98 /* TimeTableServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableServiceTest.swift; sourceTree = "<group>"; };
+		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
+		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCalendarRepository.swift; sourceTree = "<group>"; };
 		1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCalendarRepository.swift; sourceTree = "<group>"; };
 		1092DD732A60DE4D00D4F6D3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -83,6 +77,12 @@
 		1092DD792A60E39800D4F6D3 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		1092DD882A64DB0900D4F6D3 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		1092DD8A2A64DBFE00D4F6D3 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
+		73858AE72A6638260082BE75 /* LocalCalendarRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCalendarRepositoryTest.swift; sourceTree = "<group>"; };
+		73858AE92A6638390082BE75 /* RemoteCalendarRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCalendarRepositoryTest.swift; sourceTree = "<group>"; };
+		73858AEB2A6638C80082BE75 /* TimeTableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableService.swift; sourceTree = "<group>"; };
+		73858AF02A6639B80082BE75 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
+		73858AF22A663A540082BE75 /* CalendarServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarServiceTest.swift; sourceTree = "<group>"; };
+		73858AF42A663A680082BE75 /* TimeTableServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableServiceTest.swift; sourceTree = "<group>"; };
 		739FBB682A613BCF0022386D /* CalcOksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksService.swift; sourceTree = "<group>"; };
 		739FBB6A2A613C050022386D /* DateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEvent.swift; sourceTree = "<group>"; };
 		739FBB6C2A613C150022386D /* BoundedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedDate.swift; sourceTree = "<group>"; };
@@ -135,13 +135,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		104555742A64ECD600562B98 /* repository */ = {
+		0EEFB6512A64D85900F5C5D2 /* Host */ = {
 			isa = PBXGroup;
 			children = (
-				104555722A64ECBA00562B98 /* LocalCalendarRepositoryTest.swift */,
-				1045557B2A650DAE00562B98 /* RemoteCalendarRepositoryTest.swift */,
+				0EEFB6522A64D85F00F5C5D2 /* Group */,
 			);
-			path = repository;
+			path = Host;
+			sourceTree = "<group>";
+		};
+		0EEFB6522A64D85F00F5C5D2 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */,
+				0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */,
+			);
+			name = Group;
 			sourceTree = "<group>";
 		};
 		1092DD6E2A60DE0300D4F6D3 /* Repository */ = {
@@ -153,10 +161,27 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		1092DD8C2A64DC0300D4F6D3 /* TimeTableView */ = {
+		73858AE02A6637870082BE75 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				1092DD8A2A64DBFE00D4F6D3 /* TimeTable.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		73858AE62A6638040082BE75 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				73858AE72A6638260082BE75 /* LocalCalendarRepositoryTest.swift */,
+				73858AE92A6638390082BE75 /* RemoteCalendarRepositoryTest.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		73858AEF2A6639A70082BE75 /* TimeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				73858AF02A6639B80082BE75 /* TimeTable.swift */,
 			);
 			path = TimeTableView;
 			sourceTree = "<group>";
@@ -173,8 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				739FBB762A613D100022386D /* CalcOksServiceTest.swift */,
-				1045557D2A6510C100562B98 /* CalendarServiceTest.swift */,
-				104555802A65954600562B98 /* TimeTableServiceTest.swift */,
+				73858AF22A663A540082BE75 /* CalendarServiceTest.swift */,
+				73858AF42A663A680082BE75 /* TimeTableServiceTest.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -186,6 +211,7 @@
 				73FA052F2A5E301C00EB176B /* SeaYaTests */,
 				73FA05392A5E301C00EB176B /* SeaYaUITests */,
 				73FA051D2A5E301A00EB176B /* Products */,
+				73858AE02A6637870082BE75 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,7 +253,7 @@
 		73FA052F2A5E301C00EB176B /* SeaYaTests */ = {
 			isa = PBXGroup;
 			children = (
-				104555742A64ECD600562B98 /* repository */,
+				73858AE62A6638040082BE75 /* repository */,
 				739FBB752A613CF30022386D /* Service */,
 				73FA05302A5E301C00EB176B /* SeaYaTests.swift */,
 				739FBB722A613CA80022386D /* Resources */,
@@ -247,7 +273,8 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1092DD8C2A64DC0300D4F6D3 /* TimeTableView */,
+				73858AEF2A6639A70082BE75 /* TimeTableView */,
+				0EEFB6512A64D85900F5C5D2 /* Host */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
 				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
 				BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */,
@@ -285,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
+				0EEFB6582A64D8C300F5C5D2 /* Date+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -302,7 +330,7 @@
 			children = (
 				739FBB682A613BCF0022386D /* CalcOksService.swift */,
 				1092DD882A64DB0900D4F6D3 /* CalendarService.swift */,
-				104555702A64EB8E00562B98 /* TimeTableService.swift */,
+				73858AEB2A6638C80082BE75 /* TimeTableService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -448,18 +476,22 @@
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
+				73858AEC2A6638C80082BE75 /* TimeTableService.swift in Sources */,
+				73858AF12A6639B80082BE75 /* TimeTable.swift in Sources */,
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
+				0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */,
 				1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */,
 				739FBB712A613C3F0022386D /* DateMember.swift in Sources */,
+				0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
 				739FBB6B2A613C050022386D /* DateEvent.swift in Sources */,
 				1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */,
 				739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */,
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
+				0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */,
 				739FBB6F2A613C240022386D /* TimeOks.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
-				104555712A64EB8E00562B98 /* TimeTableService.swift in Sources */,
 				1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */,
 				1092DD8B2A64DBFE00D4F6D3 /* TimeTable.swift in Sources */,
 			);
@@ -469,20 +501,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73858AF32A663A540082BE75 /* CalendarServiceTest.swift in Sources */,
 				739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */,
-				104555762A64ED9100562B98 /* LocalCalendarRepository.swift in Sources */,
-				104555792A65077900562B98 /* WeekDay.swift in Sources */,
-				104555772A65077300562B98 /* LocalEvent.swift in Sources */,
 				73FA05312A5E301C00EB176B /* SeaYaTests.swift in Sources */,
-				104555732A64ECBA00562B98 /* LocalCalendarRepositoryTest.swift in Sources */,
-				1045557A2A65078100562B98 /* DateUtil.swift in Sources */,
-				1045557F2A65113900562B98 /* CalendarService.swift in Sources */,
-				104555812A65954600562B98 /* TimeTableServiceTest.swift in Sources */,
-				104555822A66106200562B98 /* TimeTableService.swift in Sources */,
-				1045557E2A6510C100562B98 /* CalendarServiceTest.swift in Sources */,
-				104555782A65077600562B98 /* Event.swift in Sources */,
-				104555752A64ED8E00562B98 /* RemoteCalendarRepository.swift in Sources */,
-				1045557C2A650DAE00562B98 /* RemoteCalendarRepositoryTest.swift in Sources */,
+				73858AE82A6638260082BE75 /* LocalCalendarRepositoryTest.swift in Sources */,
+				73858AEA2A6638390082BE75 /* RemoteCalendarRepositoryTest.swift in Sources */,
+				73858AF52A663A680082BE75 /* TimeTableServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

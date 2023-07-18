@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import SeaYa
 
 final class RemoteCalendarRepositoryTest: XCTestCase {
     let repo = RemoteCalendarRepository.shared
