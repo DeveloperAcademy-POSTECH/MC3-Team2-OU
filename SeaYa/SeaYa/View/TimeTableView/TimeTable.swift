@@ -9,11 +9,11 @@ import SwiftUI
 
 struct TimeTable: View {
     typealias MyCalendar = Dictionary<String,[Event]>
-    static let events = [Event(title: "1", start: Date.now, end: Date.now),Event(title: "2", start: Date.now, end: Date.now),Event(title: "3", start: Date.now, end: Date.now),Event(title: "4", start: Date.now, end: Date.now)]
-    let calendar:MyCalendar = ["1":events,"2":events,"3":events,"4":events]
+    @ObservedObject var vm = TimeTableViewModel(selectedDay: ["2023-07-17","2023-07-18","2023-07-19"])
     var body: some View {
         HStack{
-            ForEach(calendar.keys.sorted(),id: \.self) { day in
+            Text("hello")
+            ForEach(vm.calendar?.keys.sorted() ?? [],id: \.self) { day in
                 VStack{
                     Text(day)
                     TableRow()

@@ -19,7 +19,8 @@ class DateUtil{
         return dateFormatter.date(from: date)!
     }
     static func formattedDateToDate(_ date:String)->Date{
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         return dateFormatter.date(from: date)!
     }
     static func getFormattedTime(_ date: Date) -> String{
