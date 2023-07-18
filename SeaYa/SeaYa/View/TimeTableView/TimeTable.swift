@@ -11,38 +11,57 @@ struct TimeTable: View {
     typealias MyCalendar = Dictionary<String,[Event]>
     @ObservedObject var vm = TimeTableViewModel(selectedDay: ["2023-07-17","2023-07-18","2023-07-19"])
     var body: some View {
-        HStack{
-            Text("hello")
-            ForEach(vm.calendar?.keys.sorted() ?? [],id: \.self) { day in
-                VStack{
-                    Text(day)
-                    TableRow()
+        if vm.calendar != nil{
+            VStack{
+                HStack{
+                    ForEach(vm.calendar?.keys.sorted() ?? [],id: \.self) { day in
+                        VStack{
+                            Text(day)
+                            TableRow(vm: vm,day: day)
+                        }
+                    }
+                }
+                Button("확인") {
+                    
                 }
             }
+        }
+        else{
+            ProgressView()
         }
     }
 }
 struct TableRow: View{
-    var items = [TableItem(Event(title: "1", start: Date.now, end: Date.now)),TableItem(Event(title: "2", start: Date.now, end: Date.now)),TableItem(Event(title: "3", start: Date.now, end: Date.now)),TableItem(Event(title: "4", start: Date.now, end: Date.now))]
+    @ObservedObject var vm: TimeTableViewModel
+    let day: String
+    let items:[TableItem]
     @State var selectedItem: Set<TableItem> = []
     @State var current:TableItem?
+    init(vm: TimeTableViewModel, day: String) {
+        self.vm = vm
+        self.day = day
+        self.items = vm.eventToTableItem(vm.calendar![day]!)
+    }
     // 선택 드래그 , 비선택 드래그 나눠서 로직 나누기
     var body: some View{
         GeometryReader { geo in
-            VStack(spacing: 1){
+            VStack(spacing: 0){
                 ForEach(items,id: \.self){item in
-                    TableCell(item).frame(width: geo.size.width,height: geo.size.height*1/4)
-                        .foregroundColor(selectedItem.contains(item) ? .red : .blue)
+                    ZStack{
+                        TableCell(item).frame(width: geo.size.width,height: geo.size.height/CGFloat(items.count))
+                            .foregroundColor(item.canSelect() ? selectedItem.contains(item) ? .red : .blue : .gray)
+                        Text(item.event.title)
+                    }
                 }
             }.onAppear(){
                 getLocations(rect: geo.frame(in: .global))
                 
             }
-        }.background(Color.blue)
-            .gesture(DragGesture(minimumDistance: 10)
+        }
+        .gesture(DragGesture(minimumDistance: 10)
                 .onChanged({ value in
                     if let item = getSelectedItem(value.location){
-                        if !selectedItem.contains(item) && current != item{
+                        if !selectedItem.contains(item) && current != item && item.canSelect(){
                             selectedItem.insert(item)
                         }
                         else if selectedItem.contains(item) && current != item{
@@ -70,9 +89,9 @@ struct TableRow: View{
     }
     //아이템에 위치 값 지정
     private func getLocations(rect:CGRect){
-        let interval:CGFloat = rect.height * 1/4
+        let interval:CGFloat = rect.height/CGFloat(items.count)
         var currentHeight:CGFloat = 0
-        for i in 0...3{
+        for i in 0...items.count-1{
             let start = currentHeight
             let curRect = CGRect(x: 0, y: start, width: rect.width, height: interval)
             items[i].location = curRect
@@ -92,6 +111,14 @@ struct TableCell: View{
 class TableItem:Hashable{
     var event: Event
     var location: CGRect?
+    func canSelect() -> Bool{
+        if event.title == "blank"{
+            return true
+        }
+        else{
+            return false;
+        }
+    }
     static func == (lhs: TableItem, rhs: TableItem) -> Bool {
         return lhs.event.start == rhs.event.start && lhs.event.title == rhs.event.title
     }
