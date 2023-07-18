@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalendarService {
+class CalendarService {
     typealias Calendar = Dictionary<String,[Event]>
     static let shared = CalendarService()
     private init(){}
