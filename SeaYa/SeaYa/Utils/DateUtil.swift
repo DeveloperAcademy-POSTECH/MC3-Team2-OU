@@ -14,6 +14,10 @@ class DateUtil{
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: date)
     }
+    static func formattedDayToDate(_ date:String)->Date{
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: date)!
+    }
     static func formattedDateToDate(_ date:String)->Date{
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         return dateFormatter.date(from: date)!
@@ -24,7 +28,7 @@ class DateUtil{
     }
     //년 월 일 , 요일 매칭
     static func dateToWeekDay(_ date: String)->WeekDay{
-        let rDate = formattedDateToDate(date)
+        let rDate = formattedDayToDate(date)
         let dateNum = Int(rDate.formatted(Date.FormatStyle().weekday(.oneDigit)))!
         return WeekDay(rawValue: dateNum)!
     }
@@ -39,6 +43,18 @@ class DateUtil{
         let stringTime = getFormattedTime(time)
         let mergedDate = stringDay + " " + stringTime
         return formattedDateToDate(mergedDate)
+    }
+    static func createDate(year: Int, month: Int, day: Int, hour: Int, minute: Int) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        dateComponents.second = 0 // 초는 필요에 따라 설정 (기본값은 0)
+        
+        let calendar = Calendar.current
+        return calendar.date(from: dateComponents)!
     }
 }
 

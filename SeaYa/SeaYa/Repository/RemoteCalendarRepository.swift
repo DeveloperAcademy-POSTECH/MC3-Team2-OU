@@ -39,13 +39,15 @@ class RemoteCalendarRepository{
         }
     }
     //일정 받아오기
-    public func fetchEvent(start:Date,end:Date)async throws -> [EKEvent]{
+    public func fetchEvent(start:Date,end:Date)async throws -> [Event]{
         let isAccess = try await isAccessPermission()
         let predictate = getPredictate(start: start, end: end)
         // 접근 허가
         if isAccess{
             let events = store.events(matching: predictate)
-            return events
+            return events.map { ekEvent in
+                EKEventToEvent(event: ekEvent)
+            }
         }
         // 접근 실패
         else{
@@ -56,8 +58,10 @@ class RemoteCalendarRepository{
         try store.remove(event, span: .thisEvent)
     }
     //일정 삭제
-
     
+    private func EKEventToEvent(event: EKEvent) -> Event{
+        return Event(title: event.title, start: event.startDate, end: event.endDate)
+    }
     //calendar 가져오기
     private func getCalendar() -> EKCalendar{
         let calendars = store.calendars(for: .event)

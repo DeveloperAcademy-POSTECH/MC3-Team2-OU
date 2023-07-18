@@ -9,8 +9,8 @@ import Foundation
 
 struct CalendarService {
     typealias Calendar = Dictionary<String,[Event]>
-    private let selectedDays:[String]
-    
+    static let shared = CalendarService()
+    private init(){}
     //local event -> calendar
     public func makeCalendar(_ selectedDays: [String],_ localEvents:[LocalEvent])->Calendar{
         let events = localEventsToEvent(localEvents, selectedDays)

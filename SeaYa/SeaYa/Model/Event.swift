@@ -7,7 +7,7 @@
 
 import Foundation
 // 기본 event 모델
-struct Event{
+struct Event : Equatable{
     var title: String
     
     var start: Date

@@ -14,25 +14,26 @@ import Foundation
 //2. 9 - 24 ,interval 30인 table 만들기
 //3. 이벤트를 알맞게 잘라 넣고, 일정 없는 곳에는 blankEvent 만들기
 //4. 선택이 되면 잘라져있는 event들 다시 합쳐서 Calendar 형태로 return
-struct TimeTableService{
+class TimeTableService{
     typealias MyCalendar = Dictionary<String,[Event]>
-    var calendar: MyCalendar
+    static let shared = TimeTableService()
     var interval: Int = 30
     var start : Int = 9
     var end : Int = 24
+    private init(){}
     
-    public func getCalendarForTimeTable() -> MyCalendar{
-        return matchCalendar()
+    public func getCalendarForTimeTable(_ calendar : MyCalendar) -> MyCalendar{
+        return matchCalendar(calendar)
     }
     
-    private func makeBlankCalendar() -> MyCalendar{
+    private func makeBlankCalendar(_ calendar : MyCalendar) -> MyCalendar{
         let slice = 60/interval
-        let itemNum = (start - end) * slice
+        let itemNum = (end - start) * slice
         var newCalendar = MyCalendar()
-        self.calendar.keys.forEach { day in
+        calendar.keys.forEach { day in
             var events = [Event]()
-            var tStart = DateUtil.formattedDateToDate(day + "09:00") // 이건 귀찮아서 그냥 했는데 수정해야함
-            var tEnd = DateUtil.formattedDateToDate(day + "09:30")
+            var tStart = DateUtil.formattedDateToDate(day + " 09:00") // 이건 귀찮아서 그냥 했는데 수정해야함
+            var tEnd = DateUtil.formattedDateToDate(day + " 09:30")
             for _ in 0 ... itemNum{
                 let event = Event(title: "blank", start: tStart, end: tEnd)
                 tStart = tStart.advanced(by: 60*30)
@@ -43,30 +44,37 @@ struct TimeTableService{
         }
         return newCalendar
     }
-    private func matchCalendar() -> MyCalendar{
-        var newCalendar = makeBlankCalendar()
+    private func matchCalendar(_ calendar : MyCalendar) -> MyCalendar{
+        var newCalendar = makeBlankCalendar(calendar)
         calendar.keys.forEach { day in
-            calendar[day]!.forEach({ event in
-                //이벤트의 startTime을 반내림
-                var tStart = floorDateToNearest30Minutes(event.start)
-                //이벤트의 endTime을 반올림
-                let tEnd = roundDateToNearest30Minutes(event.end)
-                while(tStart == tEnd){
-                    let event = Event(title: event.title, start: tStart, end: tEnd)
-                    for (index, value) in newCalendar[day]!.enumerated() {
-                        if value.start ==  tStart{
-                            newCalendar[day]![index] = event
-                        }
-                        tStart = tStart.advanced(by: 60*30)
+            let events = calendar[day]!
+            events.forEach { event in
+                let slicedEvents = sliceEvent(event)
+                
+                slicedEvents.forEach { sEvent in
+                    let index = newCalendar[day]!.firstIndex { ncEvent in
+                        sEvent.start == ncEvent.start
                     }
-                    tStart = tStart.advanced(by: 60*30)
+                    newCalendar[day]![index!] = sEvent
                 }
-
-            })
+                
+                
+            }
         }
         return newCalendar
     }
-    func roundDateToNearest30Minutes(_ date: Date) -> Date {
+    private func sliceEvent(_ event : Event) -> [Event]{
+        var tStart = event.start
+        let tEnd = event.end
+        var events = [Event]()
+        while(tEnd > tStart){
+            let event = Event(title: event.title, start: tStart, end: tStart.advanced(by: 1800))
+            events.append(event)
+            tStart = tStart.advanced(by: 1800)
+        }
+        return events
+    }
+    private func roundDateToNearest30Minutes(_ date: Date) -> Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
         
@@ -86,7 +94,7 @@ struct TimeTableService{
         return roundedDate
     }
     
-    func floorDateToNearest30Minutes(_ date: Date) -> Date {
+    private func floorDateToNearest30Minutes(_ date: Date) -> Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
         
