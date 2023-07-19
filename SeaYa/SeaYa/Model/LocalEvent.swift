@@ -7,7 +7,7 @@
 
 import Foundation
 //local에 저장할 이벤트 모델
-struct LocalEvent: Codable,Event{
+struct LocalEvent: Codable{
     var id: UUID = UUID()
     let title:String
     let days:[WeekDay]

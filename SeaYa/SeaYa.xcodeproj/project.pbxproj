@@ -10,6 +10,10 @@
 		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
 		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
 		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
+		104555852A66402C00562B98 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555842A66402C00562B98 /* CalendarService.swift */; };
+		104555872A66404700562B98 /* TimeTableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555862A66404700562B98 /* TimeTableService.swift */; };
+		1045558A2A66409B00562B98 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555892A66409B00562B98 /* TimeTable.swift */; };
+		1045558C2A6645F400562B98 /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045558B2A6645F400562B98 /* TimeTableViewModel.swift */; };
 		1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */; };
 		1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */; };
 		1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD732A60DE4D00D4F6D3 /* Event.swift */; };
@@ -64,6 +68,10 @@
 		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
 		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		104555842A66402C00562B98 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		104555862A66404700562B98 /* TimeTableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableService.swift; sourceTree = "<group>"; };
+		104555892A66409B00562B98 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
+		1045558B2A6645F400562B98 /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
 		1092DD6F2A60DE2200D4F6D3 /* LocalCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCalendarRepository.swift; sourceTree = "<group>"; };
 		1092DD702A60DE2200D4F6D3 /* RemoteCalendarRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCalendarRepository.swift; sourceTree = "<group>"; };
 		1092DD732A60DE4D00D4F6D3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -140,6 +148,14 @@
 				0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */,
 			);
 			name = Group;
+			sourceTree = "<group>";
+		};
+		104555882A66408900562B98 /* TimeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				104555892A66409B00562B98 /* TimeTable.swift */,
+			);
+			path = TimeTableView;
 			sourceTree = "<group>";
 		};
 		1092DD6E2A60DE0300D4F6D3 /* Repository */ = {
@@ -244,6 +260,7 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				104555882A66408900562B98 /* TimeTableView */,
 				0EEFB6512A64D85900F5C5D2 /* Host */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
 				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
@@ -275,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				BBBBC7752A5E3D7500F39E2B /* ViewModel.md */,
+				1045558B2A6645F400562B98 /* TimeTableViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -300,6 +318,8 @@
 			isa = PBXGroup;
 			children = (
 				739FBB682A613BCF0022386D /* CalcOksService.swift */,
+				104555842A66402C00562B98 /* CalendarService.swift */,
+				104555862A66404700562B98 /* TimeTableService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -445,6 +465,8 @@
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
+				104555852A66402C00562B98 /* CalendarService.swift in Sources */,
+				104555872A66404700562B98 /* TimeTableService.swift in Sources */,
 				0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */,
 				1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */,
 				739FBB712A613C3F0022386D /* DateMember.swift in Sources */,
@@ -452,6 +474,8 @@
 				0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
 				739FBB6B2A613C050022386D /* DateEvent.swift in Sources */,
+				1045558C2A6645F400562B98 /* TimeTableViewModel.swift in Sources */,
+				1045558A2A66409B00562B98 /* TimeTable.swift in Sources */,
 				1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */,
 				73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */,
 				739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */,
@@ -624,6 +648,7 @@
 				DEVELOPMENT_TEAM = 3YTM76FTHB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"SeaYa\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -656,6 +681,7 @@
 				DEVELOPMENT_TEAM = 3YTM76FTHB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"SeaYa\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
