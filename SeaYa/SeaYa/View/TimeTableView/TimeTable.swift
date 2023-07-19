@@ -22,7 +22,7 @@ struct TimeTable: View {
                     }
                 }
                 Button("확인") {
-                    
+                    vm.buttonClicked()
                 }
             }
         }
@@ -63,9 +63,12 @@ struct TableRow: View{
                     if let item = getSelectedItem(value.location){
                         if !selectedItem.contains(item) && current != item && item.canSelect(){
                             selectedItem.insert(item)
+                            vm.selectedEventCalendar[day]!.append(item.event)
                         }
                         else if selectedItem.contains(item) && current != item{
                             selectedItem.remove(item)
+                            let index = vm.selectedEventCalendar[day]?.firstIndex(of: item.event)
+                            vm.selectedEventCalendar[day]!.remove(at: index!)
                         }
                         current = item
                     }
@@ -111,6 +114,7 @@ struct TableCell: View{
 class TableItem:Hashable{
     var event: Event
     var location: CGRect?
+    
     func canSelect() -> Bool{
         if event.title == "blank"{
             return true

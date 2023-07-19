@@ -14,11 +14,14 @@ class TimeTableViewModel: ObservableObject{
     let calendarService = CalendarService.shared
     let timeTableService = TimeTableService.shared
     var selectedDay:[String]
-    @Published var selectedEvents = [Event]()
+    @Published var selectedEventCalendar = Calendar()
     @Published var calendar: Calendar?
     
     init(selectedDay: [String]) {
         self.selectedDay = selectedDay
+        selectedDay.forEach { day in
+            selectedEventCalendar.updateValue([], forKey: day)
+        }
         Task{
             //await makeTestCal()
             calendar = await getCalendar()
@@ -28,6 +31,9 @@ class TimeTableViewModel: ObservableObject{
         return events.map { event in
             TableItem(event)
         }
+    }
+    public func buttonClicked(){
+        print(selectedEventCalendar)
     }
 //    private func makeTestCal()async{
 //        let selectedDays = ["2023-07-16","2023-07-17","2023-07-18"]
@@ -59,8 +65,7 @@ class TimeTableViewModel: ObservableObject{
 //        }
 //
 //    }
-    private func getCalendar() async -> Calendar {
-
+   @MainActor private func getCalendar() async -> Calendar {
         let localEvents = localCalendarRepo.getEvents()
         let remoteEvents = try! await remoteCalendarRepo.fetchEvent(start: DateUtil.formattedDayToDate(selectedDay.first!), end: DateUtil.formattedDayToDate(selectedDay.last!))
         let localCalendar = calendarService.makeCalendar(selectedDay,localEvents)
