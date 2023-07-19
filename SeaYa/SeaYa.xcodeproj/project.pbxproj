@@ -43,8 +43,15 @@
 		BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */; };
 		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
+		BBBBC7712A5E3D4800F39E2B /* Service.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7702A5E3D4800F39E2B /* Service.md */; };
 		BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7752A5E3D7500F39E2B /* ViewModel.md */; };
-		BBBBC7792A5E3D8300F39E2B /* DesignSystem.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */; };
+		BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC77A2A60E05F00F39E2B /* Typography.swift */; };
+		BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7802A60F1CD00F39E2B /* Color.swift */; };
+		BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */; };
+		BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */; };
+		BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7862A67740F00F39E2B /* ButtonTheme.swift */; };
+		BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD70682A6802B400977775 /* GuestCallingDone.swift */; };
+		BBDD706B2A68031C00977775 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706A2A68031C00977775 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,8 +111,19 @@
 		BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameView.swift; sourceTree = "<group>"; };
 		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+
+		BBBBC7702A5E3D4800F39E2B /* Service.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Service.md; sourceTree = "<group>"; };
+
 		BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DesignSystem.md; sourceTree = "<group>"; };
+
 		BBBBC7752A5E3D7500F39E2B /* ViewModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModel.md; sourceTree = "<group>"; };
+		BBBBC77A2A60E05F00F39E2B /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		BBBBC7802A60F1CD00F39E2B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCallingDone.swift; sourceTree = "<group>"; };
+		BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundView.swift; sourceTree = "<group>"; };
+		BBBBC7862A67740F00F39E2B /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
+		BBDD70682A6802B400977775 /* GuestCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCallingDone.swift; sourceTree = "<group>"; };
+		BBDD706A2A68031C00977775 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,8 +318,14 @@
 		BBBBC7312A5E325E00F39E2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+
+				BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */,
+				BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */,
+				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
+				BBDD706A2A68031C00977775 /* ResultView.swift */,
 				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
 				0EEFB6582A64D8C300F5C5D2 /* Date+.swift */,
+
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -309,7 +333,9 @@
 		BBBBC7322A5E326400F39E2B /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */,
+				BBBBC77A2A60E05F00F39E2B /* Typography.swift */,
+				BBBBC7802A60F1CD00F39E2B /* Color.swift */,
+				BBBBC7862A67740F00F39E2B /* ButtonTheme.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -430,6 +456,7 @@
 			files = (
 				73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */,
 				73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */,
+				BBBBC7712A5E3D4800F39E2B /* Service.md in Resources */,
 				BBBBC7792A5E3D8300F39E2B /* DesignSystem.md in Resources */,
 				BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */,
 			);
@@ -460,7 +487,10 @@
 				BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */,
 				1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */,
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
+				BBDD706B2A68031C00977775 /* ResultView.swift in Sources */,
+				BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
+				BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
@@ -480,6 +510,11 @@
 				73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */,
 				739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */,
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
+				BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */,
+				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
+				BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */,
+				BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */,
+				BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */,
 				0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */,
 				739FBB6F2A613C240022386D /* TimeOks.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
