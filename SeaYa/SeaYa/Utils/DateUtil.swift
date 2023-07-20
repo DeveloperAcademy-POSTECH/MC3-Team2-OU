@@ -55,6 +55,7 @@ class DateUtil{
         
         let calendar = Calendar.current
         return calendar.date(from: dateComponents)!
+    }
       
     static func formattedDateToDate(_ year:Int?, _ month:Int?, _ day:Int?, _ hour:Int?, _ minute: Int?) -> Date{
         return Calendar.current.date(from: DateComponents(year:year, month:month, day:day, hour: hour, minute: minute))!
