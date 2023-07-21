@@ -20,6 +20,10 @@
 		1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */; };
 		1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD772A60DE8100D4F6D3 /* WeekDay.swift */; };
 		1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1092DD792A60E39800D4F6D3 /* DateUtil.swift */; };
+		73130BFE2A6A3C7800554A36 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73130BFD2A6A3C7800554A36 /* ConfirmView.swift */; };
+		73130C002A6A58A500554A36 /* ConfirmDateModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73130BFF2A6A58A500554A36 /* ConfirmDateModalView.swift */; };
+		73130C022A6A8E2700554A36 /* ConfirmStartModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73130C012A6A8E2700554A36 /* ConfirmStartModalView.swift */; };
+		73130C042A6A97EA00554A36 /* ConfirmMemberModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73130C032A6A97EA00554A36 /* ConfirmMemberModalView.swift */; };
 		7369F97D2A64CB470050EB8F /* ListUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7369F97C2A64CB470050EB8F /* ListUpView.swift */; };
 		739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB682A613BCF0022386D /* CalcOksService.swift */; };
 		739FBB6B2A613C050022386D /* DateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6A2A613C050022386D /* DateEvent.swift */; };
@@ -85,6 +89,10 @@
 		1092DD742A60DE4D00D4F6D3 /* LocalEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalEvent.swift; sourceTree = "<group>"; };
 		1092DD772A60DE8100D4F6D3 /* WeekDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		1092DD792A60E39800D4F6D3 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		73130BFD2A6A3C7800554A36 /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
+		73130BFF2A6A58A500554A36 /* ConfirmDateModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDateModalView.swift; sourceTree = "<group>"; };
+		73130C012A6A8E2700554A36 /* ConfirmStartModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmStartModalView.swift; sourceTree = "<group>"; };
+		73130C032A6A97EA00554A36 /* ConfirmMemberModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMemberModalView.swift; sourceTree = "<group>"; };
 		7369F97C2A64CB470050EB8F /* ListUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpView.swift; sourceTree = "<group>"; };
 		739FBB682A613BCF0022386D /* CalcOksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksService.swift; sourceTree = "<group>"; };
 		739FBB6A2A613C050022386D /* DateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEvent.swift; sourceTree = "<group>"; };
@@ -197,6 +205,17 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		73AA046E2A6ABE1F003FA06F /* ConfirmView */ = {
+			isa = PBXGroup;
+			children = (
+				73130BFD2A6A3C7800554A36 /* ConfirmView.swift */,
+				73130C032A6A97EA00554A36 /* ConfirmMemberModalView.swift */,
+				73130C012A6A8E2700554A36 /* ConfirmStartModalView.swift */,
+				73130BFF2A6A58A500554A36 /* ConfirmDateModalView.swift */,
+			);
+			path = ConfirmView;
+			sourceTree = "<group>";
+		};
 		73CD8FE82A65A935003A274D /* ListUpView */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +302,7 @@
 				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
 				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
 				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
+				73AA046E2A6ABE1F003FA06F /* ConfirmView */,
 				73CD8FE82A65A935003A274D /* ListUpView */,
 			);
 			path = View;
@@ -486,10 +506,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */,
+				73130C002A6A58A500554A36 /* ConfirmDateModalView.swift in Sources */,
 				1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */,
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
 				BBDD706B2A68031C00977775 /* ResultView.swift in Sources */,
 				BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */,
+				73130BFE2A6A3C7800554A36 /* ConfirmView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
 				BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
@@ -497,6 +519,7 @@
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
 				BBDD706F2A69453100977775 /* TextFieldTheme.swift in Sources */,
+				73130C022A6A8E2700554A36 /* ConfirmStartModalView.swift in Sources */,
 				104555852A66402C00562B98 /* CalendarService.swift in Sources */,
 				104555872A66404700562B98 /* TimeTableService.swift in Sources */,
 				0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */,
@@ -512,6 +535,7 @@
 				73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */,
 				739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */,
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
+				73130C042A6A97EA00554A36 /* ConfirmMemberModalView.swift in Sources */,
 				BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */,
