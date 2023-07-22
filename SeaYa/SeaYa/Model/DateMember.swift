@@ -8,8 +8,14 @@
 import Foundation
 
 struct DateMember : Hashable, Decodable{
+    var id : UUID
     var name : String
     var dateEvents : [DateEvent]
+    
+    init(id : UUID, name : String){
+        self.id = id
+        self.name = name
+        self.dateEvents = []
+    }
 }
-
 

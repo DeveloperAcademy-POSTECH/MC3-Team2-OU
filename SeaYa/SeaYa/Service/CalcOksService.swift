@@ -4,7 +4,11 @@ import SwiftUI
 class CalcOksService: ObservableObject {
     @Published var result: [TimeOks]?
     @Published var isCalculating = false
-    @Published var theTime = 1
+    @Published var theTime : Int?
+    @Published var dateMembers : [DateMember]?
+    
+    static let shared = CalcOksService()
+    private init(){}
     
     @MainActor
     func performCalculation(_ dateMembers : [DateMember], by boundedDate : [BoundedDate]) async throws {
@@ -80,7 +84,11 @@ class CalcOksService: ObservableObject {
         
         //주어진 시간만큼 필터링하기
 //        let memberMinTimeOks = getMemberTimeOks(memberTimeOks, self.theTime)
-        let memberMinTimeOks = getMemberTimeOks(memberTimeOks, self.theTime)
+        guard let theTime = self.theTime else {
+            print("기간 설정을 입력받지 않아 30분단위로 순위 정렬")
+            return getMemberTimeOks(memberTimeOks, 1).sorted(by: OksAndNearest)
+        }
+        let memberMinTimeOks = getMemberTimeOks(memberTimeOks, theTime)
         
         //정렬하기
         let sortedMemberOks = memberMinTimeOks.sorted(by: OksAndNearest)
