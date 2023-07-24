@@ -44,4 +44,8 @@ class LocalCalendarRepository {
         }
         return result
     }
+    func resetUserDefaults() {
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
+    }
 }
