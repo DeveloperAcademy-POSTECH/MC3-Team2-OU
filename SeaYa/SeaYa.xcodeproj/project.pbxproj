@@ -10,6 +10,8 @@
 		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
 		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
 		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
+		0EEFB6712A6EC60B00F5C5D2 /* HostCallingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6702A6EC60B00F5C5D2 /* HostCallingView.swift */; };
+		0EEFB6732A6EC65200F5C5D2 /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6722A6EC65200F5C5D2 /* ConnectionService.swift */; };
 		104555852A66402C00562B98 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555842A66402C00562B98 /* CalendarService.swift */; };
 		104555872A66404700562B98 /* TimeTableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555862A66404700562B98 /* TimeTableService.swift */; };
 		1045558A2A66409B00562B98 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555892A66409B00562B98 /* TimeTable.swift */; };
@@ -48,9 +50,6 @@
 		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
 		BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7752A5E3D7500F39E2B /* ViewModel.md */; };
-		BBBBC7792A5E3D8300F39E2B /* DesignSystem.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7722A5E3D5E00F39E2B /* DesignSystem.md */; };
-		EE14DBC12A64CF22004ECD86 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC02A64CF22004ECD86 /* SettingView.swift */; };
-		EE14DBC32A64CFE6004ECD86 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */; };
 		BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC77A2A60E05F00F39E2B /* Typography.swift */; };
 		BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7802A60F1CD00F39E2B /* Color.swift */; };
 		BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */; };
@@ -59,6 +58,8 @@
 		BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD70682A6802B400977775 /* GuestCallingDone.swift */; };
 		BBDD706B2A68031C00977775 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706A2A68031C00977775 /* ResultView.swift */; };
 		BBDD706F2A69453100977775 /* TextFieldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706E2A69453100977775 /* TextFieldTheme.swift */; };
+		EE14DBC12A64CF22004ECD86 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC02A64CF22004ECD86 /* SettingView.swift */; };
+		EE14DBC32A64CFE6004ECD86 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,9 @@
 		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
 		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		0EEFB6702A6EC60B00F5C5D2 /* HostCallingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCallingView.swift; sourceTree = "<group>"; };
+		0EEFB6722A6EC65200F5C5D2 /* ConnectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionService.swift; sourceTree = "<group>"; };
+		0EEFB6742A6EC74D00F5C5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		104555842A66402C00562B98 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		104555862A66404700562B98 /* TimeTableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableService.swift; sourceTree = "<group>"; };
 		104555892A66409B00562B98 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
@@ -123,8 +127,6 @@
 		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BBBBC7752A5E3D7500F39E2B /* ViewModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModel.md; sourceTree = "<group>"; };
-		EE14DBC02A64CF22004ECD86 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		BBBBC77A2A60E05F00F39E2B /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		BBBBC7802A60F1CD00F39E2B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCallingDone.swift; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 		BBDD70682A6802B400977775 /* GuestCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCallingDone.swift; sourceTree = "<group>"; };
 		BBDD706A2A68031C00977775 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		BBDD706E2A69453100977775 /* TextFieldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTheme.swift; sourceTree = "<group>"; };
+		EE14DBC02A64CF22004ECD86 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				0EEFB6522A64D85F00F5C5D2 /* Group */,
+				0EEFB6702A6EC60B00F5C5D2 /* HostCallingView.swift */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 		73FA051E2A5E301A00EB176B /* SeaYa */ = {
 			isa = PBXGroup;
 			children = (
+				0EEFB6742A6EC74D00F5C5D2 /* Info.plist */,
 				1092DD6E2A60DE0300D4F6D3 /* Repository */,
 				BBBBC7332A5E329200F39E2B /* Service */,
 				BBBBC7322A5E326400F39E2B /* DesignSystem */,
@@ -369,6 +375,7 @@
 				739FBB682A613BCF0022386D /* CalcOksService.swift */,
 				104555842A66402C00562B98 /* CalendarService.swift */,
 				104555862A66404700562B98 /* TimeTableService.swift */,
+				0EEFB6722A6EC65200F5C5D2 /* ConnectionService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -521,7 +528,9 @@
 				BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */,
 				73130BFE2A6A3C7800554A36 /* ConfirmView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
+				0EEFB6732A6EC65200F5C5D2 /* ConnectionService.swift in Sources */,
 				BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */,
+				0EEFB6712A6EC60B00F5C5D2 /* HostCallingView.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
@@ -718,7 +727,9 @@
 				DEVELOPMENT_TEAM = 47N48U5HD5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SeaYa/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"SeaYa\"";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "We need access to your local network to connect and communicate with nearby devices securely.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -751,7 +762,9 @@
 				DEVELOPMENT_TEAM = 3YTM76FTHB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SeaYa/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"SeaYa\"";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "We need access to your local network to connect and communicate with nearby devices securely.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
