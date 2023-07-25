@@ -15,7 +15,7 @@ struct NicknameView: View {
     @State private var isSheetPresented = false
     
     
-    let columns: [GridItem] = Array(repeating: .init(), count: 3)
+    let columns: [GridItem] = Array(repeating: .init(), count: 3) // TODO: Dummy data
 
     var body: some View {
         VStack {
