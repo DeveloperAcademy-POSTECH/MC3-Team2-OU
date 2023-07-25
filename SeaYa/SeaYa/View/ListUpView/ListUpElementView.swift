@@ -15,65 +15,69 @@ struct ListUpElementView: View {
     var body: some View {
         let time = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .weekday], from: Date(timeIntervalSince1970: TimeInterval(timeOks.first!.timeInt*1800)))
         let endTime = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date(timeIntervalSince1970: TimeInterval((timeOks.last!.timeInt + period)*1800)))
-        //Rectangle 10
-        RoundedRectangle(cornerRadius: 8)
-            .fill(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-            .frame(width: 358, height: showDetail ? CGFloat((timeOks.count-1) * 70 + 98) : 98)
-            .overlay{
-                VStack{
-                    Spacer().frame(height: 20)
-                    HStack{
-                        VStack(alignment: .leading,spacing: 10){
-                            Text("\(time.hour!) : \(String(format: "%02d", time.minute!)) - " +
-                                 "\(endTime.hour!) : \(String(format: "%02d", endTime.minute!))")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)))
-                            HStack{
-                                Text("\(time.month!)월 " +
-                                     "\(time.day!)일" +
-                                     "(\(time.weekday.dayOfWeek()))")
-                                .font(.system(size: 15, weight: .regular)).tracking(-0.22)
-                                //6명
-                                Text("\(Image(systemName: "person.2.fill")) \(timeOks.first!.Oks)명").font(.system(size: 13, weight: .bold)).foregroundColor(Color(#colorLiteral(red: 0, green: 0.48, blue: 1, alpha: 1)))}}
-                        Spacer()
-                        if timeOks.count > 1{
-                            Button{
-                                withAnimation{showDetail.toggle()}
-                            } label : {
-                                Text("\(Image(systemName: "chevron.up"))")
-                                    .rotationEffect(.degrees(showDetail ? -180 : 0))
+        ZStack{
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.white)
+            VStack{
+                HStack{
+                    VStack(alignment: .leading,spacing: 6){
+                        Text("\(time.hour!):\(String(format: "%02d", time.minute!)) - " +
+                             "\(endTime.hour!):\(String(format: "%02d", endTime.minute!))")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(Color.black)
+                        HStack{
+                            Text("\(time.month!)월 " +
+                                 "\(time.day!)일" +
+                                 " (\(time.weekday.dayOfWeek()))")
+                            .font(.system(size: 15, weight: .regular)).tracking(-0.22)
+                            //6명
+                            Text("\(Image(systemName: "person.2.fill")) \(timeOks.first!.Oks)명").font(.system(size: 13, weight: .bold)).foregroundColor(Color.primaryColor)}}
+                    Spacer()
+                    if timeOks.count > 1{
+                        Button{
+                            withAnimation{showDetail.toggle()}
+                        } label : {
+                            Text("\(Image(systemName: "chevron.up"))")
+                                .rotationEffect(.degrees(showDetail ? -180 : 0))
+                                .foregroundColor(Color.primary)
+                        }
+                    } else {
+                        Button{
+                            if selected != timeOks.first! {
+                                selected = timeOks.first!
+                            } else {
+                                selected = nil
                             }
-                        } else {
-                            Button{
-                                if selected != timeOks.first! {
-                                    selected = timeOks.first!
-                                } else {
-                                    selected = nil
-                                }
-                            } label : {
+                        } label : {
+                            if selected == timeOks.first! {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .resizable()
+                                    .frame(width: 23.91, height: 23.91)
+                            }
+                            else {
                                 ZStack{
                                     Circle()
-                                        .strokeBorder(Color(#colorLiteral(red: 0.7916666865348816, green: 0.7916666865348816, blue: 0.7916666865348816, alpha: 1)), lineWidth: 1)
+                                        .strokeBorder(selected == timeOks.first! ? Color.primaryColor : Color.unactiveColor , lineWidth: 1)
                                         .frame(width: 22, height: 22)
-                                    if selected == timeOks.first! {
-                                        Circle()
-                                            .fill(Color(#colorLiteral(red: 0, green: 0.47843137383461, blue: 1, alpha: 1)))
-                                        .frame(width: 16, height: 16)}}}}}
-                    
-                    if showDetail && timeOks.count>1{
+                                }.frame(width: 23.91, height: 23.91)
+                            }
+                        }}}
+                    .padding(EdgeInsets(top: 25, leading: 18, bottom: 21, trailing: 20))
+                if showDetail && timeOks.count>1{
+                    VStack(spacing: 0){
                         ForEach(timeOks, id : \.self) { ok in
                             ListUpElementDetailView(selected: $selected, timeOks: ok, period: period)
                         }
-                    }
-                    Spacer()
-                }.padding([.leading, .trailing], 30)
+                    }.padding(.leading, 18)
+                }
             }
+        }.padding([.leading, .trailing], 16)
+        
     }
 }
 
 struct ListUpElementView_Previews: PreviewProvider {
     static var previews: some View {
-        
         ListUpElementTestView()
     }
 }
@@ -87,12 +91,13 @@ struct ListUpElementTestView : View {
                 ListUpElementView(selected : $selected,
                                   timeOks:
                                     [TimeOks(timeInt: 940624, Oks: 2)], period: 1)
-                
                 ListUpElementView(selected : $selected,
                                   timeOks:
                                     [TimeOks(timeInt: 940624, Oks: 5),
                                      TimeOks(timeInt: 940625, Oks: 5),
-                                     TimeOks(timeInt: 940626, Oks: 5)], period: 1)
+                                     TimeOks(timeInt: 940627, Oks: 5),
+                                     TimeOks(timeInt: 940628, Oks: 5),
+                                     TimeOks(timeInt: 940629, Oks: 5)], period: 1)
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)

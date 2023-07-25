@@ -43,7 +43,7 @@ final class CalcOksServiceTest: XCTestCase {
         // Any test you write for XCTest can be annotated as throws and async.
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-        let manager = CalcOksService()
+        let manager = CalcOksService.shared
         let boundDate = BoundedDate(
             start: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 12,  minute: 00))!,
             end:   Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 18,  minute: 30))!

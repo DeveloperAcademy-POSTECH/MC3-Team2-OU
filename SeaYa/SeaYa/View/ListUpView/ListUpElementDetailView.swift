@@ -14,12 +14,13 @@ struct ListUpElementDetailView: View {
     var body: some View {
         let time = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .weekday], from: Date(timeIntervalSince1970: TimeInterval(timeOks.timeInt*1800)))
         let endTime = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date(timeIntervalSince1970: TimeInterval((timeOks.timeInt + period)*1800)))
-        VStack{
-            Divider()
+        VStack(spacing:0){
+            Divider().padding(.bottom, 11)
             HStack{
-                Text("\(time.hour!) : \(String(format: "%02d", time.minute!)) - " +
-                     "\(endTime.hour!) : \(String(format: "%02d", endTime.minute!))")
-                    .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8)))
+                Text("\(time.hour!):\(String(format: "%02d", time.minute!)) - " +
+                     "\(endTime.hour!):\(String(format: "%02d", endTime.minute!))")
+                .font(.system(size: 17))
+                .foregroundColor(Color.primary)
                 Spacer()
                 Button{
                     if selected != timeOks{
@@ -28,19 +29,24 @@ struct ListUpElementDetailView: View {
                         selected = nil
                     }
                 } label : {
-                    ZStack{
-                        Circle()
-                            .strokeBorder(Color(#colorLiteral(red: 0.7916666865348816, green: 0.7916666865348816, blue: 0.7916666865348816, alpha: 1)), lineWidth: 1)
-                            .frame(width: 22, height: 22)
                         if selected == timeOks {
-                            Circle()
-                                .fill(Color(#colorLiteral(red: 0, green: 0.47843137383461, blue: 1, alpha: 1)))
-                                .frame(width: 16, height: 16)
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .frame(width: 23.91, height: 23.91)
                         }
-                    }
+                        else {
+                            ZStack{
+                                Circle()
+                                    .strokeBorder(selected == timeOks ? Color.primaryColor : Color.unactiveColor , lineWidth: 1)
+                                    .frame(width: 22, height: 22)
+                            }.frame(width: 23.91, height: 23.91)
+                        }
                 }
             }
+            .frame(height: 23)
+            .padding(EdgeInsets(top: 0, leading: 1, bottom: 0, trailing:15))
         }
+        .padding(.bottom, 12)
     }
 }
 
