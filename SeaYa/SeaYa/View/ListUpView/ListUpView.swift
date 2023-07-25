@@ -40,9 +40,6 @@ struct ListUpView: View {
                     .background(Color.blue)
                     .cornerRadius(10)
             })
-            
-            
-            
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 0.97, green: 0.97, blue: 0.98))
     }
