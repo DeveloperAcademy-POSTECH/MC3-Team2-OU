@@ -110,6 +110,6 @@ struct ButtonTheme_Previews: PreviewProvider {
             SmallButton_Blue(title: "Blue Small Button") {}
             SmallButton_White(title: "White Small Button") {}
         }
-              .padding()
+        .padding()
     }
 }
