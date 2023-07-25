@@ -21,6 +21,8 @@ class ConnectionService: NSObject, ObservableObject {
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
     var session: MCSession?
     var browser: MCNearbyServiceBrowser?
+    
+    //MARK: true - Host, false - Guest
     private var isHosting = false
     
     func host() {
@@ -33,7 +35,6 @@ class ConnectionService: NSObject, ObservableObject {
         browser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceType)
         browser?.delegate = self
         browser?.startBrowsingForPeers()
-        print("host")
     }
 
     func guest() {
@@ -57,15 +58,16 @@ class ConnectionService: NSObject, ObservableObject {
         advertiserAssistant?.startAdvertisingPeer()
     }
     
-    func send(_ message: String) {
+    func send<T: Codable>(_ data: T, messageType: MessageType) {
         guard
             let session = session,
-            let data = message.data(using: .utf8),
             !session.connectedPeers.isEmpty
         else { return }
-
+        
+        let messageWrapper = MessageWrapper(messageType: messageType, data: data)
         do {
-            try session.send(data, toPeers: session.connectedPeers, with: .reliable)
+            let encodedData = try JSONEncoder().encode(messageWrapper)
+            try session.send(encodedData, toPeers: session.connectedPeers, with: .reliable)
         } catch {
             print(error.localizedDescription)
         }
@@ -79,9 +81,9 @@ class ConnectionService: NSObject, ObservableObject {
         advertiserAssistant = nil
     }
     
-    func sendAllGuest() {
-        for peer in peers {
-            send("hello \(peer.displayName)")
+    func sendAllGuest(_ groupInfo: GroupInfo) {
+        for _ in peers {
+            send(groupInfo, messageType: .GroupInfo)
         }
     }
 }
@@ -98,10 +100,34 @@ extension ConnectionService: MCNearbyServiceAdvertiserDelegate {
 
 extension ConnectionService: MCSessionDelegate {
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        guard let message = String(data: data, encoding: .utf8) else { return }
-        DispatchQueue.main.async {
-            self.reciveData = message
-            print(self.reciveData)
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            
+            if let messageTypeString = json?["messageType"] as? String,
+               let messageType = MessageType(rawValue: messageTypeString),
+               let jsonData = json?["data"] as? [String: Any] {
+                switch messageType {
+                case .GroupInfo:
+                    if let groupInfoData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        let groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
+                        print(groupInfo)
+                    }
+                    
+                case .ListUP:
+                    if let listUPData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        let listUP = try JSONDecoder().decode(DateMember.self, from: listUPData)
+                        print(listUP)
+                    }
+                    
+                case .GroupDone:
+                    if let groupDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        let groupDone = try JSONDecoder().decode(GroupDone.self, from: groupDoneData)
+                        print(groupDone)
+                    }
+                }
+            }
+        } catch {
+            print("Decoding error: \(error)")
         }
     }
 
@@ -141,20 +167,45 @@ extension ConnectionService: MCSessionDelegate {
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
         guard
             let localURL = localURL,
-            let data = try? Data(contentsOf: localURL),
-            let message = try? JSONDecoder().decode(String.self, from: data)
+            let data = try? Data(contentsOf: localURL)
         else { return }
-        reciveData = message
-
-        print(data)
+        
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            
+            if let messageTypeString = json?["messageType"] as? String,
+               let messageType = MessageType(rawValue: messageTypeString),
+               let jsonData = json?["data"] as? [String: Any] {
+                switch messageType {
+                case .GroupInfo:
+                    if let groupInfoData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        let groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
+                        print(groupInfo)
+                    }
+                    
+                case .ListUP:
+                    if let listUPData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        let listUP = try JSONDecoder().decode(DateMember.self, from: listUPData)
+                        print(listUP)
+                    }
+                    
+                case .GroupDone:
+                    if let groupDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        let groupDone = try JSONDecoder().decode(GroupDone.self, from: groupDoneData)
+                        print(groupDone)
+                    }
+                }
+            }
+        } catch {
+            print("Decoding error: \(error)")
+        }
     }
 }
-
+    
 extension ConnectionService: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         if !self.foundPeers.contains(peerID) {
             self.foundPeers.append(peerID)
-            print(foundPeers)
         }
     }
         

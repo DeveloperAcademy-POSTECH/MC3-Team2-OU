@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+//MARK: ListupData 넘겨주기
 class CalcOksService: ObservableObject {
     @Published var result: [TimeOks]?
     @Published var isCalculating = false

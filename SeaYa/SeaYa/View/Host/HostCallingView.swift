@@ -9,7 +9,13 @@ import SwiftUI
 
 struct HostCallingView: View {
     @ObservedObject private var connectionManager = ConnectionService()
+    @EnvironmentObject private var userData: UserData
     @State private var moveToDoneView = false
+    @State private var showingAlert = false
+    @State private var groupInfo = GroupInfo(scheduleName: "", choseDate: [], estimatedTime: 0)
+    @Binding var scheduleName: String
+    @Binding var choseDate: [Date]
+    @Binding var estimatedTime: Int
     
     var body: some View {
         NavigationStack {
@@ -53,22 +59,34 @@ struct HostCallingView: View {
                         .foregroundColor(Color(red: 0.97, green: 0.97, blue: 0.98))
                         .opacity(0.6)
                     Button (action: {
-                        moveToDoneView = true
+                        showingAlert.toggle()
                     }, label: {
-                        NavigationLink(
-                            destination: HostCallingDone()
-                                .onAppear{
-                                    connectionManager.sendAllGuest()
-                                },
-                            isActive: $moveToDoneView,
-                            label: {
-                                Circle()
-                                    .frame(width: 145, height: 145)
-                                    .foregroundColor(.white)
-                            }
-                        )
-                        
+                        Circle()
+                            .frame(width: 145, height: 145)
+                            .foregroundColor(.white)
                     })
+                    .alert("그룹을 확정하시겠어요?", isPresented: $showingAlert) {
+                        VStack {
+                            Button(
+                                action: {
+                                    moveToDoneView = true
+                                }, label: {
+                                    Text("확정할게요")
+                                }
+                            )
+                            
+                            Button(
+                                role: .cancel,
+                                action: {},
+                                label: {
+                                    Text("취소")
+                                }
+                            )
+                        }
+                    } message: {
+                        Text("\(connectionManager.peers.count)명의 그룹원과\n그룹을 확정하시겠어요?")
+                    }
+                    
                     VStack {
                         Text("그룹 확정")
                             .fontWeight(.bold)
@@ -109,7 +127,6 @@ struct HostCallingView: View {
             }
             .ignoresSafeArea()
             .background(Color.blue)
-            
             .toolbar {
                 Button(action: {
                 }, label: {
@@ -118,12 +135,29 @@ struct HostCallingView: View {
                         .opacity(0.5)
                 })
             }
+            
+            NavigationLink(
+                destination: HostCallingDone()
+                    .onAppear{
+                        groupInfo = GroupInfo(
+                            hostName: "",
+                            scheduleName: scheduleName,
+                            choseDate: choseDate,
+                            estimatedTime: estimatedTime
+                        )
+                        connectionManager.sendAllGuest(groupInfo)
+                    },
+                isActive: $moveToDoneView,
+                label: {
+                    EmptyView()
+                }
+            )
         }
     }
 }
 
 struct HostCallingView_Previews: PreviewProvider {
     static var previews: some View {
-        HostCallingView()
+        HostCallingView(scheduleName: .constant("저녁 회식"), choseDate: .constant([Date]()), estimatedTime: .constant(1))
     }
 }

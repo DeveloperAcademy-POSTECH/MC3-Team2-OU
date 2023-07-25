@@ -14,7 +14,9 @@ struct SeaYaApp: App {
         WindowGroup {
 //            ContentView()
 //                .environmentObject(userData)
-            TimeTable()
+//            TimeTable()
+            MainView()
+                .environmentObject(userData)
         }
     }
 }
