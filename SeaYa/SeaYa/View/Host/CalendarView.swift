@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CalendarView: View {
     @State private var selectedButtons: [(week: Int, day: Int)] = []
+    @Binding var choseDate: [Date]
     
     private let weekdays: [String] = ["월", "화", "수", "목", "금", "토", "일"]
     private let currentDate = Date()
@@ -81,8 +82,10 @@ struct CalendarView: View {
            let button = (week, day)
            if isSelected(week: week, day: day){
                selectedButtons.removeAll { $0 == button }
+               choseDate.removeAll {$0 == dayText(week: week, day: day)}
            } else if selectedButtons.count < 7{
                selectedButtons.append(button)
+               choseDate.append(dayText(week: week, day: day))
            }
        }
 
@@ -99,6 +102,6 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        CalendarView(choseDate: .constant([Date]()))
     }
 }

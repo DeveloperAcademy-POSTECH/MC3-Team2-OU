@@ -9,9 +9,11 @@ import SwiftUI
 
 //TODO: 다음 view로 넘어갈 때 입력받은 정보 저장
 struct MakingGroupView: View {
+    @EnvironmentObject private var userData: UserData
     @State private var scheduleName: String = ""
     @State private var selectedHour = 0
     @State private var selectedMinute = 0
+    @State private var choseDate = [Date]()
     
     var body: some View {
         NavigationStack {
@@ -40,7 +42,7 @@ struct MakingGroupView: View {
                         .frame(maxWidth: 358, maxHeight: 200)
                         .cornerRadius(8)
                     
-                    CalendarView()
+                    CalendarView(choseDate: $choseDate)
                         .padding(16)
                     
                 }
@@ -78,9 +80,18 @@ struct MakingGroupView: View {
                 
                 Button(action: {
                 }, label: {
-                    Text("다음")
-                        .foregroundColor(.white)
-                        .padding()
+                    NavigationLink(
+                        destination: HostCallingView(
+                            scheduleName: $scheduleName,
+                            choseDate: $choseDate,
+                            estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
+                        )
+                        .environmentObject(userData),
+                        label: {
+                            Text("다음")
+                                .foregroundColor(.white)
+                                .padding()
+                        })
                 })
                 .frame(maxWidth: 358)
                 .background(Color.blue)
