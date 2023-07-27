@@ -18,140 +18,147 @@ struct SettingView: View {
     var onDelete : (UUID) -> Void
     
     var body: some View {
-        VStack{
-            // Section1 - 태그/입력으로 일정을 선택.
-            Section(
-                content: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.white)
-                        HStack {
-                            ForEach(categories, id: \.self) { category in
-                                Button(
-                                    action:{
-                                        fixedTimeViewModel.fixedTimeModels[selectedIndex].category = category
-                                    },
-                                    label:{
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 16)
-                                                .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].category == category ? Color.blue : Color(hex: "F3F3F3"))
-                                            
-                                            Text(category)
-                                                .frame(maxWidth: .infinity)
-                                                .font(.headline)
-                                                .foregroundColor(
-                                                    fixedTimeViewModel.fixedTimeModels[selectedIndex].category == category ? .white : Color(hex: "A2A2A5"))
-                                        }.frame(width: 46, height: 32)
-                                    }
-                                )
-                            }
-                            Spacer()
-                        }.padding(.leading, 21)
-                    }
-                    .frame(width : 357, height: 67)
-                },
-                header: {
-                    HStack{
-                        Text("카테고리").title(textColor: .primary)
-                        Spacer()
-                    }.padding(.leading, 21)
-                }
-            )
-            // Section2 - 반복 요일 선택, 복수 선택 가능.
-            Section(
-                content : {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.white)
-                        HStack {
-                            ForEach(weekdays, id: \.self) { weekday in
-                                Button(
-                                    action:{
-                                        if fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday){
-                                            if fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.count != 1{
-                                                fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.removeAll{$0 == weekday}
-                                            }
-                                        } else {
-                                            fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.append(weekday)
-                                            fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.sort{$0.rawValue < $1.rawValue}
+        if fixedTimeViewModel.fixedTimeModels.count > 0 && selectedIndex < fixedTimeViewModel.fixedTimeModels.count   {
+            VStack{
+                // Section1 - 태그/입력으로 일정을 선택.
+                Section(
+                    content: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white)
+                            HStack {
+                                ForEach(categories, id: \.self) { category in
+                                    Button(
+                                        action:{
+                                            fixedTimeViewModel.fixedTimeModels[selectedIndex].category = category
+                                        },
+                                        label:{
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 16)
+                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].category == category ? Color.blue : Color(hex: "F3F3F3"))
+                                                
+                                                Text(category)
+                                                    .frame(maxWidth: .infinity)
+                                                    .font(.headline)
+                                                    .foregroundColor(
+                                                        fixedTimeViewModel.fixedTimeModels[selectedIndex].category == category ? .white : Color(hex: "A2A2A5"))
+                                            }.frame(width: 46, height: 32)
                                         }
-                                    },
-                                    label: {
-                                        ZStack {
-                                            Circle()
-                                                .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday) ? Color.blue : Color.clear)
-                                            Text(weekday.rawValue.dayOfWeek())
-                                                .frame(maxWidth: .infinity)
-                                                .font(.headline)
-                                                .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday) ? .white : .black)
-                                        }.frame(width: 32, height: 32)
-                                    }
-                                )
-                            }
+                                    )
+                                }
+                                Spacer()
+                            }.padding(.leading, 21)
+                        }
+                        .frame(width : 357, height: 67)
+                    },
+                    header: {
+                        HStack{
+                            Text("카테고리").title(textColor: .primary)
                             Spacer()
                         }.padding(.leading, 21)
                     }
-                    .frame(width : 357, height: 78)
-                },
-                header: {
-                    HStack{
-                        Text("요일 설정").title(textColor: .primary)
-                        Spacer()
-                    }.padding(.leading, 21)
-                }
-            )
-            // Section3 - 시작/종료시간 설정.
-            Section(header: Text("시간 설정")
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(Color.black)) {
-                    VStack {
-                        HStack(spacing: 25) {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Label {
-                                    Text("Start")
-                                        .foregroundColor(.black)
-                                } icon: {
-                                    Image(systemName: "circle")
-                                        .foregroundColor(.blue)
+                )
+                // Section2 - 반복 요일 선택, 복수 선택 가능.
+                Section(
+                    content : {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white)
+                            HStack {
+                                ForEach(weekdays, id: \.self) { weekday in
+                                    Button(
+                                        action:{
+                                            if fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday){
+                                                if fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.count != 1{
+                                                    fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.removeAll{$0 == weekday}
+                                                }
+                                            } else {
+                                                fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.append(weekday)
+                                                fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.sort{$0.rawValue < $1.rawValue}
+                                            }
+                                        },
+                                        label: {
+                                            ZStack {
+                                                Circle()
+                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday) ? Color.blue : Color.clear)
+                                                Text(weekday.rawValue.dayOfWeek())
+                                                    .frame(maxWidth: .infinity)
+                                                    .font(.headline)
+                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday) ? .white : .black)
+                                            }.frame(width: 32, height: 32)
+                                        }
+                                    )
                                 }
-                                .font(.callout)
-                                Text(getTime(angle: getAngle(progress: getProgress(date: fixedTimeViewModel.fixedTimeModels[selectedIndex].start))).formatted(date: .omitted, time: .shortened))
-                                    .font(.title2.bold())
-                            }
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            VStack(alignment: .leading, spacing: 8) {
-                                Label {
-                                    Text("Finish")
-                                        .foregroundColor(.black)
-                                } icon: {
-                                    Image(systemName: "circle.fill")
-                                        .foregroundColor(.blue)
-                                }
-                                .font(.callout)
-                                Text(getTime(angle: getAngle(progress: getProgress(date: fixedTimeViewModel.fixedTimeModels[selectedIndex].end))).formatted(date: .omitted, time: .shortened))
-                                    .font(.title2.bold())
-                            }
-                            .frame(maxWidth: .infinity, alignment: .center)
+                                Spacer()
+                            }.padding(.leading, 21)
                         }
-                        .padding()
-                        .padding(.bottom, 25)
-                        SleepTimeSlider()
-                        .padding(.bottom, 30)
+                        .frame(width : 357, height: 78)
+                    },
+                    header: {
+                        HStack{
+                            Text("요일 설정").title(textColor: .primary)
+                            Spacer()
+                        }.padding(.leading, 21)
                     }
-                }
-            
-            Button(
-                action: {
-//                    onDelete(fixedTimeModel.id)
-                    print(getProgress(date: fixedTimeViewModel.fixedTimeModels[selectedIndex].start))
-                    showSettingViewModal.toggle()
-                }, label: {
-                    Text("삭제 버튼")
-                }
-            )
+                )
+                // Section3 - 시작/종료시간 설정.
+                Section(header: Text("시간 설정")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)) {
+                        VStack {
+                            HStack(spacing: 25) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Label {
+                                        Text("Start")
+                                            .foregroundColor(.black)
+                                    } icon: {
+                                        Image(systemName: "circle")
+                                            .foregroundColor(.blue)
+                                    }
+                                    .font(.callout)
+                                    Text(
+                                        DateUtil.getFormattedTime(fixedTimeViewModel.fixedTimeModels[selectedIndex].start))
+                                        .font(.title2.bold())
+                                }
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Label {
+                                        Text("Finish")
+                                            .foregroundColor(.black)
+                                    } icon: {
+                                        Image(systemName: "circle.fill")
+                                            .foregroundColor(.blue)
+                                    }
+                                    .font(.callout)
+                                    Text( DateUtil.getFormattedTime(fixedTimeViewModel.fixedTimeModels[selectedIndex].end))
+                                        .font(.title2.bold())
+                                }
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            }
+                            .padding()
+                            .padding(.bottom, 25)
+                            SleepTimeSlider()
+                                .padding(.bottom, 30)
+                        }
+                    }
+                
+                Button(
+                    action: {
+                        onDelete(fixedTimeViewModel.fixedTimeModels[selectedIndex].id)
+                        showSettingViewModal.toggle()
+                    }, label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white)
+                            Text("삭제").body(textColor: .red)
+                        }
+                        .frame(width: 357, height : 48)
+                    }
+                )
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
     }
 
     @ViewBuilder
@@ -205,7 +212,7 @@ struct SettingView: View {
                             .onChanged({ value in
                                 onDrag(value: value, fromSlider: true)
                                 haptics(.warning)
-                                print(getTime(angle: getAngle(progress: startProgress)).formatted(date: .omitted, time: .shortened))
+//                                print(getTime(angle: getAngle(progress: startProgress)).formatted(date: .omitted, time: .shortened))
                             })
                     )
                     .rotationEffect(.init(degrees: -90))
@@ -221,7 +228,7 @@ struct SettingView: View {
                             .onChanged({ value in
                                 onDrag(value: value, fromSlider: false)
                                 haptics(.warning)
-                                print(getTime(angle: getAngle(progress: toProgress)).formatted(date: .omitted, time: .shortened))
+//                                print(getTime(angle: getAngle(progress: toProgress)).formatted(date: .omitted, time: .shortened))
                             })
                     )
                     .rotationEffect(.init(degrees: -90))
@@ -320,12 +327,7 @@ struct SettingTestView : View {
                 Button(action: {
                     selectedIndex = index
                     showSettingViewModal.toggle()
-                    print(fixedTimeModel.category)
                 }, label: {Text("\(fixedTimeModel.category)")})
-            }
-            Button("goood") {
-                print("dafadf")
-                fixedTimeViewModel.fixedTimeModels[0].category = "기타"
             }
         }
         .sheet(isPresented: $showSettingViewModal, content: {
