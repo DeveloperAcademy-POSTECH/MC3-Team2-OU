@@ -30,6 +30,8 @@
 		73130C022A6A8E2700554A36 /* ConfirmStartModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73130C012A6A8E2700554A36 /* ConfirmStartModalView.swift */; };
 		73130C042A6A97EA00554A36 /* ConfirmMemberModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73130C032A6A97EA00554A36 /* ConfirmMemberModalView.swift */; };
 		7369F97D2A64CB470050EB8F /* ListUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7369F97C2A64CB470050EB8F /* ListUpView.swift */; };
+		7382E9432A7211A400837AB2 /* FixedTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382E9422A7211A400837AB2 /* FixedTimeViewModel.swift */; };
+		7382E9492A72155800837AB2 /* FixedTimeElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382E9482A72155800837AB2 /* FixedTimeElementView.swift */; };
 		739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB682A613BCF0022386D /* CalcOksService.swift */; };
 		739FBB6B2A613C050022386D /* DateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6A2A613C050022386D /* DateEvent.swift */; };
 		739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6C2A613C150022386D /* BoundedDate.swift */; };
@@ -52,7 +54,6 @@
 		BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */; };
 		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
-		BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */ = {isa = PBXBuildFile; fileRef = BBBBC7752A5E3D7500F39E2B /* ViewModel.md */; };
 		BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC77A2A60E05F00F39E2B /* Typography.swift */; };
 		BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7802A60F1CD00F39E2B /* Color.swift */; };
 		BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */; };
@@ -107,6 +108,8 @@
 		73130C012A6A8E2700554A36 /* ConfirmStartModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmStartModalView.swift; sourceTree = "<group>"; };
 		73130C032A6A97EA00554A36 /* ConfirmMemberModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMemberModalView.swift; sourceTree = "<group>"; };
 		7369F97C2A64CB470050EB8F /* ListUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpView.swift; sourceTree = "<group>"; };
+		7382E9422A7211A400837AB2 /* FixedTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedTimeViewModel.swift; sourceTree = "<group>"; };
+		7382E9482A72155800837AB2 /* FixedTimeElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedTimeElementView.swift; sourceTree = "<group>"; };
 		739FBB682A613BCF0022386D /* CalcOksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksService.swift; sourceTree = "<group>"; };
 		739FBB6A2A613C050022386D /* DateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEvent.swift; sourceTree = "<group>"; };
 		739FBB6C2A613C150022386D /* BoundedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedDate.swift; sourceTree = "<group>"; };
@@ -132,7 +135,6 @@
 		BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameView.swift; sourceTree = "<group>"; };
 		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		BBBBC7752A5E3D7500F39E2B /* ViewModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModel.md; sourceTree = "<group>"; };
 		BBBBC77A2A60E05F00F39E2B /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		BBBBC7802A60F1CD00F39E2B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCallingDone.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				0EEFB6512A64D85900F5C5D2 /* Host */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
 				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
+				7382E9482A72155800837AB2 /* FixedTimeElementView.swift */,
 				BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */,
 				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
 				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
@@ -347,8 +350,8 @@
 		BBBBC7302A5E325700F39E2B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				BBBBC7752A5E3D7500F39E2B /* ViewModel.md */,
 				1045558B2A6645F400562B98 /* TimeTableViewModel.swift */,
+				7382E9422A7211A400837AB2 /* FixedTimeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -502,7 +505,6 @@
 			files = (
 				73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */,
 				73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */,
-				BBBBC7762A5E3D7500F39E2B /* ViewModel.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +536,7 @@
 				1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */,
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
 				BBDD706B2A68031C00977775 /* ResultView.swift in Sources */,
+				7382E9432A7211A400837AB2 /* FixedTimeViewModel.swift in Sources */,
 				BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */,
 				73130BFE2A6A3C7800554A36 /* ConfirmView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
@@ -573,6 +576,7 @@
 				BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */,
 				0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */,
 				739FBB6F2A613C240022386D /* TimeOks.swift in Sources */,
+				7382E9492A72155800837AB2 /* FixedTimeElementView.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
 				1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */,
