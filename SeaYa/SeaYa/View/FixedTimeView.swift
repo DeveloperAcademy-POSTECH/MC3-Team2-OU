@@ -12,61 +12,86 @@ struct FixedTimeView: View {
     @State private var fixedTime = ""
     @State var fixedTimeViewModel = FixedTimeViewModel()
     @State var showSettingViewModal = false
-    @State var selectedElement = FixedTimeModel()
+    @State var selectedIndex = 0
 
     var body: some View {
         VStack {
-            ForEach(fixedTimeViewModel.fixedTimeModels, id: \.self){ fixedTimeModel in
-                Button(
-                    action: {
-                        showSettingViewModal = true
-                        selectedElement = fixedTimeModel
-                    },
-                    label: {
-                       FixedTimeElementView(fixedTimeModel: fixedTimeModel)
-                   }
-                )
-            }
-            
-            Button(
-                action: {
-                    showSettingViewModal = true
-                    selectedElement = FixedTimeModel()
-                    fixedTimeViewModel.fixedTimeModels.append(selectedElement)
-                }, label: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundColor(Color.white)
-                        HStack{
-                            Text("고정일정 추가").body(textColor: .primaryColor)
-                            Spacer()
-                        }.padding(.leading, 18)
-                    }.frame(width: 358,height: 47)
-                }
-            )
-            
-
-            Button(
-                action: {
-                    if !fixedTime.isEmpty {
-                        isFixedTimeSettingCompleted = true
+            Section(
+                content: {
+                    ScrollView{
+                        VStack{
+                            ForEach(Array(fixedTimeViewModel.fixedTimeModels.enumerated()), id: \.offset){ index,
+                                fixedTimeModel in
+                                Button(
+                                    action: {
+                                        showSettingViewModal = true
+                                        selectedIndex = index
+                                    },
+                                    label: {
+                                        FixedTimeElementView(fixedTimeModel: fixedTimeModel)
+                                    }
+                                )
+                            }
+                        }
                     }
+                    
+                    Button(
+                        action: {
+                            showSettingViewModal = true
+                            fixedTimeViewModel.fixedTimeModels.append(FixedTimeModel())
+                            if fixedTimeViewModel.fixedTimeModels.count >= 1 {
+                                selectedIndex = fixedTimeViewModel.fixedTimeModels.count-1
+                            }
+                        }, label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 16)
+                                    .foregroundColor(Color.white)
+                                HStack{
+                                    Text("고정일정 추가").body(textColor: .primaryColor)
+                                    Spacer()
+                                }.padding(.leading, 18)
+                            }.frame(width: 358,height: 47)
+                        }
+                    )
+                    
+                    Spacer()
+
+                    Button(
+                        action: {
+                            if !fixedTime.isEmpty {
+                                isFixedTimeSettingCompleted = true
+                            }
+                        },
+                        label: {
+                            Text("확인")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 20)
+                        }
+                    )
                 },
-                label: {
-                    Text("확인")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .padding(.horizontal, 20)
+                header : {
+                    HStack{
+                        Text("고정적인 일정을 \n추가해주세요").title(textColor: .primary).frame(alignment: .leading)
+                        Spacer()
+                    }
+                    .padding(.leading, 22)
                 }
             )
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .sheet(isPresented: $showSettingViewModal, content: {
-            EmptyView()
+            SettingView(
+                fixedTimeViewModel: $fixedTimeViewModel,
+                showSettingViewModal: $showSettingViewModal,
+                selectedIndex : $selectedIndex,
+                onDelete: {id in
+                    fixedTimeViewModel.deleteItem(withID: id)
+            })
                 .presentationCornerRadius(32)
         })
         .background(Color.backgroundColor)
