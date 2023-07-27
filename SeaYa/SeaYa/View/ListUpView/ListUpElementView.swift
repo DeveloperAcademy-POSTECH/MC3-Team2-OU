@@ -18,6 +18,10 @@ struct ListUpElementView: View {
         ZStack{
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.white)
+                .animation(Animation
+                    .spring(response: 0.6, dampingFraction: 0.8, blendDuration: 1),
+                    value : showDetail
+                    )
             VStack{
                 HStack{
                     VStack(alignment: .leading,spacing: 6){
@@ -65,8 +69,8 @@ struct ListUpElementView: View {
                     .padding(EdgeInsets(top: 25, leading: 18, bottom: 21, trailing: 20))
                 if showDetail && timeOks.count>1{
                     VStack(spacing: 0){
-                        ForEach(timeOks, id : \.self) { ok in
-                            ListUpElementDetailView(selected: $selected, timeOks: ok, period: period)
+                        ForEach(Array(timeOks.enumerated()), id : \.offset) { index, ok in
+                            ListUpElementDetailView(selected: $selected, showDetail: $showDetail, index: Double(index), timeOks: ok, period: period)
                         }
                     }.padding(.leading, 18)
                 }
