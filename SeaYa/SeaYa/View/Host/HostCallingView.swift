@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HostCallingView: View {
     @StateObject private var connectionManager = ConnectionService()
-    //@EnvironmentObject private var userData: UserData
+    @EnvironmentObject private var userData: UserData
     @State private var moveToDoneView = false
     @State private var showingAlert = false
     @State private var groupInfo = GroupInfo(scheduleName: "", choseDate: [], estimatedTime: 0)
@@ -138,7 +138,7 @@ struct HostCallingView: View {
                 .padding(EdgeInsets(top: 35, leading: 20, bottom: 140, trailing: 20))
             }
             .onAppear() {
-                connectionManager.host()
+                connectionManager.host(userData.nickname)
             }
             .ignoresSafeArea()
             .background(Color.blue)
