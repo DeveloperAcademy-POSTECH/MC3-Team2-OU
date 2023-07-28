@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HostCallingView: View {
-    @ObservedObject private var connectionManager = ConnectionService()
+    @StateObject private var connectionManager = ConnectionService()
     //@EnvironmentObject private var userData: UserData
     @State private var moveToDoneView = false
     @State private var showingAlert = false
@@ -20,37 +20,38 @@ struct HostCallingView: View {
     var body: some View {
         NavigationStack {
             VStack {
-//                ForEach(connectionManager.foundPeers, id: \.self) { data in
-//                    let (peer, index) = (data.peer, data.value)
-//
-//                    Button(action: {
-//                        guard let session = connectionManager.session else {return}
-//                        connectionManager.browser?.invitePeer(
-//                            peer,
-//                            to: session,
-//                            withContext: nil,
-//                            timeout: 10
-//                        )
-//                    }, label: {
-//                        VStack {
-////                            Circle()
-////                                .fill()
-////                                .foregroundColor(.white)
-////                                .frame(width: 50, height: 50)
-//
-//                            Image("\(index)")
+                ForEach(connectionManager.foundPeers, id: \.self) { data in
+                    let (peer, index) = (data.peer, data.value)
+
+                    Button(action: {
+                        guard let session = connectionManager.session else {return}
+                        connectionManager.browser?.invitePeer(
+                            peer,
+                            to: session,
+                            withContext: nil,
+                            timeout: 10
+                        )
+                    }, label: {
+                        VStack {
+//                            Circle()
+//                                .fill()
+//                                .foregroundColor(.white)
 //                                .frame(width: 50, height: 50)
-//
-//                            Text(peer.displayName)
-//                                .foregroundColor(.black)
-//                        }
-//                    })
-//                }
+
+                            Image("\(index)")
+                                .frame(width: 30, height: 30)
+
+                            Text(peer.displayName)
+                                .foregroundColor(.black)
+                        }
+                    })
+                   
+                }
                   
                 ZStack {
-                    GuestListView()
-                        .frame(alignment: .center)
-                        .offset(y: -30)
+//                    GuestListView()
+//                        .frame(alignment: .center)
+//                        .offset(y: -30)
             
                     ZStack {
                         Circle()
@@ -76,6 +77,13 @@ struct HostCallingView: View {
                             VStack {
                                 Button(
                                     action: {
+//                                        let groupInfo = GroupInfo(
+//                                            scheduleName: scheduleName,
+//                                            choseDate: choseDate,
+//                                            estimatedTime: estimatedTime
+//                                        )
+//
+//                                        connectionManager.sendGroupInfoToGuest(groupInfo)
                                         moveToDoneView = true
                                     }, label: {
                                         Text("확정할게요")
@@ -114,7 +122,7 @@ struct HostCallingView: View {
                             .cornerRadius(20)
                         }
                     }
-                    .padding(.top, 258)
+//                    .padding(.top, 258)
                     .padding(.horizontal, 21)
                 }
                 VStack {
