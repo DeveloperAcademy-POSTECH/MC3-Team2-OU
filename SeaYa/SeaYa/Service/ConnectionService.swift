@@ -26,7 +26,7 @@ class ConnectionService: NSObject, ObservableObject {
     @Published var listUP: [DateMember] = []
     @Published var scheduleDone: ScheduleDone?
 
-    let myPeerId = MCPeerID(displayName: userName)
+   
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
     var session: MCSession?
     var browser: MCNearbyServiceBrowser?
@@ -34,7 +34,9 @@ class ConnectionService: NSObject, ObservableObject {
     //MARK: true - Guest, false - Host
     private var isHosting = false
     
-    func host() {
+    func host(_ nickName: String) {
+        let myPeerId = MCPeerID(displayName: nickName)
+        
         peers.removeAll()
         session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .required)
         session?.delegate = self
@@ -47,6 +49,7 @@ class ConnectionService: NSObject, ObservableObject {
     }
 
     func guest(_ nickName: String, _ index: String) {
+        let myPeerId = MCPeerID(displayName: nickName)
         isHosting = true
         peers.removeAll()
         connected = true

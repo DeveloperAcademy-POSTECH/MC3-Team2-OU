@@ -34,7 +34,7 @@ struct MainView: View {
                         .frame(width: 145, height: 145)
                         .foregroundColor(.white)
                     
-                    Image("01")
+                    Image("\(userData.characterImageName)")
                         .padding(10)
                         .frame(width: 124, height: 124)
                 }
@@ -45,8 +45,8 @@ struct MainView: View {
                     connectionManager.leaveSession()
                 }
                 .onLongPressGesture(minimumDuration: 1) {
-//                    connectionManager.guest(userData.nickname, String(userData.characterIndex))
-                    connectionManager.guest("helia", "01")
+                    connectionManager.guest(userData.nickname, String(userData.characterImageName))
+//                    connectionManager.guest("helia", "01")
                     startGroupping = true
                 }
                 
@@ -57,6 +57,7 @@ struct MainView: View {
                             }, label: {
                                 NavigationLink(
                                     destination: MakingGroupView()
+                                        .environmentObject(userData)
                                         .navigationBarBackButtonHidden(),
                                     label: {
                                         VStack {

@@ -9,8 +9,9 @@ import SwiftUI
 
 //TODO: 다음 view로 넘어갈 때 입력받은 정보 저장
 struct MakingGroupView: View {
-//    @EnvironmentObject private var userData: UserData
     @Environment(\.presentationMode) private var presentationMode
+    @EnvironmentObject private var userData: UserData
+    
     @State private var scheduleName: String = ""
     @State private var selectedHour = 0
     @State private var selectedMinute = 0
@@ -75,8 +76,8 @@ struct MakingGroupView: View {
                             estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
                         )
                         .navigationBarBackButtonHidden()
-                        ,
-//                        .environmentObject(userData),
+                        .environmentObject(userData),
+                        
                         label: {
                             Text("다음")
                                 .foregroundColor(.white)
