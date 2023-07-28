@@ -15,5 +15,5 @@ struct MessageWrapper<T: Codable>: Codable {
 enum MessageType: String, Codable {
     case GroupInfo
     case ListUP
-    case GroupDone
+    case ScheduleDone
 }
