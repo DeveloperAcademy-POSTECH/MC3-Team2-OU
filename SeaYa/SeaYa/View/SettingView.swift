@@ -9,121 +9,155 @@ import SwiftUI
 import UIKit
 
 struct SettingView: View {
-    
-    @State private var startAngle: Double = 0
-    @State private var toAngle: Double = 90
-    @State private var startProgress: CGFloat = 0
-    @State private var toProgress: CGFloat = 0.25
-    @State private var selectedWeekdays: Array<String> = ["월"]
-    private let weekdays: [String] = ["월", "화", "수", "목", "금", "토", "일"]
-    @State private var selectedCategories: Array<String> = ["취침"]
+    @State private var selectedWeekdays: Array<WeekDay> = [.monday]
+    private let weekdays: [WeekDay] = [.monday, .tuesday,.wednesday,.thursday,.friday,.saturday,.sunday]
     private let categories: [String] = ["취침", "직장", "학교", "공부", "기타"]
+    @Binding var fixedTimeViewModel : FixedTimeViewModel
+    @Binding var showSettingViewModal : Bool
+    @Binding var selectedIndex : Int
+    var onDelete : (UUID) -> Void
     
     var body: some View {
-        List() {
-            // Section1 - 태그/입력으로 일정을 선택.
-            Section(header: Text("일정 설정")
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(Color.black)) {
-                    HStack {
-                        ForEach(categories, id: \.self) { category in
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 30)
-                                    .foregroundColor(selectedCategories.contains(category) ? Color.blue : Color.clear)
-                                Text(category)
-                                    .frame(maxWidth: .infinity)
-                                    .font(.headline)
-                                    .foregroundColor(selectedCategories.contains(category) ? .white : .black)
-                            }
-                            .onTapGesture {
-                                if selectedCategories.contains(category) {
-                                    selectedCategories.remove(at: selectedCategories.firstIndex(of: category) ?? 0)
+        if fixedTimeViewModel.fixedTimeModels.count > 0 && selectedIndex < fixedTimeViewModel.fixedTimeModels.count   {
+            VStack{
+                // Section1 - 태그/입력으로 일정을 선택.
+                Section(
+                    content: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white)
+                            HStack {
+                                ForEach(categories, id: \.self) { category in
+                                    Button(
+                                        action:{
+                                            fixedTimeViewModel.fixedTimeModels[selectedIndex].category = category
+                                        },
+                                        label:{
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 16)
+                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].category == category ? Color.blue : Color(hex: "F3F3F3"))
+                                                
+                                                Text(category)
+                                                    .frame(maxWidth: .infinity)
+                                                    .font(.headline)
+                                                    .foregroundColor(
+                                                        fixedTimeViewModel.fixedTimeModels[selectedIndex].category == category ? .white : Color(hex: "A2A2A5"))
+                                            }.frame(width: 46, height: 32)
+                                        }
+                                    )
                                 }
-                                else if selectedCategories.count > 0 {
-                                    selectedCategories.removeAll()
-                                    selectedCategories.append(category)
-                                } else if selectedCategories.count == 0 {
-                                    selectedCategories.append(category)
+                                Spacer()
+                            }.padding(.leading, 21)
+                        }
+                        .frame(width : 357, height: 67)
+                    },
+                    header: {
+                        HStack{
+                            Text("카테고리").title(textColor: .primary)
+                            Spacer()
+                        }.padding(.leading, 21)
+                    }
+                )
+                // Section2 - 반복 요일 선택, 복수 선택 가능.
+                Section(
+                    content : {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white)
+                            HStack {
+                                ForEach(weekdays, id: \.self) { weekday in
+                                    Button(
+                                        action:{
+                                            if fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday){
+                                                if fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.count != 1{
+                                                    fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.removeAll{$0 == weekday}
+                                                }
+                                            } else {
+                                                fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.append(weekday)
+                                                fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.sort{$0.rawValue < $1.rawValue}
+                                            }
+                                        },
+                                        label: {
+                                            ZStack {
+                                                Circle()
+                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday) ? Color.blue : Color.clear)
+                                                Text(weekday.rawValue.dayOfWeek())
+                                                    .frame(maxWidth: .infinity)
+                                                    .font(.headline)
+                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday) ? .white : .black)
+                                            }.frame(width: 32, height: 32)
+                                        }
+                                    )
                                 }
-                                haptics(.success)
-                                print(selectedCategories)
+                                Spacer()
+                            }.padding(.leading, 21)
+                        }
+                        .frame(width : 357, height: 78)
+                    },
+                    header: {
+                        HStack{
+                            Text("요일 설정").title(textColor: .primary)
+                            Spacer()
+                        }.padding(.leading, 21)
+                    }
+                )
+                // Section3 - 시작/종료시간 설정.
+                Section(header: Text("시간 설정")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)) {
+                        VStack {
+                            HStack(spacing: 25) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Label {
+                                        Text("Start")
+                                            .foregroundColor(.black)
+                                    } icon: {
+                                        Image(systemName: "circle")
+                                            .foregroundColor(.blue)
+                                    }
+                                    .font(.callout)
+                                    Text(
+                                        DateUtil.getFormattedTime(fixedTimeViewModel.fixedTimeModels[selectedIndex].start))
+                                        .font(.title2.bold())
+                                }
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Label {
+                                        Text("Finish")
+                                            .foregroundColor(.black)
+                                    } icon: {
+                                        Image(systemName: "circle.fill")
+                                            .foregroundColor(.blue)
+                                    }
+                                    .font(.callout)
+                                    Text( DateUtil.getFormattedTime(fixedTimeViewModel.fixedTimeModels[selectedIndex].end))
+                                        .font(.title2.bold())
+                                }
+                                .frame(maxWidth: .infinity, alignment: .center)
                             }
+                            .padding()
+                            .padding(.bottom, 25)
+                            SleepTimeSlider()
+                                .padding(.bottom, 30)
                         }
                     }
-                    .frame(maxWidth: .infinity)
-                }
-            // Section2 - 반복 요일 선택, 복수 선택 가능.
-            Section(header: Text("요일 설정")
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(Color.black)) {
-                    HStack {
-                        ForEach(weekdays, id: \.self) { weekday in
-                            ZStack {
-                                Circle()
-                                    .foregroundColor(selectedWeekdays.contains(weekday) ? Color.blue : Color.clear)
-                                Text(weekday)
-                                    .frame(maxWidth: .infinity)
-                                    .font(.headline)
-                                    .foregroundColor(selectedWeekdays.contains(weekday) ? .white : .black)
-                            }
-                            .onTapGesture {
-                                if selectedWeekdays.contains(weekday) {
-                                    //                                    selectedWeekdays.remove
-                                    selectedWeekdays.remove(at: selectedWeekdays.firstIndex(of: weekday) ?? 0)
-                                } else {
-                                    selectedWeekdays.append(weekday)
-                                }
-                                haptics(.success)
-                                print(selectedWeekdays)
-                            }
+                
+                Button(
+                    action: {
+                        onDelete(fixedTimeViewModel.fixedTimeModels[selectedIndex].id)
+                        showSettingViewModal.toggle()
+                    }, label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white)
+                            Text("삭제").body(textColor: .red)
                         }
+                        .frame(width: 357, height : 48)
                     }
-                    .frame(maxWidth: .infinity)
-                }
-            // Section3 - 시작/종료시간 설정.
-            Section(header: Text("시간 설정")
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(Color.black)) {
-                    VStack {
-                        HStack(spacing: 25) {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Label {
-                                    Text("Start")
-                                        .foregroundColor(.black)
-                                } icon: {
-                                    Image(systemName: "circle")
-                                        .foregroundColor(.blue)
-                                }
-                                .font(.callout)
-                                Text(getTime(angle: startAngle).formatted(date: .omitted, time: .shortened))
-                                    .font(.title2.bold())
-                            }
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            VStack(alignment: .leading, spacing: 8) {
-                                Label {
-                                    Text("Finish")
-                                        .foregroundColor(.black)
-                                } icon: {
-                                    Image(systemName: "circle.fill")
-                                        .foregroundColor(.blue)
-                                }
-                                .font(.callout)
-                                Text(getTime(angle: toAngle).formatted(date: .omitted, time: .shortened))
-                                    .font(.title2.bold())
-                            }
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        }
-                        .padding()
-                        .padding(.bottom, 25)
-                        SleepTimeSlider()
-                            .padding(.bottom, 30)
-                    }
-                    .frame(maxHeight: .infinity, alignment: .center)
-                    .padding()
-                }
+                )
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
         }
     }
 
@@ -154,7 +188,11 @@ struct SettingView: View {
                             .rotationEffect(.init(degrees: Double(index) * 90))
                     }
                 }
+                
+                let startProgress = getProgress(date: fixedTimeViewModel.fixedTimeModels[selectedIndex].start)
+                let toProgress = getProgress(date: fixedTimeViewModel.fixedTimeModels[selectedIndex].end)
                 let reverseRotation = (startProgress > toProgress) ? -Double((1 - startProgress) * 360) : 0
+                
                 Circle()
                     .stroke(.black.opacity(0.06), lineWidth: 50)
                 Circle()
@@ -168,13 +206,13 @@ struct SettingView: View {
                     .frame(width: 40, height: 40)
                     .background(.white, in: Circle())
                     .offset(x: width / 2)
-                    .rotationEffect(.init(degrees: startAngle))
+                    .rotationEffect(.init(degrees: getAngle(progress: startProgress)))
                     .gesture(
                         DragGesture()
                             .onChanged({ value in
                                 onDrag(value: value, fromSlider: true)
                                 haptics(.warning)
-                                print(getTime(angle: startAngle).formatted(date: .omitted, time: .shortened))
+//                                print(getTime(angle: getAngle(progress: startProgress)).formatted(date: .omitted, time: .shortened))
                             })
                     )
                     .rotationEffect(.init(degrees: -90))
@@ -184,13 +222,13 @@ struct SettingView: View {
                     .frame(width: 40, height: 40)
                     .background(.white, in: Circle())
                     .offset(x: width / 2)
-                    .rotationEffect(.init(degrees: toAngle))
+                    .rotationEffect(.init(degrees: getAngle(progress: toProgress)))
                     .gesture(
                         DragGesture()
                             .onChanged({ value in
                                 onDrag(value: value, fromSlider: false)
                                 haptics(.warning)
-                                print(getTime(angle: toAngle).formatted(date: .omitted, time: .shortened))
+//                                print(getTime(angle: getAngle(progress: toProgress)).formatted(date: .omitted, time: .shortened))
                             })
                     )
                     .rotationEffect(.init(degrees: -90))
@@ -214,11 +252,9 @@ struct SettingView: View {
         }
         let progress = angle / 360
         if fromSlider {
-            self.startAngle = angle
-            self.startProgress = progress
+            self.fixedTimeViewModel.fixedTimeModels[selectedIndex].start = getDate(progress: progress)
         } else {
-            self.toAngle = angle
-            self.toProgress = progress
+            self.fixedTimeViewModel.fixedTimeModels[selectedIndex].end = getDate(progress: progress)
         }
     }
     func getTime(angle: Double) -> Date {
@@ -229,34 +265,88 @@ struct SettingView: View {
             minute = 30
         }
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "HH:mm"
         if let date = formatter.date(from: "\(hour):\(Int(minute))") {
             return date
         }
         return .init()
     }
-    func getTimeDifference() -> (Int, Int) {
-        let calendar = Calendar.autoupdatingCurrent
-        let startDate = getTime(angle: startAngle)
-        let finishDate = getTime(angle: toAngle)
-        let adjustedFinishDate: Date
-        if finishDate < startDate {
-            adjustedFinishDate = calendar.date(byAdding: .day, value: 1, to: finishDate)!
-        } else {
-            adjustedFinishDate = finishDate
-        }
-        let result = calendar.dateComponents([.hour, .minute], from: startDate, to: adjustedFinishDate)
-        let hour = result.hour ?? 0
-        let minute = result.minute ?? 0
-        return (hour, minute)
     
+    func getDate(progress : CGFloat) -> Date {
+        let hourAndMinute = progress * 60 * 24
+        let hour = Int(hourAndMinute / 60)
+        let minute = Int(hourAndMinute.truncatingRemainder(dividingBy: 60))/30*30
+        return DateUtil.createDate(year: 1970, month: 1, day: 1, hour: hour, minute: minute)
+    }
+    
+    func getProgress(date : Date) -> CGFloat {
+        let timeString = DateUtil.getFormattedTime(date)
+        let timeComponents  = timeString.split(separator: ":")
+        guard timeComponents.count == 2,
+              let hour = Double(timeComponents[0]),
+              let minute = Double(timeComponents[1]) else {
+            return 0
+        }
+        let totalMinutesInDay: Double = 24 * 60
+        let currentTimeInMinutes: Double = (hour * 60) + minute
+        let intervalInMinutes: Double = 30
+        let roundedMinutes = (currentTimeInMinutes / intervalInMinutes).rounded() * intervalInMinutes
+        let progressOfDay = (roundedMinutes / totalMinutesInDay)
+        return progressOfDay
+    }
+    
+    func getAngle(progress : CGFloat) -> Double {
+        return Double(progress * 360)
+    }
+    
+    func getTimeDifference() -> (Int, Int) {
+        let start = fixedTimeViewModel.fixedTimeModels[selectedIndex].start
+        let end = fixedTimeViewModel.fixedTimeModels[selectedIndex].end
+        var timeDifference = end.timeIntervalSince(start)
+        if timeDifference < 0 {
+            timeDifference += 3600*24
+        }
+        let hour = Int(timeDifference/60/60)
+        let minute = Int(timeDifference)/60%60
+        return (hour, minute)
     }
 }
 
+struct SettingTestView : View {
+    @State var fixedTimeViewModel = FixedTimeViewModel([
+        FixedTimeModel("취침"),
+        FixedTimeModel("직장"),
+        FixedTimeModel("학교")
+    ])
+    @State var showSettingViewModal = true
+    @State private var selectedIndex : Int = 0
+    
+    var body: some View{
+        VStack{
+            ForEach(Array(fixedTimeViewModel.fixedTimeModels.enumerated()), id: \.offset){ index, fixedTimeModel in
+                Button(action: {
+                    selectedIndex = index
+                    showSettingViewModal.toggle()
+                }, label: {Text("\(fixedTimeModel.category)")})
+            }
+        }
+        .sheet(isPresented: $showSettingViewModal, content: {
+            SettingView(
+                fixedTimeViewModel: $fixedTimeViewModel,
+                showSettingViewModal: $showSettingViewModal,
+                selectedIndex : $selectedIndex,
+                onDelete: {id in
+                    fixedTimeViewModel.deleteItem(withID: id)
+            })
+            .presentationCornerRadius(32)
+        })
+    }
+}
+
+
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingTestView()
     }
 }
 
