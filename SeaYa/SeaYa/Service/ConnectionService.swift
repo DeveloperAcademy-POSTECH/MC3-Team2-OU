@@ -16,7 +16,6 @@ struct Peer: Hashable {
 
 class ConnectionService: NSObject, ObservableObject {
     private static let service = "ou-SeaYa"
-    private static let userName = "Helia"
    
     //MARK: all connected guest list
     @Published var peers: [(peer: MCPeerID, value: String)] = []
@@ -26,7 +25,6 @@ class ConnectionService: NSObject, ObservableObject {
     @Published var listUP: [DateMember] = []
     @Published var scheduleDone: ScheduleDone?
 
-   
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
     var session: MCSession?
     var browser: MCNearbyServiceBrowser?
@@ -47,9 +45,10 @@ class ConnectionService: NSObject, ObservableObject {
         browser?.delegate = self
         browser?.startBrowsingForPeers()
     }
-
+    
     func guest(_ nickName: String, _ index: String) {
         let myPeerId = MCPeerID(displayName: nickName)
+        
         isHosting = true
         peers.removeAll()
         connected = true

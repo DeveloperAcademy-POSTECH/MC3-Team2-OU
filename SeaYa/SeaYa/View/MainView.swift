@@ -45,8 +45,7 @@ struct MainView: View {
                     connectionManager.leaveSession()
                 }
                 .onLongPressGesture(minimumDuration: 1) {
-                    connectionManager.guest(userData.nickname, String(userData.characterImageName))
-//                    connectionManager.guest("helia", "01")
+                    connectionManager.guest(userData.nickname, userData.characterImageName)
                     startGroupping = true
                 }
                 
