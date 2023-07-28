@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TextFieldTheme: View {
     @State var placeholder: String
-    @State var input: String
+    @Binding var input: String
 
     var body: some View {
         TextField(placeholder, text: $input)
@@ -18,24 +18,18 @@ struct TextFieldTheme: View {
             .frame(width: 358, height: 47)
             .background(Color.white)
             .cornerRadius(16)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.gray, lineWidth: 1)
-            )
             .font(Font.system(size: 17, weight: .regular))
             .lineSpacing(1.6 * 17 - 17)
             .tracking(-0.015 * 17)
             .foregroundColor(Color.textColor)
-            
-            
     }
 }
 
 struct TextFieldTheme_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TextFieldTheme(placeholder: "Username", input: "")
-            TextFieldTheme(placeholder: "Password", input: "")
+            TextFieldTheme(placeholder: "Username", input: .constant(""))
+            TextFieldTheme(placeholder: "Password", input: .constant(""))
       
         }
         .padding()

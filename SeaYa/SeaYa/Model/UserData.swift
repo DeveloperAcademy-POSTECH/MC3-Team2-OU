@@ -9,6 +9,6 @@ import Foundation
 
 class UserData: ObservableObject {
     @Published var nickname: String = ""
-    @Published var characterIndex: Int = 0
+    @Published var characterImageName: String = "01"
 }
 

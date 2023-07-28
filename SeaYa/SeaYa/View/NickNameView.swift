@@ -24,7 +24,7 @@ struct NicknameView: View {
                 .padding(.vertical, 40)
                 .frame(width: 340, alignment: .leading)
             ZStack{
-                Image("0" + "\(userData.characterIndex + 1)")
+                Image(userData.characterImageName)
                     .resizable()
                     .frame(width: 100, height: 100)
                     .overlay(alignment: .bottomTrailing){
@@ -88,7 +88,7 @@ struct NicknameView: View {
                     ForEach(0..<9, id: \.self) { index in
                         Button(
                             action: {
-                                userData.characterIndex = index
+                                userData.characterImageName = "0\(index+1)"
                             },
                             label: {
                                 ZStack{

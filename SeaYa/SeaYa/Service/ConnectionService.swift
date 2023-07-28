@@ -7,25 +7,34 @@
 
 import Foundation
 import MultipeerConnectivity
+import SwiftUI
+
+struct Peer: Hashable {
+    var peer: MCPeerID
+    var value: String
+}
 
 class ConnectionService: NSObject, ObservableObject {
     private static let service = "ou-SeaYa"
-    private static let userName = "Helia"
    
-    @Published var peers: [MCPeerID] = []
-    @Published var foundPeers: [MCPeerID] = []
+    //MARK: all connected guest list
+    @Published var peers: [(peer: MCPeerID, value: String)] = []
+    @Published var foundPeers: [Peer] = []
     @Published var connected = false
-    @Published var reciveData = ""
+    @Published var groupInfo: GroupInfo?
+    @Published var listUP: [DateMember] = []
+    @Published var scheduleDone: ScheduleDone?
 
-    let myPeerId = MCPeerID(displayName: userName)
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
     var session: MCSession?
     var browser: MCNearbyServiceBrowser?
     
-    //MARK: true - Host, false - Guest
+    //MARK: true - Guest, false - Host
     private var isHosting = false
     
-    func host() {
+    func host(_ nickName: String) {
+        let myPeerId = MCPeerID(displayName: nickName)
+        
         peers.removeAll()
         session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .required)
         session?.delegate = self
@@ -36,8 +45,10 @@ class ConnectionService: NSObject, ObservableObject {
         browser?.delegate = self
         browser?.startBrowsingForPeers()
     }
-
-    func guest() {
+    
+    func guest(_ nickName: String, _ index: String) {
+        let myPeerId = MCPeerID(displayName: nickName)
+        
         isHosting = true
         peers.removeAll()
         connected = true
@@ -50,7 +61,7 @@ class ConnectionService: NSObject, ObservableObject {
         session?.delegate = self
         advertiserAssistant = MCNearbyServiceAdvertiser(
             peer: myPeerId,
-            discoveryInfo: nil,
+            discoveryInfo: [nickName: index],
             serviceType: ConnectionService.service
         )
         
@@ -81,10 +92,16 @@ class ConnectionService: NSObject, ObservableObject {
         advertiserAssistant = nil
     }
     
-    func sendAllGuest(_ groupInfo: GroupInfo) {
-        for _ in peers {
-            send(groupInfo, messageType: .GroupInfo)
-        }
+    func sendGroupInfoToGuest(_ info: GroupInfo) {
+        send(info, messageType: .GroupInfo)
+    }
+    
+    func sendTimeTableInfoToHost(_ info: DateMember) {
+        send(info, messageType: .ListUP)
+    }
+    
+    func sendScheduleInfoToGuest(_ info: ScheduleDone) {
+        send(info, messageType: .ScheduleDone)
     }
 }
 
@@ -109,20 +126,21 @@ extension ConnectionService: MCSessionDelegate {
                 switch messageType {
                 case .GroupInfo:
                     if let groupInfoData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        let groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
-                        print(groupInfo)
+                        groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
+                        print(groupInfo ?? "")
                     }
                     
                 case .ListUP:
                     if let listUPData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        let listUP = try JSONDecoder().decode(DateMember.self, from: listUPData)
-                        print(listUP)
+                        let data = try JSONDecoder().decode(DateMember.self, from: listUPData)
+                        listUP.append(data)
+                        print(listUP ?? "")
                     }
                     
-                case .GroupDone:
+                case .ScheduleDone:
                     if let groupDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        let groupDone = try JSONDecoder().decode(GroupDone.self, from: groupDoneData)
-                        print(groupDone)
+                        scheduleDone = try JSONDecoder().decode(ScheduleDone.self, from: groupDoneData)
+                        print(scheduleDone ?? "")
                     }
                 }
             }
@@ -134,16 +152,18 @@ extension ConnectionService: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         switch state {
         case .connected:
-            if !peers.contains(peerID) {
+            if !peers.contains(where: {$0.peer == peerID}) && peers.count < 7{
                 DispatchQueue.main.async {
-                    self.peers.insert(peerID, at: 0)
+                    self.peers.append((peer: peerID, value: self.foundPeers.filter{$0.peer == peerID}.first?.value ?? "01"))
                     print("connected")
                 }
             }
+            
         case .notConnected:
             DispatchQueue.main.async {
                 print("not connected")
-                if let index = self.peers.firstIndex(of: peerID) {
+                
+                if let index = self.peers.firstIndex(where: {$0.peer == peerID}) {
                     self.peers.remove(at: index)
                 }
                 if self.peers.isEmpty && !self.isHosting {
@@ -179,20 +199,21 @@ extension ConnectionService: MCSessionDelegate {
                 switch messageType {
                 case .GroupInfo:
                     if let groupInfoData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        let groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
-                        print(groupInfo)
+                        groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
+                        print(groupInfo ?? "")
                     }
                     
                 case .ListUP:
                     if let listUPData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        let listUP = try JSONDecoder().decode(DateMember.self, from: listUPData)
-                        print(listUP)
+                        let data = try JSONDecoder().decode(DateMember.self, from: listUPData)
+                        listUP.append(data)
+                        print(listUP ?? "")
                     }
                     
-                case .GroupDone:
+                case .ScheduleDone:
                     if let groupDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        let groupDone = try JSONDecoder().decode(GroupDone.self, from: groupDoneData)
-                        print(groupDone)
+                        scheduleDone = try JSONDecoder().decode(ScheduleDone.self, from: groupDoneData)
+                        print(scheduleDone ?? "")
                     }
                 }
             }
@@ -204,13 +225,20 @@ extension ConnectionService: MCSessionDelegate {
     
 extension ConnectionService: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        if !self.foundPeers.contains(peerID) {
-            self.foundPeers.append(peerID)
+        //MARK: value 수정
+        if !self.foundPeers.contains(where: {$0.peer == peerID }){
+//            if let value = info?[peerID.displayName] {
+//                self.foundPeers.append((peer: peerID, value: "01"))
+//            }
+            self.foundPeers.append(Peer(peer: peerID, value: "01"))
         }
+        
+       
+        print(self.foundPeers)
     }
         
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        if let index = foundPeers.firstIndex(of: peerID) {
+        if let index = foundPeers.firstIndex(where: {$0.peer == peerID}) {
             foundPeers.remove(at: index)
         }
     }
