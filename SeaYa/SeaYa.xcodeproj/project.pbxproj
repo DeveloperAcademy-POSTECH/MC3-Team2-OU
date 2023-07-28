@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E5E161D2A71FF7600143374 /* GuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E161C2A71FF7600143374 /* GuestListView.swift */; };
+		0E5E161F2A725F7000143374 /* GuestListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E161E2A725F7000143374 /* GuestListCellView.swift */; };
 		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
 		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
 		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
@@ -14,7 +16,7 @@
 		0EEFB6732A6EC65200F5C5D2 /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6722A6EC65200F5C5D2 /* ConnectionService.swift */; };
 		0EEFB6762A6ED9CD00F5C5D2 /* MessageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6752A6ED9CD00F5C5D2 /* MessageWrapper.swift */; };
 		0EEFB6782A6EE1B300F5C5D2 /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6772A6EE1B300F5C5D2 /* GroupInfo.swift */; };
-		0EEFB67A2A6EF8D200F5C5D2 /* GroupDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6792A6EF8D200F5C5D2 /* GroupDone.swift */; };
+		0EEFB67A2A6EF8D200F5C5D2 /* ScheduleDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6792A6EF8D200F5C5D2 /* ScheduleDone.swift */; };
 		104555852A66402C00562B98 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555842A66402C00562B98 /* CalendarService.swift */; };
 		104555872A66404700562B98 /* TimeTableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555862A66404700562B98 /* TimeTableService.swift */; };
 		1045558A2A66409B00562B98 /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104555892A66409B00562B98 /* TimeTable.swift */; };
@@ -83,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E5E161C2A71FF7600143374 /* GuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListView.swift; sourceTree = "<group>"; };
+		0E5E161E2A725F7000143374 /* GuestListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListCellView.swift; sourceTree = "<group>"; };
 		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
 		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -91,7 +95,7 @@
 		0EEFB6742A6EC74D00F5C5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EEFB6752A6ED9CD00F5C5D2 /* MessageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageWrapper.swift; sourceTree = "<group>"; };
 		0EEFB6772A6EE1B300F5C5D2 /* GroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
-		0EEFB6792A6EF8D200F5C5D2 /* GroupDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDone.swift; sourceTree = "<group>"; };
+		0EEFB6792A6EF8D200F5C5D2 /* ScheduleDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDone.swift; sourceTree = "<group>"; };
 		104555842A66402C00562B98 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		104555862A66404700562B98 /* TimeTableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableService.swift; sourceTree = "<group>"; };
 		104555892A66409B00562B98 /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
@@ -170,11 +174,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E5E16202A725F8A00143374 /* GuestList */ = {
+			isa = PBXGroup;
+			children = (
+				0E5E161C2A71FF7600143374 /* GuestListView.swift */,
+				0E5E161E2A725F7000143374 /* GuestListCellView.swift */,
+			);
+			name = GuestList;
+			sourceTree = "<group>";
+		};
 		0EEFB6512A64D85900F5C5D2 /* Host */ = {
 			isa = PBXGroup;
 			children = (
-				0EEFB6522A64D85F00F5C5D2 /* Group */,
 				0EEFB6702A6EC60B00F5C5D2 /* HostCallingView.swift */,
+				0EEFB6522A64D85F00F5C5D2 /* Group */,
+				0E5E16202A725F8A00143374 /* GuestList */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -339,7 +353,7 @@
 				739FBB702A613C3F0022386D /* DateMember.swift */,
 				0EEFB6752A6ED9CD00F5C5D2 /* MessageWrapper.swift */,
 				0EEFB6772A6EE1B300F5C5D2 /* GroupInfo.swift */,
-				0EEFB6792A6EF8D200F5C5D2 /* GroupDone.swift */,
+				0EEFB6792A6EF8D200F5C5D2 /* ScheduleDone.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,6 +554,7 @@
 				0EEFB6732A6EC65200F5C5D2 /* ConnectionService.swift in Sources */,
 				BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */,
 				0EEFB6712A6EC60B00F5C5D2 /* HostCallingView.swift in Sources */,
+				0E5E161F2A725F7000143374 /* GuestListCellView.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
@@ -555,11 +570,12 @@
 				739FBB712A613C3F0022386D /* DateMember.swift in Sources */,
 				73CD8FAF2A6593E8003A274D /* ListUpElementDetailView.swift in Sources */,
 				0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */,
+				0E5E161D2A71FF7600143374 /* GuestListView.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
 				739FBB6B2A613C050022386D /* DateEvent.swift in Sources */,
 				1045558C2A6645F400562B98 /* TimeTableViewModel.swift in Sources */,
 				1045558A2A66409B00562B98 /* TimeTable.swift in Sources */,
-				0EEFB67A2A6EF8D200F5C5D2 /* GroupDone.swift in Sources */,
+				0EEFB67A2A6EF8D200F5C5D2 /* ScheduleDone.swift in Sources */,
 				1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */,
 				73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */,
 				739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */,

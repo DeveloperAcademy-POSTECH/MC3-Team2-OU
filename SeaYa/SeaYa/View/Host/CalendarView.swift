@@ -39,7 +39,6 @@ struct CalendarView: View {
                 ForEach(weekdays, id: \.self) { (weekday) in
                     Text(weekday)
                         .frame(maxWidth: .infinity)
-                        .font(.headline)
                 }
             }
             
