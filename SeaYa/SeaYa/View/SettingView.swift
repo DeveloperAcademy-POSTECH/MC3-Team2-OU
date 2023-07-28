@@ -15,11 +15,35 @@ struct SettingView: View {
     @Binding var fixedTimeViewModel : FixedTimeViewModel
     @Binding var showSettingViewModal : Bool
     @Binding var selectedIndex : Int
+    
+    @State var tempFixedTimeModel : FixedTimeModel
+    
+    var isUpdate : Bool
     var onDelete : (UUID) -> Void
     
     var body: some View {
-        if fixedTimeViewModel.fixedTimeModels.count > 0 && selectedIndex < fixedTimeViewModel.fixedTimeModels.count   {
+        ScrollView{
             VStack{
+                HStack{
+                    Button("취소"){
+                        showSettingViewModal = false
+                    }
+                    Spacer()
+                    Button("완료"){
+                        if selectedIndex < 0 {
+                            fixedTimeViewModel.fixedTimeModels.append(tempFixedTimeModel)
+                        } else {
+                            fixedTimeViewModel.fixedTimeModels[selectedIndex] = tempFixedTimeModel
+                        }
+                        showSettingViewModal = false
+                    }
+                }
+                .padding(EdgeInsets(top: 17, leading: 17, bottom: 10, trailing: 16))
+                
+                Text("시간 지정 편집")
+                    .font(.system(size:32, weight: .semibold))
+                    .padding(.bottom, 20)
+                
                 // Section1 - 태그/입력으로 일정을 선택.
                 Section(
                     content: {
@@ -30,18 +54,18 @@ struct SettingView: View {
                                 ForEach(categories, id: \.self) { category in
                                     Button(
                                         action:{
-                                            fixedTimeViewModel.fixedTimeModels[selectedIndex].category = category
+                                            tempFixedTimeModel.category = category
                                         },
                                         label:{
                                             ZStack {
                                                 RoundedRectangle(cornerRadius: 16)
-                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].category == category ? Color.blue : Color(hex: "F3F3F3"))
+                                                    .foregroundColor(tempFixedTimeModel.category == category ? Color.blue : Color(hex: "F3F3F3"))
                                                 
                                                 Text(category)
                                                     .frame(maxWidth: .infinity)
                                                     .font(.headline)
                                                     .foregroundColor(
-                                                        fixedTimeViewModel.fixedTimeModels[selectedIndex].category == category ? .white : Color(hex: "A2A2A5"))
+                                                        tempFixedTimeModel.category == category ? .white : Color(hex: "A2A2A5"))
                                             }.frame(width: 46, height: 32)
                                         }
                                     )
@@ -68,23 +92,23 @@ struct SettingView: View {
                                 ForEach(weekdays, id: \.self) { weekday in
                                     Button(
                                         action:{
-                                            if fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday){
-                                                if fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.count != 1{
-                                                    fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.removeAll{$0 == weekday}
+                                            if tempFixedTimeModel.weekdays.contains(weekday){
+                                                if tempFixedTimeModel.weekdays.count != 1{
+                                                    tempFixedTimeModel.weekdays.removeAll{$0 == weekday}
                                                 }
                                             } else {
-                                                fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.append(weekday)
-                                                fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.sort{$0.rawValue < $1.rawValue}
+                                                tempFixedTimeModel.weekdays.append(weekday)
+                                                tempFixedTimeModel.weekdays.sort{$0.rawValue < $1.rawValue}
                                             }
                                         },
                                         label: {
                                             ZStack {
                                                 Circle()
-                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday) ? Color.blue : Color.clear)
+                                                    .foregroundColor(tempFixedTimeModel.weekdays.contains(weekday) ? Color.blue : Color.clear)
                                                 Text(weekday.rawValue.dayOfWeek())
                                                     .frame(maxWidth: .infinity)
                                                     .font(.headline)
-                                                    .foregroundColor(fixedTimeViewModel.fixedTimeModels[selectedIndex].weekdays.contains(weekday) ? .white : .black)
+                                                    .foregroundColor(tempFixedTimeModel.weekdays.contains(weekday) ? .white : .black)
                                             }.frame(width: 32, height: 32)
                                         }
                                     )
@@ -118,8 +142,8 @@ struct SettingView: View {
                                     }
                                     .font(.callout)
                                     Text(
-                                        DateUtil.getFormattedTime(fixedTimeViewModel.fixedTimeModels[selectedIndex].start))
-                                        .font(.title2.bold())
+                                        DateUtil.getFormattedTime(tempFixedTimeModel.start))
+                                    .font(.title2.bold())
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 VStack(alignment: .leading, spacing: 8) {
@@ -131,7 +155,7 @@ struct SettingView: View {
                                             .foregroundColor(.blue)
                                     }
                                     .font(.callout)
-                                    Text( DateUtil.getFormattedTime(fixedTimeViewModel.fixedTimeModels[selectedIndex].end))
+                                    Text( DateUtil.getFormattedTime(tempFixedTimeModel.end))
                                         .font(.title2.bold())
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
@@ -143,19 +167,21 @@ struct SettingView: View {
                         }
                     }
                 
-                Button(
-                    action: {
-                        onDelete(fixedTimeViewModel.fixedTimeModels[selectedIndex].id)
-                        showSettingViewModal.toggle()
-                    }, label: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.white)
-                            Text("삭제").body(textColor: .red)
+                if isUpdate{
+                    Button(
+                        action: {
+                            onDelete(tempFixedTimeModel.id)
+                            showSettingViewModal.toggle()
+                        }, label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(Color.white)
+                                Text("삭제").body(textColor: .red)
+                            }
+                            .frame(width: 357, height : 48)
                         }
-                        .frame(width: 357, height : 48)
-                    }
-                )
+                    )
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
         }
@@ -189,8 +215,8 @@ struct SettingView: View {
                     }
                 }
                 
-                let startProgress = getProgress(date: fixedTimeViewModel.fixedTimeModels[selectedIndex].start)
-                let toProgress = getProgress(date: fixedTimeViewModel.fixedTimeModels[selectedIndex].end)
+                let startProgress = getProgress(date: tempFixedTimeModel.start)
+                let toProgress = getProgress(date: tempFixedTimeModel.end)
                 let reverseRotation = (startProgress > toProgress) ? -Double((1 - startProgress) * 360) : 0
                 
                 Circle()
@@ -252,9 +278,9 @@ struct SettingView: View {
         }
         let progress = angle / 360
         if fromSlider {
-            self.fixedTimeViewModel.fixedTimeModels[selectedIndex].start = getDate(progress: progress)
+            self.tempFixedTimeModel.start = getDate(progress: progress)
         } else {
-            self.fixedTimeViewModel.fixedTimeModels[selectedIndex].end = getDate(progress: progress)
+            self.tempFixedTimeModel.end = getDate(progress: progress)
         }
     }
     func getTime(angle: Double) -> Date {
@@ -300,8 +326,8 @@ struct SettingView: View {
     }
     
     func getTimeDifference() -> (Int, Int) {
-        let start = fixedTimeViewModel.fixedTimeModels[selectedIndex].start
-        let end = fixedTimeViewModel.fixedTimeModels[selectedIndex].end
+        let start = tempFixedTimeModel.start
+        let end = tempFixedTimeModel.end
         var timeDifference = end.timeIntervalSince(start)
         if timeDifference < 0 {
             timeDifference += 3600*24
@@ -320,6 +346,7 @@ struct SettingTestView : View {
     ])
     @State var showSettingViewModal = true
     @State private var selectedIndex : Int = 0
+    var isUpdate = true
     
     var body: some View{
         VStack{
@@ -335,6 +362,8 @@ struct SettingTestView : View {
                 fixedTimeViewModel: $fixedTimeViewModel,
                 showSettingViewModal: $showSettingViewModal,
                 selectedIndex : $selectedIndex,
+                tempFixedTimeModel: selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
+                isUpdate: isUpdate,
                 onDelete: {id in
                     fixedTimeViewModel.deleteItem(withID: id)
             })

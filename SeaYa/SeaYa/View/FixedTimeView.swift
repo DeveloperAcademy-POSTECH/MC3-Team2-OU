@@ -7,12 +7,17 @@
 
 import SwiftUI
 
+class FixedTimeViewState: ObservableObject {
+    @Published var isUpdate: Bool? = nil
+}
+
 struct FixedTimeView: View {
     @Binding var isFixedTimeSettingCompleted: Bool
     @State private var fixedTime = ""
     @State var fixedTimeViewModel = FixedTimeViewModel()
     @State var showSettingViewModal = false
-    @State var selectedIndex = 0
+    @State var selectedIndex = -1
+    @StateObject var state = FixedTimeViewState()
 
     var body: some View {
         VStack {
@@ -24,6 +29,7 @@ struct FixedTimeView: View {
                                 fixedTimeModel in
                                 Button(
                                     action: {
+                                        state.isUpdate = true
                                         showSettingViewModal = true
                                         selectedIndex = index
                                     },
@@ -37,6 +43,7 @@ struct FixedTimeView: View {
                     
                     Button(
                         action: {
+                            state.isUpdate = false
                             showSettingViewModal = true
                             fixedTimeViewModel.fixedTimeModels.append(FixedTimeModel())
                             if fixedTimeViewModel.fixedTimeModels.count >= 1 {
@@ -85,14 +92,20 @@ struct FixedTimeView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .sheet(isPresented: $showSettingViewModal, content: {
-            SettingView(
-                fixedTimeViewModel: $fixedTimeViewModel,
-                showSettingViewModal: $showSettingViewModal,
-                selectedIndex : $selectedIndex,
-                onDelete: {id in
-                    fixedTimeViewModel.deleteItem(withID: id)
-            })
+            if let isUpdate = state.isUpdate {
+                SettingView(
+                    fixedTimeViewModel: $fixedTimeViewModel,
+                    showSettingViewModal: $showSettingViewModal,
+                    selectedIndex : $selectedIndex,
+                    tempFixedTimeModel : selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
+                    isUpdate: isUpdate,
+                    onDelete: {id in
+                        fixedTimeViewModel.deleteItem(withID: id)
+                    })
                 .presentationCornerRadius(32)
+            } else {
+                EmptyView()
+            }
         })
         .background(Color.backgroundColor)
     }
