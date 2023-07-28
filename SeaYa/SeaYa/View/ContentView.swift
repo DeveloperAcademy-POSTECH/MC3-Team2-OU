@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("isOnboardingCompleted") private var isOnboardingCompleted = false
     @AppStorage("isNicknameSettingCompleted") private var isNicknameSettingCompleted = false
     @AppStorage("isFixedTimeSettingCompleted") private var isFixedTimeSettingCompleted = false
     @State private var isLaunchScreenVisible = true
@@ -16,29 +15,25 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if isLaunchScreenVisible {
-                LaunchScreenView()
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            withAnimation {
-                                isLaunchScreenVisible = false
-                            }
-                        }
-                    }
-            } else if isOnboardingCompleted {
-                if isNicknameSettingCompleted {
-                    if isFixedTimeSettingCompleted {
-                        MainView() .environmentObject(userData)
-                    } else {
-                        FixedTimeView(isFixedTimeSettingCompleted: $isFixedTimeSettingCompleted)
-                    }
-                } else {
-                    NicknameView(isNicknameSettingCompleted: $isNicknameSettingCompleted) .environmentObject(userData)
-                }
-            } else {
-                OnboardingView(isOnboardingCompleted: $isOnboardingCompleted)
-            }
-        }
+               if isLaunchScreenVisible {
+                   LaunchScreenView()
+                       .onAppear {
+                           DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                               withAnimation {
+                                   isLaunchScreenVisible = false
+                               }
+                           }
+                       }
+               } else if !isNicknameSettingCompleted {
+                   NicknameView(isNicknameSettingCompleted: $isNicknameSettingCompleted)
+                       .environmentObject(userData)
+               } else if !isFixedTimeSettingCompleted {
+                   FixedTimeView(isFixedTimeSettingCompleted: $isFixedTimeSettingCompleted)
+               } else {
+                   MainView()
+                       .environmentObject(userData)
+               }
+           }
     }
 }
 

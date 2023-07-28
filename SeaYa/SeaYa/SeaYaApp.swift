@@ -12,11 +12,11 @@ struct SeaYaApp: App {
     @StateObject private var userData = UserData()
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//                .environmentObject(userData)
-//            TimeTable()
-            MainView()
+            ContentView()
                 .environmentObject(userData)
+//            TimeTable()
+//            MainView()
+//                .environmentObject(userData)
         }
     }
 }

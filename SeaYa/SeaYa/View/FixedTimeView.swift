@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FixedTimeView: View {
     @Binding var isFixedTimeSettingCompleted: Bool
-    @State private var fixedTime = ""
     @State var fixedTimeViewModel = FixedTimeViewModel()
     @State var showSettingViewModal = false
     @State var selectedIndex = 0
@@ -58,9 +57,7 @@ struct FixedTimeView: View {
 
                     Button(
                         action: {
-                            if !fixedTime.isEmpty {
-                                isFixedTimeSettingCompleted = true
-                            }
+                            isFixedTimeSettingCompleted = true
                         },
                         label: {
                             Text("확인")
