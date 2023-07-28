@@ -23,7 +23,7 @@ struct MakingGroupView: View {
                     .headline(textColor: Color.textColor)
                     .padding(EdgeInsets(top: 34, leading: 16, bottom: 0, trailing: 0))
                 
-                TextFieldTheme(placeholder: "제목을 입력하세요", input: scheduleName)
+                TextFieldTheme(placeholder: "제목을 입력하세요", input: $scheduleName)
                     .padding(EdgeInsets(top: 6, leading: 16, bottom: 0, trailing: 16))
                 
                 
@@ -73,7 +73,9 @@ struct MakingGroupView: View {
                             scheduleName: $scheduleName,
                             choseDate: $choseDate,
                             estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
-                        ),
+                        )
+                        .navigationBarBackButtonHidden()
+                        ,
 //                        .environmentObject(userData),
                         label: {
                             Text("다음")

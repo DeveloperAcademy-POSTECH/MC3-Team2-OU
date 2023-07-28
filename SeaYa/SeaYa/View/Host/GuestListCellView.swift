@@ -10,7 +10,7 @@ import SwiftUI
 struct GuestListCellView: View {
     @ObservedObject private var connectionManager = ConnectionService()
     @State private var isSelected = false
-    let index: Int
+    var index: Int
     
     var body: some View {
         if connectionManager.foundPeers.count <= index {
@@ -39,22 +39,22 @@ struct GuestListCellView: View {
                         //TODO: session에서 해제
                     }
                 }, label: {
-                    ZStack {
-                        Circle()
-                            .frame(width: 65, height: 65)
+                    VStack {
+                        ZStack {
+                            Circle()
+                                .frame(width: 65, height: 65)
+                                .foregroundColor(.white)
+                            
+                            Image("\(foundPeer.value)")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                        }
+                        
+                        Text(foundPeer.peer.displayName)
+                            .font(.system(size: 11, weight: .bold))
                             .foregroundColor(.white)
-                        
-                        Image("\(foundPeer.value)")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60)
-                        
-                        
                     }
-                    
-                    Text(foundPeer.peer.displayName)
-                        .font(.system(size: 11, weight: .bold))
-                        .foregroundColor(.white)
                 })
             }
             .frame(alignment: .center)

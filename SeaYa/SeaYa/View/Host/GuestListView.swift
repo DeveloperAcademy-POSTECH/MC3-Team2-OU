@@ -22,6 +22,7 @@ struct GuestListView: View {
                     .padding(.bottom, 57)
                 
                 GuestListCellView(index: 0)
+
             }
             .padding(.horizontal, 60)
             .offset(y: -70)

@@ -45,7 +45,8 @@ struct MainView: View {
                     connectionManager.leaveSession()
                 }
                 .onLongPressGesture(minimumDuration: 1) {
-                    connectionManager.guest()
+//                    connectionManager.guest(userData.nickname, String(userData.characterIndex))
+                    connectionManager.guest("helia", "01")
                     startGroupping = true
                 }
                 
@@ -127,16 +128,17 @@ struct MainView: View {
                         .padding(EdgeInsets(top: 5, leading: 95, bottom: 0, trailing: 95))
                     
                     Spacer(minLength: 0)
+                    
+                    NavigationLink(
+                        destination: GuestCallingDone()
+                            .onAppear(){
+                                print(connectionManager.groupInfo)
+                            },
+                        isActive: .constant(connectionManager.groupInfo != nil),
+                        label: {
+                            EmptyView()
+                        })
                 }
-                
-                //            NavigationLink(
-                //                isActive: .constant(connectionManager.reciveData != ""),
-                //                destination: {
-                //                    GuestCallingDone()
-                //                }, label: {
-                //                    EmptyView()
-                //                }
-                //            )
             }
             .ignoresSafeArea()
             .background(Color.blue)
