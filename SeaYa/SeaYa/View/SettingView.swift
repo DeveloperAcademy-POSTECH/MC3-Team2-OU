@@ -17,13 +17,13 @@ struct SettingView: View {
     @Binding var selectedIndex : Int
     
     @State var tempFixedTimeModel : FixedTimeModel
+    @State var scrollDisabled = false
     
     var isUpdate : Bool
     var onDelete : (UUID) -> Void
     
     var body: some View {
-        ScrollView{
-            VStack{
+            ScrollView{
                 HStack{
                     Button("취소"){
                         showSettingViewModal = false
@@ -43,6 +43,7 @@ struct SettingView: View {
                 Text("시간 지정 편집")
                     .font(.system(size:32, weight: .semibold))
                     .padding(.bottom, 20)
+                    
                 
                 // Section1 - 태그/입력으로 일정을 선택.
                 Section(
@@ -82,6 +83,7 @@ struct SettingView: View {
                         }.padding(.leading, 21)
                     }
                 )
+                
                 // Section2 - 반복 요일 선택, 복수 선택 가능.
                 Section(
                     content : {
@@ -180,11 +182,11 @@ struct SettingView: View {
                             }
                             .frame(width: 357, height : 48)
                         }
-                    )
+                    ).padding(.bottom, 16)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
-        }
+            .scrollDisabled(scrollDisabled)
     }
 
     @ViewBuilder
@@ -234,12 +236,13 @@ struct SettingView: View {
                     .offset(x: width / 2)
                     .rotationEffect(.init(degrees: getAngle(progress: startProgress)))
                     .gesture(
-                        DragGesture()
+                        DragGesture(minimumDistance: 0.0)
                             .onChanged({ value in
+                                scrollDisabled = true
                                 onDrag(value: value, fromSlider: true)
                                 haptics(.warning)
-//                                print(getTime(angle: getAngle(progress: startProgress)).formatted(date: .omitted, time: .shortened))
                             })
+                            .onEnded({_ in scrollDisabled = false})
                     )
                     .rotationEffect(.init(degrees: -90))
                 Image(systemName: "circle.fill")
@@ -250,12 +253,14 @@ struct SettingView: View {
                     .offset(x: width / 2)
                     .rotationEffect(.init(degrees: getAngle(progress: toProgress)))
                     .gesture(
-                        DragGesture()
+                        DragGesture(minimumDistance: 0.0)
                             .onChanged({ value in
+                                scrollDisabled = true
                                 onDrag(value: value, fromSlider: false)
                                 haptics(.warning)
 //                                print(getTime(angle: getAngle(progress: toProgress)).formatted(date: .omitted, time: .shortened))
                             })
+                            .onEnded({_ in scrollDisabled = false})
                     )
                     .rotationEffect(.init(degrees: -90))
                 VStack(spacing: 6) {
@@ -367,6 +372,7 @@ struct SettingTestView : View {
                 onDelete: {id in
                     fixedTimeViewModel.deleteItem(withID: id)
             })
+            .interactiveDismissDisabled()
             .presentationCornerRadius(32)
         })
     }
