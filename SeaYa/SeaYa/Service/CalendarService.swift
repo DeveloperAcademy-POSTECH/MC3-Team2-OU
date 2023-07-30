@@ -19,8 +19,11 @@ class CalendarService {
     }
     //remote event -> calendar
     public func makeCalendar(_ selectedDays: [String],_ remoteEvents:[Event])->Calendar{
-        // 하루 넘어가는 이벤트가 있으면 다음날로 넘기는 로직 추가
+        //MARK: 하루 넘어가는 이벤트가 있으면 다음날로 넘기는 로직 추가
         var calendar = Calendar()
+        selectedDays.forEach { day in
+            calendar.updateValue([], forKey: day)
+        }
         remoteEvents.forEach { event in
             let date = DateUtil.getFormattedDate(event.start)
             var pre = calendar[date] ?? []

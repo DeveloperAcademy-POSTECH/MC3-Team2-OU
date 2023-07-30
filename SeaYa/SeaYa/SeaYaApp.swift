@@ -12,9 +12,9 @@ struct SeaYaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
 //                .environmentObject(userData)
-//            TimeTable()
+            TimeTable()
 //            MainView()
 //                .environmentObject(userData)
         }

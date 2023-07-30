@@ -14,6 +14,9 @@ class TimeTableViewModel: ObservableObject{
     let calendarService = CalendarService.shared
     let timeTableService = TimeTableService.shared
     var selectedDay:[String]
+    var tableCalendar = Dictionary<String,[TableItem]>()
+    @Published var selectedItem: Set<TableItem> = []
+    @Published var current:TableItem?
     @Published var selectedEventCalendar = Calendar()
     @Published var calendar: Calendar?
     
@@ -25,7 +28,16 @@ class TimeTableViewModel: ObservableObject{
         Task{
             //await makeTestCal()
             calendar = await getCalendar()
+            tableCalendar = calToTableCal(calendar!)
         }
+    }
+    private func calToTableCal(_ cal:Calendar) -> Dictionary<String,[TableItem]>{
+        var tableCalendar = Dictionary<String,[TableItem]>()
+        cal.keys.sorted().forEach { day in
+            let tableItems = eventToTableItem(cal[day]!)
+            tableCalendar.updateValue(tableItems, forKey: day)
+        }
+        return tableCalendar
     }
     public func eventToTableItem(_ events:[Event]) -> [TableItem]{
         return events.map { event in
@@ -33,7 +45,7 @@ class TimeTableViewModel: ObservableObject{
         }
     }
     public func buttonClicked(){
-        print(selectedEventCalendar)
+        print(selectedItem)
     }
 //    private func makeTestCal()async{
 //        let selectedDays = ["2023-07-16","2023-07-17","2023-07-18"]
