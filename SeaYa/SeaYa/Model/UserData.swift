@@ -7,8 +7,9 @@
 
 import Foundation
 
-class UserData: ObservableObject {
-    @Published var nickname: String = ""
-    @Published var characterImageName: String = "01"
+class UserData: ObservableObject ,Codable{
+    var uid : UUID?
+    var nickname: String = ""
+    var characterImageName: String = "01"
 }
 
