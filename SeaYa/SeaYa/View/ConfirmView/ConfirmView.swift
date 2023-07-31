@@ -125,16 +125,33 @@ struct ConfirmView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                 
                 Spacer()
-                NavigationLink(destination: EmptyView(), label:  {
+                NavigationLink(
+                    destination: ResultView(),
+                    label:  {
                     Text("일정 검토하기").bigButton(textColor: .white)
                         .frame(width: 358, alignment: .center)
                         .padding(.vertical, 18)
                         .background(Color.primaryColor)
                         .cornerRadius(16)
                 }).simultaneousGesture(TapGesture().onEnded{
+                    
                         // 여기서 Send To Guest
-                        print(time.year!, time.month!, time.day!, time.hour!, time.minute!)
-                        print(endTime.year!, endTime.month!, endTime.day!, endTime.hour!, endTime.minute!)
+                    let selecteMemberId = selectedMembers.map{$0.id}
+                    let membersId = members!.map{$0.id}
+                    
+                    let attendedMember = Dictionary(uniqueKeysWithValues: zip(
+                        selecteMemberId,
+                        selecteMemberId.map{membersId.contains($0)}
+                    ))
+                    
+                    let scheduleDone = ScheduleDone(
+                        scheduleName: selectedEvent.title,
+                        selectedDate: selectedEvent.startDate,
+                        startTime: selectedEvent.startDate,
+                        endTime: selectedEvent.endDate,
+                        isAttend: attendedMember)
+                    connectionManager.sendScheduleInfoToGuest(scheduleDone)
+                    // print("send schedule info to guest")
                 })
         
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
