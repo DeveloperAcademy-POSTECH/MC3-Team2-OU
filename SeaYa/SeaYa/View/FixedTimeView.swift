@@ -70,6 +70,7 @@ struct FixedTimeView: View {
                             print("here!")
                             print(String(describing: fixedTimeViewModel.fixedTimeModels.first!.category))
                             let encoder = JSONEncoder()
+                            fixedTimeViewModel.buttonClicked()
                                     if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
                                         UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
                                     }

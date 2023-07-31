@@ -26,9 +26,10 @@ class UserData: ObservableObject{
             self.characterImageName = UserInfoRepository.shared.getUid()!
         }
         else{
-            self.uid = ""
+            self.uid = UUID().uuidString
             self.nickname = "hello"
             self.characterImageName = "01"
+            UserInfoRepository.shared.setUid(uid: uid)
         }
     }
 }

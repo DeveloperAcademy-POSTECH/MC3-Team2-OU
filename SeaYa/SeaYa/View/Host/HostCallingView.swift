@@ -46,7 +46,35 @@ struct HostCallingView: View {
                                         .frame(width: 145, height: 145)
                                         .foregroundColor(.white)
                                 })
-                                
+                                .alert("그룹을 확정하시겠어요?", isPresented: $showingAlert) {
+                                    VStack {
+                                        Button(
+                                            action: {
+                                                groupInfo = GroupInfo(
+                                                    hostName: userData.nickname,
+                                                    scheduleName: scheduleName,
+                                                    selectedDate: selectedDate,
+                                                    estimatedTime: estimatedTime
+                                                )
+                                                connectionManager.setGroupInfo(groupInfo)
+                                                
+                                                moveToDoneView = true
+                                            }, label: {
+                                                Text("확정할게요")
+                                            }
+                                        )
+                                        
+                                        Button(
+                                            role: .cancel,
+                                            action: {},
+                                            label: {
+                                                Text("취소")
+                                            }
+                                        )
+                                    }
+                                } message: {
+                                    Text("\(connectionManager.peers.count)명의 그룹원과\n그룹을 확정하시겠어요?")
+                                }
                                 VStack {
                                     Text("그룹 확정")
                                         .fontWeight(.bold)
@@ -115,7 +143,6 @@ struct HostCallingView: View {
                             )
                             
                             connectionManager.sendGroupInfoToGuest(groupInfo)
-                            connectionManager.setGroupInfo(groupInfo)
                             print("move")
                         }
                 }
