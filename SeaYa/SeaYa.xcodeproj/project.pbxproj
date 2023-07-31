@@ -16,6 +16,7 @@
 		0E81B9412A7782C2004AB171 /* CheckTimeDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */; };
 		0E81B9432A7786DF004AB171 /* GuestWaitingForConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */; };
 		0E81B9452A77A7FB004AB171 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9442A77A7FB004AB171 /* CustomAlert.swift */; };
+		0E81B9492A77C004004AB171 /* OnboardingDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */; };
 		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
 		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
 		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
@@ -102,6 +103,7 @@
 		0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTimeDoneView.swift; sourceTree = "<group>"; };
 		0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestWaitingForConfirmView.swift; sourceTree = "<group>"; };
 		0E81B9442A77A7FB004AB171 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDoneView.swift; sourceTree = "<group>"; };
 		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
 		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */,
 				0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */,
 				0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */,
+				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				0EEFB6712A6EC60B00F5C5D2 /* HostCallingView.swift in Sources */,
 				0E5E161F2A725F7000143374 /* GuestListCellView.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,
+				0E81B9492A77C004004AB171 /* OnboardingDoneView.swift in Sources */,
 				739FBB692A613BCF0022386D /* CalcOksService.swift in Sources */,
 				73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */,
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
