@@ -137,7 +137,7 @@ struct ConfirmView: View {
                     
                         // 여기서 Send To Guest
                     let selecteMemberId = selectedMembers.map{$0.name}
-                    let membersId = members!.map{$0.name}
+                    let membersId = (members ?? []).map{$0.name}
                     
                     let attendedMember = Dictionary(uniqueKeysWithValues: zip(
                         selecteMemberId,
