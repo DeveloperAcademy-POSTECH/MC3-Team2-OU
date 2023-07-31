@@ -37,7 +37,6 @@ struct HostCallingView: View {
                             ZStack {
                                 LottieView(jsonName: "HomeView")
                                     .scaledToFit()
-//                                    .offset(y: 10)
                                 
                                 Button (action: {
                                     showingAlert.toggle()
@@ -51,7 +50,7 @@ struct HostCallingView: View {
                                         Button(
                                             action: {
                                                 groupInfo = GroupInfo(
-                                                    hostName: "",
+                                                    hostName: userData.nickname,
                                                     scheduleName: scheduleName,
                                                     selectedDate: selectedDate,
                                                     estimatedTime: estimatedTime
@@ -135,6 +134,7 @@ struct HostCallingView: View {
                         .environmentObject(userData)
                         .onAppear{
                             connectionManager.sendGroupInfoToGuest(groupInfo)
+                            connectionManager.setGroupInfo(groupInfo)
                             print("move")
                         }
                 }
