@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ConfirmView: View {
     @ObservedObject var calcOksService =  CalcOksService.shared
+    @ObservedObject var connectionManager =  ConnectionService()
     
     @State var selectedEvent : DateEvent
     @State private var selectedMembers : [DateMember] = []
@@ -131,6 +132,7 @@ struct ConfirmView: View {
                         .background(Color.primaryColor)
                         .cornerRadius(16)
                 }).simultaneousGesture(TapGesture().onEnded{
+                        // 여기서 Send To Guest
                         print(time.year!, time.month!, time.day!, time.hour!, time.minute!)
                         print(endTime.year!, endTime.month!, endTime.day!, endTime.hour!, endTime.minute!)
                 })

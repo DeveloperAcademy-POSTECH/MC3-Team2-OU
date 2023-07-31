@@ -9,8 +9,8 @@ import Foundation
 
 struct ScheduleDone: Codable {
     var scheduleName: String
-    var choseDate: Date
-    var startTime: Int
-    var endTime: Int
+    var selectedDate: Date
+    var startTime: Date
+    var endTime: Date
     var isAttend: Bool
 }
