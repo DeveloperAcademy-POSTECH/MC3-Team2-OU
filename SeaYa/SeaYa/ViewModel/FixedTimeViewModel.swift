@@ -23,7 +23,7 @@ struct FixedTimeViewModel : Hashable {
     }
 }
 
-struct FixedTimeModel : Hashable, Identifiable{
+struct FixedTimeModel : Hashable, Identifiable, Codable{
     var id : UUID
     var category : String
     var weekdays : [WeekDay]

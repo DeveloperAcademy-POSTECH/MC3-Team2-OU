@@ -18,6 +18,8 @@ struct FixedTimeView: View {
     @State var selectedIndex = -1
     @StateObject var state = FixedTimeViewState()
 
+    private let fixedTimeKey = "FixedTimeKey"
+    
     var body: some View {
         VStack {
             Section(
@@ -65,6 +67,13 @@ struct FixedTimeView: View {
                     Button(
                         action: {
                             isFixedTimeSettingCompleted = true
+                            print("here!")
+                            print(String(describing: fixedTimeViewModel.fixedTimeModels.first!.category))
+                            let encoder = JSONEncoder()
+                                    if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
+                                        UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
+                                    }
+                                
                         },
                         label: {
                             Text("확인")
@@ -105,6 +114,8 @@ struct FixedTimeView: View {
             }
         })
         .background(Color.backgroundColor)
+       
+          
     }
 }
 
