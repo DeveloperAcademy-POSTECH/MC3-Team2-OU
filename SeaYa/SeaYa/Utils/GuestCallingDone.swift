@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GuestCallingDone: View {
+    @ObservedObject var connectionManager: ConnectionService
+    @EnvironmentObject private var userData: UserData
+    
     var body: some View {
         VStack {
             Text("그룹에 들어왔어요!")
@@ -40,6 +43,6 @@ struct GuestCallingDone: View {
 
 struct GuestCallingDone_Previews: PreviewProvider {
     static var previews: some View {
-        GuestCallingDone()
+        GuestCallingDone(connectionManager: ConnectionService())
     }
 }

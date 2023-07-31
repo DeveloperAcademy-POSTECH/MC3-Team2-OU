@@ -10,6 +10,6 @@ import Foundation
 struct GroupInfo: Codable {
     var hostName: String?
     var scheduleName: String
-    var choseDate: [Date]
+    var selectedDate: [Date]
     var estimatedTime: Int
 }
