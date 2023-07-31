@@ -99,7 +99,7 @@ class ConnectionService: NSObject, ObservableObject {
         send(info, messageType: .GroupInfo)
     }
     
-    func sendTimeTableInfoToHost(_ info: DateMember) {
+    func sendTimeTableInfoToHost(_ info: [DateMember]) {
         send(info, messageType: .ListUP)
     }
     

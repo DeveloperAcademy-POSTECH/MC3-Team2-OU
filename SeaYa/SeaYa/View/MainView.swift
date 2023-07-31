@@ -143,7 +143,8 @@ struct MainView: View {
                     .ignoresSafeArea()
                 }
                 else {
-                    GuestCallingDone()
+                    GuestCallingDone(connectionManager: connectionManager)
+                        .environmentObject(userData)
                         .onAppear(){
                             startGroupping = false
                             print(connectionManager.groupInfo)
