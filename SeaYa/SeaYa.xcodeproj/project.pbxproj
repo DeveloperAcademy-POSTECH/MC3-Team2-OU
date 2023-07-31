@@ -40,7 +40,6 @@
 		739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6C2A613C150022386D /* BoundedDate.swift */; };
 		739FBB6F2A613C240022386D /* TimeOks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6E2A613C240022386D /* TimeOks.swift */; };
 		739FBB712A613C3F0022386D /* DateMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB702A613C3F0022386D /* DateMember.swift */; };
-		739FBB742A613CD80022386D /* CLMTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 739FBB732A613CD80022386D /* CLMTest.json */; };
 		739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB762A613D100022386D /* CalcOksServiceTest.swift */; };
 		73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */; };
 		73CD8FAF2A6593E8003A274D /* ListUpElementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */; };
@@ -121,7 +120,6 @@
 		739FBB6C2A613C150022386D /* BoundedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedDate.swift; sourceTree = "<group>"; };
 		739FBB6E2A613C240022386D /* TimeOks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOks.swift; sourceTree = "<group>"; };
 		739FBB702A613C3F0022386D /* DateMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMember.swift; sourceTree = "<group>"; };
-		739FBB732A613CD80022386D /* CLMTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CLMTest.json; sourceTree = "<group>"; };
 		739FBB762A613D100022386D /* CalcOksServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksServiceTest.swift; sourceTree = "<group>"; };
 		73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementView.swift; sourceTree = "<group>"; };
 		73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementDetailView.swift; sourceTree = "<group>"; };
@@ -224,14 +222,6 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		739FBB722A613CA80022386D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				739FBB732A613CD80022386D /* CLMTest.json */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		739FBB752A613CF30022386D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,7 +303,6 @@
 			children = (
 				739FBB752A613CF30022386D /* Service */,
 				73FA05302A5E301C00EB176B /* SeaYaTests.swift */,
-				739FBB722A613CA80022386D /* Resources */,
 			);
 			path = SeaYaTests;
 			sourceTree = "<group>";
@@ -529,7 +518,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				739FBB742A613CD80022386D /* CLMTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

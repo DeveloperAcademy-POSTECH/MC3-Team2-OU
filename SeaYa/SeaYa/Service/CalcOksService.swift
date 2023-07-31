@@ -79,11 +79,11 @@ class CalcOksService: ObservableObject {
         let countMembersOkTime = membersOkTimeMapped.reduce(into: [Int: Int]()) { counts, number in
             counts[number, default: 0] += 1}
         
-        // startDate endDate 범위 정보 들어올 경우 해당 Date 범위만큼 [TimeOks] 배열 형성, 상단 countMembersOkTime 에서 해당 배열을 뺄셈하기
-        let boundedDatesMapped = boundedDates.map(getStride).flatMap{$0}
-        let memberTimeOks = boundedDatesMapped.map{getOKtimesBySubtract($0, using: countMembersOkTime)}.filter{$0.Oks != 0}.sorted(by: Nearest)
-        
-        //주어진 시간만큼 필터링하기
+        // #1 불가 시간 기준 필터링 // startDate endDate 범위 정보 들어올 경우 해당 Date 범위만큼 [TimeOks] 배열 형성, 상단 countMembersOkTime 에서 해당 배열을 뺄셈하기
+        // let boundedDatesMapped = boundedDates.map(getStride).flatMap{$0}
+        // let memberTimeOks = boundedDatesMapped.map{getOKtimesBySubtract($0, using: countMembersOkTime)}.filter{$0.Oks != 0}.sorted(by: Nearest)
+        let memberTimeOks = countMembersOkTime.map{TimeOks(timeInt: $0.key, Oks: $0.value)}
+        // #2 가능 시간 기준 필터링 // 주어진 시간만큼 필터링하기
 //        let memberMinTimeOks = getMemberTimeOks(memberTimeOks, self.theTime)
         guard let theTime = self.theTime else {
             print("기간 설정을 입력받지 않아 30분단위로 순위 정렬")
