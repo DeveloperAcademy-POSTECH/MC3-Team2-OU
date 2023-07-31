@@ -57,10 +57,12 @@ struct MainView: View {
                             .padding(.top, 24)
                             .padding(.horizontal, 122)
                             .onTapGesture {
+                                HapticManager.instance.notification(type: .error)
                                 startGroupping = false
                                 connectionManager.leaveSession()
                             }
                             .onLongPressGesture(minimumDuration: 1) {
+                                HapticManager.instance.notification(type: .success)
                                 connectionManager.guest(userData.nickname, userData.characterImageName)
                                 startGroupping = true
                             }
@@ -92,7 +94,9 @@ struct MainView: View {
                                                     
                                                     Text("방 만들기")
                                                         .context(textColor: Color.white)
+                                                        .multilineTextAlignment(.center)
                                                 }
+                                                .frame(maxWidth: 80)
                                             }
                                         )
                                     }
@@ -124,6 +128,7 @@ struct MainView: View {
                                                     Text("설정")
                                                         .context(textColor: Color.white)
                                                 }
+                                                .frame(maxWidth: 80)
                                             }
                                         )
                                     }
@@ -152,7 +157,7 @@ struct MainView: View {
                     GuestCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear(){
-//                            haptics(.success)
+                            HapticManager.instance.notification(type: .success)
                             startGroupping = false
                             print(connectionManager.groupInfo)
                         }

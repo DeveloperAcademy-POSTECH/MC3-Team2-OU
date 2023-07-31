@@ -63,7 +63,7 @@ struct GuestListCellView: View {
                     }
                 })
             }
-            .frame(alignment: .center)
+            .frame(maxWidth: 75, alignment: .center)
         }
     }
 }

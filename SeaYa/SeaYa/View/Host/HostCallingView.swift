@@ -107,12 +107,12 @@ struct HostCallingView: View {
                     HostCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear{
-                            connectionManager.setGroupInfo(GroupInfo(
+                            connectionManager.groupInfo = GroupInfo(
                                 hostName: userData.nickname,
                                 scheduleName: scheduleName,
                                 selectedDate: selectedDate,
                                 estimatedTime: estimatedTime
-                            ))
+                            )
                             print("move")
                         }
                 }
