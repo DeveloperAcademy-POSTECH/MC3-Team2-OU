@@ -37,7 +37,7 @@ struct CheckTimeDoneView: View {
             if connectionManager.isCheckTimeDone && connectionManager.scheduleDone == nil{
                 GuestWaitingForConfirmView()
             }else if connectionManager.scheduleDone != nil {
-                ResultView()
+                ResultView(connectionManager: connectionManager)
             }else {
                 WaitingForConfirmView()
             }

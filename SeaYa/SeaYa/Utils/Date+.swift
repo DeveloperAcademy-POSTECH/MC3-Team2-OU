@@ -11,6 +11,7 @@ extension Date {
     func toString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "d"
+        formatter.timeZone = TimeZone.current
         let day = Calendar.current.date(byAdding: .day, value: -1, to: self)!
         return formatter.string(from: day)
     }

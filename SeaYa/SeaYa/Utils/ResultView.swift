@@ -8,44 +8,71 @@
 import SwiftUI
 
 struct ResultView: View {
+    @ObservedObject var connectionManager: ConnectionService
+    @EnvironmentObject private var userData: UserData
+    
+    @State private var scheduleName: String = ""
+    @State private var selectedDate: String = ""
+    @State private var startTime: String = ""
+    @State private var endTime: String = ""
+    @State private var isAttend: Bool = false
+    
     var body: some View {
         VStack {
-            Text("일정이 성사됐어요!")
+            Text(isAttend ? "일정이 성사됐어요!" : "일정이 성사되지 않았어요")
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 40)
-
+                
             Image("your_image_name")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 150)
-            Text("아카데미 저녁 회식")
+                
+            Text(scheduleName)
                 .headline(textColor: Color.textColor)
                 .padding(.top, 40)
                 .padding(.bottom, 18)
+                
             Divider()
                 .frame(width: 214)
-            Text("7월 22일 수요일")
+                
+            Text(selectedDate)
                 .context(textColor: Color.textColor)
                 .multilineTextAlignment(.center)
                 .padding(.top,30)
-            Text("19:30 - 20:30")
+                
+            Text("\(startTime) - \(endTime)")
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 3)
                 .padding(.bottom, 29)
-            SmallButton_Blue(title: "일정입력하기", action: {})
-                .padding(.bottom, 10)
-            SmallButton_White(title: "홈화면으로 돌아가기", action: {})
-                .padding(.bottom, 19)
+            
+            if isAttend {
+                SmallButton_Blue(title: "일정입력하기", action: {})
+                    .padding(.bottom, 10)
+                
+                SmallButton_White(title: "홈화면으로 돌아가기", action: {})
+                    .padding(.bottom, 19)
+            }else {
+                SmallButton_Blue(title: "홈화면으로 돌아가기", action: {})
+                    .padding(.bottom, 19)
+            }
         }
         .frame(width: 300)
         .background(Color.white)
         .cornerRadius(32)
-        
+        .onAppear() {
+            guard let schedule = connectionManager.scheduleDone else {return}
+            scheduleName = schedule.scheduleName
+            selectedDate = schedule.selectedDate.toString()
+            startTime = schedule.startTime.toString()
+            endTime = schedule.endTime.toString()
+            isAttend = schedule.isAttend[userData.nickname] ?? false
+        }
     }
 }
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView()
+        ResultView(connectionManager: ConnectionService())
     }
 }

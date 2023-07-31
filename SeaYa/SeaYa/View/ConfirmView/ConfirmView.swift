@@ -126,7 +126,7 @@ struct ConfirmView: View {
                 
                 Spacer()
                 NavigationLink(
-                    destination: ResultView(),
+                    destination: ResultView(connectionManager: connectionManager),
                     label:  {
                     Text("일정 검토하기").bigButton(textColor: .white)
                         .frame(width: 358, alignment: .center)

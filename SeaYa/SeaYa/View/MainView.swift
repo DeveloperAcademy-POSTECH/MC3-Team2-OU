@@ -53,8 +53,6 @@ struct MainView: View {
                                 Image("\(userData.characterImageName)")
                                     .padding(10)
                                     .frame(width: 124, height: 124)
-                                
-                                
                             }
                             .padding(.top, 24)
                             .padding(.horizontal, 122)
@@ -172,4 +170,3 @@ struct MainView_Previews: PreviewProvider {
         return MainView().environmentObject(userData)
     }
 }
-
