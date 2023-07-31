@@ -12,5 +12,5 @@ struct ScheduleDone: Codable {
     var selectedDate: Date
     var startTime: Date
     var endTime: Date
-    var isAttend: Bool
+    var isAttend: [UUID: Bool]
 }
