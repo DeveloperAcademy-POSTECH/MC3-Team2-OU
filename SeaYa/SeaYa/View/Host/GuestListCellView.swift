@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GuestListCellView: View {
-    @ObservedObject private var connectionManager = ConnectionService()
+    @ObservedObject var connectionManager: ConnectionService
     @State private var isSelected = false
     var index: Int
     
@@ -20,8 +20,6 @@ struct GuestListCellView: View {
         }
         
         else {
-            let foundPeer = connectionManager.foundPeers[index]
-            
             VStack {
                 Button(action: {
                     isSelected.toggle()
@@ -29,29 +27,37 @@ struct GuestListCellView: View {
                     if isSelected{
                         guard let session = connectionManager.session else {return}
                         connectionManager.browser?.invitePeer(
-                            foundPeer.peer,
+                            connectionManager.foundPeers[index].peer,
                             to: session,
                             withContext: nil,
                             timeout: 10
                         )
                     }
                     else {
-                        //TODO: session에서 해제
+                        if let idx = connectionManager.peers.firstIndex(where: {
+                            $0.peer == connectionManager.foundPeers[index].peer
+                        }){
+                            connectionManager.peers.remove(at: idx)
+                        }
+                        connectionManager.foundPeers.remove(at: index)
+                        print(connectionManager.peers.count)
                     }
                 }, label: {
                     VStack {
                         ZStack {
-                            Circle()
-                                .frame(width: 65, height: 65)
-                                .foregroundColor(.white)
+                            if isSelected {
+                                Circle()
+                                    .frame(width: 65, height: 65)
+                                    .foregroundColor(.white)
+                            }
                             
-                            Image("\(foundPeer.value)")
+                            Image("\(connectionManager.foundPeers[index].value)")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 60, height: 60)
                         }
                         
-                        Text(foundPeer.peer.displayName)
+                        Text(connectionManager.foundPeers[index].peer.displayName)
                             .font(.system(size: 11, weight: .bold))
                             .foregroundColor(.white)
                     }
@@ -59,11 +65,5 @@ struct GuestListCellView: View {
             }
             .frame(alignment: .center)
         }
-    }
-}
-
-struct GuestListCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        GuestListCellView(index: 0)
     }
 }

@@ -13,6 +13,7 @@ extension Color {
     static let backgroundColor = Color("background")
     static let textColor = Color("text")
     static let unactiveColor = Color("unactive")
+    static let gradientColor = Color("gradient")
     
     init(hex: String) {
         let scanner = Scanner(string: hex)
@@ -27,6 +28,3 @@ extension Color {
         self.init(red: r, green: g, blue: b)
       }
 }
-
-
-

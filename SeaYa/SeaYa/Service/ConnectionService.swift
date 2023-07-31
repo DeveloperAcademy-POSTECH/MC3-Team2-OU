@@ -20,6 +20,7 @@ class ConnectionService: NSObject, ObservableObject {
     //MARK: all connected guest list
     @Published var peers: [(peer: MCPeerID, value: String)] = []
     @Published var foundPeers: [Peer] = []
+//    @Published var foundPeers: [(peer: MCPeerID, value: String)] = []
     @Published var connected = false
     @Published var groupInfo: GroupInfo?
     @Published var listUP: [DateMember] = []
@@ -67,6 +68,8 @@ class ConnectionService: NSObject, ObservableObject {
         
         advertiserAssistant?.delegate = self
         advertiserAssistant?.startAdvertisingPeer()
+        
+        print(myPeerId)
     }
     
     func send<T: Codable>(_ data: T, messageType: MessageType) {
@@ -227,17 +230,17 @@ extension ConnectionService: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         //MARK: value 수정
         if !self.foundPeers.contains(where: {$0.peer == peerID }){
-//            if let value = info?[peerID.displayName] {
-//                self.foundPeers.append((peer: peerID, value: "01"))
-//            }
-            self.foundPeers.append(Peer(peer: peerID, value: "01"))
+            if let value = info?.first?.value {
+                self.foundPeers.append(Peer(peer: peerID, value: "01"))
+            }
+           // self.foundPeers.append(Peer(peer: peerID, value: "01"))
         }
         
-       
         print(self.foundPeers)
     }
         
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+        print(peerID)
         if let index = foundPeers.firstIndex(where: {$0.peer == peerID}) {
             foundPeers.remove(at: index)
         }
