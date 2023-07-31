@@ -27,11 +27,12 @@ struct HostCallingView: View {
                     startPoint: .top, endPoint: .bottom
                 )
                 .edgesIgnoringSafeArea(.all)
+                
                 if !moveToDoneView {
                     VStack {
                         ZStack {
                             GuestListView(connectionManager: connectionManager)
-                                .frame(alignment: .center)
+                                .multilineTextAlignment(.center)
                                 .offset(y: -30)
                             
                             ZStack {
@@ -74,7 +75,6 @@ struct HostCallingView: View {
                                 } message: {
                                     Text("\(connectionManager.peers.count)명의 그룹원과\n그룹을 확정하시겠어요?")
                                 }
-                                
                                 VStack {
                                     Text("그룹 확정")
                                         .fontWeight(.bold)
@@ -130,15 +130,30 @@ struct HostCallingView: View {
                                 })
                         })
                     }
-                }else {
+                }
+                else {
                     HostCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear{
+                            groupInfo = GroupInfo(
+                                hostName: userData.nickname,
+                                scheduleName: scheduleName,
+                                selectedDate: selectedDate,
+                                estimatedTime: estimatedTime
+                            )
+                            
                             connectionManager.sendGroupInfoToGuest(groupInfo)
                             print("move")
                         }
                 }
+                
+                if showingAlert {
+                    CustomAlert(showingAlert: $showingAlert, moveToDoneView: $moveToDoneView, guestCnt: connectionManager.peers.count)
+                        .offset(y: -30)
+                }
             }
+                .ignoresSafeArea()
+                .multilineTextAlignment(.center)
         }
     }
 }

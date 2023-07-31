@@ -14,6 +14,18 @@ extension Date {
         let day = Calendar.current.date(byAdding: .day, value: -1, to: self)!
         return formatter.string(from: day)
     }
+    func removeSeconds() -> Date? {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
+        
+        if let year = components.year, let month = components.month, let day = components.day,
+           let hour = components.hour, let minute = components.minute {
+            let newDateComponents = DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)
+            return calendar.date(from: newDateComponents)
+        }
+        
+        return nil
+    }
 }
 
 extension Int? {

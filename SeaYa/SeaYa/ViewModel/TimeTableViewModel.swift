@@ -52,6 +52,9 @@ class TimeTableViewModel: ObservableObject{
             
         }
         else{
+            print("uid : " + userData.uid)
+            print("nick : " + userData.nickname)
+            print("image : " + userData.characterImageName)
             let dateMember = DateMember(id: UUID(uuidString: userData.uid)!, name: userData.nickname, dateEvents: selectedDateEvent)
             connectionManager.sendTimeTableInfoToHost(dateMember)
         }
@@ -90,6 +93,7 @@ class TimeTableViewModel: ObservableObject{
         let localEvents = localCalendarRepo.getEvents()
         let remoteEvents = try! await remoteCalendarRepo.fetchEvent(start: DateUtil.formattedDayToDate(selectedDay.first!), end: DateUtil.formattedDayToDate(selectedDay.last!))
         let localCalendar = calendarService.makeCalendar(selectedDay,localEvents)
+       print(localCalendar)
         let remoteCalendar = calendarService.makeCalendar(selectedDay, remoteEvents)
         let mergedCalendar = calendarService.mergeCalendar(localCalendar, remoteCalendar)
         let timeTableCalendar = timeTableService.getCalendarForTimeTable(mergedCalendar)

@@ -23,7 +23,7 @@ struct FixedTimeViewModel : Hashable {
     }
     public func buttonClicked(){
         fixedTimeModels.forEach { model in
-            let event = LocalEvent(title: model.category, days: model.weekdays, start: model.start, end: model.end)
+            let event = LocalEvent(title: model.category, days: model.weekdays, start: model.start.removeSeconds()!, end: model.end.removeSeconds()!)
             LocalCalendarRepository.shared.createEvent(event: event)
         }
     }
