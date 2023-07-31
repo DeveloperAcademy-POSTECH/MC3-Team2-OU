@@ -53,18 +53,18 @@ struct UserInfoView: View {
                         
                         VStack{
                             Text(userData.nickname).body(textColor: Color.textColor)
-                            Button(action: {
-                                
-                            }, label: {
-                                NavigationLink(
-                                    destination: {
-                                        NicknameEditView().environmentObject(userData)
-                                           
-                                    }, label:{
-                                        Text("프로필 편집").body(textColor: Color.primaryColor)
-                                        
-                                    })
-                            })
+//                            Button(action: {
+//
+//                            }, label: {
+//                                NavigationLink(
+//                                    destination: {
+//                                        NicknameEditView().environmentObject(userData)
+//
+//                                    }, label:{
+//                                        Text("프로필 편집").body(textColor: Color.primaryColor)
+//
+//                                    })
+//                            })
                         }
                         
                      
