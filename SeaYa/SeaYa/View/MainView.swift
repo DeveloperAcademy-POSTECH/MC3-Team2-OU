@@ -43,7 +43,6 @@ struct MainView: View {
                                 LottieView(jsonName: "HomeView")
                                     .scaledToFit()
                                     .offset(y: 10)
-
                             }
                             
                             ZStack {
@@ -66,7 +65,6 @@ struct MainView: View {
                             .onLongPressGesture(minimumDuration: 1) {
                                 connectionManager.guest(userData.nickname, userData.characterImageName)
                                 startGroupping = true
-                                VibrationManager.shared?.playHaptic(durations: [1.0, 2.0], powers: [0.5, 1.0])
                             }
                         }
                         
@@ -157,8 +155,7 @@ struct MainView: View {
                     GuestCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear(){
-                            VibrationManager.shared?.stopHapric()
-                            haptics(.success)
+//                            haptics(.success)
                             startGroupping = false
                             print(connectionManager.groupInfo)
                         }

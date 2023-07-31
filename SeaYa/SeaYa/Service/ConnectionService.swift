@@ -131,41 +131,41 @@ extension ConnectionService: MCSessionDelegate {
     
     //ReciveData
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-//        do {
-//            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-//            
-//            if let messageTypeString = json?["messageType"] as? String,
-//               let messageType = MessageType(rawValue: messageTypeString),
-//               let jsonData = json?["data"] as? [String: Any] {
-//                switch messageType {
-//                case .GroupInfo:
-//                    if let groupInfoData = try? JSONSerialization.data(withJSONObject: jsonData) {
-//                        groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
-//                        print(groupInfo ?? "")
-//                    }
-//                    
-//                case .ListUP:
-//                    if let listUPData = try? JSONSerialization.data(withJSONObject: jsonData) {
-//                        let data = try JSONDecoder().decode(DateMember.self, from: listUPData)
-//                        listUP.append(data)
-//                        print(listUP ?? "")
-//                    }
-//                    
-//                case .ScheduleDone:
-//                    if let groupDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
-//                        scheduleDone = try JSONDecoder().decode(ScheduleDone.self, from: groupDoneData)
-//                        print(scheduleDone ?? "")
-//                    }
-//                    
-//                case .CheckTimeDone:
-//                    if let isCheckTimeDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
-//                        isCheckTimeDone = try JSONDecoder().decode(Bool.self, from: isCheckTimeDoneData)
-//                    }
-//                }
-//            }
-//        } catch {
-//            print("Decoding error: \(error)")
-//        }
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            
+            if let messageTypeString = json?["messageType"] as? String,
+               let messageType = MessageType(rawValue: messageTypeString),
+               let jsonData = json?["data"] as? [String: Any] {
+                switch messageType {
+                case .GroupInfo:
+                    if let groupInfoData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
+                        print(groupInfo ?? "")
+                    }
+                    
+                case .ListUP:
+                    if let listUPData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        let data = try JSONDecoder().decode(DateMember.self, from: listUPData)
+                        listUP.append(data)
+                        print(listUP ?? "")
+                    }
+                    
+                case .ScheduleDone:
+                    if let groupDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        scheduleDone = try JSONDecoder().decode(ScheduleDone.self, from: groupDoneData)
+                        print(scheduleDone ?? "")
+                    }
+                    
+                case .CheckTimeDone:
+                    if let isCheckTimeDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        isCheckTimeDone = try JSONDecoder().decode(Bool.self, from: isCheckTimeDoneData)
+                    }
+                }
+            }
+        } catch {
+            print("Decoding error: \(error)")
+        }
     }
 
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
