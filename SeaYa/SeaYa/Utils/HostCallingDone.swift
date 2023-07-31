@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HostCallingDone: View {
     @ObservedObject var connectionManager: ConnectionService
+    @State var clicked: Int? = 0
     @EnvironmentObject private var userData: UserData
     
     var body: some View {
@@ -16,7 +17,7 @@ struct HostCallingDone: View {
             Text("그룹이 확정되었어요")
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 40)
-
+            
             Image(userData.characterImageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -31,14 +32,35 @@ struct HostCallingDone: View {
                 .context(textColor: Color.textColor)
                 .multilineTextAlignment(.center)
                 .padding(.vertical,30)
-            SmallButton_Blue(title: "일정입력하기", action: {})
-                .padding(.bottom, 32)
+            NavigationLink(
+                destination: TimeTable(vm: TimeTableViewModel(selectedDay: getSelectedDate()))
+                    .environmentObject(connectionManager)
+                //vm: TimeTableViewModel(selectedDay: getSelectedDate()))
+                    .navigationBarBackButtonHidden(true),
+                tag: 1,
+                selection: $clicked) {}
+            SmallButton_Blue(title: "일정 입력하기", action: {
+                print(getSelectedDate())
+                clicked = 1;
+            })
+            .padding(.bottom, 32)
         }
         .frame(width: 300)
         .background(Color.white)
         .cornerRadius(32)
         
     }
+    func getSelectedDate() -> [String]{
+        if let arr = connectionManager.groupInfo{
+            return arr.selectedDate.map { date in
+                DateUtil.getFormattedDate(date)
+            }
+        }
+        else{
+            return []
+        }
+    }
+    
 }
 
 
@@ -47,3 +69,4 @@ struct HostCallingDone_Previews: PreviewProvider {
         HostCallingDone(connectionManager: ConnectionService())
     }
 }
+
