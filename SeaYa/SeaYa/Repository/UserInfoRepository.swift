@@ -10,12 +10,13 @@ import Foundation
 class UserInfoRepository{
     static let shared = UserInfoRepository()
     private let userDefaults: UserDefaults
-    private let encoder = JSONEncoder()
-    private let decoder = JSONDecoder()
+    private var userData: UserData? = nil
     private init(userDefaults: UserDefaults = .standard) {
          self.userDefaults = userDefaults
      }
-    
+    public func setUserData(userData: UserData){
+        self.userData = userData
+    }
     public func setUid(uid: String){
         let uid = UUID().uuidString
         userDefaults.set(uid, forKey: "uid")

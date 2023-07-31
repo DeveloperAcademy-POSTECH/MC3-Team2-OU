@@ -58,7 +58,7 @@ struct NicknameView: View {
             
             Button(action: {
                 if !nickname.isEmpty {
-                  userData.nickname = nickname
+                    userData.setNickName(nickname)
                   isNicknameSettingCompleted = true
               }
             }) {
@@ -90,8 +90,7 @@ struct NicknameView: View {
                     ForEach(0..<9, id: \.self) { index in
                         Button(
                             action: {
-                                userData.characterImageName = "0\(index+1)"
-                                print(userData.characterImageName)
+                                userData.setImageName("0\(index+1)")
                             },
                             label: {
                                 ZStack{
