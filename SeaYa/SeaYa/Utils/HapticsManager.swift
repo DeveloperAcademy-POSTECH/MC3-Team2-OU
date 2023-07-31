@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import SwiftUI
+import CoreHaptics
 
 fileprivate final class HapticsManager {
     static let shared = HapticsManager()

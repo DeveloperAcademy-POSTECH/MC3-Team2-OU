@@ -122,16 +122,17 @@ struct SettingView: View {
                     },
                     header: {
                         HStack{
-                            Text("요일 설정").title(textColor: .primary)
+                            Text("활성화된 요일").title(textColor: .primary)
                             Spacer()
                         }.padding(.leading, 21)
                     }
                 )
                 // Section3 - 시작/종료시간 설정.
-                Section(header: Text("시간 설정")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.black)) {
+                Section(
+                    header: HStack{
+                        Text("시간 설정").title(textColor: .primary)
+                        Spacer()
+                    }.padding(.leading, 21))   {
                         VStack {
                             HStack(spacing: 25) {
                                 VStack(alignment: .leading, spacing: 8) {
@@ -182,7 +183,9 @@ struct SettingView: View {
                             }
                             .frame(width: 357, height : 48)
                         }
-                    ).padding(.bottom, 16)
+                    )
+                    .padding(.top, 20)
+                    .padding(.bottom, 16)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)

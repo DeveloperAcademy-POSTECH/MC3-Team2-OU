@@ -38,24 +38,34 @@ struct MainView: View {
                         }
                         
                         //TODO: ADD Haptic
-                        ZStack {
-                            Circle()
-                                .frame(width: 145, height: 145)
-                                .foregroundColor(.white)
+                        ZStack(alignment: .center) {
+                            if startGroupping {
+                                LottieView(jsonName: "HomeView")
+                                    .scaledToFit()
+                                    .offset(y: 10)
+                            }
                             
-                            Image("\(userData.characterImageName)")
-                                .padding(10)
-                                .frame(width: 124, height: 124)
-                        }
-                        .padding(.top, 24)
-                        .padding(.horizontal, 122)
-                        .onTapGesture {
-                            startGroupping = false
-                            connectionManager.leaveSession()
-                        }
-                        .onLongPressGesture(minimumDuration: 1) {
-                            connectionManager.guest(userData.nickname, userData.characterImageName)
-                            startGroupping = true
+                            ZStack {
+                                Circle()
+                                    .frame(width: 145, height: 145)
+                                    .foregroundColor(.white)
+                                
+                                Image("\(userData.characterImageName)")
+                                    .padding(10)
+                                    .frame(width: 124, height: 124)
+                                
+                                
+                            }
+                            .padding(.top, 24)
+                            .padding(.horizontal, 122)
+                            .onTapGesture {
+                                startGroupping = false
+                                connectionManager.leaveSession()
+                            }
+                            .onLongPressGesture(minimumDuration: 1) {
+                                connectionManager.guest(userData.nickname, userData.characterImageName)
+                                startGroupping = true
+                            }
                         }
                         
                         if !startGroupping {
@@ -125,8 +135,6 @@ struct MainView: View {
                         }
                         
                         if startGroupping {
-                            //TODO: animation start
-                            
                             Text("잠시만 기다려주세요")
                                 .font(.system(size: 23, weight: .bold))
                                 .foregroundColor(.white)
@@ -146,6 +154,7 @@ struct MainView: View {
                     GuestCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear(){
+//                            haptics(.success)
                             startGroupping = false
                             print(connectionManager.groupInfo)
                         }

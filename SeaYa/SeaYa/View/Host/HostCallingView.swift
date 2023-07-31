@@ -14,7 +14,7 @@ struct HostCallingView: View {
     @State private var showingAlert = false
     @State private var groupInfo = GroupInfo(scheduleName: "", selectedDate: [], estimatedTime: 0)
     @Binding var scheduleName: String
-    @Binding var choseDate: [Date]
+    @Binding var selectedDate: [Date]
     @Binding var estimatedTime: Int
     
     var body: some View {
@@ -27,26 +27,18 @@ struct HostCallingView: View {
                     startPoint: .top, endPoint: .bottom
                 )
                 .edgesIgnoringSafeArea(.all)
+                
                 if !moveToDoneView {
                     VStack {
                         ZStack {
                             GuestListView(connectionManager: connectionManager)
-                                .frame(alignment: .center)
+                                .multilineTextAlignment(.center)
                                 .offset(y: -30)
                             
                             ZStack {
-                                Circle()
-                                    .frame(width: 350, height: 350)
-                                    .foregroundColor(Color(red: 0.97, green: 0.97, blue: 0.98))
-                                    .opacity(0.2)
-                                Circle()
-                                    .frame(width: 282, height: 282)
-                                    .foregroundColor(Color(red: 0.97, green: 0.97, blue: 0.98))
-                                    .opacity(0.4)
-                                Circle()
-                                    .frame(width: 220, height: 220)
-                                    .foregroundColor(Color(red: 0.97, green: 0.97, blue: 0.98))
-                                    .opacity(0.6)
+                                LottieView(jsonName: "HomeView")
+                                    .scaledToFit()
+                                
                                 Button (action: {
                                     showingAlert.toggle()
                                 }, label: {
@@ -54,34 +46,6 @@ struct HostCallingView: View {
                                         .frame(width: 145, height: 145)
                                         .foregroundColor(.white)
                                 })
-                                .alert("그룹을 확정하시겠어요?", isPresented: $showingAlert) {
-                                    VStack {
-                                        Button(
-                                            action: {
-                                                groupInfo = GroupInfo(
-                                                    hostName: "",
-                                                    scheduleName: scheduleName,
-                                                    selectedDate: choseDate,
-                                                    estimatedTime: estimatedTime
-                                                )
-                                                
-                                                moveToDoneView = true
-                                            }, label: {
-                                                Text("확정할게요")
-                                            }
-                                        )
-                                        
-                                        Button(
-                                            role: .cancel,
-                                            action: {},
-                                            label: {
-                                                Text("취소")
-                                            }
-                                        )
-                                    }
-                                } message: {
-                                    Text("\(connectionManager.peers.count)명의 그룹원과\n그룹을 확정하시겠어요?")
-                                }
                                 
                                 VStack {
                                     Text("그룹 확정")
@@ -122,7 +86,6 @@ struct HostCallingView: View {
                         connectionManager.host(userData.nickname)
                     }
                     .ignoresSafeArea()
-                    .background(Color.blue)
                     .toolbar {
                         Button(action: {
                         }, label: {
@@ -139,21 +102,41 @@ struct HostCallingView: View {
                                 })
                         })
                     }
-                }else {
+                }
+                else {
                     HostCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear{
+                            groupInfo = GroupInfo(
+                                hostName: userData.nickname,
+                                scheduleName: scheduleName,
+                                selectedDate: selectedDate,
+                                estimatedTime: estimatedTime
+                            )
+                            
                             connectionManager.sendGroupInfoToGuest(groupInfo)
+                            connectionManager.setGroupInfo(groupInfo)
                             print("move")
                         }
                 }
+                
+                if showingAlert {
+                    CustomAlert(showingAlert: $showingAlert, moveToDoneView: $moveToDoneView, guestCnt: connectionManager.peers.count)
+                        .offset(y: -30)
+                }
             }
+                .ignoresSafeArea()
+                .multilineTextAlignment(.center)
         }
     }
 }
 
-//struct HostCallingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HostCallingView(scheduleName: .constant("저녁 회식"), choseDate: .constant([Date]()), estimatedTime: .constant(1))
-//    }
-//}
+struct HostCallingView_Previews: PreviewProvider {
+    static var previews: some View {
+        HostCallingView(
+            connectionManager: ConnectionService(),
+            scheduleName: .constant("저녁 회식"),
+            selectedDate: .constant([Date]()),
+            estimatedTime: .constant(1))
+    }
+}

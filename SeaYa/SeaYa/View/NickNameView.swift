@@ -12,6 +12,7 @@ struct NicknameView: View {
     @State private var nickname = ""
     
     @EnvironmentObject private var userData: UserData
+    
     @State private var isSheetPresented = false
     
     
@@ -32,6 +33,7 @@ struct NicknameView: View {
                             .resizable()
                             .frame(width: 36,height: 36, alignment: .bottomTrailing)
                             .onTapGesture {
+                                print("isClicked!")
                                 isSheetPresented = true
                             }
                     }.padding(.bottom, 22)
@@ -56,7 +58,7 @@ struct NicknameView: View {
             
             Button(action: {
                 if !nickname.isEmpty {
-                  userData.nickname = nickname
+                    userData.setNickName(nickname)
                   isNicknameSettingCompleted = true
               }
             }) {
@@ -88,7 +90,7 @@ struct NicknameView: View {
                     ForEach(0..<9, id: \.self) { index in
                         Button(
                             action: {
-                                userData.characterImageName = "0\(index+1)"
+                                userData.setImageName("0\(index+1)")
                             },
                             label: {
                                 ZStack{

@@ -11,7 +11,6 @@ struct ContentView: View {
     @AppStorage("isNicknameSettingCompleted") private var isNicknameSettingCompleted = false
     @AppStorage("isFixedTimeSettingCompleted") private var isFixedTimeSettingCompleted = false
     @State private var isLaunchScreenVisible = true
-//    @EnvironmentObject private var userData: UserData
     @StateObject private var userData = UserData()
     
     var body: some View {

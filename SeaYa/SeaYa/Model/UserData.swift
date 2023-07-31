@@ -9,9 +9,16 @@ import Foundation
 
 class UserData: ObservableObject{
     var uid : String
-    @Published var nickname: String
-    @Published var characterImageName: String
-    
+    @Published private(set) var nickname: String
+    @Published private(set)var characterImageName: String
+    public func setNickName(_ nickName:String){
+        self.nickname = nickName
+        UserInfoRepository.shared.setNickName(nickName: nickName)
+    }
+    public func setImageName(_ imageName: String){
+        self.characterImageName = imageName
+        UserInfoRepository.shared.setImageName(imageName: imageName)
+    }
     init() {
         if let uid = UserInfoRepository.shared.getUid(){
             self.uid = UserInfoRepository.shared.getUid()!

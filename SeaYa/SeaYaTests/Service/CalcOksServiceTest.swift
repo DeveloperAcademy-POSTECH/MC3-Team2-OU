@@ -9,18 +9,59 @@ import XCTest
 @testable import SeaYa
 
 final class CalcOksServiceTest: XCTestCase {
-    var members : [DateMember]? = nil
+    var members : [DateMember]? = [
+        DateMember(name: "member1", dateEvents: [
+            DateEvent(
+                title: "member1 available, 12:00~15:30",
+                startDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 12,  minute: 00))!,
+                endDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 15,  minute: 30))!
+            ),
+            DateEvent(
+                title: "member1 available, 17:00~18:30",
+                startDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 17,  minute: 00))!,
+                endDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 18,  minute: 30))!
+            )]),
+        
+        DateMember(name: "member2", dateEvents: [
+            DateEvent(
+                title: "member2 available, 12:30~15:00",
+                startDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 12,  minute: 30))!,
+                endDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 15,  minute: 00))!
+            ),
+            DateEvent(
+                title: "member2 available, 17:00~18:30",
+                startDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 15,  minute: 30))!,
+                endDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 18,  minute: 30))!
+            )]),
+        
+        DateMember(name: "member3", dateEvents: [
+            DateEvent(
+                title: "member3 available, 12:00~13:00",
+                startDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 12,  minute: 00))!,
+                endDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 13,  minute: 00))!
+            ),
+            DateEvent(
+                title: "member3 available, 13:30~15:00",
+                startDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 13,  minute: 30))!,
+                endDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 15,  minute: 00))!
+            ),
+            DateEvent(
+                title: "member3 available, 16:00~18:30",
+                startDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 16,  minute: 00))!,
+                endDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 18,  minute: 30))!
+            )]),
+        
+        DateMember(name: "member4", dateEvents: [
+            DateEvent(
+                title: "member4 available, 13:00~17:30",
+                startDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 13,  minute: 00))!,
+                endDate: Calendar.current.date(from: DateComponents(year:2023, month: 8, day: 27, hour: 17,  minute: 30))!
+            )]),
+    ]
     
     //BeforEach
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let testBundle = Bundle(for: Self.self)
-        guard let fileURL = testBundle.url(forResource: "CLMTest", withExtension: "json") else{
-            fatalError()
-        }
-        let decoder = JSONDecoder()
-        let data : Data = try Data(contentsOf: fileURL)
-        members = try decoder.decode([DateMember].self, from: data)
     }
 
     override func tearDownWithError() throws {
@@ -51,7 +92,7 @@ final class CalcOksServiceTest: XCTestCase {
         try await manager.performCalculation(members!, by: [boundDate])
         let result = manager.result!
         print(manager.groupByConsecutiveTime(result))
-        XCTAssertTrue(manager.result?.last?.timeInt == 940624)
+        XCTAssertTrue(manager.result?.last?.timeInt == 940621)
     }
     
     func testExample_3() throws {

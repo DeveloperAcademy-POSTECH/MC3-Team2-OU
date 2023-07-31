@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		0E5E161D2A71FF7600143374 /* GuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E161C2A71FF7600143374 /* GuestListView.swift */; };
 		0E5E161F2A725F7000143374 /* GuestListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E161E2A725F7000143374 /* GuestListCellView.swift */; };
+		0E81B9352A774B90004AB171 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0E81B9342A774B90004AB171 /* Lottie */; };
+		0E81B9372A774C7B004AB171 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9362A774C7B004AB171 /* LottieView.swift */; };
+		0E81B9392A774CB0004AB171 /* HomeView.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E81B9382A774CB0004AB171 /* HomeView.json */; };
+		0E81B93F2A778162004AB171 /* WaitingForConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */; };
+		0E81B9412A7782C2004AB171 /* CheckTimeDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */; };
+		0E81B9432A7786DF004AB171 /* GuestWaitingForConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */; };
+		0E81B9452A77A7FB004AB171 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9442A77A7FB004AB171 /* CustomAlert.swift */; };
 		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
 		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
 		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
@@ -40,7 +47,6 @@
 		739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6C2A613C150022386D /* BoundedDate.swift */; };
 		739FBB6F2A613C240022386D /* TimeOks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6E2A613C240022386D /* TimeOks.swift */; };
 		739FBB712A613C3F0022386D /* DateMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB702A613C3F0022386D /* DateMember.swift */; };
-		739FBB742A613CD80022386D /* CLMTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 739FBB732A613CD80022386D /* CLMTest.json */; };
 		739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB762A613D100022386D /* CalcOksServiceTest.swift */; };
 		73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */; };
 		73CD8FAF2A6593E8003A274D /* ListUpElementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */; };
@@ -65,6 +71,7 @@
 		BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD70682A6802B400977775 /* GuestCallingDone.swift */; };
 		BBDD706B2A68031C00977775 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706A2A68031C00977775 /* ResultView.swift */; };
 		BBDD706F2A69453100977775 /* TextFieldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706E2A69453100977775 /* TextFieldTheme.swift */; };
+		BBDD707D2A735A6300977775 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD707C2A735A6300977775 /* UserInfoView.swift */; };
 		EE14DBC12A64CF22004ECD86 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC02A64CF22004ECD86 /* SettingView.swift */; };
 		EE14DBC32A64CFE6004ECD86 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +96,12 @@
 /* Begin PBXFileReference section */
 		0E5E161C2A71FF7600143374 /* GuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListView.swift; sourceTree = "<group>"; };
 		0E5E161E2A725F7000143374 /* GuestListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListCellView.swift; sourceTree = "<group>"; };
+		0E81B9362A774C7B004AB171 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		0E81B9382A774CB0004AB171 /* HomeView.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HomeView.json; sourceTree = "<group>"; };
+		0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForConfirmView.swift; sourceTree = "<group>"; };
+		0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTimeDoneView.swift; sourceTree = "<group>"; };
+		0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestWaitingForConfirmView.swift; sourceTree = "<group>"; };
+		0E81B9442A77A7FB004AB171 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
 		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -121,7 +134,6 @@
 		739FBB6C2A613C150022386D /* BoundedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedDate.swift; sourceTree = "<group>"; };
 		739FBB6E2A613C240022386D /* TimeOks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOks.swift; sourceTree = "<group>"; };
 		739FBB702A613C3F0022386D /* DateMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMember.swift; sourceTree = "<group>"; };
-		739FBB732A613CD80022386D /* CLMTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CLMTest.json; sourceTree = "<group>"; };
 		739FBB762A613D100022386D /* CalcOksServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksServiceTest.swift; sourceTree = "<group>"; };
 		73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementView.swift; sourceTree = "<group>"; };
 		73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementDetailView.swift; sourceTree = "<group>"; };
@@ -149,6 +161,8 @@
 		BBDD70682A6802B400977775 /* GuestCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCallingDone.swift; sourceTree = "<group>"; };
 		BBDD706A2A68031C00977775 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		BBDD706E2A69453100977775 /* TextFieldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTheme.swift; sourceTree = "<group>"; };
+		BBDD707C2A735A6300977775 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		BBDD707E2A73627B00977775 /* NicknameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NicknameEditView.swift; path = "../../../../../../../../.Trash/MC3-Team2-OU/SeaYa/SeaYa/View/SettingView/NicknameEditView.swift"; sourceTree = "<group>"; };
 		EE14DBC02A64CF22004ECD86 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E81B9352A774B90004AB171 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,14 +237,6 @@
 				1012D6622A755D3B0033BD72 /* UserInfoRepository.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		739FBB722A613CA80022386D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				739FBB732A613CD80022386D /* CLMTest.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		739FBB752A613CF30022386D /* Service */ = {
@@ -313,7 +320,6 @@
 			children = (
 				739FBB752A613CF30022386D /* Service */,
 				73FA05302A5E301C00EB176B /* SeaYaTests.swift */,
-				739FBB722A613CA80022386D /* Resources */,
 			);
 			path = SeaYaTests;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BBDD707B2A735A4E00977775 /* SettingView */,
 				104555882A66408900562B98 /* TimeTableView */,
 				0EEFB6512A64D85900F5C5D2 /* Host */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
@@ -342,6 +349,10 @@
 				EE14DBC02A64CF22004ECD86 /* SettingView.swift */,
 				73AA046E2A6ABE1F003FA06F /* ConfirmView */,
 				73CD8FE82A65A935003A274D /* ListUpView */,
+				0E81B9362A774C7B004AB171 /* LottieView.swift */,
+				0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */,
+				0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */,
+				0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,6 +387,8 @@
 		BBBBC7312A5E325E00F39E2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0E81B9442A77A7FB004AB171 /* CustomAlert.swift */,
+				0E81B9382A774CB0004AB171 /* HomeView.json */,
 				BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */,
 				BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */,
 				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
@@ -416,6 +429,15 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		BBDD707B2A735A4E00977775 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				BBDD707C2A735A6300977775 /* UserInfoView.swift */,
+				BBDD707E2A73627B00977775 /* NicknameEditView.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -432,6 +454,9 @@
 			dependencies = (
 			);
 			name = SeaYa;
+			packageProductDependencies = (
+				0E81B9342A774B90004AB171 /* Lottie */,
+			);
 			productName = SeaYa;
 			productReference = 73FA051C2A5E301A00EB176B /* SeaYa.app */;
 			productType = "com.apple.product-type.application";
@@ -504,6 +529,9 @@
 				Base,
 			);
 			mainGroup = 73FA05132A5E301A00EB176B;
+			packageReferences = (
+				0E81B9332A774B8F004AB171 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			productRefGroup = 73FA051D2A5E301A00EB176B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -521,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */,
+				0E81B9392A774CB0004AB171 /* HomeView.json in Resources */,
 				73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,7 +558,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				739FBB742A613CD80022386D /* CLMTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,27 +599,33 @@
 				73130C022A6A8E2700554A36 /* ConfirmStartModalView.swift in Sources */,
 				104555852A66402C00562B98 /* CalendarService.swift in Sources */,
 				104555872A66404700562B98 /* TimeTableService.swift in Sources */,
+				0E81B9412A7782C2004AB171 /* CheckTimeDoneView.swift in Sources */,
 				0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */,
 				1092DD782A60DE8100D4F6D3 /* WeekDay.swift in Sources */,
 				739FBB712A613C3F0022386D /* DateMember.swift in Sources */,
 				73CD8FAF2A6593E8003A274D /* ListUpElementDetailView.swift in Sources */,
 				0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */,
+				0E81B93F2A778162004AB171 /* WaitingForConfirmView.swift in Sources */,
 				0E5E161D2A71FF7600143374 /* GuestListView.swift in Sources */,
+				0E81B9432A7786DF004AB171 /* GuestWaitingForConfirmView.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
 				739FBB6B2A613C050022386D /* DateEvent.swift in Sources */,
 				1045558C2A6645F400562B98 /* TimeTableViewModel.swift in Sources */,
 				1045558A2A66409B00562B98 /* TimeTable.swift in Sources */,
 				0EEFB67A2A6EF8D200F5C5D2 /* ScheduleDone.swift in Sources */,
 				1092DD762A60DE4D00D4F6D3 /* LocalEvent.swift in Sources */,
+				0E81B9452A77A7FB004AB171 /* CustomAlert.swift in Sources */,
 				73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */,
 				739FBB6D2A613C150022386D /* BoundedDate.swift in Sources */,
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
 				0EEFB6782A6EE1B300F5C5D2 /* GroupInfo.swift in Sources */,
 				73130C042A6A97EA00554A36 /* ConfirmMemberModalView.swift in Sources */,
 				BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */,
+				0E81B9372A774C7B004AB171 /* LottieView.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */,
 				BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */,
+				BBDD707D2A735A6300977775 /* UserInfoView.swift in Sources */,
 				BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */,
 				1012D6632A755D3B0033BD72 /* UserInfoRepository.swift in Sources */,
 				0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */,
@@ -950,6 +984,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0E81B9332A774B8F004AB171 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0E81B9342A774B90004AB171 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E81B9332A774B8F004AB171 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 73FA05142A5E301A00EB176B /* Project object */;
 }
