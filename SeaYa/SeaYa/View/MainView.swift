@@ -66,6 +66,7 @@ struct MainView: View {
                             .onLongPressGesture(minimumDuration: 1) {
                                 connectionManager.guest(userData.nickname, userData.characterImageName)
                                 startGroupping = true
+                                VibrationManager.shared?.playHaptic(durations: [1.0, 2.0], powers: [0.5, 1.0])
                             }
                         }
                         
@@ -137,7 +138,6 @@ struct MainView: View {
                         
                         if startGroupping {
                             //TODO: animation start
-                            
                             Text("잠시만 기다려주세요")
                                 .font(.system(size: 23, weight: .bold))
                                 .foregroundColor(.white)
@@ -157,6 +157,8 @@ struct MainView: View {
                     GuestCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear(){
+                            VibrationManager.shared?.stopHapric()
+                            haptics(.success)
                             startGroupping = false
                             print(connectionManager.groupInfo)
                         }
