@@ -11,7 +11,7 @@ struct GuestListView: View {
     @ObservedObject var connectionManager: ConnectionService
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             VStack {
                 GuestListCellView(connectionManager: connectionManager, index: 3)
                     .padding(.bottom, 57)

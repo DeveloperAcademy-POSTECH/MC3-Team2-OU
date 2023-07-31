@@ -14,7 +14,7 @@ struct HostCallingView: View {
     @State private var showingAlert = false
     @State private var groupInfo = GroupInfo(scheduleName: "", selectedDate: [], estimatedTime: 0)
     @Binding var scheduleName: String
-    @Binding var choseDate: [Date]
+    @Binding var selectedDate: [Date]
     @Binding var estimatedTime: Int
     
     var body: some View {
@@ -35,18 +35,10 @@ struct HostCallingView: View {
                                 .offset(y: -30)
                             
                             ZStack {
-                                Circle()
-                                    .frame(width: 350, height: 350)
-                                    .foregroundColor(Color(red: 0.97, green: 0.97, blue: 0.98))
-                                    .opacity(0.2)
-                                Circle()
-                                    .frame(width: 282, height: 282)
-                                    .foregroundColor(Color(red: 0.97, green: 0.97, blue: 0.98))
-                                    .opacity(0.4)
-                                Circle()
-                                    .frame(width: 220, height: 220)
-                                    .foregroundColor(Color(red: 0.97, green: 0.97, blue: 0.98))
-                                    .opacity(0.6)
+                                LottieView(jsonName: "HomeView")
+                                    .scaledToFit()
+//                                    .offset(y: 10)
+                                
                                 Button (action: {
                                     showingAlert.toggle()
                                 }, label: {
@@ -61,7 +53,7 @@ struct HostCallingView: View {
                                                 groupInfo = GroupInfo(
                                                     hostName: "",
                                                     scheduleName: scheduleName,
-                                                    selectedDate: choseDate,
+                                                    selectedDate: selectedDate,
                                                     estimatedTime: estimatedTime
                                                 )
                                                 
@@ -122,7 +114,6 @@ struct HostCallingView: View {
                         connectionManager.host(userData.nickname)
                     }
                     .ignoresSafeArea()
-                    .background(Color.blue)
                     .toolbar {
                         Button(action: {
                         }, label: {
@@ -152,8 +143,12 @@ struct HostCallingView: View {
     }
 }
 
-//struct HostCallingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HostCallingView(scheduleName: .constant("저녁 회식"), choseDate: .constant([Date]()), estimatedTime: .constant(1))
-//    }
-//}
+struct HostCallingView_Previews: PreviewProvider {
+    static var previews: some View {
+        HostCallingView(
+            connectionManager: ConnectionService(),
+            scheduleName: .constant("저녁 회식"),
+            selectedDate: .constant([Date]()),
+            estimatedTime: .constant(1))
+    }
+}

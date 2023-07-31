@@ -16,7 +16,7 @@ struct MakingGroupView: View {
     @State private var scheduleName: String = ""
     @State private var selectedHour = 0
     @State private var selectedMinute = 0
-    @State private var choseDate = [Date]()
+    @State private var selectedDate = [Date]()
     
     var body: some View {
         NavigationStack {
@@ -39,7 +39,7 @@ struct MakingGroupView: View {
                         .frame(maxWidth: 358, maxHeight: 200)
                         .cornerRadius(16)
                     
-                    CalendarView(choseDate: $choseDate)
+                    CalendarView(choseDate: $selectedDate)
                         .padding(16)
                     
                 }
@@ -74,7 +74,7 @@ struct MakingGroupView: View {
                         destination: HostCallingView(
                             connectionManager: connectionManager,
                             scheduleName: $scheduleName,
-                            choseDate: $choseDate,
+                            selectedDate: $selectedDate,
                             estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
                         )
                         .navigationBarBackButtonHidden()
