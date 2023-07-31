@@ -44,11 +44,17 @@ class TimeTableViewModel: ObservableObject{
             TableItem(event)
         }
     }
-    public func buttonClicked(userData: UserData){
+    public func buttonClicked(userData: UserData,connectionManager: ConnectionService){
         let selectedDateEvent = selectedItem.map { item in
             DateEvent(title: item.event.title, startDate: item.event.start, endDate: item.event.end)
         }
-        let dateMember = DateMember(id: UUID(uuidString: userData.uid)!, name: userData.nickname, dateEvents: selectedDateEvent)
+        if connectionManager.isHosting{
+            
+        }
+        else{
+            let dateMember = DateMember(id: UUID(uuidString: userData.uid)!, name: userData.nickname, dateEvents: selectedDateEvent)
+            connectionManager.sendTimeTableInfoToHost(dateMember)
+        }
     }
 //    private func makeTestCal()async{
 //        let selectedDays = ["2023-07-16","2023-07-17","2023-07-18"]

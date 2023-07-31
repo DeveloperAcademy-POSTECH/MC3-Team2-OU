@@ -35,6 +35,7 @@ struct HostCallingDone: View {
             NavigationLink(
                 destination: TimeTable(vm:TimeTableViewModel(selectedDay: getSelectedDate(connectionManager)))
                     .environmentObject(connectionManager)
+                    .environmentObject(userData)
                     .navigationBarBackButtonHidden(true),
                 tag: 1,
                 selection: $clicked) {}
@@ -50,7 +51,6 @@ struct HostCallingDone: View {
     }
     func getSelectedDate(_ connectionManager: ConnectionService) -> [String]{
         if let arr = connectionManager.groupInfo{
-            print("groupInfo 들어옴")
             return arr.selectedDate.map { date in
                 DateUtil.getFormattedDate(date)
             }

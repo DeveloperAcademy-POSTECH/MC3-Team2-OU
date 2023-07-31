@@ -11,7 +11,7 @@ struct TimeTable: View {
     typealias MyCalendar = Dictionary<String,[Event]>
     @State var clicked: Int? = 0
     @EnvironmentObject var connectionManager: ConnectionService
-//    @ObservedObject var vm = TimeTableViewModel(selectedDay: ["2023-07-17","2023-07-18","2023-07-19","2023-07-20","2023-07-21","2023-07-22","2023-07-23"])
+    @EnvironmentObject var userData: UserData
     @ObservedObject var vm: TimeTableViewModel
     
     var body: some View {
@@ -27,12 +27,13 @@ struct TimeTable: View {
                         }
                     }
                     //MARK: 페이지 넘기기
-//                    NavigationLink(
-//                        destination:
-//                        tag: 1,
-//                        selection: $clicked) {}
+                    NavigationLink(
+                        destination: WaitingForConfirmView().navigationBarBackButtonHidden(true),
+                        tag: 1,
+                        selection: $clicked) {}
                     BigButton_Blue(title: "입력 완료") {
-                        //vm.buttonClicked()
+                        vm.buttonClicked(userData: userData,connectionManager: connectionManager)
+                        clicked = 1
                     }
                 }.padding(16)
             }
