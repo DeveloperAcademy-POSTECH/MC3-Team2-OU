@@ -94,6 +94,7 @@ struct MakingGroupView: View {
             }
             .background(Color.backgroundColor)
             .navigationBarTitleDisplayMode(.inline)
+            
             .toolbar { // <2>
                 ToolbarItem(placement: .principal) {
                     VStack {

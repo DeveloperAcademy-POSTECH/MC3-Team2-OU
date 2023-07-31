@@ -65,6 +65,8 @@
 		BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD70682A6802B400977775 /* GuestCallingDone.swift */; };
 		BBDD706B2A68031C00977775 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706A2A68031C00977775 /* ResultView.swift */; };
 		BBDD706F2A69453100977775 /* TextFieldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706E2A69453100977775 /* TextFieldTheme.swift */; };
+		BBDD707D2A735A6300977775 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD707C2A735A6300977775 /* UserInfoView.swift */; };
+		BBDD707F2A73627B00977775 /* NicknameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD707E2A73627B00977775 /* NicknameEditView.swift */; };
 		EE14DBC12A64CF22004ECD86 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC02A64CF22004ECD86 /* SettingView.swift */; };
 		EE14DBC32A64CFE6004ECD86 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
@@ -149,6 +151,8 @@
 		BBDD70682A6802B400977775 /* GuestCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCallingDone.swift; sourceTree = "<group>"; };
 		BBDD706A2A68031C00977775 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		BBDD706E2A69453100977775 /* TextFieldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTheme.swift; sourceTree = "<group>"; };
+		BBDD707C2A735A6300977775 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		BBDD707E2A73627B00977775 /* NicknameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NicknameEditView.swift; path = "../../../../../../../../.Trash/MC3-Team2-OU/SeaYa/SeaYa/View/SettingView/NicknameEditView.swift"; sourceTree = "<group>"; };
 		EE14DBC02A64CF22004ECD86 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,6 +334,7 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BBDD707B2A735A4E00977775 /* SettingView */,
 				104555882A66408900562B98 /* TimeTableView */,
 				0EEFB6512A64D85900F5C5D2 /* Host */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
@@ -414,6 +419,15 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		BBDD707B2A735A4E00977775 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				BBDD707C2A735A6300977775 /* UserInfoView.swift */,
+				BBDD707E2A73627B00977775 /* NicknameEditView.swift */,
+			);
+			path = SettingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -589,9 +603,11 @@
 				0EEFB6782A6EE1B300F5C5D2 /* GroupInfo.swift in Sources */,
 				73130C042A6A97EA00554A36 /* ConfirmMemberModalView.swift in Sources */,
 				BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */,
+				BBDD707F2A73627B00977775 /* NicknameEditView.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */,
 				BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */,
+				BBDD707D2A735A6300977775 /* UserInfoView.swift in Sources */,
 				BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */,
 				1012D6632A755D3B0033BD72 /* UserInfoRepository.swift in Sources */,
 				0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */,
