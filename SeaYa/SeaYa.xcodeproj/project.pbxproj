@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0E5E161D2A71FF7600143374 /* GuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E161C2A71FF7600143374 /* GuestListView.swift */; };
 		0E5E161F2A725F7000143374 /* GuestListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5E161E2A725F7000143374 /* GuestListCellView.swift */; };
+		0E81B9352A774B90004AB171 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0E81B9342A774B90004AB171 /* Lottie */; };
+		0E81B9372A774C7B004AB171 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9362A774C7B004AB171 /* LottieView.swift */; };
+		0E81B9392A774CB0004AB171 /* HomeView.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E81B9382A774CB0004AB171 /* HomeView.json */; };
 		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
 		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
 		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
@@ -89,6 +92,8 @@
 /* Begin PBXFileReference section */
 		0E5E161C2A71FF7600143374 /* GuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListView.swift; sourceTree = "<group>"; };
 		0E5E161E2A725F7000143374 /* GuestListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListCellView.swift; sourceTree = "<group>"; };
+		0E81B9362A774C7B004AB171 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		0E81B9382A774CB0004AB171 /* HomeView.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HomeView.json; sourceTree = "<group>"; };
 		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
 		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -158,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E81B9352A774B90004AB171 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +348,7 @@
 				EE14DBC02A64CF22004ECD86 /* SettingView.swift */,
 				73AA046E2A6ABE1F003FA06F /* ConfirmView */,
 				73CD8FE82A65A935003A274D /* ListUpView */,
+				0E81B9362A774C7B004AB171 /* LottieView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,6 +383,7 @@
 		BBBBC7312A5E325E00F39E2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0E81B9382A774CB0004AB171 /* HomeView.json */,
 				BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */,
 				BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */,
 				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
@@ -432,6 +440,9 @@
 			dependencies = (
 			);
 			name = SeaYa;
+			packageProductDependencies = (
+				0E81B9342A774B90004AB171 /* Lottie */,
+			);
 			productName = SeaYa;
 			productReference = 73FA051C2A5E301A00EB176B /* SeaYa.app */;
 			productType = "com.apple.product-type.application";
@@ -504,6 +515,9 @@
 				Base,
 			);
 			mainGroup = 73FA05132A5E301A00EB176B;
+			packageReferences = (
+				0E81B9332A774B8F004AB171 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			productRefGroup = 73FA051D2A5E301A00EB176B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -521,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73FA05272A5E301C00EB176B /* Preview Assets.xcassets in Resources */,
+				0E81B9392A774CB0004AB171 /* HomeView.json in Resources */,
 				73FA05242A5E301C00EB176B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,6 +604,7 @@
 				0EEFB6782A6EE1B300F5C5D2 /* GroupInfo.swift in Sources */,
 				73130C042A6A97EA00554A36 /* ConfirmMemberModalView.swift in Sources */,
 				BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */,
+				0E81B9372A774C7B004AB171 /* LottieView.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */,
 				BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */,
@@ -950,6 +966,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0E81B9332A774B8F004AB171 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0E81B9342A774B90004AB171 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E81B9332A774B8F004AB171 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 73FA05142A5E301A00EB176B /* Project object */;
 }
