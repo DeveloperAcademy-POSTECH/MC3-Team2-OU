@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct ListUpView: View {
+    @ObservedObject var connectionManager = ConnectionService()
     @State var selected : TimeOks?
     var timeOkGroup : [[TimeOks]]
     var period : Int
@@ -31,21 +32,25 @@ struct ListUpView: View {
                 if let selected = selected{
                     NavigationLink(
                         destination: ConfirmView(
-                        selectedEvent: DateEvent(
-                            title: "선택받은 이벤트 이름",
-                            startDate: Date(timeIntervalSince1970: TimeInterval(selected.timeInt*1800)),
-                            endDate: Date(timeIntervalSince1970: TimeInterval(selected.timeInt*1800))
-                        )),
-                        label:  {
+                            selectedEvent: DateEvent(
+                                title: connectionManager.groupInfo?.scheduleName ?? "우리들의 모임",
+                                startDate: Date(timeIntervalSince1970: TimeInterval(selected.timeInt*1800)),
+                                endDate: Date(timeIntervalSince1970: TimeInterval(selected.timeInt*1800))
+                            )
+                        ), label:  {
                             Text("일정 검토하기").bigButton(textColor: .white)
                                 .frame(width: 358, alignment: .center)
                                 .padding(.vertical, 18)
                                 .background(Color.primaryColor)
                                 .cornerRadius(16)
-                        }).simultaneousGesture(TapGesture().onEnded{
+                        }
+                    )
+                    .simultaneousGesture(TapGesture().onEnded{
                             let selectedEvent = DateEvent(title: "Default", startDate: Date(timeIntervalSince1970: TimeInterval(selected.timeInt*1800)), endDate: Date(timeIntervalSince1970: TimeInterval((selected.timeInt+1)*1800)))
                             let time = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .timeZone], from:selectedEvent.startDate )
-                            print(time.year!, time.month!, time.day!, time.hour!, time.minute!, selected.Oks,time.timeZone!)})
+                            print(time.year!, time.month!, time.day!, time.hour!, time.minute!, selected.Oks,time.timeZone!)
+                        }
+                    )
                 } else {
                     BigButton_Unactive(title: "최종 일정을 선택해주세요", action: {})
                 }
