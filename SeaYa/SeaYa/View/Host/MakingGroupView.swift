@@ -11,6 +11,7 @@ import SwiftUI
 struct MakingGroupView: View {
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject private var userData: UserData
+    @ObservedObject var connectionManager: ConnectionService
     
     @State private var scheduleName: String = ""
     @State private var selectedHour = 0
@@ -71,6 +72,7 @@ struct MakingGroupView: View {
                 }, label: {
                     NavigationLink(
                         destination: HostCallingView(
+                            connectionManager: connectionManager,
                             scheduleName: $scheduleName,
                             choseDate: $choseDate,
                             estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
@@ -112,8 +114,8 @@ struct MakingGroupView: View {
     }
 }
 
-struct MakingGroupView_Previews: PreviewProvider {
-    static var previews: some View {
-        MakingGroupView()
-    }
-}
+//struct MakingGroupView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MakingGroupView()
+//    }
+//}
