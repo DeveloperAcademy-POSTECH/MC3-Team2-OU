@@ -62,7 +62,7 @@ class ConnectionService: NSObject, ObservableObject {
         session?.delegate = self
         advertiserAssistant = MCNearbyServiceAdvertiser(
             peer: myPeerId,
-            discoveryInfo: [nickName: index],
+            discoveryInfo: ["imageName": index],
             serviceType: ConnectionService.service
         )
         

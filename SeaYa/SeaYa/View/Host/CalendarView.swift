@@ -19,6 +19,7 @@ struct CalendarView: View {
     
     var calendar: Calendar {
         var calendar = Calendar.current
+        calendar.timeZone = TimeZone.current
         calendar.firstWeekday = 2
         return calendar
     }
