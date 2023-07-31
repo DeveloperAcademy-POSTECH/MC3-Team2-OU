@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct ScheduleDone: Codable {
+struct ScheduleDone: Codable { 
     var scheduleName: String
-    var choseDate: Date
-    var startTime: Int
-    var endTime: Int
-    var isAttend: Bool
+    var selectedDate: Date
+    var startTime: Date
+    var endTime: Date
+    var isAttend: [String : Bool]
 }

@@ -17,11 +17,11 @@ struct HostCallingDone: View {
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 40)
 
-            Image("your_image_name")
+            Image(userData.characterImageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 150)
-            Text("아카데미 저녁 회식")
+            Text(connectionManager.groupInfo?.scheduleName ?? "")
                 .headline(textColor: Color.textColor)
                 .padding(.top, 40)
                 .padding(.bottom, 18)
