@@ -55,6 +55,7 @@ struct HostCallingView: View {
                                                     selectedDate: selectedDate,
                                                     estimatedTime: estimatedTime
                                                 )
+                                                connectionManager.setGroupInfo(groupInfo)
                                                 
                                                 moveToDoneView = true
                                             }, label: {
@@ -134,7 +135,6 @@ struct HostCallingView: View {
                         .environmentObject(userData)
                         .onAppear{
                             connectionManager.sendGroupInfoToGuest(groupInfo)
-                            connectionManager.setGroupInfo(groupInfo)
                             print("move")
                         }
                 }
