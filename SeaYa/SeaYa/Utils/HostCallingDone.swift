@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HostCallingDone: View {
+    @ObservedObject var connectionManager: ConnectionService
+    @EnvironmentObject private var userData: UserData
+    
     var body: some View {
         VStack {
             Text("그룹이 확정되었어요")
@@ -41,6 +44,6 @@ struct HostCallingDone: View {
 
 struct HostCallingDone_Previews: PreviewProvider {
     static var previews: some View {
-        HostCallingDone()
+        HostCallingDone(connectionManager: ConnectionService())
     }
 }

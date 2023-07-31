@@ -12,7 +12,7 @@ struct HostCallingView: View {
     @EnvironmentObject private var userData: UserData
     @State private var moveToDoneView = false
     @State private var showingAlert = false
-    @State private var groupInfo = GroupInfo(scheduleName: "", choseDate: [], estimatedTime: 0)
+    @State private var groupInfo = GroupInfo(scheduleName: "", selectedDate: [], estimatedTime: 0)
     @Binding var scheduleName: String
     @Binding var choseDate: [Date]
     @Binding var estimatedTime: Int
@@ -61,7 +61,7 @@ struct HostCallingView: View {
                                                 groupInfo = GroupInfo(
                                                     hostName: "",
                                                     scheduleName: scheduleName,
-                                                    choseDate: choseDate,
+                                                    selectedDate: choseDate,
                                                     estimatedTime: estimatedTime
                                                 )
                                                 
@@ -140,7 +140,8 @@ struct HostCallingView: View {
                         })
                     }
                 }else {
-                    HostCallingDone()
+                    HostCallingDone(connectionManager: connectionManager)
+                        .environmentObject(userData)
                         .onAppear{
                             connectionManager.sendGroupInfoToGuest(groupInfo)
                             print("move")
