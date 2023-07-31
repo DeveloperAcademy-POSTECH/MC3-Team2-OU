@@ -22,9 +22,14 @@ struct DateMember : Hashable, Codable{
         self.id = id
         self.name = name
         self.dateEvents = []
-    }    
+    }
     init(id: UUID, name: String, dateEvents : [DateEvent]){
         self.id = id
+        self.name = name
+        self.dateEvents = dateEvents
+    }
+    init(name : String, dateEvents : [DateEvent]){
+        self.id = UUID()
         self.name = name
         self.dateEvents = dateEvents
     }
