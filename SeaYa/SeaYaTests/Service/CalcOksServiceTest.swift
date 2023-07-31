@@ -62,13 +62,6 @@ final class CalcOksServiceTest: XCTestCase {
     //BeforEach
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let testBundle = Bundle(for: Self.self)
-        guard let fileURL = testBundle.url(forResource: "CLMTest", withExtension: "json") else{
-            fatalError()
-        }
-        let decoder = JSONDecoder()
-        let data : Data = try Data(contentsOf: fileURL)
-        members = try decoder.decode([DateMember].self, from: data)
     }
 
     override func tearDownWithError() throws {
