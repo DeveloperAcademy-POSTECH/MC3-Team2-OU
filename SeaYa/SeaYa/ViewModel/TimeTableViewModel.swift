@@ -52,9 +52,6 @@ class TimeTableViewModel: ObservableObject{
             
         }
         else{
-            print("uid : " + userData.uid)
-            print("nick : " + userData.nickname)
-            print("image : " + userData.characterImageName)
             let dateMember = DateMember(id: UUID(uuidString: userData.uid)!, name: userData.nickname, dateEvents: selectedDateEvent)
             connectionManager.sendTimeTableInfoToHost(dateMember)
         }
