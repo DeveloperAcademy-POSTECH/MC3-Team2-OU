@@ -27,11 +27,12 @@ struct HostCallingView: View {
                     startPoint: .top, endPoint: .bottom
                 )
                 .edgesIgnoringSafeArea(.all)
+                
                 if !moveToDoneView {
                     VStack {
                         ZStack {
                             GuestListView(connectionManager: connectionManager)
-                                .frame(alignment: .center)
+                                .multilineTextAlignment(.center)
                                 .offset(y: -30)
                             
                             ZStack {
@@ -45,34 +46,6 @@ struct HostCallingView: View {
                                         .frame(width: 145, height: 145)
                                         .foregroundColor(.white)
                                 })
-                                .alert("그룹을 확정하시겠어요?", isPresented: $showingAlert) {
-                                    VStack {
-                                        Button(
-                                            action: {
-                                                groupInfo = GroupInfo(
-                                                    hostName: userData.nickname,
-                                                    scheduleName: scheduleName,
-                                                    selectedDate: selectedDate,
-                                                    estimatedTime: estimatedTime
-                                                )
-                                                
-                                                moveToDoneView = true
-                                            }, label: {
-                                                Text("확정할게요")
-                                            }
-                                        )
-                                        
-                                        Button(
-                                            role: .cancel,
-                                            action: {},
-                                            label: {
-                                                Text("취소")
-                                            }
-                                        )
-                                    }
-                                } message: {
-                                    Text("\(connectionManager.peers.count)명의 그룹원과\n그룹을 확정하시겠어요?")
-                                }
                                 
                                 VStack {
                                     Text("그룹 확정")
@@ -129,16 +102,31 @@ struct HostCallingView: View {
                                 })
                         })
                     }
-                }else {
+                }
+                else {
                     HostCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear{
+                            groupInfo = GroupInfo(
+                                hostName: userData.nickname,
+                                scheduleName: scheduleName,
+                                selectedDate: selectedDate,
+                                estimatedTime: estimatedTime
+                            )
+                            
                             connectionManager.sendGroupInfoToGuest(groupInfo)
                             connectionManager.setGroupInfo(groupInfo)
                             print("move")
                         }
                 }
+                
+                if showingAlert {
+                    CustomAlert(showingAlert: $showingAlert, moveToDoneView: $moveToDoneView, guestCnt: connectionManager.peers.count)
+                        .offset(y: -30)
+                }
             }
+                .ignoresSafeArea()
+                .multilineTextAlignment(.center)
         }
     }
 }

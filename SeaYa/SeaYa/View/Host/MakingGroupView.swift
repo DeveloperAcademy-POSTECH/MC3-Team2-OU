@@ -17,6 +17,7 @@ struct MakingGroupView: View {
     @State private var selectedHour = 0
     @State private var selectedMinute = 0
     @State private var selectedDate = [Date]()
+    @State private var moveToNextView = false
     
     var body: some View {
         NavigationStack {
@@ -68,29 +69,27 @@ struct MakingGroupView: View {
                 }
                 .frame(minHeight: 150)
                 
-                Button(action: {
-                }, label: {
-                    NavigationLink(
-                        destination: HostCallingView(
-                            connectionManager: connectionManager,
-                            scheduleName: $scheduleName,
-                            selectedDate: $selectedDate,
-                            estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
-                        )
-                        .navigationBarBackButtonHidden()
-                        .environmentObject(userData),
-                        
-                        label: {
-                            Text("다음")
-                                .foregroundColor(.white)
-                                .padding()
-                        })
-                })
-//                .disabled(scheduleName.isEmpty || choseDate.isEmpty || (selectedHour == 0 && selectedMinute == 0))
-                .frame(maxWidth: 358)
-                .background(Color.blue)
-                .cornerRadius(10)
+                BigButton_Blue(
+                    title: "다음",
+                    action: {
+                        moveToNextView = true
+                    }
+                )
                 .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
+                
+                NavigationLink(
+                    destination: HostCallingView(
+                                    connectionManager: connectionManager,
+                                    scheduleName: $scheduleName,
+                                    selectedDate: $selectedDate,
+                                    estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
+                                )
+                                .navigationBarBackButtonHidden()
+                                .environmentObject(userData),
+                    isActive: $moveToNextView,
+                    label: {
+                        EmptyView()
+                    })
             }
             .background(Color.backgroundColor)
             .navigationBarTitleDisplayMode(.inline)
@@ -115,8 +114,8 @@ struct MakingGroupView: View {
     }
 }
 
-//struct MakingGroupView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MakingGroupView()
-//    }
-//}
+struct MakingGroupView_Previews: PreviewProvider {
+    static var previews: some View {
+        MakingGroupView(connectionManager: ConnectionService())
+    }
+}

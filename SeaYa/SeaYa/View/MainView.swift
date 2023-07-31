@@ -135,7 +135,6 @@ struct MainView: View {
                         }
                         
                         if startGroupping {
-                            //TODO: animation start
                             Text("잠시만 기다려주세요")
                                 .font(.system(size: 23, weight: .bold))
                                 .foregroundColor(.white)
