@@ -34,7 +34,7 @@ class TimeTableService{
             var events = [Event]()
             var tStart = DateUtil.formattedDateToDate(day + " 09:00") // 이건 귀찮아서 그냥 했는데 수정해야함
             var tEnd = DateUtil.formattedDateToDate(day + " 09:30")
-            for _ in 0 ... itemNum{
+            for _ in 0 ... (itemNum-1){
                 let event = Event(title: "blank", start: tStart, end: tEnd)
                 tStart = tStart.advanced(by: 60*30)
                 tEnd = tEnd.advanced(by: 60*30)
