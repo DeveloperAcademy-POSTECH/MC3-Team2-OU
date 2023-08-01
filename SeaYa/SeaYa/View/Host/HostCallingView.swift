@@ -104,17 +104,16 @@ struct HostCallingView: View {
                     }
                 }
                 else {
-                    HostCallingDone(connectionManager: connectionManager)
-                        .environmentObject(userData)
-                        .onAppear{
-                            connectionManager.groupInfo = GroupInfo(
-                                hostName: userData.nickname,
-                                scheduleName: scheduleName,
-                                selectedDate: selectedDate,
-                                estimatedTime: estimatedTime
-                            )
-                            print("move")
-                        }
+                    HostCallingDone(
+                        connectionManager: connectionManager,
+                        groupInfo: GroupInfo(
+                            hostName: userData.nickname,
+                            scheduleName: scheduleName,
+                            selectedDate: selectedDate,
+                            estimatedTime: estimatedTime
+                        )
+                    )
+                    .environmentObject(userData)
                 }
                 
                 if showingAlert {
