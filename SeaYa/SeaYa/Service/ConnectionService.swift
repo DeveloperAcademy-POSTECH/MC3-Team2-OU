@@ -112,7 +112,7 @@ class ConnectionService: NSObject, ObservableObject {
         groupInfo = info
     }
     
-    func sendScheduleInfo(_ info: ScheduleDone) {
+    func setScheduleInfo(_ info: ScheduleDone) {
         scheduleDone = info
     }
 }
