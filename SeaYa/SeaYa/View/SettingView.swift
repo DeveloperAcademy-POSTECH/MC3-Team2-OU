@@ -52,9 +52,6 @@ struct SettingView: View {
                 Text("시간 지정 편집")
                     .font(.system(size:32, weight: .semibold))
                     .padding(.bottom, 20)
-                    
-                
-                // Section1 - 태그/입력으로 일정을 선택.
                 Section(
                     content: {
                         ZStack{
@@ -197,6 +194,7 @@ struct SettingView: View {
                     .padding(.bottom, 16)
                 }
             }
+        
             .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
             .scrollDisabled(scrollDisabled)
     }

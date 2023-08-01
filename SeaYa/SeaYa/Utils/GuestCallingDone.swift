@@ -17,7 +17,7 @@ struct GuestCallingDone: View {
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 40)
 
-            Image(userData.characterImageName)
+            Image("guestCallingDoneImage")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 150)

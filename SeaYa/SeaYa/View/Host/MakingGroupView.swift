@@ -11,34 +11,31 @@ struct MakingGroupView: View {
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject private var userData: UserData
     @ObservedObject var connectionManager: ConnectionService
-    
     @State private var scheduleName: String = ""
     @State private var selectedHour = 0
     @State private var selectedMinute = 0
     @State private var selectedDate = [Date]()
     @State private var moveToNextView = false
-    
+    var isNextButtonDisabled: Bool {
+        return scheduleName.isEmpty || selectedDate.isEmpty || selectedHour == 0 || selectedMinute == 0
+    }
+
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
                 Text("일정 제목")
                     .headline(textColor: Color.textColor)
                     .padding(EdgeInsets(top: 34, leading: 16, bottom: 0, trailing: 0))
-                
                 TextFieldTheme(placeholder: "제목을 입력하세요", input: $scheduleName)
                     .padding(EdgeInsets(top: 6, leading: 16, bottom: 0, trailing: 16))
-                
-                
                 Text("기간 설정")
                     .headline(textColor: Color.textColor)
                     .padding(EdgeInsets(top: 39, leading: 16, bottom: 0, trailing: 0))
-                
                 ZStack {
                     Rectangle()
                         .foregroundColor(.white)
                         .frame(maxWidth: 358, maxHeight: 200)
                         .cornerRadius(16)
-                    
                     CalendarView(selectedDate: $selectedDate)
                         .padding(16)
                     
@@ -67,24 +64,28 @@ struct MakingGroupView: View {
                     .clipped()
                 }
                 .frame(minHeight: 150)
-                
-                BigButton_Blue(
-                    title: "다음",
-                    action: {
-                        moveToNextView = true
-                    }
-                )
-                .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
-                
+                if isNextButtonDisabled {
+                      BigButton_Unactive(title: "다음", action: {})
+                        .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
+                  } else {
+                      BigButton_Blue(
+                          title: "다음",
+                          action: {
+                              moveToNextView = true
+                          }
+                      )
+                      .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
+                  }
+            
                 NavigationLink(
                     destination: HostCallingView(
-                                    connectionManager: connectionManager,
-                                    scheduleName: $scheduleName,
-                                    selectedDate: $selectedDate,
-                                    estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
-                                )
-                                .navigationBarBackButtonHidden()
-                                .environmentObject(userData),
+                        connectionManager: connectionManager,
+                        scheduleName: $scheduleName,
+                        selectedDate: $selectedDate,
+                        estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
+                    )
+                    .navigationBarBackButtonHidden()
+                    .environmentObject(userData),
                     isActive: $moveToNextView,
                     label: {
                         EmptyView()
@@ -92,8 +93,7 @@ struct MakingGroupView: View {
             }
             .background(Color.backgroundColor)
             .navigationBarTitleDisplayMode(.inline)
-            
-            .toolbar { // <2>
+            .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text("방 만들기")

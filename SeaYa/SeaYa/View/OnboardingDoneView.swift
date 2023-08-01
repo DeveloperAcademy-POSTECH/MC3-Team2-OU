@@ -19,31 +19,25 @@ struct OnboardingDoneView: View {
                 HStack {
                     Rectangle()
                         .foregroundColor(Color.primaryColor)
-                        .frame(width: itemWidth, height: 5)
-                        .cornerRadius(10)
-                    
+                        .frame(width: itemWidth, height: 3)
+                        .cornerRadius(2)
                     Rectangle()
                         .foregroundColor(Color.primaryColor)
-                        .frame(width: itemWidth, height: 5)
+                        .frame(width: itemWidth, height: 3)
                         .cornerRadius(10)
-                    
                     Rectangle()
                         .foregroundColor(Color.primaryColor)
-                        .frame(width: itemWidth, height: 5)
+                        .frame(width: itemWidth, height: 3)
                         .cornerRadius(10)
                 }
-                
                 Text("사용자 설정이 모두 끝났어요\n이제 그룹원을 찾아보세요!")
                     .title(textColor: Color.textColor)
-                    .padding(.vertical, 40)
+                    .padding(.vertical, 30)
                     .frame(width: 340, alignment: .leading)
-                
-                Image("")
+                Image("onboardingDone")
                     .resizable()
                     .frame(width: 288, height: 300)
-                
                 Spacer(minLength: 0)
-                
                 BigButton_Blue(title: "약속 잡으러 가기", action: {isOnboardingCompleted = true})
             }
             .padding()
