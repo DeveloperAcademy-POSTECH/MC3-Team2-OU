@@ -9,15 +9,16 @@ import SwiftUI
 
 struct NicknameView: View {
     @Binding var isNicknameSettingCompleted : Bool
-    @State private var nickname = ""
-    
     @EnvironmentObject private var userData: UserData
-    
+   @State private var nickname = ""
+   @State private var characterImageName = "01"
+  
     @State private var isSheetPresented = false
     let userInfoRepository = UserInfoRepository.shared
     
     let columns: [GridItem] = Array(repeating: .init(), count: 3) // TODO: Dummy data
-
+    
+    
     var body: some View {
         GeometryReader { geometry in
             let screenWidth = geometry.size.width
@@ -47,7 +48,7 @@ struct NicknameView: View {
                     .frame(width: 340, alignment: .leading)
                 
                 ZStack{
-                    Image(userData.characterImageName)
+                    Image(characterImageName)
                         .resizable()
                         .frame(width: 100, height: 100)
                         .overlay(alignment: .bottomTrailing){
@@ -75,61 +76,65 @@ struct NicknameView: View {
                     )
                     .font(Font.system(size: 18, weight: .bold))
                     .foregroundColor(Color.textColor)
-          
-            Spacer()
-            
-            Button(action: {
-                if !nickname.isEmpty {
-                    userData.nickname = nickname;
-                    userInfoRepository.setNickName(nickName: nickname);
-                    isNicknameSettingCompleted = true;
-              }
-            }) {
-                Text("다음")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(nickname.isEmpty ? Color.unactiveColor : Color.primaryColor)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 20)
+                
+                Spacer()
+                
+                Button(action: {
+                    if !nickname.isEmpty {
+                        userData.setNickName(nickname);
+                        userData.setImageName(characterImageName)
+                        userInfoRepository.setNickName(nickName: userData.nickname)
+                        userInfoRepository.setImageName(imageName: userData.characterImageName)
+                        isNicknameSettingCompleted = true;
+                    }
+                }) {
+                    Text("다음")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(nickname.isEmpty ? Color.unactiveColor : Color.primaryColor)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 20)
+                }
+                
             }
-           
-        }
-        .padding()
-        .sheet(isPresented: $isSheetPresented, content: {
-            VStack{
-                RoundedRectangle(cornerRadius: 2.5)
-                .fill(Color.gray)
-                 .frame(width:34, height:5)
-                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-                Text("프로필 이미지")
-                    .body(textColor: Color.textColor)
-                    .padding(.bottom, 30)
-             
-        
-             
-                LazyVGrid(columns: columns){
-                    ForEach(0..<9, id: \.self) { index in
-                        Button(
-                            action: {
-                                userData.characterImageName = "0\(index+1)"
-                                userInfoRepository.setImageName(imageName: userData.characterImageName)
-                                print("캐릭터 설정", userData.characterImageName);
-                                print("캐릭터 유저 디폴트", userInfoRepository.getImageName())
-                            },
-                            label: {
-                                ZStack{
-                                    VStack{
-                                        Image("0" + "\(index + 1)")
-                                            .resizable()
-                                            .frame(width: 66,height: 66)
+            .padding()
+            .sheet(isPresented: $isSheetPresented, content: {
+                VStack{
+                    RoundedRectangle(cornerRadius: 2.5)
+                        .fill(Color.gray)
+                        .frame(width:34, height:5)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                    Text("프로필 이미지")
+                        .body(textColor: Color.textColor)
+                        .padding(.bottom, 30)
+                    
+                    
+                    
+                    LazyVGrid(columns: columns){
+                        ForEach(0..<9, id: \.self) { index in
+                            Button(
+                                action: {
+                                    characterImageName = "0\(index+1)"
+                                    userData.setImageName(characterImageName)
+                                    print("캐릭터 설정", characterImageName);
+                                    print("캐릭터 유저 디폴트", userInfoRepository.getImageName())
+                                },
+                                label: {
+                                    ZStack{
+                                        VStack{
+                                            Image("0" + "\(index + 1)")
+                                                .resizable()
+                                                .frame(width: 66,height: 66)
+                                        }
+                                        .padding(15)
                                     }
-                                    .padding(15)
                                 }
                             )
                         }
                     }
+                    
                 }
                 .presentationDetents([.height(426)])
                 .presentationCornerRadius(32)
@@ -138,7 +143,6 @@ struct NicknameView: View {
         }
     }
 }
-
 struct NicknameView_Previews: PreviewProvider {
     static var previews: some View {
         let userData = UserData() // UserData 객체를 생성하여 nickname 설정

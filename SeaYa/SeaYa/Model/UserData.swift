@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import Combine
+
 class UserData: ObservableObject{
     var uid : String
 
     @Published private(set) var nickname: String
-    @Published private(set)var characterImageName: String
+    @Published private(set) var characterImageName: String
     public func setNickName(_ nickName:String){
         self.nickname = nickName
         UserInfoRepository.shared.setNickName(nickName: nickName)
@@ -20,7 +20,8 @@ class UserData: ObservableObject{
         self.characterImageName = imageName
         UserInfoRepository.shared.setImageName(imageName: imageName)
     }
-
+    
+    
     init() {
         if UserInfoRepository.shared.getUid() != nil{
             self.uid = UserInfoRepository.shared.getUid()!
@@ -30,7 +31,7 @@ class UserData: ObservableObject{
         else{
             self.uid = UUID().uuidString
             self.nickname = ""
-            self.characterImageName = ""
+            self.characterImageName = "01"
             UserInfoRepository.shared.setUid(uid: uid)
         }
     }

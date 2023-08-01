@@ -73,6 +73,7 @@
 		BBDD706B2A68031C00977775 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706A2A68031C00977775 /* ResultView.swift */; };
 		BBDD706F2A69453100977775 /* TextFieldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706E2A69453100977775 /* TextFieldTheme.swift */; };
 		BBDD707D2A735A6300977775 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD707C2A735A6300977775 /* UserInfoView.swift */; };
+		BBDD70832A789D9E00977775 /* NicknameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD70822A789D9E00977775 /* NicknameEditView.swift */; };
 		EE14DBC12A64CF22004ECD86 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC02A64CF22004ECD86 /* SettingView.swift */; };
 		EE14DBC32A64CFE6004ECD86 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
@@ -164,7 +165,7 @@
 		BBDD706A2A68031C00977775 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		BBDD706E2A69453100977775 /* TextFieldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTheme.swift; sourceTree = "<group>"; };
 		BBDD707C2A735A6300977775 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
-		BBDD707E2A73627B00977775 /* NicknameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NicknameEditView.swift; path = "../../../../../../../../.Trash/MC3-Team2-OU/SeaYa/SeaYa/View/SettingView/NicknameEditView.swift"; sourceTree = "<group>"; };
+		BBDD70822A789D9E00977775 /* NicknameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameEditView.swift; sourceTree = "<group>"; };
 		EE14DBC02A64CF22004ECD86 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -436,7 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				BBDD707C2A735A6300977775 /* UserInfoView.swift */,
-				BBDD707E2A73627B00977775 /* NicknameEditView.swift */,
+				BBDD70822A789D9E00977775 /* NicknameEditView.swift */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -578,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBDD70832A789D9E00977775 /* NicknameEditView.swift in Sources */,
 				BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */,
 				EE14DBC12A64CF22004ECD86 /* SettingView.swift in Sources */,
 				73130C002A6A58A500554A36 /* ConfirmDateModalView.swift in Sources */,
