@@ -89,12 +89,12 @@ class TimeTableViewModel: ObservableObject{
    @MainActor
     private func getCalendar() async -> Calendar {
         let localEvents = localCalendarRepo.getEvents()
-//        ?? "2023-08-01"
         let start = DateUtil.formattedDayToDate(selectedDay.first!)
         let last = DateUtil.formattedDayToDate(selectedDay.last!).addingTimeInterval(86_400)
         let remoteEvents = try! await remoteCalendarRepo.fetchEvent(start: start, end: last)
         let localCalendar = calendarService.makeCalendar(selectedDay,localEvents)
         let remoteCalendar = calendarService.makeCalendar(selectedDay, remoteEvents)
+        print(selectedDay)
         let mergedCalendar = calendarService.mergeCalendar(localCalendar, remoteCalendar)
         let timeTableCalendar = timeTableService.getCalendarForTimeTable(mergedCalendar)
         return timeTableCalendar
