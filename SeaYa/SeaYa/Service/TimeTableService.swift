@@ -52,10 +52,11 @@ class TimeTableService{
                 let slicedEvents = sliceEvent(event)
                 
                 slicedEvents.forEach { sEvent in
-                    let index = newCalendar[day]!.firstIndex { ncEvent in
+                    if let index = newCalendar[day]!.firstIndex(where: { ncEvent in
                         sEvent.start == ncEvent.start
+                    }){
+                        newCalendar[day]![index] = sEvent
                     }
-                    newCalendar[day]![index!] = sEvent
                 }
                 
                 

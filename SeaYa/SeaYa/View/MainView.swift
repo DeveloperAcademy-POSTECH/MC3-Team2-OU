@@ -42,7 +42,6 @@ struct MainView: View {
                                 LottieView(jsonName: "HomeView")
                                     .scaledToFit()
                                     .offset(y: 10)
-
                             }
                             
                             ZStack {
@@ -53,19 +52,18 @@ struct MainView: View {
                                 Image("\(userData.characterImageName)")
                                     .padding(10)
                                     .frame(width: 124, height: 124)
-                                
-                                
                             }
                             .padding(.top, 24)
                             .padding(.horizontal, 122)
                             .onTapGesture {
+                                HapticManager.instance.notification(type: .error)
                                 startGroupping = false
                                 connectionManager.leaveSession()
                             }
                             .onLongPressGesture(minimumDuration: 1) {
+                                HapticManager.instance.notification(type: .success)
                                 connectionManager.guest(userData.nickname, userData.characterImageName)
                                 startGroupping = true
-                                VibrationManager.shared?.playHaptic(durations: [1.0, 2.0], powers: [0.5, 1.0])
                             }
                         }
                         
@@ -96,12 +94,17 @@ struct MainView: View {
                                                                     .padding(.horizontal, 21)
                                                                     .padding(.vertical, 17)
                                                             }
-                                                            
                                                             Text("방 만들기")
-                                                                .context(textColor: Color.white)
+                                                              .context(textColor: Color.white)
+                                                              .multilineTextAlignment(.center)
                                                         }
+                                                       .frame(maxWidth: 80)
                                                     }
+
                                                 )
+
+                                                    
+                                       
                                             }
                                         )
                                     }
@@ -133,6 +136,7 @@ struct MainView: View {
                                                     Text("설정")
                                                         .context(textColor: Color.white)
                                                 }
+                                                .frame(maxWidth: 80)
                                             }
                                         )
                                     }
@@ -142,7 +146,6 @@ struct MainView: View {
                         }
                         
                         if startGroupping {
-                            //TODO: animation start
                             Text("잠시만 기다려주세요")
                                 .font(.system(size: 23, weight: .bold))
                                 .foregroundColor(.white)
@@ -162,8 +165,7 @@ struct MainView: View {
                     GuestCallingDone(connectionManager: connectionManager)
                         .environmentObject(userData)
                         .onAppear(){
-                            VibrationManager.shared?.stopHapric()
-                            haptics(.success)
+                            HapticManager.instance.notification(type: .success)
                             startGroupping = false
                             print(connectionManager.groupInfo)
                         }
@@ -181,4 +183,3 @@ struct MainView_Previews: PreviewProvider {
         return MainView().environmentObject(userData)
     }
 }
-

@@ -9,19 +9,21 @@ import SwiftUI
 
 struct HostCallingDone: View {
     @ObservedObject var connectionManager: ConnectionService
+    @State var clicked: Int? = 0
     @EnvironmentObject private var userData: UserData
+    var groupInfo: GroupInfo
     
     var body: some View {
         VStack {
             Text("그룹이 확정되었어요")
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 40)
-
-            Image("your_image_name")
+            
+            Image(userData.characterImageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 150)
-            Text("아카데미 저녁 회식")
+            Text(connectionManager.groupInfo?.scheduleName ?? "")
                 .headline(textColor: Color.textColor)
                 .padding(.top, 40)
                 .padding(.bottom, 18)
@@ -31,19 +33,37 @@ struct HostCallingDone: View {
                 .context(textColor: Color.textColor)
                 .multilineTextAlignment(.center)
                 .padding(.vertical,30)
-            SmallButton_Blue(title: "일정입력하기", action: {})
-                .padding(.bottom, 32)
+            NavigationLink(
+                destination: TimeTable(vm:TimeTableViewModel(selectedDay: getSelectedDate(groupInfo)))
+                    .environmentObject(connectionManager)
+                    .environmentObject(userData)
+                    .navigationBarBackButtonHidden(true),
+                tag: 1,
+                selection: $clicked) {}
+            SmallButton_Blue(title: "일정 입력하기", action: {
+                connectionManager.setGroupInfo(groupInfo)
+                clicked = 1;
+            })
+            .padding(.bottom, 32)
         }
         .frame(width: 300)
         .background(Color.white)
         .cornerRadius(32)
         
     }
-}
+    func getSelectedDate(_ groupInfo: GroupInfo) -> [String]{
+        return groupInfo.selectedDate.map { date in
+            DateUtil.getFormattedDate(date)
+        }
 
-
-struct HostCallingDone_Previews: PreviewProvider {
-    static var previews: some View {
-        HostCallingDone(connectionManager: ConnectionService())
     }
+    
 }
+
+
+//struct HostCallingDone_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HostCallingDone(connectionManager: ConnectionService())
+//    }
+//}
+

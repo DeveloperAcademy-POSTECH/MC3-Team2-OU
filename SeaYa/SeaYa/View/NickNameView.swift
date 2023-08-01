@@ -19,29 +19,51 @@ struct NicknameView: View {
     let columns: [GridItem] = Array(repeating: .init(), count: 3) // TODO: Dummy data
 
     var body: some View {
-        VStack {
-            Text("앱에서 사용할\n프로필을 설정해주세요")
-                .title(textColor: Color.textColor)
-                .padding(.vertical, 40)
-                .frame(width: 340, alignment: .leading)
-            ZStack{
-                Image(userData.characterImageName)
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .overlay(alignment: .bottomTrailing){
-                        Image("edit")
-                            .resizable()
-                            .frame(width: 36,height: 36, alignment: .bottomTrailing)
-                            .onTapGesture {
-                                print("isClicked!")
-                                isSheetPresented = true
-                            }
-                    }.padding(.bottom, 22)
-            }
-                TextField("닉네임", text: $nickname)
-                .multilineTextAlignment(.center)
-                    .padding(.vertical, 18)
+        GeometryReader { geometry in
+            let screenWidth = geometry.size.width
+            let itemWidth = screenWidth / 3 - 20
+            
+            VStack {
+                HStack {
+                    Rectangle()
+                        .foregroundColor(Color.primaryColor)
+                        .frame(width: itemWidth, height: 5)
+                        .cornerRadius(10)
+                    
+                    Rectangle()
+                        .foregroundColor(.gray)
+                        .frame(width: itemWidth, height: 5)
+                        .cornerRadius(10)
+                    
+                    Rectangle()
+                        .foregroundColor(.gray)
+                        .frame(width: itemWidth, height: 5)
+                        .cornerRadius(10)
+                }
                 
+                Text("앱에서 사용할\n프로필을 설정해주세요")
+                    .title(textColor: Color.textColor)
+                    .padding(.vertical, 40)
+                    .frame(width: 340, alignment: .leading)
+                
+                ZStack{
+                    Image(userData.characterImageName)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .overlay(alignment: .bottomTrailing){
+                            Image("edit")
+                                .resizable()
+                                .frame(width: 36,height: 36, alignment: .bottomTrailing)
+                                .onTapGesture {
+                                    print("isClicked!")
+                                    isSheetPresented = true
+                                }
+                        }.padding(.bottom, 22)
+                }
+                
+                TextField("닉네임", text: $nickname)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical, 18)
                     .frame(width: 185, alignment: .center)
                     .overlay(
                         GeometryReader { geo in
@@ -103,17 +125,17 @@ struct NicknameView: View {
                                             .resizable()
                                             .frame(width: 66,height: 66)
                                     }
+                                    .padding(15)
                                 }
-                                .padding(15)
-                            }
-                        )
+                            )
+                        }
                     }
                 }
-            }
-            .presentationDetents([.height(426)])
-            .presentationCornerRadius(32)
-            .padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 65))
-              })
+                .presentationDetents([.height(426)])
+                .presentationCornerRadius(32)
+                .padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 65))
+            })
+        }
     }
 }
 

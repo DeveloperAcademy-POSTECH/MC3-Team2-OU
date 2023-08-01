@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @AppStorage("isNicknameSettingCompleted") private var isNicknameSettingCompleted = false
     @AppStorage("isFixedTimeSettingCompleted") private var isFixedTimeSettingCompleted = false
+    @AppStorage("isOnboardingCompleted") private var isOnboardingCompleted = false
     @State private var isLaunchScreenVisible = true
-//    @EnvironmentObject private var userData: UserData
     @StateObject private var userData = UserData()
     
     var body: some View {
@@ -30,6 +30,8 @@ struct ContentView: View {
                        .environmentObject(userData)
                } else if !isFixedTimeSettingCompleted {
                    FixedTimeView(isFixedTimeSettingCompleted: $isFixedTimeSettingCompleted)
+               } else if !isOnboardingCompleted{
+                   OnboardingDoneView(isOnboardingCompleted: $isOnboardingCompleted)
                } else {
                    MainView()
                        .environmentObject(userData)

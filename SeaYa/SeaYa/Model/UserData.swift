@@ -9,18 +9,18 @@ import Foundation
 import Combine
 class UserData: ObservableObject{
     var uid : String
-    @Published var nickname: String {
-            didSet {
-                UserInfoRepository.shared.setNickName(nickName: nickname) // Save nickname to UserDefaults
-            }
-        }
 
-        @Published var characterImageName: String {
-            didSet {
-                UserInfoRepository.shared.setImageName(imageName: characterImageName) // Save character index to UserDefaults
-            }
-        }
-    
+    @Published private(set) var nickname: String
+    @Published private(set)var characterImageName: String
+    public func setNickName(_ nickName:String){
+        self.nickname = nickName
+        UserInfoRepository.shared.setNickName(nickName: nickName)
+    }
+    public func setImageName(_ imageName: String){
+        self.characterImageName = imageName
+        UserInfoRepository.shared.setImageName(imageName: imageName)
+    }
+
     init() {
         if UserInfoRepository.shared.getUid() != nil{
             self.uid = UserInfoRepository.shared.getUid()!
@@ -28,9 +28,10 @@ class UserData: ObservableObject{
             self.characterImageName = UserInfoRepository.shared.getImageName() ?? "01"
         }
         else{
-            self.uid = ""
+            self.uid = UUID().uuidString
             self.nickname = ""
-            self.characterImageName = "01"
+            self.characterImageName = ""
+            UserInfoRepository.shared.setUid(uid: uid)
         }
     }
 }

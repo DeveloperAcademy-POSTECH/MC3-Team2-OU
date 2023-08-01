@@ -9,24 +9,37 @@ import SwiftUI
 
 struct TimeTable: View {
     typealias MyCalendar = Dictionary<String,[Event]>
-    @ObservedObject var vm = TimeTableViewModel(selectedDay: ["2023-07-17","2023-07-18","2023-07-19","2023-07-20","2023-07-21","2023-07-22","2023-07-23"])
+    @State var clicked: Int? = 0
+    @EnvironmentObject var connectionManager: ConnectionService
+    @EnvironmentObject var userData: UserData
+    @ObservedObject var vm: TimeTableViewModel
+    
     var body: some View {
-        if vm.calendar != nil{
-            VStack{
-                VStack(spacing:0){
-                    DayLayout(vm: vm)
-                    HStack(spacing:0){
-                        TimeLayout()
-                        Table(vm: vm)
+        NavigationStack{
+            if vm.calendar != nil{
+                VStack(spacing:16){
+                    Text("일정 입력").body(textColor: .black)
+                    VStack(spacing:0){
+                        DayLayout(vm: vm)
+                        HStack(spacing:0){
+                            TimeLayout()
+                            Table(vm: vm)
+                        }
+                    }
+                    //MARK: 페이지 넘기기
+                    NavigationLink(
+                        destination: WaitingForConfirmView().navigationBarBackButtonHidden(true),
+                        tag: 1,
+                        selection: $clicked) {}
+                    BigButton_Blue(title: "입력 완료") {
+                        vm.buttonClicked(userData: userData,connectionManager: connectionManager)
+                        clicked = 1
                     }
                 }.padding(16)
-                BigButton_Blue(title: "확인") {
-                    vm.buttonClicked()
-                }
             }
-        }
-        else{
-            ProgressView()
+            else{
+                ProgressView()
+            }
         }
     }
 }

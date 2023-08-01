@@ -13,12 +13,12 @@ class UserInfoRepository{
     private init(userDefaults: UserDefaults = .standard) {
          self.userDefaults = userDefaults
      }
-    
-    public func setUid(uid: String) {
-            if getUid() == nil {
-                userDefaults.set(uid, forKey: "uid")
-            }
-        }
+
+    public func setUid(uid: String){
+        let uid = UUID().uuidString
+        userDefaults.set(uid, forKey: "uid")
+    }
+
     
     public func getUid() -> String?{
         if let uid = UserDefaults.standard.object(forKey: "uid") as? String {

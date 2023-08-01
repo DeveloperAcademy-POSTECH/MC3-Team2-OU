@@ -44,8 +44,17 @@ class TimeTableViewModel: ObservableObject{
             TableItem(event)
         }
     }
-    public func buttonClicked(){
-        print(selectedItem)
+    public func buttonClicked(userData: UserData,connectionManager: ConnectionService){
+        let selectedDateEvent = selectedItem.map { item in
+            DateEvent(title: item.event.title, startDate: item.event.start, endDate: item.event.end)
+        }
+        let dateMember = DateMember(id: UUID(uuidString: userData.uid)!, name: userData.nickname, dateEvents: selectedDateEvent)
+        if connectionManager.isHosting{
+            connectionManager.listUP.append(dateMember)
+        }
+        else{
+            connectionManager.sendTimeTableInfoToHost(dateMember)
+        }
     }
 //    private func makeTestCal()async{
 //        let selectedDays = ["2023-07-16","2023-07-17","2023-07-18"]
@@ -77,9 +86,13 @@ class TimeTableViewModel: ObservableObject{
 //        }
 //
 //    }
-   @MainActor private func getCalendar() async -> Calendar {
+   @MainActor
+    private func getCalendar() async -> Calendar {
         let localEvents = localCalendarRepo.getEvents()
-        let remoteEvents = try! await remoteCalendarRepo.fetchEvent(start: DateUtil.formattedDayToDate(selectedDay.first!), end: DateUtil.formattedDayToDate(selectedDay.last!))
+//        ?? "2023-08-01"
+        let start = DateUtil.formattedDayToDate(selectedDay.first!)
+        let last = DateUtil.formattedDayToDate(selectedDay.last!).addingTimeInterval(86_400)
+        let remoteEvents = try! await remoteCalendarRepo.fetchEvent(start: start, end: last)
         let localCalendar = calendarService.makeCalendar(selectedDay,localEvents)
         let remoteCalendar = calendarService.makeCalendar(selectedDay, remoteEvents)
         let mergedCalendar = calendarService.mergeCalendar(localCalendar, remoteCalendar)
