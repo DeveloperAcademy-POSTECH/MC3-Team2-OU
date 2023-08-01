@@ -8,7 +8,13 @@
 import Foundation
 // dateformatt해주는 class
 class DateUtil{
-    private static let dateFormatter = DateFormatter()
+    private static var dateFormatter: DateFormatter {
+        var dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter
+    }
+    
     //년 월 일
     static func getFormattedDate(_ date:Date)->String{
         dateFormatter.dateFormat = "yyyy-MM-dd"
