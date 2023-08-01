@@ -32,11 +32,13 @@ struct HostCallingView: View {
                     VStack {
                         ZStack {
                             GuestListView(connectionManager: connectionManager)
+                                .zIndex(1)
                                 .multilineTextAlignment(.center)
                                 .offset(y: -30)
                             
                             ZStack {
                                 LottieView(jsonName: "HomeView")
+                                    .zIndex(-1)
                                     .scaledToFit()
                                 
                                 Button (action: {

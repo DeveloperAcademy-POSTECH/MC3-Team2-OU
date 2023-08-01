@@ -20,6 +20,7 @@ struct ConfirmView: View {
     @State private var showEndModal = false
     @State private var showMemberModal = false
     @State private var selectedDate = Date()
+    
     var body: some View {
         let members = calcOksService.dateMembers
         let time = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .weekday], from: selectedEvent.startDate)
@@ -126,8 +127,10 @@ struct ConfirmView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                 
                 Spacer()
+                
                 NavigationLink(
-                    destination: ResultView(connectionManager: connectionManager),
+                    destination: ResultView(connectionManager: connectionManager)
+                        .navigationBarBackButtonHidden(),
                     label:  {
                     Text("일정 검토하기").bigButton(textColor: .white)
                         .frame(width: 358, alignment: .center)

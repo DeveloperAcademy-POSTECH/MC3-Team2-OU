@@ -17,6 +17,7 @@
 		0E81B9432A7786DF004AB171 /* GuestWaitingForConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */; };
 		0E81B9452A77A7FB004AB171 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9442A77A7FB004AB171 /* CustomAlert.swift */; };
 		0E81B9492A77C004004AB171 /* OnboardingDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */; };
+		0E81B96B2A78F64D004AB171 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B96A2A78F64D004AB171 /* ResultView.swift */; };
 		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
 		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
 		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
@@ -70,7 +71,7 @@
 		BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */; };
 		BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7862A67740F00F39E2B /* ButtonTheme.swift */; };
 		BBDD70692A6802B400977775 /* GuestCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD70682A6802B400977775 /* GuestCallingDone.swift */; };
-		BBDD706B2A68031C00977775 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706A2A68031C00977775 /* ResultView.swift */; };
+		BBDD706B2A68031C00977775 /* ResultCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706A2A68031C00977775 /* ResultCardView.swift */; };
 		BBDD706F2A69453100977775 /* TextFieldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD706E2A69453100977775 /* TextFieldTheme.swift */; };
 		BBDD707D2A735A6300977775 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD707C2A735A6300977775 /* UserInfoView.swift */; };
 		BBDD70832A789D9E00977775 /* NicknameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD70822A789D9E00977775 /* NicknameEditView.swift */; };
@@ -105,6 +106,7 @@
 		0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestWaitingForConfirmView.swift; sourceTree = "<group>"; };
 		0E81B9442A77A7FB004AB171 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDoneView.swift; sourceTree = "<group>"; };
+		0E81B96A2A78F64D004AB171 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
 		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -162,7 +164,7 @@
 		BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundView.swift; sourceTree = "<group>"; };
 		BBBBC7862A67740F00F39E2B /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
 		BBDD70682A6802B400977775 /* GuestCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCallingDone.swift; sourceTree = "<group>"; };
-		BBDD706A2A68031C00977775 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		BBDD706A2A68031C00977775 /* ResultCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardView.swift; sourceTree = "<group>"; };
 		BBDD706E2A69453100977775 /* TextFieldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTheme.swift; sourceTree = "<group>"; };
 		BBDD707C2A735A6300977775 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		BBDD70822A789D9E00977775 /* NicknameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameEditView.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */,
 				0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */,
 				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
+				0E81B96A2A78F64D004AB171 /* ResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -396,7 +399,7 @@
 				BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */,
 				BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */,
 				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
-				BBDD706A2A68031C00977775 /* ResultView.swift */,
+				BBDD706A2A68031C00977775 /* ResultCardView.swift */,
 				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
 				EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */,
 				0EEFB6582A64D8C300F5C5D2 /* Date+.swift */,
@@ -585,7 +588,7 @@
 				73130C002A6A58A500554A36 /* ConfirmDateModalView.swift in Sources */,
 				1092DD752A60DE4D00D4F6D3 /* Event.swift in Sources */,
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
-				BBDD706B2A68031C00977775 /* ResultView.swift in Sources */,
+				BBDD706B2A68031C00977775 /* ResultCardView.swift in Sources */,
 				7382E9432A7211A400837AB2 /* FixedTimeViewModel.swift in Sources */,
 				BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */,
 				73130BFE2A6A3C7800554A36 /* ConfirmView.swift in Sources */,
@@ -626,6 +629,7 @@
 				BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */,
 				0EEFB6782A6EE1B300F5C5D2 /* GroupInfo.swift in Sources */,
 				73130C042A6A97EA00554A36 /* ConfirmMemberModalView.swift in Sources */,
+				0E81B96B2A78F64D004AB171 /* ResultView.swift in Sources */,
 				BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */,
 				0E81B9372A774C7B004AB171 /* LottieView.swift in Sources */,
 				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
