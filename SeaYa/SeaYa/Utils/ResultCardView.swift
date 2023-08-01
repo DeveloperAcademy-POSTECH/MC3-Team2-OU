@@ -34,7 +34,7 @@ struct ResultCardView: View {
                 .frame(width: 214)
             
             if isAttend {
-                Text(DateUtil.getFormattedDate(schedule.selectedDate))
+                Text(schedule.selectedDate.toStringDate())
                     .context(textColor: Color.textColor)
                     .multilineTextAlignment(.center)
                     .padding(.top, 25)

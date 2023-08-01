@@ -12,9 +12,16 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "d"
         formatter.timeZone = TimeZone.current
-        let day = Calendar.current.date(byAdding: .day, value: -1, to: self)!
-        return formatter.string(from: day)
+        return formatter.string(from: self)
     }
+    
+    func toStringDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M월 dd일 EEEE"
+        formatter.timeZone = TimeZone.current
+        return formatter.string(from: self)
+    }
+    
     func removeSeconds() -> Date? {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
