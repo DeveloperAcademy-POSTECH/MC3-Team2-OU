@@ -10,8 +10,8 @@ import SwiftUI
 
 extension Text {
     func title(textColor: Color) -> some View {
-        let lineHeight: CGFloat = 1.6
-        let letterSpacing: CGFloat = -0.015
+        let lineHeight: CGFloat = 1.4
+        let letterSpacing: CGFloat = -0.025
         let fontSize: CGFloat = 23
         return self.font(Font.system(size: fontSize, weight: .bold))
             .lineSpacing(lineHeight * fontSize - fontSize)
@@ -38,7 +38,7 @@ extension Text {
     }
     func body(textColor: Color) -> some View {
         let lineHeight: CGFloat = 1.6
-        let letterSpacing: CGFloat = -0.015
+        let letterSpacing: CGFloat = -0.025
         let fontSize: CGFloat = 17
         return self.font(Font.system(size: fontSize, weight: .regular))
             .lineSpacing(lineHeight * fontSize - fontSize)
