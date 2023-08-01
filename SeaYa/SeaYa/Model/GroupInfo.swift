@@ -12,4 +12,8 @@ struct GroupInfo: Codable {
     var scheduleName: String
     var selectedDate: [Date]
     var estimatedTime: Int
+    
+    static func empty() -> GroupInfo{
+        return GroupInfo(scheduleName: "err", selectedDate: [Date.now], estimatedTime: 1)
+    }
 }
