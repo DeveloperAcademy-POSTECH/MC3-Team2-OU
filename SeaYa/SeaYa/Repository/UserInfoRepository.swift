@@ -10,16 +10,16 @@ import Foundation
 class UserInfoRepository{
     static let shared = UserInfoRepository()
     private let userDefaults: UserDefaults
-    private let encoder = JSONEncoder()
-    private let decoder = JSONDecoder()
     private init(userDefaults: UserDefaults = .standard) {
          self.userDefaults = userDefaults
      }
     
-    public func setUid(uid: String){
-        let uid = UUID().uuidString
-        userDefaults.set(uid, forKey: "uid")
-    }
+    public func setUid(uid: String) {
+            if getUid() == nil {
+                userDefaults.set(uid, forKey: "uid")
+            }
+        }
+    
     public func getUid() -> String?{
         if let uid = UserDefaults.standard.object(forKey: "uid") as? String {
             return uid
@@ -29,6 +29,7 @@ class UserInfoRepository{
     public func setNickName(nickName: String){
         userDefaults.set(nickName, forKey: "nickName")
     }
+                
     public func getNickName() -> String?{
         if let nickName = UserDefaults.standard.object(forKey: "nickName") as? String {
             return nickName

@@ -14,7 +14,7 @@ struct NicknameView: View {
     @EnvironmentObject private var userData: UserData
     
     @State private var isSheetPresented = false
-    
+    let userInfoRepository = UserInfoRepository.shared
     
     let columns: [GridItem] = Array(repeating: .init(), count: 3) // TODO: Dummy data
 
@@ -58,8 +58,9 @@ struct NicknameView: View {
             
             Button(action: {
                 if !nickname.isEmpty {
-                  userData.nickname = nickname
-                  isNicknameSettingCompleted = true
+                    userData.nickname = nickname;
+                    userInfoRepository.setNickName(nickName: nickname);
+                    isNicknameSettingCompleted = true;
               }
             }) {
                 Text("다음")
@@ -91,7 +92,9 @@ struct NicknameView: View {
                         Button(
                             action: {
                                 userData.characterImageName = "0\(index+1)"
-                                print(userData.characterImageName)
+                                userInfoRepository.setImageName(imageName: userData.characterImageName)
+                                print("캐릭터 설정", userData.characterImageName);
+                                print("캐릭터 유저 디폴트", userInfoRepository.getImageName())
                             },
                             label: {
                                 ZStack{

@@ -19,7 +19,7 @@ struct UserInfoView: View {
     @StateObject var state = EditFixedTimeViewState()
     @Environment(\.presentationMode) private var presentationMode
     private let fixedTimeKey = "FixedTimeKey"
-  
+    let userInfoRepository = UserInfoRepository.shared
     
     init() {
           if let data = UserDefaults.standard.data(forKey: fixedTimeKey) {
@@ -33,8 +33,6 @@ struct UserInfoView: View {
               self._fixedTimeViewModel = State(initialValue: FixedTimeViewModel())
           }
       }
-    
-    
     var body: some View {
         NavigationStack {
             VStack{
@@ -46,34 +44,24 @@ struct UserInfoView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .foregroundColor(Color.white)
                     HStack(spacing : 25){
-                     
                         Image(userData.characterImageName)
                             .resizable()
                             .frame(width: 70, height: 70)
-                        
-                        VStack{
+                        VStack(alignment: .leading){
                             Text(userData.nickname).body(textColor: Color.textColor)
                             Button(action: {
-                                
                             }, label: {
                                 NavigationLink(
                                     destination: {
                                         NicknameEditView().environmentObject(userData)
-                                           
                                     }, label:{
                                         Text("프로필 편집").body(textColor: Color.primaryColor)
-                                        
                                     })
                             })
                         }
-                        
-                     
-                        
                     }.padding(EdgeInsets(top: 17, leading: 19, bottom: 17, trailing: 167))
                         .frame(alignment: .topLeading)
-                 
                 }.frame(width: 358, height: 104)
-                
                 Text("고정시간 설정")
                     .caption(textColor: Color.unactiveColor)
                     .padding(EdgeInsets(top: 30, leading: 25, bottom: 5, trailing: 25))
@@ -95,7 +83,6 @@ struct UserInfoView: View {
                         }
                     }
                 }
-                
                 Button(
                     action: {
                         state.isUpdate = false
@@ -115,13 +102,9 @@ struct UserInfoView: View {
                         }.frame(width: 358,height: 47)
                     }
                 )
-                
-                
                 Spacer()
-
                 Button(
                     action: {
-                       
                         print("here!")
                         print(String(describing: fixedTimeViewModel.fixedTimeModels.first!.category))
                         let encoder = JSONEncoder()
@@ -141,8 +124,6 @@ struct UserInfoView: View {
                             .padding(.horizontal, 20)
                     }
                 )
-           
-
             }
             .frame(alignment: .leading)
             .background(Color.backgroundColor)

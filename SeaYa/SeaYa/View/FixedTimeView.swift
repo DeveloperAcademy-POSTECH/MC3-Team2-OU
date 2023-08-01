@@ -61,19 +61,14 @@ struct FixedTimeView: View {
                             }.frame(width: 358,height: 47)
                         }
                     )
-                    
                     Spacer()
-
                     Button(
                         action: {
                             isFixedTimeSettingCompleted = true
-                            print("here!")
-                            print(String(describing: fixedTimeViewModel.fixedTimeModels.first!.category))
                             let encoder = JSONEncoder()
                                     if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
                                         UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
                                     }
-                                
                         },
                         label: {
                             Text("확인")
