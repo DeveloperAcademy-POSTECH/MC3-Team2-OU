@@ -8,12 +8,13 @@
 import Foundation
 // dateformatt해주는 class
 class DateUtil{
-    private static var dateFormatter: DateFormatter {
-        var dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.timeZone = TimeZone.current
-        return dateFormatter
-    }
+    private static let dateFormatter = DateFormatter()
+//    private static var dateFormatter: DateFormatter {
+//        var dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale.current
+//        dateFormatter.timeZone = TimeZone.current
+//        return dateFormatter
+//    }
     
     //년 월 일
     static func getFormattedDate(_ date:Date)->String{
@@ -26,7 +27,11 @@ class DateUtil{
     }
     static func formattedDateToDate(_ date:String)->Date{
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        return dateFormatter.date(from: date)!
+        return dateFormatter.date(from: date) ?? Date.now
+    }
+    static func formattedDateToDay(_ date:Date)->String{
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
     static func getFormattedTime(_ date: Date) -> String{
         dateFormatter.dateFormat = "HH:mm"
