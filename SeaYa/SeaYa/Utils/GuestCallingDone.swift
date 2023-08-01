@@ -34,7 +34,7 @@ struct GuestCallingDone: View {
             NavigationLink(
                 destination: TimeTable(
                     connectionManager: connectionManager,
-                    vm:TimeTableViewModel(selectedDay: getSelectedDate(connectionManager.groupInfo ?? GroupInfo.empty()))
+                    vm:TimeTableViewModel.shared
                 )
                     .environmentObject(connectionManager)
                     .environmentObject(userData)
@@ -42,6 +42,7 @@ struct GuestCallingDone: View {
                 tag: 1,
                 selection: $clicked) {}
             SmallButton_Blue(title: "일정 입력하기", action: {
+                TimeTableViewModel.shared.setSelectedDay(selectedDay: getSelectedDate(connectionManager.groupInfo ?? GroupInfo.empty()))
                 clicked = 1;
             })
             .padding(.bottom, 32)

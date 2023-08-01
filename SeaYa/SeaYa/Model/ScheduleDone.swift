@@ -12,7 +12,7 @@ struct ScheduleDone: Codable {
     var selectedDate: Date
     var startTime: Date
     var endTime: Date
-    var isAttend: [String : Bool]
+    var isAttend: [String : Bool] // UUID, true or false
     
     init(scheduleName: String, selectedDate: Date, startTime: Date, endTime: Date, isAttend: [String : Bool]) {
         self.scheduleName = scheduleName

@@ -108,8 +108,8 @@ struct NicknameEditView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            userInfoRepository.setNickName(nickName: userData.nickname)
-                            presentationMode.wrappedValue.dismiss()
+                              userData.setNickName(nickname)
+                        presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("완료")
                                 .foregroundColor(Color.blue)

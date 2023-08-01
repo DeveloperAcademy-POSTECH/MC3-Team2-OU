@@ -12,12 +12,13 @@ struct SettingView: View {
     @State private var selectedWeekdays: Array<WeekDay> = [.monday]
     private let weekdays: [WeekDay] = [.monday, .tuesday,.wednesday,.thursday,.friday,.saturday,.sunday]
     private let categories: [String] = ["취침", "직장", "학교", "공부", "기타"]
-    @Binding var fixedTimeViewModel : FixedTimeViewModel
+    @ObservedObject var fixedTimeViewModel : FixedTimeViewModel
     @Binding var showSettingViewModal : Bool
     @Binding var selectedIndex : Int
     
     @State var tempFixedTimeModel : FixedTimeModel
     @State var scrollDisabled = false
+    let id: String?
     
     var isUpdate : Bool
     var onDelete : (UUID) -> Void
@@ -30,11 +31,19 @@ struct SettingView: View {
                     }
                     Spacer()
                     Button("완료"){
-                        if selectedIndex < 0 {
-                            fixedTimeViewModel.fixedTimeModels.append(tempFixedTimeModel)
-                        } else {
-                            fixedTimeViewModel.fixedTimeModels[selectedIndex] = tempFixedTimeModel
+                        if fixedTimeViewModel.isExist(id ?? ""){
+                            print("isExist")
+                            fixedTimeViewModel.updateItem(item: tempFixedTimeModel)
                         }
+                        else{
+                            print("notExist")
+                            fixedTimeViewModel.addItem(item: tempFixedTimeModel)
+                        }
+//                        if selectedIndex < 0 {
+//                            fixedTimeViewModel.fixedTimeModels.append(tempFixedTimeModel)
+//                        } else {
+//                            fixedTimeViewModel.fixedTimeModels[selectedIndex] = tempFixedTimeModel
+//                        }
                         showSettingViewModal = false
                     }
                 }
@@ -365,11 +374,11 @@ struct SettingTestView : View {
         }
         .sheet(isPresented: $showSettingViewModal, content: {
             SettingView(
-                fixedTimeViewModel: $fixedTimeViewModel,
+                fixedTimeViewModel: fixedTimeViewModel,
                 showSettingViewModal: $showSettingViewModal,
                 selectedIndex : $selectedIndex,
                 tempFixedTimeModel: selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
-                isUpdate: isUpdate,
+                id: "", isUpdate: isUpdate,
                 onDelete: {id in
                     fixedTimeViewModel.deleteItem(withID: id)
             })
