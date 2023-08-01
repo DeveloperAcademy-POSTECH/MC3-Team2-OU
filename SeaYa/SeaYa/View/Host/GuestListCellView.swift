@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GuestListCellView: View {
     @ObservedObject var connectionManager: ConnectionService
-    @State private var isSelected = false
+    @State private var isSelected = Array(repeating: false, count: 6)
     var index: Int
     
     var body: some View {
@@ -22,9 +22,9 @@ struct GuestListCellView: View {
         else {
             VStack {
                 Button(action: {
-                    isSelected.toggle()
+                    isSelected[index].toggle()
                     
-                    if isSelected{
+                    if isSelected[index]{
                         guard let session = connectionManager.session else {return}
                         connectionManager.browser?.invitePeer(
                             connectionManager.foundPeers[index].peer,
@@ -39,13 +39,11 @@ struct GuestListCellView: View {
                         }){
                             connectionManager.peers.remove(at: idx)
                         }
-                        connectionManager.foundPeers.remove(at: index)
-                        print(connectionManager.peers.count)
                     }
                 }, label: {
                     VStack {
                         ZStack {
-                            if isSelected && connectionManager.peers.count > index {
+                            if isSelected[index] && connectionManager.peers.contains(where: {$0.peer == connectionManager.foundPeers[index].peer}){
                                 Circle()
                                     .frame(width: 65, height: 65)
                                     .foregroundColor(.white)

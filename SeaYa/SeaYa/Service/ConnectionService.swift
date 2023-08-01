@@ -37,6 +37,7 @@ class ConnectionService: NSObject, ObservableObject {
         let myPeerId = MCPeerID(displayName: nickName)
         
         peers.removeAll()
+        foundPeers.removeAll()
         
         //create session
         session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .required)
