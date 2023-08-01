@@ -36,6 +36,7 @@ class UserInfoRepository{
         }
         return nil
     }
+    
     public func setImageName(imageName: String){
         userDefaults.set(imageName, forKey: "imageName")
     }

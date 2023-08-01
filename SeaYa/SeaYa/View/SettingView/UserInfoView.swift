@@ -108,9 +108,9 @@ struct UserInfoView: View {
                         print("here!")
                         print(String(describing: fixedTimeViewModel.fixedTimeModels.first!.category))
                         let encoder = JSONEncoder()
-                                if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
-                                    UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
-                                }
+                        if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
+                            UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
+                        }
                         presentationMode.wrappedValue.dismiss()
                     },
                     label: {
