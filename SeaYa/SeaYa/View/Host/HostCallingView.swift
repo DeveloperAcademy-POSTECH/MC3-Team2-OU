@@ -114,6 +114,14 @@ struct HostCallingView: View {
                         )
                     )
                     .environmentObject(userData)
+                    .onAppear() {
+                        connectionManager.sendGroupInfoToGuest(GroupInfo(
+                            hostName: userData.nickname,
+                            scheduleName: scheduleName,
+                            selectedDate: selectedDate,
+                            estimatedTime: estimatedTime
+                        ))
+                    }
                 }
                 
                 if showingAlert {

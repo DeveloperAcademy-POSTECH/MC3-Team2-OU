@@ -10,7 +10,7 @@ import SwiftUI
 struct TimeTable: View {
     typealias MyCalendar = Dictionary<String,[Event]>
     @State var clicked: Int? = 0
-    @EnvironmentObject var connectionManager: ConnectionService
+    @ObservedObject var connectionManager: ConnectionService
     @EnvironmentObject var userData: UserData
     @ObservedObject var vm: TimeTableViewModel
     
