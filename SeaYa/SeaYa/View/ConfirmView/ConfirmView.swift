@@ -7,9 +7,10 @@
 
 import SwiftUI
 
+//수정
 struct ConfirmView: View {
     @ObservedObject var calcOksService =  CalcOksService.shared
-    @ObservedObject var connectionManager =  ConnectionService()
+    @ObservedObject var connectionManager: ConnectionService
     
     @State var selectedEvent : DateEvent
     @State private var selectedMembers : [DateMember] = []
@@ -185,10 +186,12 @@ struct ConfirmView: View {
 
 struct ConfirmView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfirmView(selectedEvent: DateEvent(title: "아카데미 저녁 회식",
-                                             startDate: DateUtil.formattedDateToDate(2023, 07, 21, 18, 0),
-                                             endDate: DateUtil.formattedDateToDate(2023, 7, 21, 19, 0)
-                                            )
+        ConfirmView(
+            connectionManager: ConnectionService(),
+            selectedEvent: DateEvent(title: "아카데미 저녁 회식",
+                                    startDate: DateUtil.formattedDateToDate(2023, 07, 21, 18, 0),
+                                    endDate: DateUtil.formattedDateToDate(2023, 7, 21, 19, 0)
+                                    )
         )
         .environment(\.locale, .init(identifier: "ko"))
             .environmentObject(CalcOksService.shared)

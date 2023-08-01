@@ -32,7 +32,10 @@ struct GuestCallingDone: View {
                 .multilineTextAlignment(.center)
                 .padding(.vertical,30)
             NavigationLink(
-                destination: TimeTable(vm:TimeTableViewModel(selectedDay: getSelectedDate(connectionManager.groupInfo ?? GroupInfo.empty())))
+                destination: TimeTable(
+                    connectionManager: connectionManager,
+                    vm:TimeTableViewModel(selectedDay: getSelectedDate(connectionManager.groupInfo ?? GroupInfo.empty()))
+                )
                     .environmentObject(connectionManager)
                     .environmentObject(userData)
                     .navigationBarBackButtonHidden(true),
