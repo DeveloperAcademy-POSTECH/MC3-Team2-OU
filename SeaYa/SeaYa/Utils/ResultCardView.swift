@@ -44,7 +44,10 @@ struct ResultCardView: View {
                     .padding(.top, 3)
                     .padding(.bottom, 29)
             
-                SmallButton_Blue(title: "내 캘린더에 추가하기", action: {})
+                SmallButton_Blue(title: "내 캘린더에 추가하기", action: {
+                    registerEvent()
+                    moveToMainView = true
+                })
                     .padding(.bottom, 10)
                 
                 SmallButton_White(title: "홈화면으로 돌아가기", action: {moveToMainView = true})
@@ -78,7 +81,14 @@ struct ResultCardView: View {
         }
     }
 }
-
+extension ResultCardView{
+    func registerEvent(){
+        let event = Event(title: schedule.scheduleName, start: schedule.startTime, end: schedule.endTime)
+        Task{
+            let complete = try await  RemoteCalendarRepository.shared.createEvent(event:event)
+        }
+    }
+}
 struct ResultCardView_Previews: PreviewProvider {
     static var previews: some View {
         ResultCardView(connectionManager: ConnectionService())
