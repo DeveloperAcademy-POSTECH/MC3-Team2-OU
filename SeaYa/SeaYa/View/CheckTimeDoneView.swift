@@ -29,7 +29,7 @@ struct CheckTimeDoneView: View {
                 }
                 //Guest
                 else {
-                    if connectionManager.isCheckTimeDone && connectionManager.scheduleDone == nil{
+                    if connectionManager.isCheckTimeDone.isCheckTimeDone && connectionManager.scheduleDone == nil{
                         GuestWaitingForConfirmView()
                     }else if connectionManager.scheduleDone != nil {
                         ResultView(connectionManager: connectionManager)
@@ -37,10 +37,12 @@ struct CheckTimeDoneView: View {
                         WaitingForConfirmView()
                     }
                 }
-            }.onReceive(connectionManager.$listUP){ _ in
+            }
+            .onReceive(connectionManager.$listUP){ _ in
                 // 중복원소 제거
                 if connectionManager.listUP.count == connectionManager.peers.count+1 && !connectionManager.isHosting {
                     Task{
+                        connectionManager.send(true, messageType: .CheckTimeDone)
                         calcOksManager.theTime = period
                         calcOksManager.dateMembers = connectionManager.listUP
                         try await calcOksManager.performCalculation(connectionManager.listUP, by: [])
@@ -48,7 +50,6 @@ struct CheckTimeDoneView: View {
                     }
                 }
             }
-        
     }
 }
 

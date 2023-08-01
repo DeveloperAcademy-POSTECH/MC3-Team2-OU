@@ -9,6 +9,10 @@ import Foundation
 import MultipeerConnectivity
 import SwiftUI
 
+struct CheckTimeDone: Codable {
+    var isCheckTimeDone: Bool
+}
+
 class ConnectionService: NSObject, ObservableObject {
     private static let service = "ou-SeaYa"
    
@@ -18,7 +22,7 @@ class ConnectionService: NSObject, ObservableObject {
     @Published var connected = false
     @Published var groupInfo: GroupInfo?
     @Published var listUP: [DateMember] = []
-    @Published var isCheckTimeDone: Bool = false
+    @Published var isCheckTimeDone: CheckTimeDone = CheckTimeDone(isCheckTimeDone: false)
     @Published var scheduleDone: ScheduleDone?
 
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
@@ -159,7 +163,7 @@ extension ConnectionService: MCSessionDelegate {
                     
                 case .CheckTimeDone:
                     if let isCheckTimeDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        isCheckTimeDone = try JSONDecoder().decode(Bool.self, from: isCheckTimeDoneData)
+                        isCheckTimeDone = try JSONDecoder().decode(CheckTimeDone.self, from: isCheckTimeDoneData)
                     }
                 }
             }
@@ -237,7 +241,7 @@ extension ConnectionService: MCSessionDelegate {
                     
                 case .CheckTimeDone:
                     if let isCheckTimeDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        isCheckTimeDone = try JSONDecoder().decode(Bool.self, from: isCheckTimeDoneData)
+                        isCheckTimeDone = try JSONDecoder().decode(CheckTimeDone.self, from: isCheckTimeDoneData)
                     }
                 }
             }

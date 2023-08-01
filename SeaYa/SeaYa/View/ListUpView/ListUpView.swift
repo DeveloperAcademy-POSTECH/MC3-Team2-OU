@@ -32,6 +32,7 @@ struct ListUpView: View {
                 if let selected = selected{
                     NavigationLink(
                         destination: ConfirmView(
+                            connectionManager: connectionManager,
                             selectedEvent: DateEvent(
                                 title: connectionManager.groupInfo?.scheduleName ?? "우리들의 모임",
                                 startDate: Date(timeIntervalSince1970: TimeInterval(selected.timeInt*1800)),
@@ -55,6 +56,10 @@ struct ListUpView: View {
                     BigButton_Unactive(title: "최종 일정을 선택해주세요", action: {})
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onAppear(){
+                    print("Peers \(connectionManager.peers)")
+                    connectionManager.send(true, messageType: .CheckTimeDone)
+                }
                 .background(Color.backgroundColor)
         }
     }
