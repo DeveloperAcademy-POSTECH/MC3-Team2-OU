@@ -48,6 +48,20 @@ struct CheckTimeDoneView: View {
                 }
             }
         }.onReceive(connectionManager.$listUP){ _ in
+            // 중복원소 제거
+            var idArrayWithDuplicates = connectionManager.listUP.map{$0.id}
+            
+            var seenElement = Set<UUID>()
+            var uniqueArray = [DateMember]()
+            
+            for (element, listElement) in zip(idArrayWithDuplicates, connectionManager.listUP) {
+                if !seenElement.contains(element) {
+                    seenElement.insert(element)
+                    uniqueArray.append(listElement)
+                }
+            }
+            
+            connectionManager.listUP = uniqueArray
             if connectionManager.listUP.count == connectionManager.peers.count && !connectionManager.isHosting {
                 Task{
                     calcOksManager.theTime = period
