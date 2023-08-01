@@ -10,17 +10,15 @@ import Foundation
 class UserInfoRepository{
     static let shared = UserInfoRepository()
     private let userDefaults: UserDefaults
-    private var userData: UserData? = nil
     private init(userDefaults: UserDefaults = .standard) {
          self.userDefaults = userDefaults
      }
-    public func setUserData(userData: UserData){
-        self.userData = userData
-    }
+    
     public func setUid(uid: String){
         let uid = UUID().uuidString
         userDefaults.set(uid, forKey: "uid")
     }
+    
     public func getUid() -> String?{
         if let uid = UserDefaults.standard.object(forKey: "uid") as? String {
             return uid

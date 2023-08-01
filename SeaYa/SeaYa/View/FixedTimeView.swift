@@ -92,6 +92,7 @@ struct FixedTimeView: View {
                             title: "확인",
                             action: {
                                 isFixedTimeSettingCompleted = true
+                                fixedTimeViewModel.buttonClicked()
                                 let encoder = JSONEncoder()
                                 if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
                                     UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
