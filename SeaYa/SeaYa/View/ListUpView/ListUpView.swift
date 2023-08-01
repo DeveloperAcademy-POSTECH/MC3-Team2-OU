@@ -24,7 +24,9 @@ struct ListUpView: View {
                 ScrollView{
                     VStack(spacing:16){
                         ForEach(timeOkGroup, id : \.self){ timeOks in
-                            ListUpElementView(selected: $selected, forGuest: $forGuest, timeOks: timeOks, period: period)
+                            if timeOks.count > 0{
+                                ListUpElementView(selected: $selected, forGuest: $forGuest, timeOks: timeOks, period: period)
+                            }
                         }
                         Spacer().frame(height: 40)
                     }

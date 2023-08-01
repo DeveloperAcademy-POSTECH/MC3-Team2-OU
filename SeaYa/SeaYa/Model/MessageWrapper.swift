@@ -17,4 +17,5 @@ enum MessageType: String, Codable {
     case ListUP
     case ScheduleDone
     case CheckTimeDone
+    case ListUpViewResult
 }
