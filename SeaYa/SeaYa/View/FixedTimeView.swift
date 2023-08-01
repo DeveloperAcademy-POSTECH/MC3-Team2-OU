@@ -16,6 +16,7 @@ struct FixedTimeView: View {
     @State var fixedTimeViewModel = FixedTimeViewModel()
     @State var showSettingViewModal = false
     @State var selectedIndex = -1
+    @State var id = ""
     @StateObject var state = FixedTimeViewState()
 
     private let fixedTimeKey = "FixedTimeKey"
@@ -70,10 +71,11 @@ struct FixedTimeView: View {
                             action: {
                                 state.isUpdate = false
                                 showSettingViewModal = true
-                                fixedTimeViewModel.fixedTimeModels.append(FixedTimeModel())
-                                if fixedTimeViewModel.fixedTimeModels.count >= 1 {
-                                    selectedIndex = fixedTimeViewModel.fixedTimeModels.count-1
-                                }
+                                id = UUID().uuidString
+//                                fixedTimeViewModel.fixedTimeModels.append(FixedTimeModel())
+//                                if fixedTimeViewModel.fixedTimeModels.count >= 1 {
+//                                    selectedIndex = fixedTimeViewModel.fixedTimeModels.count-1
+//                                }
                             }, label: {
                                 ZStack(alignment: .leading) {
                                     RoundedRectangle(cornerRadius: 16)
@@ -92,10 +94,10 @@ struct FixedTimeView: View {
                             action: {
                                 isFixedTimeSettingCompleted = true
                                 fixedTimeViewModel.buttonClicked()
-                                let encoder = JSONEncoder()
-                                if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
-                                    UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
-                                }
+//                                let encoder = JSONEncoder()
+//                                if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
+//                                    UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
+//                                }
                             }
                         )
                     },
@@ -114,11 +116,11 @@ struct FixedTimeView: View {
             .sheet(isPresented: $showSettingViewModal, content: {
                 if let isUpdate = state.isUpdate {
                     SettingView(
-                        fixedTimeViewModel: $fixedTimeViewModel,
+                        fixedTimeViewModel: fixedTimeViewModel,
                         showSettingViewModal: $showSettingViewModal,
                         selectedIndex : $selectedIndex,
                         tempFixedTimeModel : selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
-                        isUpdate: isUpdate,
+                        id:id, isUpdate: isUpdate,
                         onDelete: {id in
                             fixedTimeViewModel.deleteItem(withID: id)
                         })

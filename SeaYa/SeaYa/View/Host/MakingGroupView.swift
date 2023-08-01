@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//TODO: 다음 view로 넘어갈 때 입력받은 정보 저장
 struct MakingGroupView: View {
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject private var userData: UserData
@@ -40,7 +39,7 @@ struct MakingGroupView: View {
                         .frame(maxWidth: 358, maxHeight: 200)
                         .cornerRadius(16)
                     
-                    CalendarView(choseDate: $selectedDate)
+                    CalendarView(selectedDate: $selectedDate)
                         .padding(16)
                     
                 }
