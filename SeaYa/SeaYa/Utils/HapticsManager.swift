@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import SwiftUI
-import CoreHaptics
 
 fileprivate final class HapticsManager {
     static let shared = HapticsManager()
@@ -21,4 +20,13 @@ fileprivate final class HapticsManager {
 
 func haptics(_ notification: UINotificationFeedbackGenerator.FeedbackType) {
     HapticsManager.shared.trigger(notification)
+}
+
+class HapticManager {
+    static let instance = HapticManager()
+    
+    func notification(type: UINotificationFeedbackGenerator.FeedbackType) {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(type)
+    }
 }

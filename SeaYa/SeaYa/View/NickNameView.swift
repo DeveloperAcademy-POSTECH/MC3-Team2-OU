@@ -78,7 +78,7 @@ struct NicknameView: View {
                 
                 Spacer()
                 
-                
+
                 BigButton_Blue(
                     title: "다음",
                     action: {
