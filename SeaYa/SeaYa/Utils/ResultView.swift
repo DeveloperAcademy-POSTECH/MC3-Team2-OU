@@ -19,7 +19,7 @@ struct ResultView: View {
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 40)
                 
-            Image("your_image_name")
+            Image(isAttend ? "result" : "resultno")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 150)
