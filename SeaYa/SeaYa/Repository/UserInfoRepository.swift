@@ -13,11 +13,12 @@ class UserInfoRepository{
     private init(userDefaults: UserDefaults = .standard) {
          self.userDefaults = userDefaults
      }
-    
+
     public func setUid(uid: String){
         let uid = UUID().uuidString
         userDefaults.set(uid, forKey: "uid")
     }
+
     
     public func getUid() -> String?{
         if let uid = UserDefaults.standard.object(forKey: "uid") as? String {
@@ -28,6 +29,7 @@ class UserInfoRepository{
     public func setNickName(nickName: String){
         userDefaults.set(nickName, forKey: "nickName")
     }
+                
     public func getNickName() -> String?{
         if let nickName = UserDefaults.standard.object(forKey: "nickName") as? String {
             return nickName

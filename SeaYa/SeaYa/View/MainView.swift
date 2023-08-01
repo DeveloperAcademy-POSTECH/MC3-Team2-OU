@@ -30,7 +30,6 @@ struct MainView: View {
                             VStack {
                                 Text("꾹 누르고")
                                     .subtitle(textColor: Color.white)
-                                
                                 Text("그룹 참여하기")
                                     .subtitle(textColor: Color.white)
                             }
@@ -74,33 +73,42 @@ struct MainView: View {
                                     action: {
                                     }, label: {
                                         NavigationLink(
-                                            destination: MakingGroupView(connectionManager: connectionManager)
-                                                .environmentObject(userData)
-                                                .navigationBarBackButtonHidden(),
-                                            label: {
-                                                VStack {
-                                                    ZStack {
-                                                        Circle()
-                                                            .frame(maxWidth: 82)
-                                                            .foregroundColor(.gray)
-                                                        
-                                                        Image(systemName: "badge.plus.radiowaves.right")
-                                                            .font(.system(size: 30))
-                                                            .foregroundColor(Color.white)
-                                                            .frame(width: 41, height: 48)
-                                                            .padding(.horizontal, 21)
-                                                            .padding(.vertical, 17)
+                                            destination: {
+                                                UserInfoView().environmentObject(userData)
+                                            }, label: {
+                                                NavigationLink(
+                                                    destination: MakingGroupView(connectionManager: connectionManager)
+                                                        .environmentObject(userData)
+                                                        .navigationBarBackButtonHidden(),
+                                                    label: {
+                                                        VStack {
+                                                            ZStack {
+                                                                Circle()
+                                                                    .frame(maxWidth: 82)
+                                                                    .foregroundColor(.gray)
+                                                                
+                                                                Image(systemName: "badge.plus.radiowaves.right")
+                                                                    .font(.system(size: 30))
+                                                                    .foregroundColor(Color.white)
+                                                                    .frame(width: 41, height: 48)
+                                                                    .padding(.horizontal, 21)
+                                                                    .padding(.vertical, 17)
+                                                            }
+                                                            Text("방 만들기")
+                                                              .context(textColor: Color.white)
+                                                              .multilineTextAlignment(.center)
+                                                        }
+                                                       .frame(maxWidth: 80)
                                                     }
+
+                                                )
+
                                                     
-                                                    Text("방 만들기")
-                                                        .context(textColor: Color.white)
-                                                        .multilineTextAlignment(.center)
-                                                }
-                                                .frame(maxWidth: 80)
+                                       
                                             }
                                         )
                                     }
-                                )
+                                    )
                                 .padding(.trailing, 70)
                                 
                                 Button(
@@ -109,7 +117,7 @@ struct MainView: View {
                                     }, label: {
                                         NavigationLink(
                                             destination: {
-                                                //MARK: 설정
+                                               UserInfoView()
                                             }, label: {
                                                 VStack {
                                                     ZStack {

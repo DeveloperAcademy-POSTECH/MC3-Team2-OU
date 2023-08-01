@@ -14,7 +14,7 @@ struct NicknameView: View {
     @EnvironmentObject private var userData: UserData
     
     @State private var isSheetPresented = false
-    
+    let userInfoRepository = UserInfoRepository.shared
     
     let columns: [GridItem] = Array(repeating: .init(), count: 3) // TODO: Dummy data
 
@@ -75,45 +75,55 @@ struct NicknameView: View {
                     )
                     .font(Font.system(size: 18, weight: .bold))
                     .foregroundColor(Color.textColor)
-                
-                Spacer()
-                
-
-                BigButton_Blue(
-                    title: "다음",
-                    action: {
-                        if !nickname.isEmpty {
-                            userData.setNickName(nickname)
-                            isNicknameSettingCompleted = true
-                        }
-                    }
-                )
+          
+            Spacer()
+            
+            Button(action: {
+                if !nickname.isEmpty {
+                    userData.nickname = nickname;
+                    userInfoRepository.setNickName(nickName: nickname);
+                    isNicknameSettingCompleted = true;
+              }
+            }) {
+                Text("다음")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(nickname.isEmpty ? Color.unactiveColor : Color.primaryColor)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 20)
             }
-            .padding()
-            .sheet(isPresented: $isSheetPresented, content: {
-                VStack{
-                    RoundedRectangle(cornerRadius: 2.5)
-                        .fill(Color.gray)
-                        .frame(width:34, height:5)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-                    
-                    Text("프로필 이미지")
-                        .body(textColor: Color.textColor)
-                        .padding(.bottom, 30)
-                    
-                    LazyVGrid(columns: columns){
-                        ForEach(0..<9, id: \.self) { index in
-                            Button(
-                                action: {
-                                    userData.setImageName("0\(index+1)")
-                                },
-                                label: {
-                                    ZStack{
-                                        VStack{
-                                            Image("0" + "\(index + 1)")
-                                                .resizable()
-                                                .frame(width: 66,height: 66)
-                                        }
+           
+        }
+        .padding()
+        .sheet(isPresented: $isSheetPresented, content: {
+            VStack{
+                RoundedRectangle(cornerRadius: 2.5)
+                .fill(Color.gray)
+                 .frame(width:34, height:5)
+                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                Text("프로필 이미지")
+                    .body(textColor: Color.textColor)
+                    .padding(.bottom, 30)
+             
+        
+             
+                LazyVGrid(columns: columns){
+                    ForEach(0..<9, id: \.self) { index in
+                        Button(
+                            action: {
+                                userData.characterImageName = "0\(index+1)"
+                                userInfoRepository.setImageName(imageName: userData.characterImageName)
+                                print("캐릭터 설정", userData.characterImageName);
+                                print("캐릭터 유저 디폴트", userInfoRepository.getImageName())
+                            },
+                            label: {
+                                ZStack{
+                                    VStack{
+                                        Image("0" + "\(index + 1)")
+                                            .resizable()
+                                            .frame(width: 66,height: 66)
                                     }
                                     .padding(15)
                                 }

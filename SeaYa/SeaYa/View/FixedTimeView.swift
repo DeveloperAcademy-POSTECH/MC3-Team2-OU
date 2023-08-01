@@ -85,7 +85,6 @@ struct FixedTimeView: View {
                                 .frame(height: 48)
                             }
                         )
-
                         Spacer(minLength: 0)
                         
                         BigButton_Blue(
@@ -104,6 +103,7 @@ struct FixedTimeView: View {
                         HStack{
                             Text("고정적인 일정을 \n추가해주세요").title(textColor: .primary).frame(alignment: .leading)
                             Spacer()
+
                         }
                         .padding(.top, 40)
                     }
