@@ -28,7 +28,7 @@ struct TimeTable: View {
                     }
                     //MARK: 페이지 넘기기
                     NavigationLink(
-                        destination: WaitingForConfirmView().navigationBarBackButtonHidden(true),
+                        destination: CheckTimeDoneView(connectionManager: connectionManager).navigationBarBackButtonHidden(true),
                         tag: 1,
                         selection: $clicked) {}
                     BigButton_Blue(title: "입력 완료") {

@@ -65,8 +65,9 @@ class RemoteCalendarRepository{
     //calendar 가져오기
     private func getCalendar() -> EKCalendar{
         let calendars = store.calendars(for: .event)
+        print(calendars.count)
         let calendar = calendars.filter { calendar in
-            calendar.title == "캘린더" || calendar.title == "Calendar"
+            calendar.title == "캘린더" || calendar.title == "Calendar" || calendar.title == "Personal"
         }.first
         return calendar!
     }

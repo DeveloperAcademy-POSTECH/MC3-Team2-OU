@@ -49,7 +49,7 @@ class TimeTableViewModel: ObservableObject{
             DateEvent(title: item.event.title, startDate: item.event.start, endDate: item.event.end)
         }
         let dateMember = DateMember(id: UUID(uuidString: userData.uid)!, name: userData.nickname, dateEvents: selectedDateEvent)
-        if connectionManager.isHosting{
+        if !connectionManager.isHosting{
             connectionManager.listUP.append(dateMember)
         }
         else{

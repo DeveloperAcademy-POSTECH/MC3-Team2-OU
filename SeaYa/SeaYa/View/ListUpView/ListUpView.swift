@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct ListUpView: View {
-    @ObservedObject var connectionManager = ConnectionService()
+    @ObservedObject var connectionManager : ConnectionService
     @State var selected : TimeOks?
     var timeOkGroup : [[TimeOks]]
     var period : Int
@@ -62,7 +62,7 @@ struct ListUpView: View {
 
 struct ListUpView_Previews: PreviewProvider {
     static var previews: some View {
-        ListUpView(timeOkGroup : [[TimeOks(timeInt: 940614, Oks: 2)],
+        ListUpView(connectionManager: ConnectionService(), timeOkGroup : [[TimeOks(timeInt: 940614, Oks: 2)],
                                   [TimeOks(timeInt: 940620, Oks: 2),
                                    TimeOks(timeInt: 940621, Oks: 2)],
                                   [TimeOks(timeInt: 940615, Oks: 1),
