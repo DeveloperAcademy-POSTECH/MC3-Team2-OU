@@ -45,7 +45,7 @@ struct GuestListCellView: View {
                 }, label: {
                     VStack {
                         ZStack {
-                            if isSelected {
+                            if isSelected && connectionManager.peers.count > index {
                                 Circle()
                                     .frame(width: 65, height: 65)
                                     .foregroundColor(.white)
