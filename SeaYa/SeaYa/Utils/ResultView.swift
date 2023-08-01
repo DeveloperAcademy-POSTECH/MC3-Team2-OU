@@ -10,12 +10,8 @@ import SwiftUI
 struct ResultView: View {
     @ObservedObject var connectionManager: ConnectionService
     @EnvironmentObject private var userData: UserData
-    
-    @State private var scheduleName: String = ""
-    @State private var selectedDate: String = ""
-    @State private var startTime: String = ""
-    @State private var endTime: String = ""
-    @State private var isAttend: Bool = false
+    @State private var schedule = ScheduleDone()
+    @State private var isAttend = false
     
     var body: some View {
         VStack {
@@ -28,7 +24,7 @@ struct ResultView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 150)
                 
-            Text(scheduleName)
+            Text(schedule.scheduleName)
                 .headline(textColor: Color.textColor)
                 .padding(.top, 40)
                 .padding(.bottom, 18)
@@ -36,12 +32,12 @@ struct ResultView: View {
             Divider()
                 .frame(width: 214)
                 
-            Text(selectedDate)
+            Text(schedule.selectedDate.toString())
                 .context(textColor: Color.textColor)
                 .multilineTextAlignment(.center)
                 .padding(.top,30)
                 
-            Text("\(startTime) - \(endTime)")
+            Text("\(schedule.startTime.toString()) - \(schedule.endTime.toString())")
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 3)
                 .padding(.bottom, 29)
@@ -61,12 +57,8 @@ struct ResultView: View {
         .background(Color.white)
         .cornerRadius(32)
         .onAppear() {
-            guard let schedule = connectionManager.scheduleDone else {return}
-            scheduleName = schedule.scheduleName
-            selectedDate = schedule.selectedDate.toString()
-            startTime = schedule.startTime.toString()
-            endTime = schedule.endTime.toString()
-            isAttend = schedule.isAttend[userData.nickname] ?? false
+            schedule = connectionManager.scheduleDone ?? ScheduleDone()
+            isAttend = (!connectionManager.isHosting) || (schedule.isAttend[userData.nickname] == true)
         }
     }
 }

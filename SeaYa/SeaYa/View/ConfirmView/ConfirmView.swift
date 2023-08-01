@@ -150,6 +150,7 @@ struct ConfirmView: View {
                         startTime: selectedEvent.startDate,
                         endTime: selectedEvent.endDate,
                         isAttend: attendedMember)
+                    connectionManager.setScheduleInfo(scheduleDone)
                     connectionManager.sendScheduleInfoToGuest(scheduleDone)
                     // print("send schedule info to guest")
                 })
