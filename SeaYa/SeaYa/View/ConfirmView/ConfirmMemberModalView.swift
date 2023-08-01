@@ -31,7 +31,7 @@ struct ConfirmMemberModalView: View {
                         label: {
                             ZStack{
                                 VStack{
-                                    Image("0" + "\(index+1)")
+                                    Image(member.profileImage)
                                         .resizable()
                                         .frame(width: 54,height: 54)
                                     Text(member.name)
