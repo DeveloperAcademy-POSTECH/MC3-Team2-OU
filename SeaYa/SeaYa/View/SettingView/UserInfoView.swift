@@ -69,13 +69,15 @@ struct UserInfoView: View {
                     .frame(width: 358, alignment: .leading)
                 ScrollView{
                     VStack{
-                        ForEach(Array(fixedTimeViewModel.fixedTimeModels.enumerated()), id: \.offset){ index,
+                        ForEach(fixedTimeViewModel.fixedTimeModels.sorted(by: { a, b in
+                            a.start < b.start
+                        }), id: \.id){
                             fixedTimeModel in
                             Button(
                                 action: {
                                     state.isUpdate = true
                                     showSettingViewModal = true
-                                    selectedIndex = index
+                                    selectedIndex = 0
                                     id = fixedTimeModel.id.uuidString
                                 },
                                 label: {

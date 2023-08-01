@@ -13,7 +13,6 @@ struct TimeTable: View {
     var connectionManager: ConnectionService
     @EnvironmentObject var userData: UserData
     @ObservedObject var vm: TimeTableViewModel
-    
     var body: some View {
         NavigationStack{
             if vm.calendar != nil{
@@ -38,11 +37,20 @@ struct TimeTable: View {
                 }.padding(16)
             }
             else{
-                ProgressView()
-            }
+                VStack{
+                    BigButton_Blue(title: "calendar 확인") {
+                        print(vm.calendar)
+                    }
+                    BigButton_Blue(title: "setter 다시 주입") {
+                        vm.setSelectedDay(selectedDay: ["2023-08-01"])
+                    }
+                    Text(vm.calendar?.first?.key ?? "nil")
+                }.padding(16)
+                }
+        }
         }
     }
-}
+
 struct DayLayout: View{
     let vm: TimeTableViewModel
     var body: some View{
