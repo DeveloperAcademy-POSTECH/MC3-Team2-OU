@@ -34,13 +34,14 @@ struct HostCallingDone: View {
                 .multilineTextAlignment(.center)
                 .padding(.vertical,30)
             NavigationLink(
-                destination: TimeTable(vm:TimeTableViewModel(selectedDay: getSelectedDate(connectionManager)))
+                destination: TimeTable(vm:TimeTableViewModel(selectedDay: getSelectedDate(groupInfo)))
                     .environmentObject(connectionManager)
                     .environmentObject(userData)
                     .navigationBarBackButtonHidden(true),
                 tag: 1,
                 selection: $clicked) {}
             SmallButton_Blue(title: "일정 입력하기", action: {
+                connectionManager.setGroupInfo(groupInfo)
                 clicked = 1;
             })
             .padding(.bottom, 32)
@@ -50,19 +51,11 @@ struct HostCallingDone: View {
         .cornerRadius(32)
         
     }
-    func getSelectedDate(_ connectionManager: ConnectionService) -> [String]{
-        
-        if let arr = connectionManager.groupInfo{
-            return arr.selectedDate.map { date in
-                DateUtil.getFormattedDate(date)
-            }
+    func getSelectedDate(_ groupInfo: GroupInfo) -> [String]{
+        return groupInfo.selectedDate.map { date in
+            DateUtil.getFormattedDate(date)
         }
-        else{
-            //MARK: 이거는 넣어주세요!!
-            connectionManager.setGroupInfo(groupInfo)
-            print("groupInfo 안들어옴")
-            return []
-        }
+
     }
     
 }
