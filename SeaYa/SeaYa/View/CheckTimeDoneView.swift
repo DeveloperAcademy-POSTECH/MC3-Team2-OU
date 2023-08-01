@@ -43,7 +43,7 @@ struct CheckTimeDoneView: View {
                 if connectionManager.listUP.count == connectionManager.peers.count+1 && !connectionManager.isHosting {
                     Task{
                         connectionManager.send(true, messageType: .CheckTimeDone)
-                        calcOksManager.theTime = period
+                        calcOksManager.theTime = connectionManager.groupInfo?.estimatedTime ?? 1
                         calcOksManager.dateMembers = connectionManager.listUP
                         try await calcOksManager.performCalculation(connectionManager.listUP, by: [])
                         ListUpViewResult = calcOksManager.groupByConsecutiveTime(calcOksManager.result!)
