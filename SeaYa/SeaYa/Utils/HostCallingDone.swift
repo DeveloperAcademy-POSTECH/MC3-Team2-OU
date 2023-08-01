@@ -11,6 +11,7 @@ struct HostCallingDone: View {
     @ObservedObject var connectionManager: ConnectionService
     @State var clicked: Int? = 0
     @EnvironmentObject private var userData: UserData
+    var groupInfo: GroupInfo
     
     var body: some View {
         VStack {
@@ -50,12 +51,15 @@ struct HostCallingDone: View {
         
     }
     func getSelectedDate(_ connectionManager: ConnectionService) -> [String]{
+        
         if let arr = connectionManager.groupInfo{
             return arr.selectedDate.map { date in
                 DateUtil.getFormattedDate(date)
             }
         }
         else{
+            //MARK: 이거는 넣어주세요!!
+            connectionManager.setGroupInfo(groupInfo)
             print("groupInfo 안들어옴")
             return []
         }
@@ -64,9 +68,9 @@ struct HostCallingDone: View {
 }
 
 
-struct HostCallingDone_Previews: PreviewProvider {
-    static var previews: some View {
-        HostCallingDone(connectionManager: ConnectionService())
-    }
-}
+//struct HostCallingDone_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HostCallingDone(connectionManager: ConnectionService())
+//    }
+//}
 
