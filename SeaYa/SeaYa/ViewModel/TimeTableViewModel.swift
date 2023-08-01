@@ -48,7 +48,11 @@ class TimeTableViewModel: ObservableObject{
         let selectedDateEvent = selectedItem.map { item in
             DateEvent(title: item.event.title, startDate: item.event.start, endDate: item.event.end)
         }
-        let dateMember = DateMember(id: UUID(uuidString: userData.uid)!, name: userData.nickname, dateEvents: selectedDateEvent)
+        let dateMember = DateMember(id: UUID(uuidString: userData.uid)!,
+                                    name: userData.nickname,
+                                    dateEvents: selectedDateEvent,
+                                    profileImage: userData.characterImageName
+        )
         if !connectionManager.isHosting{
             connectionManager.listUP.append(dateMember)
         }
