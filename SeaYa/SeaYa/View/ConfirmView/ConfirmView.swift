@@ -140,8 +140,8 @@ struct ConfirmView: View {
                 }).simultaneousGesture(TapGesture().onEnded{
                     
                         // 여기서 Send To Guest
-                    let selecteMemberId = selectedMembers.map{$0.name}
-                    let membersId = (members ?? []).map{$0.name}
+                    let selecteMemberId = selectedMembers.map{$0.id.uuidString}
+                    let membersId = (members ?? []).map{$0.id.uuidString}
                     
                     let attendedMember = Dictionary(uniqueKeysWithValues: zip(
                         selecteMemberId,

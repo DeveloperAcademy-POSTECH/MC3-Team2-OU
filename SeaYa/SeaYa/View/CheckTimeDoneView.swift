@@ -19,7 +19,7 @@ struct CheckTimeDoneView: View {
                 if !connectionManager.isHosting {
                     if connectionManager.listUP.count == connectionManager.peers.count+1{
                         //MARK: ListUpView Data 수정
-                        ListUpView(connectionManager: connectionManager, timeOkGroup: ListUpViewResult, period: period)
+                        ListUpView(connectionManager: connectionManager, forGuest: false, timeOkGroup: ListUpViewResult, period: period)
                             .onAppear() {
                                 connectionManager.send(true, messageType: .CheckTimeDone)
                             }

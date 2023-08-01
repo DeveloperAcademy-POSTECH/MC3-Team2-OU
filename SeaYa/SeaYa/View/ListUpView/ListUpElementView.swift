@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListUpElementView: View {
     @Binding var selected : TimeOks?
+    @Binding var forGuest : Bool
     var timeOks : [TimeOks]
     var period : Int
     @State private var showDetail = false
@@ -37,6 +38,7 @@ struct ListUpElementView: View {
                             //6명
                             Text("\(Image(systemName: "person.2.fill")) \(timeOks.first!.Oks)명").font(.system(size: 13, weight: .bold)).foregroundColor(Color.primaryColor)}}
                     Spacer()
+                    
                     if timeOks.count > 1{
                         Button{
                             withAnimation{showDetail.toggle()}
@@ -46,31 +48,38 @@ struct ListUpElementView: View {
                                 .foregroundColor(Color.primary)
                         }
                     } else {
-                        Button{
-                            if selected != timeOks.first! {
-                                selected = timeOks.first!
-                            } else {
-                                selected = nil
-                            }
-                        } label : {
-                            if selected == timeOks.first! {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .resizable()
-                                    .frame(width: 23.91, height: 23.91)
-                            }
-                            else {
-                                ZStack{
-                                    Circle()
-                                        .strokeBorder(selected == timeOks.first! ? Color.primaryColor : Color.unactiveColor , lineWidth: 1)
-                                        .frame(width: 22, height: 22)
-                                }.frame(width: 23.91, height: 23.91)
-                            }
-                        }}}
-                    .padding(EdgeInsets(top: 25, leading: 18, bottom: 21, trailing: 20))
+                        if !forGuest{
+                            Button(
+                                action : {
+                                    if selected != timeOks.first! {
+                                        selected = timeOks.first!
+                                    } else {
+                                        selected = nil
+                                    }
+                                },
+                                label : {
+                                    if selected == timeOks.first! {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .resizable()
+                                            .frame(width: 23.91, height: 23.91)
+                                    } else {
+                                        ZStack{
+                                            Circle()
+                                                .strokeBorder(selected == timeOks.first! ? Color.primaryColor : Color.unactiveColor , lineWidth: 1)
+                                                .frame(width: 22, height: 22)
+                                        }
+                                        .frame(width: 23.91, height: 23.91)
+                                    }
+                                }
+                            )
+                        }
+                    }
+                }
+                .padding(EdgeInsets(top: 25, leading: 18, bottom: 21, trailing: 20))
                 if showDetail && timeOks.count>1{
                     VStack(spacing: 0){
                         ForEach(Array(timeOks.enumerated()), id : \.offset) { index, ok in
-                            ListUpElementDetailView(selected: $selected, showDetail: $showDetail, index: Double(index), timeOks: ok, period: period)
+                            ListUpElementDetailView(selected: $selected, showDetail: $showDetail, forGuest: $forGuest, index: Double(index), timeOks: ok, period: period)
                         }
                     }.padding(.leading, 18)
                 }
@@ -82,20 +91,22 @@ struct ListUpElementView: View {
 
 struct ListUpElementView_Previews: PreviewProvider {
     static var previews: some View {
-        ListUpElementTestView()
+        ListUpElementTestView(forGuest : false)
+        ListUpElementTestView(forGuest : true)
     }
 }
 
 struct ListUpElementTestView : View {
     @State private var selected : TimeOks? = nil
+    @State var forGuest = true
     
     var body: some View {
         VStack{
             ScrollView{
-                ListUpElementView(selected : $selected,
+                ListUpElementView(selected : $selected, forGuest: $forGuest,
                                   timeOks:
                                     [TimeOks(timeInt: 940624, Oks: 2)], period: 1)
-                ListUpElementView(selected : $selected,
+                ListUpElementView(selected : $selected, forGuest: $forGuest,
                                   timeOks:
                                     [TimeOks(timeInt: 940624, Oks: 5),
                                      TimeOks(timeInt: 940625, Oks: 5),

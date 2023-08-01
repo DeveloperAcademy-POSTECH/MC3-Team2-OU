@@ -74,7 +74,7 @@ struct ResultCardView: View {
         .cornerRadius(32)
         .onAppear() {
             schedule = connectionManager.scheduleDone ?? ScheduleDone()
-            isAttend = (!connectionManager.isHosting) || (schedule.isAttend[userData.nickname] == true)
+            isAttend = (!connectionManager.isHosting) || (schedule.isAttend[userData.uid] == true)
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ListUpElementDetailView: View {
     @Binding var selected : TimeOks?
     @Binding var showDetail : Bool
+    @Binding var forGuest : Bool
     var index : Double = 0
     var timeOks : TimeOks
     var period : Int
@@ -24,24 +25,26 @@ struct ListUpElementDetailView: View {
                 .font(.system(size: 17))
                 .foregroundColor(Color.primary)
                 Spacer()
-                Button{
-                    if selected != timeOks{
-                        selected = timeOks
-                    } else {
-                        selected = nil
-                    }
-                } label : {
-                    if selected == timeOks {
-                        Image(systemName: "checkmark.circle.fill")
-                            .resizable()
-                            .frame(width: 23.91, height: 23.91)
-                    }
-                    else {
-                        ZStack{
-                            Circle()
-                                .strokeBorder(selected == timeOks ? Color.primaryColor : Color.unactiveColor , lineWidth: 1)
-                                .frame(width: 22, height: 22)
-                        }.frame(width: 23.91, height: 23.91)
+                if !forGuest{
+                    Button{
+                        if selected != timeOks{
+                            selected = timeOks
+                        } else {
+                            selected = nil
+                        }
+                    } label : {
+                        if selected == timeOks {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .frame(width: 23.91, height: 23.91)
+                        }
+                        else {
+                            ZStack{
+                                Circle()
+                                    .strokeBorder(selected == timeOks ? Color.primaryColor : Color.unactiveColor , lineWidth: 1)
+                                    .frame(width: 22, height: 22)
+                            }.frame(width: 23.91, height: 23.91)
+                        }
                     }
                 }
             }
@@ -60,6 +63,7 @@ struct ListUpElementDetailView: View {
 struct ListUpElementDetailTestView:View{
     @State private var selected : TimeOks? = TimeOks(timeInt: 940625, Oks: 4)
     @State private var showDetail = true
+    @State var forGuest = true
     
     var body: some View{
         VStack{
@@ -70,8 +74,8 @@ struct ListUpElementDetailTestView:View{
             }
             Spacer()
             if showDetail{
-                ListUpElementDetailView(selected: $selected, showDetail: $showDetail, index: 0, timeOks: TimeOks(timeInt: 940624, Oks: 3), period: 4)
-                ListUpElementDetailView(selected: $selected, showDetail: $showDetail, index: 1, timeOks: TimeOks(timeInt: 940624, Oks: 3), period: 5)
+                ListUpElementDetailView(selected: $selected, showDetail: $showDetail, forGuest: $forGuest, index: 0, timeOks: TimeOks(timeInt: 940624, Oks: 3), period: 4)
+                ListUpElementDetailView(selected: $selected, showDetail: $showDetail, forGuest: $forGuest, index: 1, timeOks: TimeOks(timeInt: 940624, Oks: 3), period: 5)
             }
             Spacer()
             Divider()
@@ -81,6 +85,6 @@ struct ListUpElementDetailTestView:View{
 
 struct ListUpElementDetailTestView_Previews: PreviewProvider {
     static var previews: some View {
-        ListUpElementDetailTestView()
+        ListUpElementDetailTestView(forGuest : false)
     }
 }
