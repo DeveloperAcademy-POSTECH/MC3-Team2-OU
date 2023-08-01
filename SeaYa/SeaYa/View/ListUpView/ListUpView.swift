@@ -30,7 +30,7 @@ struct ListUpView: View {
                     }
                 }
                 Spacer()
-                if forGuest{
+                if !forGuest{
                     if let selected = selected{
                         NavigationLink(
                             destination: ConfirmView(
@@ -38,7 +38,7 @@ struct ListUpView: View {
                                 selectedEvent: DateEvent(
                                     title: connectionManager.groupInfo?.scheduleName ?? "우리들의 모임",
                                     startDate: Date(timeIntervalSince1970: TimeInterval(selected.timeInt*1800)),
-                                    endDate: Date(timeIntervalSince1970: TimeInterval(selected.timeInt*1800))
+                                    endDate: Date(timeIntervalSince1970: TimeInterval((selected.timeInt+period)*1800))
                                 )
                             ), label:  {
                                 Text("일정 검토하기").bigButton(textColor: .white)
