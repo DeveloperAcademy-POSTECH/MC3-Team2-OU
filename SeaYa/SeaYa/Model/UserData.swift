@@ -20,15 +20,15 @@ class UserData: ObservableObject{
         UserInfoRepository.shared.setImageName(imageName: imageName)
     }
     init() {
-        if let uid = UserInfoRepository.shared.getUid(){
+        if UserInfoRepository.shared.getUid() != nil{
             self.uid = UserInfoRepository.shared.getUid()!
             self.nickname = UserInfoRepository.shared.getUid()!
             self.characterImageName = UserInfoRepository.shared.getUid()!
         }
         else{
             self.uid = UUID().uuidString
-            self.nickname = "hello"
-            self.characterImageName = "01"
+            self.nickname = ""
+            self.characterImageName = ""
             UserInfoRepository.shared.setUid(uid: uid)
         }
     }
