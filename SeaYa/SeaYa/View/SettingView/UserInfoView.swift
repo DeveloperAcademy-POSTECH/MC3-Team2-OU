@@ -12,27 +12,28 @@ class EditFixedTimeViewState: ObservableObject {
 }
 
 struct UserInfoView: View {
-    @State var fixedTimeViewModel = FixedTimeViewModel()
+    @ObservedObject var fixedTimeViewModel = FixedTimeViewModel()
     @State var showSettingViewModal = false
     @State var selectedIndex = 0
+    @State var id = ""
     @EnvironmentObject var userData: UserData
     @StateObject var state = EditFixedTimeViewState()
     @Environment(\.presentationMode) private var presentationMode
     private let fixedTimeKey = "FixedTimeKey"
     let userInfoRepository = UserInfoRepository.shared
-    
-    init() {
-          if let data = UserDefaults.standard.data(forKey: fixedTimeKey) {
-              let decoder = JSONDecoder()
-              if let decodedData = try? decoder.decode([FixedTimeModel].self, from: data) {
-                  self._fixedTimeViewModel = State(initialValue: FixedTimeViewModel(decodedData))
-              } else {
-                  self._fixedTimeViewModel = State(initialValue: FixedTimeViewModel())
-              }
-          } else {
-              self._fixedTimeViewModel = State(initialValue: FixedTimeViewModel())
-          }
-      }
+//
+//    init() {
+//          if let data = UserDefaults.standard.data(forKey: fixedTimeKey) {
+//              let decoder = JSONDecoder()
+//              if let decodedData = try? decoder.decode([FixedTimeModel].self, from: data) {
+//                  self._fixedTimeViewModel = State(initialValue: FixedTimeViewModel(decodedData))
+//              } else {
+//                  self._fixedTimeViewModel = State(initialValue: FixedTimeViewModel())
+//              }
+//          } else {
+//              self._fixedTimeViewModel = State(initialValue: FixedTimeViewModel())
+//          }
+//      }
     var body: some View {
         NavigationStack {
             VStack{
@@ -75,6 +76,7 @@ struct UserInfoView: View {
                                     state.isUpdate = true
                                     showSettingViewModal = true
                                     selectedIndex = index
+                                    id = fixedTimeModel.id.uuidString
                                 },
                                 label: {
                                     FixedTimeElementView(fixedTimeModel: fixedTimeModel)
@@ -87,7 +89,8 @@ struct UserInfoView: View {
                     action: {
                         state.isUpdate = false
                         showSettingViewModal = true
-                        fixedTimeViewModel.fixedTimeModels.append(FixedTimeModel())
+                        id = UUID().uuidString
+                        //fixedTimeViewModel.fixedTimeModels.append(FixedTimeModel())
                         if fixedTimeViewModel.fixedTimeModels.count >= 1 {
                             selectedIndex = fixedTimeViewModel.fixedTimeModels.count-1
                         }
@@ -105,12 +108,6 @@ struct UserInfoView: View {
                 Spacer()
                 Button(
                     action: {
-                        print("here!")
-                        print(String(describing: fixedTimeViewModel.fixedTimeModels.first!.category))
-                        let encoder = JSONEncoder()
-                        if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
-                            UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
-                        }
                         presentationMode.wrappedValue.dismiss()
                     },
                     label: {
@@ -130,14 +127,16 @@ struct UserInfoView: View {
             .sheet(isPresented: $showSettingViewModal, content: {
                 if let isUpdate = state.isUpdate {
                     SettingView(
-                        fixedTimeViewModel: $fixedTimeViewModel,
+                        fixedTimeViewModel: fixedTimeViewModel,
                         showSettingViewModal: $showSettingViewModal,
                         selectedIndex : $selectedIndex,
-                        tempFixedTimeModel : selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
-                        isUpdate: isUpdate,
+//                        tempFixedTimeModel : selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
+                        tempFixedTimeModel : fixedTimeViewModel.isExist(id) ? fixedTimeViewModel.getItem(id) : FixedTimeModel(),
+                        id : id, isUpdate: isUpdate,
                         onDelete: {id in
                             fixedTimeViewModel.deleteItem(withID: id)
-                        })
+                        }
+                    )
                     .presentationCornerRadius(32)
                 } else {
                     EmptyView()
