@@ -9,10 +9,10 @@ import SwiftUI
 
 //수정
 struct ConfirmView: View {
-    @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var calcOksService =  CalcOksService.shared
     @ObservedObject var connectionManager: ConnectionService
     
+    @Environment(\.presentationMode) private var presentationMode
     @State var selectedEvent : DateEvent
     @State private var selectedMembers : [DateMember] = []
     
