@@ -12,6 +12,7 @@ struct ConfirmView: View {
     @ObservedObject var calcOksService =  CalcOksService.shared
     @ObservedObject var connectionManager: ConnectionService
     
+    @Environment(\.presentationMode) private var presentationMode
     @State var selectedEvent : DateEvent
     @State private var selectedMembers : [DateMember] = []
     
@@ -30,7 +31,8 @@ struct ConfirmView: View {
                 HStack{
                     Text("일정을 확정하시겠어요?").title(textColor: .primary)
                     Spacer()
-                }.padding(.leading, 16)
+                }
+                .padding(.leading, 16)
                 
                 //일정 제목
                 ZStack{
@@ -190,6 +192,17 @@ struct ConfirmView: View {
                             .presentationCornerRadius(32)
                     }
                 })
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Image(systemName: "chevron.left")
+                        .tint(Color.black)
+                })
+            }
         }
     }
 }
