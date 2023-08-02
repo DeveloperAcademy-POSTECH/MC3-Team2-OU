@@ -13,7 +13,7 @@ struct LaunchScreenView: View {
         Image("launch")
             .resizable()
             .scaledToFit()
-            .frame(maxWidth: 200, maxHeight: .infinity)
+            .frame(maxWidth: 90, maxHeight: .infinity)
     }
 }
 

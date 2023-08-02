@@ -50,8 +50,9 @@ struct MainView: View {
                                     .foregroundColor(.white)
                                 
                                 Image("\(userData.characterImageName)")
+                                    .resizable()
                                     .padding(10)
-                                    .frame(width: 124, height: 124)
+                                    .frame(width: 155, height: 155)
                             }
                             .padding(.top, 24)
                             .padding(.horizontal, 122)
@@ -85,7 +86,7 @@ struct MainView: View {
                                                             ZStack {
                                                                 Circle()
                                                                     .frame(maxWidth: 82)
-                                                                    .foregroundColor(.gray)
+                                                                    .foregroundColor(Color.white.opacity(0.4))
                                                                 
                                                                 Image(systemName: "badge.plus.radiowaves.right")
                                                                     .font(.system(size: 30))
@@ -123,7 +124,7 @@ struct MainView: View {
                                                     ZStack {
                                                         Circle()
                                                             .frame(maxWidth: 82)
-                                                            .foregroundColor(.gray)
+                                                            .foregroundColor(Color.white.opacity(0.4))
                                                         
                                                         Image(systemName: "gear")
                                                             .font(.system(size: 30))

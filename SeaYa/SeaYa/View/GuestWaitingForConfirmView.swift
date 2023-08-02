@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GuestWaitingForConfirmView: View {
     var body: some View {
+        
         VStack(alignment: .center){
             Image("result")
                 .resizable()
