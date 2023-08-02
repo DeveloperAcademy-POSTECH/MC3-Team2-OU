@@ -28,6 +28,7 @@ struct SettingView: View {
                 HStack{
                     Button("취소"){
                         showSettingViewModal = false
+                            
                     }
                     Spacer()
                     Button("완료"){
@@ -66,7 +67,7 @@ struct SettingView: View {
                                         label:{
                                             ZStack {
                                                 RoundedRectangle(cornerRadius: 16)
-                                                    .foregroundColor(tempFixedTimeModel.category == category ? Color.blue : Color(hex: "F3F3F3"))
+                                                    .foregroundColor(tempFixedTimeModel.category == category ? Color.primaryColor : Color(hex: "F3F3F3"))
                                                 
                                                 Text(category)
                                                     .frame(maxWidth: .infinity)
@@ -112,7 +113,7 @@ struct SettingView: View {
                                         label: {
                                             ZStack {
                                                 Circle()
-                                                    .foregroundColor(tempFixedTimeModel.weekdays.contains(weekday) ? Color.blue : Color.clear)
+                                                    .foregroundColor(tempFixedTimeModel.weekdays.contains(weekday) ? Color.primaryColor : Color.clear)
                                                 Text(weekday.rawValue.dayOfWeek())
                                                     .frame(maxWidth: .infinity)
                                                     .font(.headline)
@@ -147,7 +148,7 @@ struct SettingView: View {
                                             .foregroundColor(.black)
                                     } icon: {
                                         Image(systemName: "circle")
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(Color.primaryColor)
                                     }
                                     .font(.callout)
                                     Text(
@@ -161,7 +162,7 @@ struct SettingView: View {
                                             .foregroundColor(.black)
                                     } icon: {
                                         Image(systemName: "circle.fill")
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(Color.primaryColor)
                                     }
                                     .font(.callout)
                                     Text( DateUtil.getFormattedTime(tempFixedTimeModel.end))
@@ -235,12 +236,12 @@ struct SettingView: View {
                     .stroke(.black.opacity(0.06), lineWidth: 50)
                 Circle()
                     .trim(from: startProgress > toProgress ? 0 : startProgress, to: toProgress + (-reverseRotation / 360))
-                    .stroke(.blue, style: StrokeStyle(lineWidth: 45, lineCap: .round, lineJoin: .round))
+                    .stroke(Color.primaryColor, style: StrokeStyle(lineWidth: 45, lineCap: .round, lineJoin: .round))
                     .rotationEffect(.init(degrees: -90))
                     .rotationEffect(.init(degrees: reverseRotation))
                 Image(systemName: "circle")
                     .font(.callout)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color.primaryColor)
                     .frame(width: 40, height: 40)
                     .background(.white, in: Circle())
                     .offset(x: width / 2)
@@ -257,7 +258,7 @@ struct SettingView: View {
                     .rotationEffect(.init(degrees: -90))
                 Image(systemName: "circle.fill")
                     .font(.callout)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color.primaryColor)
                     .frame(width: 40, height: 40)
                     .background(.white, in: Circle())
                     .offset(x: width / 2)

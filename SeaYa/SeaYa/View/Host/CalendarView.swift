@@ -60,7 +60,7 @@ struct CalendarView: View {
                                 }, label: {
                                     ZStack {
                                         Circle()
-                                            .foregroundColor(isSelected ? Color.blue : Color.clear)
+                                            .foregroundColor(isSelected ? Color.primaryColor : Color.clear)
                                         
                                         Text(date.toString())
                                             .frame(maxWidth: .infinity)

@@ -52,20 +52,22 @@ struct HostCallingView: View {
                                 VStack {
                                     Text("그룹 확정")
                                         .fontWeight(.bold)
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(Color.primaryColor)
                                     
                                     HStack {
                                         Image(systemName: "person.2.fill")
+                                            .font(.system(size: 13, weight: .bold))
                                             .foregroundColor(.white)
-                                            .padding(.vertical, 5)
-                                            .padding(.leading, 8)
+                                            .padding(.vertical, 6)
+                                            .padding(.leading, 10)
                                         
                                         Text("\(connectionManager.peers.count)명")
+                                            .font(.system(size: 13, weight: .bold))
                                             .foregroundColor(.white)
-                                            .padding(.vertical, 5)
-                                            .padding(.trailing, 8)
+                                            .padding(.vertical, 6)
+                                            .padding(.trailing, 10)
                                     }
-                                    .background(Color.blue)
+                                    .background(Color.primaryColor)
                                     .cornerRadius(20)
                                 }
                             }
@@ -74,12 +76,12 @@ struct HostCallingView: View {
                         }
                         VStack {
                             Text("그룹원을 찾고 있어요")
-                                .font(.title)
-                                .fontWeight(.bold)
+                                .font(.system(size: 23, weight: .bold))
                                 .foregroundColor(.white)
                                 .padding(.bottom, 5)
                             
                             Text("추가할 그룹원을 선택하고 그룹을 확정하세요")
+                                .caption(textColor: Color.white)
                                 .foregroundColor(.white)
                         }
                         .padding(EdgeInsets(top: 35, leading: 20, bottom: 140, trailing: 20))
