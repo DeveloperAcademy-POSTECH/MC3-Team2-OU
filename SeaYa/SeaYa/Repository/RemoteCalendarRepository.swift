@@ -21,7 +21,9 @@ class RemoteCalendarRepository{
         if let source = store.sources.first(where: { $0.sourceType == .calDAV }){
             newCalendar.source = source
         }
-        print(newCalendar.description)
+        else{
+            newCalendar.source = store.sources.first(where: { $0.sourceType == .local })
+        }
         do{
             try store.saveCalendar(newCalendar, commit: true)
         }
@@ -29,7 +31,7 @@ class RemoteCalendarRepository{
             print("saveCalendar error")
         }
     }
-
+        //
     
     //일정 생성
     public func createEvent(event : Event)async throws -> Bool{
