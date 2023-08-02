@@ -127,37 +127,44 @@ struct ConfirmView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                 
                 Spacer()
-                
-                NavigationLink(
-                    destination: ResultView(connectionManager: connectionManager)
-                        .navigationBarBackButtonHidden(),
-                    label:  {
-                    Text("일정 검토하기").bigButton(textColor: .white)
+                if selectedMembers.count > 1 {
+                    NavigationLink(
+                        destination: ResultView(connectionManager: connectionManager)
+                            .navigationBarBackButtonHidden(),
+                        label:  {
+                            Text("일정 확정하기").bigButton(textColor: .white)
+                                .frame(width: 358, alignment: .center)
+                                .padding(.vertical, 18)
+                                .background(Color.primaryColor)
+                                .cornerRadius(16)
+                        }).simultaneousGesture(TapGesture().onEnded{
+                            
+                            // 여기서 Send To Guest
+                            let selecteMemberId = selectedMembers.map{$0.id.uuidString}
+                            let membersId = (members ?? []).map{$0.id.uuidString}
+                            
+                            let attendedMember = Dictionary(uniqueKeysWithValues: zip(
+                                selecteMemberId,
+                                selecteMemberId.map{membersId.contains($0)}
+                            ))
+                            
+                            let scheduleDone = ScheduleDone(
+                                scheduleName: selectedEvent.title,
+                                selectedDate: selectedEvent.startDate,
+                                startTime: selectedEvent.startDate,
+                                endTime: selectedEvent.endDate,
+                                isAttend: attendedMember)
+                            connectionManager.setScheduleInfo(scheduleDone)
+                            connectionManager.sendScheduleInfoToGuest(scheduleDone)
+                            // print("send schedule info to guest")
+                        })
+                } else {
+                    Text("인원을 선택해주세요").bigButton(textColor: .white)
                         .frame(width: 358, alignment: .center)
                         .padding(.vertical, 18)
-                        .background(Color.primaryColor)
+                        .background(Color.primary_selectedColor)
                         .cornerRadius(16)
-                }).simultaneousGesture(TapGesture().onEnded{
-                    
-                        // 여기서 Send To Guest
-                    let selecteMemberId = selectedMembers.map{$0.id.uuidString}
-                    let membersId = (members ?? []).map{$0.id.uuidString}
-                    
-                    let attendedMember = Dictionary(uniqueKeysWithValues: zip(
-                        selecteMemberId,
-                        selecteMemberId.map{membersId.contains($0)}
-                    ))
-                    
-                    let scheduleDone = ScheduleDone(
-                        scheduleName: selectedEvent.title,
-                        selectedDate: selectedEvent.startDate,
-                        startTime: selectedEvent.startDate,
-                        endTime: selectedEvent.endDate,
-                        isAttend: attendedMember)
-                    connectionManager.setScheduleInfo(scheduleDone)
-                    connectionManager.sendScheduleInfoToGuest(scheduleDone)
-                    // print("send schedule info to guest")
-                })
+                }
         
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.backgroundColor)
