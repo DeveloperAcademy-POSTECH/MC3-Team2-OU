@@ -26,12 +26,12 @@ struct MakingGroupView: View {
                 VStack(alignment: .leading) {
                     Text("일정 제목")
                         .headline(textColor: Color.textColor)
-                        .padding(EdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 30, leading: 16, bottom: 0, trailing: 0))
                     TextFieldTheme(placeholder: "제목을 입력하세요", input: $scheduleName)
                         .padding(EdgeInsets(top: 6, leading: 16, bottom: 0, trailing: 16))
                     Text("기간 설정")
                         .headline(textColor: Color.textColor)
-                        .padding(EdgeInsets(top: 39, leading: 16, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 35, leading: 16, bottom: 0, trailing: 0))
                     ZStack {
                         Rectangle()
                             .foregroundColor(.white)
@@ -45,7 +45,7 @@ struct MakingGroupView: View {
                     
                     Text("소요 시간 지정")
                         .headline(textColor: Color.textColor)
-                        .padding(EdgeInsets(top: 39, leading: 16, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 35, leading: 16, bottom: 0, trailing: 0))
                     
                     HStack {
                         Picker("Hour", selection: $selectedHour) {

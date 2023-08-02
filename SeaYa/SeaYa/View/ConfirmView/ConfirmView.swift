@@ -9,6 +9,7 @@ import SwiftUI
 
 //수정
 struct ConfirmView: View {
+    @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var calcOksService =  CalcOksService.shared
     @ObservedObject var connectionManager: ConnectionService
     
@@ -30,7 +31,9 @@ struct ConfirmView: View {
                 HStack{
                     Text("일정을 확정하시겠어요?").title(textColor: .primary)
                     Spacer()
-                }.padding(.leading, 16)
+                }
+                .padding(.leading, 16)
+                .padding(.top, 24)
                 
                 //일정 제목
                 ZStack{
@@ -190,6 +193,17 @@ struct ConfirmView: View {
                             .presentationCornerRadius(32)
                     }
                 })
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Image(systemName: "chevron.left")
+                        .tint(Color.black)
+                })
+            }
         }
     }
 }
