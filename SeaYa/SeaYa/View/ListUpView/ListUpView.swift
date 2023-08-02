@@ -18,13 +18,15 @@ struct ListUpView: View {
         NavigationStack{
             VStack{
                 HStack{
-                    Text("최종일정을 선택해주세요").title(textColor: .primary)
+                    Text(forGuest ? "최종일정 후보를 확인해주세요" : "최종일정을 선택해주세요").title(textColor: .primary)
                     Spacer()
                 }.padding(.leading, 16)
                 ScrollView{
                     VStack(spacing:16){
                         ForEach(timeOkGroup, id : \.self){ timeOks in
-                            ListUpElementView(selected: $selected, forGuest: $forGuest, timeOks: timeOks, period: period)
+                            if timeOks.count > 0{
+                                ListUpElementView(selected: $selected, forGuest: $forGuest, timeOks: timeOks, period: period)
+                            }
                         }
                         Spacer().frame(height: 40)
                     }

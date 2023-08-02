@@ -93,14 +93,14 @@ struct ConfirmDateModalView: View {
                                             Circle()
                                                 .foregroundColor(isSelected || currentDate == date ? Color.blue : Color.clear
                                                 )
-                                            Text(date.toString())
+                                            Text(date.toStringg())
                                                 .frame(maxWidth: .infinity)
                                                 .padding(8)
                                                 .foregroundColor(isSelected ? .white : ( day == 7 ?  .red : .black ))
                                         }
                                     })
                                 } else {
-                                    Text(date.toString())
+                                    Text(date.toStringg())
                                         .frame(maxWidth: .infinity)
                                         .padding(8)
                                         .foregroundColor(.gray)

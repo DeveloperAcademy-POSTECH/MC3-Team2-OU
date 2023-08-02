@@ -15,6 +15,14 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func toStringg() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d"
+        formatter.timeZone = TimeZone.current
+        let day = Calendar.current.date(byAdding: .day, value: -1, to: self)!
+        return formatter.string(from: day)
+    }
+    
     func toStringDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "M월 dd일 EEEE"

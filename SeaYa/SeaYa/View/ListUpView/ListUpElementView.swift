@@ -43,7 +43,7 @@ struct ListUpElementView: View {
                         Button{
                             withAnimation{showDetail.toggle()}
                         } label : {
-                            Text("\(Image(systemName: "chevron.up"))")
+                            Text("\(Image(systemName: "chevron.down"))")
                                 .rotationEffect(.degrees(showDetail ? -180 : 0))
                                 .foregroundColor(Color.primary)
                         }

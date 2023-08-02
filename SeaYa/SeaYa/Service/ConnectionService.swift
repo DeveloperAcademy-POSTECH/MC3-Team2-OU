@@ -24,6 +24,8 @@ class ConnectionService: NSObject, ObservableObject {
     @Published var listUP: [DateMember] = []
     @Published var isCheckTimeDone: CheckTimeDone = CheckTimeDone(isCheckTimeDone: false)
     @Published var scheduleDone: ScheduleDone?
+    
+    @Published var listUpViewResult : ListUpViewResult?
 
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
     var session: MCSession?
@@ -113,12 +115,20 @@ class ConnectionService: NSObject, ObservableObject {
         send(info, messageType: .ScheduleDone)
     }
     
+    func sendListUPInfoToGuest(_ info: ListUpViewResult){
+        send(info, messageType: .ListUpViewResult)
+    }
+    
     func setGroupInfo(_ info: GroupInfo) {
         groupInfo = info
     }
     
     func setScheduleInfo(_ info: ScheduleDone) {
         scheduleDone = info
+    }
+    
+    func setListUpViewResult(_ info : ListUpViewResult){
+        listUpViewResult = info
     }
 }
 
@@ -165,6 +175,10 @@ extension ConnectionService: MCSessionDelegate {
                 case .CheckTimeDone:
                     if let isCheckTimeDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
                         isCheckTimeDone = try JSONDecoder().decode(CheckTimeDone.self, from: isCheckTimeDoneData)
+                    }
+                case .ListUpViewResult:
+                    if let isCheckTimeDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        listUpViewResult = try JSONDecoder().decode(ListUpViewResult.self, from: isCheckTimeDoneData)
                     }
                 }
             }
@@ -243,6 +257,11 @@ extension ConnectionService: MCSessionDelegate {
                 case .CheckTimeDone:
                     if let isCheckTimeDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
                         isCheckTimeDone = try JSONDecoder().decode(CheckTimeDone.self, from: isCheckTimeDoneData)
+                    }
+                case .ListUpViewResult:
+                    if let nunnuna = try? JSONSerialization.data(withJSONObject: jsonData) {
+                        listUpViewResult = try JSONDecoder().decode(ListUpViewResult.self, from: nunnuna)
+                        print(listUpViewResult ?? "")
                     }
                 }
             }
