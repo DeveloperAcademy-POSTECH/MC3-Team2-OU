@@ -38,22 +38,28 @@ class RemoteCalendarRepository{
             return false
         }
     }
+    
     //일정 받아오기
     public func fetchEvent(start:Date,end:Date)async throws -> [Event]{
         let isAccess = try await isAccessPermission()
-        let predictate = getPredictate(start: start, end: end)
-        // 접근 허가
-        if isAccess{
-            let events = store.events(matching: predictate)
-            return events.map { ekEvent in
-                EKEventToEvent(event: ekEvent)
+        if let predictate = getPredictate(start: start, end: end){
+            // 접근 허가
+            if isAccess{
+                let events = store.events(matching: predictate)
+                return events.map { ekEvent in
+                    EKEventToEvent(event: ekEvent)
+                }
+            }
+            // 접근 실패
+            else{
+                return []
             }
         }
-        // 접근 실패
         else{
             return []
         }
     }
+    
     public func removeEvent(event:EKEvent) throws ->(){
         try store.remove(event, span: .thisEvent)
     }
@@ -63,13 +69,13 @@ class RemoteCalendarRepository{
         return Event(title: event.title, start: event.startDate, end: event.endDate)
     }
     //calendar 가져오기
-    private func getCalendar() -> EKCalendar{
+    private func getCalendar() -> EKCalendar?{
         let calendars = store.calendars(for: .event)
-        print(calendars.count)
         let calendar = calendars.filter { calendar in
-            calendar.title == "캘린더" || calendar.title == "Calendar" || calendar.title == "Personal"
+//            calendar.title == "캘린더" || calendar.title == "Calendar" || calendar.title == "Personal"
+            calendar.type.rawValue == 0
         }.first
-        return calendar!
+        return calendar
     }
     //이벤트 생성하기
     private func getEkEvent(event : Event) -> EKEvent{
@@ -81,8 +87,13 @@ class RemoteCalendarRepository{
         return ekEvent
     }
     //predictate 생성 -> 시작날짜, 끝 날짜, 캘린더 종류 생성해서 fetch할 때 사용
-    private func getPredictate(start:Date,end:Date) -> NSPredicate{
-        return store.predicateForEvents(withStart: start, end: end, calendars: [getCalendar()])
+    private func getPredictate(start:Date,end:Date) -> NSPredicate?{
+        if let calendar = getCalendar(){
+            return store.predicateForEvents(withStart: start, end: end, calendars: [calendar])
+        }
+        else {
+            return nil
+        }
     }
     // 캘린더 권한 요청
     private func isAccessPermission() async throws -> Bool {

@@ -12,7 +12,6 @@ struct HostCallingDone: View {
     @State var clicked: Int? = 0
     @EnvironmentObject private var userData: UserData
     var groupInfo: GroupInfo
-    
     var body: some View {
         VStack {
             Text("그룹이 확정되었어요")
@@ -36,14 +35,13 @@ struct HostCallingDone: View {
             NavigationLink(
                 destination: TimeTable(
                     connectionManager: connectionManager,
-                    vm: TimeTableViewModel(
-                        selectedDay: getSelectedDate(groupInfo)))
-                    .environmentObject(connectionManager)
+                    vm: TimeTableViewModel.shared)
                     .environmentObject(userData)
                     .navigationBarBackButtonHidden(true),
                 tag: 1,
                 selection: $clicked) {}
             SmallButton_Blue(title: "일정 입력하기", action: {
+                TimeTableViewModel.shared.setSelectedDay(selectedDay: getSelectedDate(groupInfo))
                 connectionManager.setGroupInfo(groupInfo)
                 clicked = 1;
             })

@@ -167,7 +167,6 @@ struct MainView: View {
                         .onAppear(){
                             HapticManager.instance.notification(type: .success)
                             startGroupping = false
-                            print(connectionManager.groupInfo)
                         }
                 }
             }
