@@ -24,7 +24,7 @@ final class TimeTableViewModel: ObservableObject{
     @MainActor
     public func setSelectedDay(selectedDay: [String]){
         clear()
-        self.selectedDay = selectedDay
+        self.selectedDay = selectedDay.sorted()
         selectedDay.forEach { day in
             selectedEventCalendar.updateValue([], forKey: day)
         }
