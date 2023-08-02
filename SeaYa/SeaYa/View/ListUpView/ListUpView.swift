@@ -20,7 +20,9 @@ struct ListUpView: View {
                 HStack{
                     Text("최종일정을 선택해주세요").title(textColor: .primary)
                     Spacer()
-                }.padding(.leading, 16)
+                }
+                .padding(.leading, 16)
+                .padding(.top, 50)
                 ScrollView{
                     VStack(spacing:16){
                         ForEach(timeOkGroup, id : \.self){ timeOks in
