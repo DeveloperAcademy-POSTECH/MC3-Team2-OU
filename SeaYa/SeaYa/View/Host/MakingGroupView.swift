@@ -17,7 +17,7 @@ struct MakingGroupView: View {
     @State private var selectedDate = [Date]()
     @State private var moveToNextView = false
     var isNextButtonDisabled: Bool {
-        return scheduleName.isEmpty || selectedDate.isEmpty || selectedHour == 0 || selectedMinute == 0
+        return scheduleName.isEmpty || selectedDate.isEmpty ||  (selectedHour == 0 && selectedMinute == 0)
     }
 
     var body: some View {
