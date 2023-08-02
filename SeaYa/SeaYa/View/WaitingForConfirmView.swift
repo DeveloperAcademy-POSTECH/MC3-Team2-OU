@@ -9,20 +9,22 @@ import SwiftUI
 
 struct WaitingForConfirmView: View {
     var body: some View {
-        VStack(alignment: .center){
-            Image("guestCallingDoneImage")
-                .resizable()
-                .scaledToFit()
-                .padding(EdgeInsets(top: 270, leading: 130, bottom: 40, trailing: 118))
+        ZStack {
+            LottieView(jsonName: "pencil")
+                .frame(width:350)
+                .offset(x: 15, y: -20)
             
-            Text("잠시만 기다려주세요")
-                .title(textColor: Color.primaryColor)
-                .padding(.bottom, 6)
-            
-            Text("그룹원이 일정을 입력하고 있어요")
-                .body(textColor: Color.textColor)
-            
-            Spacer(minLength: 0)
+            VStack(alignment: .center){
+                
+                Text("잠시만 기다려주세요")
+                    .title(textColor: Color.primaryColor)
+                    .fontWeight(.bold)
+                    .offset(x: 0, y: 130)
+                
+                Text("그룹원이 일정을 입력하고 있어요.")
+                    .body(textColor: Color.textColor)
+                    .offset(x: 0, y: 145)
+            }
         }
     }
 }
