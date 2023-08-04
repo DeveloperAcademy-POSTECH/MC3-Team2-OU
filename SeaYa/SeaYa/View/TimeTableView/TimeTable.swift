@@ -37,15 +37,7 @@ struct TimeTable: View {
                 }.padding(16)
             }
             else{
-                VStack{
-                    BigButton_Blue(title: "calendar 확인") {
-                        print(vm.calendar)
-                    }
-                    BigButton_Blue(title: "setter 다시 주입") {
-                        vm.setSelectedDay(selectedDay: ["2023-08-01"])
-                    }
-                    Text(vm.calendar?.first?.key ?? "nil")
-                }.padding(16)
+                ProgressView()
                 }
         }
         }

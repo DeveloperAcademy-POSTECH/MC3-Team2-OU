@@ -16,8 +16,8 @@ struct ConfirmMemberModalView: View {
             RoundedRectangle(cornerRadius: 2.5)
                 .fill(Color(hex: "#D3D3D3"))
                 .frame(width:34, height:5)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 26, trailing: 0))
-            Text("참여인원").headline(textColor: .primaryColor).padding(.bottom, 43)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+            Text("참여인원").headline(textColor: .primaryColor).padding(.bottom, 30)
             LazyVGrid(columns: columns){
                 ForEach(Array(zip(members.indices, members)), id: \.0) { index, member in
                     Button(
@@ -63,7 +63,7 @@ struct ConfirmMemberModalView: View {
                         }
                     )
                 }
-            }
+            }.frame(minHeight: 200)
         }.padding(EdgeInsets(top: 0, leading: 82, bottom: 40, trailing: 82))
     }
 }

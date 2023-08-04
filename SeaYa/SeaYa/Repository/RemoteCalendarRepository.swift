@@ -12,11 +12,26 @@ class RemoteCalendarRepository{
     static let shared = RemoteCalendarRepository()
     // store 생성
     private let store : EKEventStore
+    private let newCalendar : EKCalendar
     
     private init() {
         self.store = EKEventStore()
+        self.newCalendar = EKCalendar.init(for: .event, eventStore: store)
+        self.newCalendar.title = "SeeYa"
+        if let source = store.sources.first(where: { $0.sourceType == .calDAV }){
+            newCalendar.source = source
+        }
+        else{
+            newCalendar.source = store.sources.first(where: { $0.sourceType == .local })
+        }
+        do{
+            try store.saveCalendar(newCalendar, commit: true)
+        }
+        catch{
+            print("saveCalendar error")
+        }
     }
-
+        //
     
     //일정 생성
     public func createEvent(event : Event)async throws -> Bool{
@@ -24,7 +39,8 @@ class RemoteCalendarRepository{
         let isAccess = try await isAccessPermission()
         // 접근 허가
         if isAccess{
-            let ekEvent = getEkEvent(event: event)
+            let ekEvent = getEkEvent(event: event,calendar: newCalendar)
+            //print(ekEvent)
             do{
                 try store.save(ekEvent, span: .thisEvent, commit: true)
             }
@@ -69,18 +85,20 @@ class RemoteCalendarRepository{
         return Event(title: event.title, start: event.startDate, end: event.endDate)
     }
     //calendar 가져오기
-    private func getCalendar() -> EKCalendar?{
+    private func getCalendars() -> [EKCalendar]{
         let calendars = store.calendars(for: .event)
-        let calendar = calendars.filter { calendar in
-//            calendar.title == "캘린더" || calendar.title == "Calendar" || calendar.title == "Personal"
-            calendar.type.rawValue == 0
-        }.first
-        return calendar
+        calendars.forEach { cal in
+        }
+        let selected = calendars.filter { calendar in
+            calendar.allowsContentModifications == true &&
+            calendar.type.rawValue < 2
+        }
+        return selected
     }
     //이벤트 생성하기
-    private func getEkEvent(event : Event) -> EKEvent{
+    private func getEkEvent(event : Event, calendar: EKCalendar) -> EKEvent{
         let ekEvent = EKEvent(eventStore: store)
-        ekEvent.calendar = getCalendar()
+        ekEvent.calendar = calendar
         ekEvent.title = event.title
         ekEvent.startDate = event.start
         ekEvent.endDate = event.end
@@ -88,10 +106,11 @@ class RemoteCalendarRepository{
     }
     //predictate 생성 -> 시작날짜, 끝 날짜, 캘린더 종류 생성해서 fetch할 때 사용
     private func getPredictate(start:Date,end:Date) -> NSPredicate?{
-        if let calendar = getCalendar(){
-            return store.predicateForEvents(withStart: start, end: end, calendars: [calendar])
+        let calendars = getCalendars()
+        if !calendars.isEmpty{
+            return store.predicateForEvents(withStart: start, end: end, calendars: calendars)
         }
-        else {
+        else{
             return nil
         }
     }

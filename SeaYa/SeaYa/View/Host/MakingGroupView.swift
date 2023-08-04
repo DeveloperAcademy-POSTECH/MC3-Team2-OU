@@ -22,75 +22,79 @@ struct MakingGroupView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
-                Text("일정 제목")
-                    .headline(textColor: Color.textColor)
-                    .padding(EdgeInsets(top: 34, leading: 16, bottom: 0, trailing: 0))
-                TextFieldTheme(placeholder: "제목을 입력하세요", input: $scheduleName)
+            ScrollView() {
+                VStack(alignment: .leading) {
+                    Text("일정 제목")
+                        .headline(textColor: Color.textColor)
+                        .padding(EdgeInsets(top: 30, leading: 16, bottom: 0, trailing: 0))
+                    TextFieldTheme(placeholder: "제목을 입력하세요", input: $scheduleName)
+                        .padding(EdgeInsets(top: 6, leading: 16, bottom: 0, trailing: 16))
+                    Text("기간 설정")
+                        .headline(textColor: Color.textColor)
+                        .padding(EdgeInsets(top: 35, leading: 16, bottom: 0, trailing: 0))
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.white)
+                            .frame(maxWidth: 358, maxHeight: 200)
+                            .cornerRadius(16)
+                        CalendarView(selectedDate: $selectedDate)
+                            .padding(16)
+                        
+                    }
                     .padding(EdgeInsets(top: 6, leading: 16, bottom: 0, trailing: 16))
-                Text("기간 설정")
-                    .headline(textColor: Color.textColor)
-                    .padding(EdgeInsets(top: 39, leading: 16, bottom: 0, trailing: 0))
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.white)
-                        .frame(maxWidth: 358, maxHeight: 200)
-                        .cornerRadius(16)
-                    CalendarView(selectedDate: $selectedDate)
-                        .padding(16)
                     
-                }
-                .padding(EdgeInsets(top: 6, leading: 16, bottom: 0, trailing: 16))
-                
-                Text("소요 시간 지정")
-                    .headline(textColor: Color.textColor)
-                    .padding(EdgeInsets(top: 39, leading: 16, bottom: 0, trailing: 0))
-                
-                HStack {
-                    Picker("Hour", selection: $selectedHour) {
-                        ForEach(0..<16) { hour in
-                            Text("\(hour)시간")
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .clipped()
+                    Text("소요 시간 지정")
+                        .headline(textColor: Color.textColor)
+                        .padding(EdgeInsets(top: 35, leading: 16, bottom: 0, trailing: 0))
                     
-                    Picker("Minute", selection: $selectedMinute) {
-                        ForEach([0, 30], id: \.self) { minute in
-                           Text("\(minute)분")
+                    HStack {
+                        Picker("Hour", selection: $selectedHour) {
+                            ForEach(0..<16) { hour in
+                                Text("\(hour)시간")
+                            }
                         }
+                        .pickerStyle(.wheel)
+                        .clipped()
+                        
+                        Picker("Minute", selection: $selectedMinute) {
+                            ForEach([0, 30], id: \.self) { minute in
+                                Text("\(minute)분")
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .clipped()
                     }
-                    .pickerStyle(.wheel)
-                    .clipped()
-                }
-                .frame(minHeight: 150)
-                if isNextButtonDisabled {
-                      BigButton_Unactive(title: "다음", action: {})
+                    .frame(minHeight: 150)
+                    if isNextButtonDisabled {
+                        BigButton_Unactive(title: "다음", action: {})
+                            .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
+                    } else {
+                        BigButton_Blue(
+                            title: "다음",
+                            action: {
+                                moveToNextView = true
+                            }
+                        )
                         .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
-                  } else {
-                      BigButton_Blue(
-                          title: "다음",
-                          action: {
-                              moveToNextView = true
-                          }
-                      )
-                      .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
-                  }
-            
-                NavigationLink(
-                    destination: HostCallingView(
-                        connectionManager: connectionManager,
-                        scheduleName: $scheduleName,
-                        selectedDate: $selectedDate,
-                        estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
-                    )
-                    .navigationBarBackButtonHidden()
-                    .environmentObject(userData),
-                    isActive: $moveToNextView,
-                    label: {
-                        EmptyView()
-                    })
+                    }
+                    
+                    NavigationLink(
+                        destination: HostCallingView(
+                            connectionManager: connectionManager,
+                            scheduleName: $scheduleName,
+                            selectedDate: $selectedDate,
+                            estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
+                        )
+                        .navigationBarBackButtonHidden()
+                        .environmentObject(userData),
+                        isActive: $moveToNextView,
+                        label: {
+                            EmptyView()
+                        })
+                }
+                .scaledToFit()
             }
+            .scrollDisabled(true)
             .background(Color.backgroundColor)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

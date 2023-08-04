@@ -37,6 +37,7 @@ struct OnboardingDoneView: View {
                 Image("onboardingDone")
                     .resizable()
                     .frame(width: 288, height: 300)
+                    .offset(x: 0, y: 64)
                 Spacer(minLength: 0)
                 BigButton_Blue(title: "약속 잡으러 가기", action: {isOnboardingCompleted = true})
             }
