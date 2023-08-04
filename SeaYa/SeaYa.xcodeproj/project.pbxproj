@@ -812,7 +812,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SeaYa/Preview Content\"";
-				DEVELOPMENT_TEAM = 9638NUV23X;
+				DEVELOPMENT_TEAM = 3YTM76FTHB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeaYa/Info.plist;
@@ -828,7 +828,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.01;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ou.SeaYa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ou.seaya.23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -847,7 +847,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SeaYa/Preview Content\"";
-				DEVELOPMENT_TEAM = 9638NUV23X;
+				DEVELOPMENT_TEAM = 3YTM76FTHB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeaYa/Info.plist;
@@ -863,7 +863,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.01;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ou.SeaYa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ou.seaya.23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
