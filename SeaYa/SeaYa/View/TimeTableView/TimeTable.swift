@@ -129,7 +129,7 @@ struct Table: View{
                 }
             }
         }
-        .gesture(
+        .gesture( // 드래그 동작
             DragGesture(minimumDistance: 0)
                 .onChanged { value in
                     if vm.isFirstSelectd == nil {
@@ -177,7 +177,7 @@ struct Table: View{
                     vm.xEndIndex = nil
                     vm.yEndIndex = nil
                     vm.xStartIndex = nil
-                    vm.xEndIndex = nil
+                    vm.yStartIndex = nil
                     vm.isFirstSelectd = nil
                     startPoint = nil
                     endPoint = nil
