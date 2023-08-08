@@ -19,6 +19,7 @@ struct RectangleView: View {
     var body: some View {
             Canvas { context, size in
                 if let start = startPoint, let end = endPoint {
+                    let lineWidth = 4
                     var startx = xArray.filter{ $0 < (start.x) }.max() ?? 0
                     var starty = yArray.filter{ $0 < (start.y) }.max() ?? 0
                     var endx = xArray.filter{ $0 < (end.x)}.max() ?? 0
@@ -34,13 +35,13 @@ struct RectangleView: View {
                         starty += height ?? CGFloat(0)
                     }
                     let rect = CGRect(
-                        x: min(startx, endx)+5,
-                        y: min(starty, endy)+5,
-                        width: abs(endx - startx)-10,
-                        height: abs(endy - starty)-10
+                        x: min(startx, endx) + CGFloat(lineWidth)/2,
+                        y: min(starty, endy) + CGFloat(lineWidth)/2,
+                        width: abs(endx - startx) - CGFloat(lineWidth),
+                        height: abs(endy - starty) - CGFloat(lineWidth)
                     )
-                    context.stroke(Path(rect), with: .color(.blue), lineWidth: 10)
-                    context.fill(Path(rect), with: .color(isSelected ?? true ? .white : .red))
+                    context.stroke(Path(rect), with: .color(.black), lineWidth: CGFloat(lineWidth))
+                    context.fill(Path(rect), with: .color(isSelected ?? true ? .white : .primary_selectedColor))
                 }
             }
             

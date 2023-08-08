@@ -39,7 +39,8 @@ struct TimeTableTestView: View {
                                     }
                                     .background(
                                         GeometryReader{ geo in
-                                            Color.clear.onAppear{
+                                            Color.clear
+                                                .onAppear{
                                                 let eachLocation = MyPoint( geo.frame(in: .global), canvasSize)
                                                 mElement[xindex][yindex].myLocation = eachLocation
                                                 if xindex == 0 {

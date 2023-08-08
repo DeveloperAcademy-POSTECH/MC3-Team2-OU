@@ -63,6 +63,48 @@ extension myElement{
             myElement(
                 id: UUID(),
                 indexX: 0,
+                indexY: 0,
+                value: 00),
+            myElement(
+                id: UUID(),
+                indexX: 1,
+                indexY: 0,
+                value: 10),
+            myElement(
+                id: UUID(),
+                indexX: 2,
+                indexY: 0,
+                value: 20),
+            myElement(
+                id: UUID(),
+                indexX: 3,
+                indexY: 0,
+                value: 30)
+        ],[
+            myElement(
+                id: UUID(),
+                indexX: 0,
+                indexY: 0,
+                value: 00),
+            myElement(
+                id: UUID(),
+                indexX: 1,
+                indexY: 0,
+                value: 10),
+            myElement(
+                id: UUID(),
+                indexX: 2,
+                indexY: 0,
+                value: 20),
+            myElement(
+                id: UUID(),
+                indexX: 3,
+                indexY: 0,
+                value: 30)
+        ],[
+            myElement(
+                id: UUID(),
+                indexX: 0,
                 indexY: 1,
                 value: 01),
             myElement(
