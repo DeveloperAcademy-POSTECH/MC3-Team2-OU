@@ -50,8 +50,6 @@
 		739FBB6F2A613C240022386D /* TimeOks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB6E2A613C240022386D /* TimeOks.swift */; };
 		739FBB712A613C3F0022386D /* DateMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB702A613C3F0022386D /* DateMember.swift */; };
 		739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB762A613D100022386D /* CalcOksServiceTest.swift */; };
-		73C745FF2A8070A200D4ED7C /* TimeTableTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C745FE2A8070A200D4ED7C /* TimeTableTestView.swift */; };
-		73C746012A8070CB00D4ED7C /* MyElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C746002A8070CB00D4ED7C /* MyElement.swift */; };
 		73C746032A80710600D4ED7C /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C746022A80710600D4ED7C /* RectangleView.swift */; };
 		73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */; };
 		73CD8FAF2A6593E8003A274D /* ListUpElementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */; };
@@ -145,8 +143,6 @@
 		739FBB6E2A613C240022386D /* TimeOks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOks.swift; sourceTree = "<group>"; };
 		739FBB702A613C3F0022386D /* DateMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMember.swift; sourceTree = "<group>"; };
 		739FBB762A613D100022386D /* CalcOksServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksServiceTest.swift; sourceTree = "<group>"; };
-		73C745FE2A8070A200D4ED7C /* TimeTableTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableTestView.swift; sourceTree = "<group>"; };
-		73C746002A8070CB00D4ED7C /* MyElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyElement.swift; sourceTree = "<group>"; };
 		73C746022A80710600D4ED7C /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementView.swift; sourceTree = "<group>"; };
 		73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementDetailView.swift; sourceTree = "<group>"; };
@@ -241,8 +237,6 @@
 			children = (
 				104555892A66409B00562B98 /* TimeTable.swift */,
 				73C746022A80710600D4ED7C /* RectangleView.swift */,
-				73C745FE2A8070A200D4ED7C /* TimeTableTestView.swift */,
-				73C746002A8070CB00D4ED7C /* MyElement.swift */,
 			);
 			path = TimeTableView;
 			sourceTree = "<group>";
@@ -621,7 +615,6 @@
 				BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */,
 				EE14DBC32A64CFE6004ECD86 /* HapticsManager.swift in Sources */,
 				BBDD706F2A69453100977775 /* TextFieldTheme.swift in Sources */,
-				73C746012A8070CB00D4ED7C /* MyElement.swift in Sources */,
 				0EEFB6762A6ED9CD00F5C5D2 /* MessageWrapper.swift in Sources */,
 				73130C022A6A8E2700554A36 /* ConfirmStartModalView.swift in Sources */,
 				104555852A66402C00562B98 /* CalendarService.swift in Sources */,
@@ -637,7 +630,6 @@
 				0E5E161D2A71FF7600143374 /* GuestListView.swift in Sources */,
 				0E81B9432A7786DF004AB171 /* GuestWaitingForConfirmView.swift in Sources */,
 				1092DD712A60DE2200D4F6D3 /* LocalCalendarRepository.swift in Sources */,
-				73C745FF2A8070A200D4ED7C /* TimeTableTestView.swift in Sources */,
 				739FBB6B2A613C050022386D /* DateEvent.swift in Sources */,
 				1045558C2A6645F400562B98 /* TimeTableViewModel.swift in Sources */,
 				1045558A2A66409B00562B98 /* TimeTable.swift in Sources */,
