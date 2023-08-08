@@ -43,6 +43,7 @@ struct TimeTable: View {
         }
     }
 
+// 최상단 날짜 나열하는 UI
 struct DayLayout: View{
     let vm: TimeTableViewModel
     var body: some View{
@@ -54,120 +55,6 @@ struct DayLayout: View{
         }
         .frame(maxWidth: .infinity)
         .frame(height: 40)
-    }
-}
-struct TimeLayout: View{
-    let time = ["9시","10시","11시","12시","13시","14시","15시","16시","17시","18시","19시","20시","21시","22시","23시"]
-    var body: some View{
-        VStack(spacing:0){
-            ForEach(time,id:\.self) { t in
-                ZStack{
-                    TimeCell(title: t)
-                }.frame(width:44)
-            }
-        }
-        .frame(maxHeight:.infinity)
-    }
-}
-struct Table: View{
-    let vm: TimeTableViewModel
-    var body: some View{
-        HStack(spacing:0){
-            ForEach(vm.calendar!.keys.sorted(),id: \.self) { day in
-                TableRow(vm: vm,day: day)
-            }
-        }
-        .gesture(DragGesture(minimumDistance: 0)
-            .onChanged({ value in
-                if let item = getSelectedItem(value.location){
-                    if !vm.selectedItem.contains(item) && vm.current != item && item.canSelect(){
-                        vm.selectedItem.insert(item)
-                    }
-                    else if vm.selectedItem.contains(item) && vm.current != item{
-                        vm.selectedItem.remove(item)
-                    }
-                    vm.current = item
-                }
-            })
-            .onEnded({ _ in
-                vm.current = nil
-            })
-        )
-    }
-    private func getSelectedItem(_ location: CGPoint)->TableItem?{
-        for day in vm.tableCalendar.keys{
-            for rect in vm.tableCalendar[day]!{
-                if let rec = rect.location{
-                    if rec.contains(location){
-                        return rect
-                    }
-                }
-            }
-        }
-        return nil
-    }
-}
-struct TableRow: View{
-    @ObservedObject var vm: TimeTableViewModel
-    let day: String
-    var items: [TableItem]
-    var index: Int
-    init(vm: TimeTableViewModel, day: String) {
-        self.vm = vm
-        self.day = day
-        self.items = vm.tableCalendar[day]!
-        self.index = vm.selectedDay.firstIndex(of: day)!
-    }
-    // 선택 드래그 , 비선택 드래그 나눠서 로직 나누기
-    var body: some View{
-        GeometryReader { geo in
-            ZStack(){
-                VStack(spacing: 0){
-                    ForEach(items,id: \.self){item in
-                        TableCell(item)
-                            .background(
-                                item.canSelect() ?
-                                    vm.selectedItem.contains(item) ?
-                                        Color.primary_selectedColor:
-                                        Color(.clear):
-                                        Color.unactiveColor
-                            )
-                    }
-                }
-                VStack(spacing:0){
-                    ForEach(0..<15){_ in
-                        Rectangle()
-                            .stroke(Color.primaryColor, lineWidth: 1)
-                            .background(Color.clear)
-                    }
-                }
-                
-            }.onAppear(){
-                getLocations(rect: geo.frame(in: .global),index: index)
-                
-            }
-        }
-    }
-    //아이템에 위치 값 지정
-    private func getLocations(rect:CGRect, index:Int){
-        let height:CGFloat = rect.height/30
-        let width:CGFloat = (rect.width) * CGFloat(index)
-        var currentHeight:CGFloat = 0
-        for i in 0...items.count-1{
-            let start = currentHeight
-            let curRect = CGRect(x: width, y: start, width: rect.width, height: height)
-            items[i].location = curRect
-            currentHeight = currentHeight + height
-        }
-    }
-}
-struct TimeCell: View{
-    let title: String
-    var body: some View{
-        ZStack{
-            Rectangle().stroke(Color.primaryColor, lineWidth: 1)
-            Text(title).caption(textColor: Color.primaryColor)
-        }
     }
 }
 struct DayCell: View{
@@ -182,21 +69,212 @@ struct DayCell: View{
         }
     }
 }
-struct TableCell: View{
-    let tableItem: TableItem
-    init(_ tableItem: TableItem) {
-        self.tableItem = tableItem
+
+// 최좌측 시간을 나열하는 UI
+struct TimeLayout: View{
+    let time = ["9시","10시","11시","12시","13시","14시","15시","16시","17시","18시","19시","20시","21시","22시","23시"]
+    var body: some View{
+        VStack(spacing:0){
+            ForEach(time,id:\.self) { t in
+                ZStack{
+                    TimeCell(title: t)
+                }.frame(width:44)
+            }
+        }
+        .frame(maxHeight:.infinity)
     }
+}
+struct TimeCell: View{
+    let title: String
     var body: some View{
         ZStack{
-            Rectangle()
-                .stroke(Color.primaryColor, lineWidth: 0.5).foregroundColor(.clear)
+            Rectangle().stroke(Color.primaryColor, lineWidth: 1)
+            Text(title).caption(textColor: Color.primaryColor)
         }
     }
 }
-class TableItem:Hashable{
+
+
+struct Table: View{
+    let vm: TimeTableViewModel
+    @State var startPoint : CGPoint?
+    @State var endPoint : CGPoint?
+    var body: some View{
+        ZStack{
+            HStack(spacing:0){
+                ForEach(Array(vm.calendar!.keys.sorted().enumerated()),id: \.offset) { xindex, day in
+                    TableRow(
+                        vm: vm,
+                        day: day,
+                        items: vm.tableCalendar[day]!,
+                        index: vm.selectedDay.firstIndex(of: day)!,
+                        xindex: xindex
+                    )
+                }
+            }
+            RectangleView(startPoint: startPoint, endPoint: endPoint,
+                          xArray: vm.xArray,
+                          yArray: vm.yArray,
+                          width : vm.cellSize?.width,
+                          height: vm.cellSize?.height,
+                          isSelected: vm.isFirstSelectd
+                        )
+            HStack(spacing:0){
+                ForEach(Array(vm.calendar!.keys.sorted().enumerated()),id: \.offset) { xindex, day in
+                    TableRow2(
+                        vm: vm,
+                        day: day,
+                        items: vm.tableCalendar[day]!
+                    )
+                }
+            }
+        }
+        .gesture( // 드래그 동작
+            DragGesture(minimumDistance: 0)
+                .onChanged { value in
+                    if vm.isFirstSelectd == nil {
+                        vm.xStartIndex = vm.xArray.lastIndex(where: {$0 < value.startLocation.x}) ?? 0
+                        vm.yStartIndex = vm.yArray.lastIndex(where: {$0 < value.startLocation.y}) ?? 0
+                        if let xStartIndex = vm.xStartIndex,
+                           let yStartIndex = vm.yStartIndex{
+                            let t = vm.indexDay
+                            if vm.tableCalendar[t[xStartIndex] ?? ""]![yStartIndex].isSelected == true {
+                                vm.isFirstSelectd = true
+                            } else {
+                                vm.isFirstSelectd = false
+                            }
+                        }
+                    }
+                    startPoint = value.startLocation
+                    endPoint = value.location
+                }
+                .onEnded { value in
+                    vm.xEndIndex = vm.xArray.lastIndex(where: {$0 < value.location.x}) ?? 0
+                    vm.yEndIndex = vm.yArray.lastIndex(where: {$0 < value.location.y}) ?? 0
+                    if let xStartIndex = vm.xStartIndex,
+                       let xEndIndex = vm.xEndIndex,
+                       let yStartIndex = vm.yStartIndex,
+                       let yEndIndex = vm.yEndIndex{
+                        let t = vm.indexDay
+                        for i in Array(stride(from: min(xStartIndex, xEndIndex),
+                                              to: max(xStartIndex, xEndIndex)+1,
+                                              by: 1)) {
+                            for j in Array(stride(from: min(yStartIndex, yEndIndex),
+                                                  to: max(yStartIndex, yEndIndex)+1,
+                                                  by: 1)){
+                                if vm.isFirstSelectd ?? false{
+                                    vm.tableCalendar[t[i] ?? ""]![j].isSelected = false
+                                    vm.selectedItem.remove(vm.tableCalendar[t[i] ?? ""]![j])
+                                } else {
+                                    if vm.tableCalendar[t[i] ?? ""]![j].canSelect(){
+                                        vm.tableCalendar[t[i] ?? ""]![j].isSelected = true
+                                        vm.selectedItem.insert(vm.tableCalendar[t[i] ?? ""]![j])
+                                    }
+                                }
+                            }
+                        }
+                    }      
+                    vm.xEndIndex = nil
+                    vm.yEndIndex = nil
+                    vm.xStartIndex = nil
+                    vm.yStartIndex = nil
+                    vm.isFirstSelectd = nil
+                    startPoint = nil
+                    endPoint = nil
+                }
+        )
+    }
+}
+
+struct TableRow: View{
+    @ObservedObject var vm: TimeTableViewModel
+    let day: String
+    var items: [TableItem]
+    var index: Int
+    var xindex: Int?
+    
+    // 선택 드래그 , 비선택 드래그 나눠서 로직 나누기
+    var body: some View{
+        VStack(spacing: 0){
+            ForEach(Array(items.enumerated()),id: \.offset){yindex, item in
+                Rectangle()
+                    .stroke(Color.primaryColor, lineWidth: 0.5)
+                    .foregroundColor(.clear)
+                    .background(
+                        GeometryReader{ geo in
+                             (item.isSelected ? Color.primary_selectedColor : Color.clear)
+                            .onAppear{
+                                if day == vm.tableCalendar.keys.first! {
+                                    vm.yArray.append((geo.frame(in: .global).origin.y))
+                                    if yindex == 0{
+                                        vm.cellSize = geo.frame(in: .local)
+                                    }
+                                }
+                                if yindex == 0 {
+                                    vm.xArray.append((geo.frame(in: .global).origin.x))
+                                    vm.indexDay[xindex ?? 0] = day
+                                }
+                                
+                                if vm.yArray.count == vm.tableCalendar[day]!.count &&
+                                    vm.xArray.count == vm.tableCalendar.count{
+                                    
+                                    vm.xArray.sort()
+                                    vm.yArray.sort()
+                                    
+                                    vm.xArray = vm.xArray.map{$0 - (vm.xArray.min() ?? 0)}
+                                    vm.yArray = vm.yArray.map{$0 - (vm.yArray.min() ?? 0)}
+                                }
+                            }
+                        }
+                    )
+            }
+        }
+    }
+}
+
+struct TableRow2: View{
+    @ObservedObject var vm: TimeTableViewModel
+    let day: String
+    var items: [TableItem]
+    
+    // 선택 드래그 , 비선택 드래그 나눠서 로직 나누기
+    var body: some View{
+        ZStack(){
+            VStack(spacing: 0){
+                ForEach(Array(items.enumerated()),id: \.offset){yindex, item in
+                    ZStack{
+                        Rectangle()
+                            .stroke(Color.primaryColor, lineWidth: 0.5)
+                            .foregroundColor(.clear)
+                            .background(item.canSelect() ? Color.clear : Color.unactiveColor)
+                        
+                    }
+                }
+            }
+            VStack(spacing:0){
+                ForEach(0..<15){_ in
+                    Rectangle()
+                        .stroke(Color.primaryColor, lineWidth: 1)
+                }
+            }
+        }
+    }
+}
+
+
+struct TableCell: View{
+    let tableItem: TableItem
+    var body: some View{
+        Rectangle()
+            .stroke(Color.primaryColor, lineWidth: 0.5)
+            .foregroundColor(.clear)
+    }
+}
+
+class TableItem:Hashable, Equatable{
     var event: Event
-    var location: CGRect?
+    var location: CGRect? //UI 위치를 의미하는듯 하다.
+    var isSelected : Bool = false
     
     func canSelect() -> Bool{
         if event.title == "blank"{
