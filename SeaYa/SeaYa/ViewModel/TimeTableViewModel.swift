@@ -20,6 +20,18 @@ final class TimeTableViewModel: ObservableObject{
     @Published var current:TableItem?
     @Published var selectedEventCalendar = Calendar()
     @Published var calendar: Calendar?
+    
+    @Published var xArray : [CGFloat] = []
+    @Published var yArray : [CGFloat] = []
+    @Published var canvasSize : CGRect?
+    @Published var isFirstSelectd : Bool?
+    @Published var cellSize : CGRect?
+    @Published var xStartIndex : Int?
+    @Published var yStartIndex : Int?
+    @Published var xEndIndex : Int?
+    @Published var yEndIndex : Int?
+    @Published var indexDay = Dictionary<Int, String>()
+    
     private init(){}
     @MainActor
     public func setSelectedDay(selectedDay: [String]){
