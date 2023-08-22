@@ -32,6 +32,8 @@ final class TimeTableViewModel: ObservableObject{
     @Published var yEndIndex : Int?
     @Published var indexDay = Dictionary<Int, String>()
     
+    @Published var available : Bool?
+    
     private init(){}
     @MainActor
     public func setSelectedDay(selectedDay: [String]){
