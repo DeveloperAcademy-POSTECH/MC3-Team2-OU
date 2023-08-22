@@ -22,7 +22,8 @@ struct TimeTable: View {
                         DayLayout(vm: vm)
                         HStack(spacing:0){
                             TimeLayout()
-                            Table(vm: vm)
+                            Table(vm: vm,
+                                  connectionManager: connectionManager)
                         }
                     }
                     //MARK: 페이지 넘기기
@@ -30,9 +31,21 @@ struct TimeTable: View {
                         destination: CheckTimeDoneView(connectionManager: connectionManager).navigationBarBackButtonHidden(true),
                         tag: 1,
                         selection: $clicked) {}
-                    BigButton_Blue(title: "입력 완료") {
-                        vm.buttonClicked(userData: userData,connectionManager: connectionManager)
-                        clicked = 1
+                    if vm.available ?? false {
+                        BigButton_Blue(title: "입력 완료") {
+                            vm.buttonClicked(userData: userData,connectionManager: connectionManager)
+                            clicked = 1
+                        }
+                    } else {
+                        Text("각 시간이" +
+                             (connectionManager.groupInfo!.estimatedTime != 1 ? " \(Int(connectionManager.groupInfo!.estimatedTime/2))시간" : "") +
+                             (connectionManager.groupInfo!.estimatedTime%2 == 1 ? " 30분" : "") +
+                             " 이상 묶여있어야 합니다")
+                            .bigButton(textColor: .white)
+                            .frame(width: 358, alignment: .center)
+                            .padding(.vertical, 18)
+                            .background(Color.primary_selectedColor)
+                            .cornerRadius(16)
                     }
                 }.padding(16)
             }
@@ -97,6 +110,7 @@ struct TimeCell: View{
 
 struct Table: View{
     let vm: TimeTableViewModel
+    let connectionManager : ConnectionService
     @State var startPoint : CGPoint?
     @State var endPoint : CGPoint?
     var body: some View{
@@ -173,6 +187,34 @@ struct Table: View{
                                 }
                             }
                         }
+                        
+                        //해당 선택 원소 그룹이 주어진 시간보다 긴지 확인해야함
+                        if let estimatedTime = connectionManager.groupInfo?.estimatedTime{
+                            vm.available = true
+                            let aaron = vm.selectedItem.sorted(by: {
+                                $0.dayTime ?? 0 < $1.dayTime ?? 0
+                            })
+                            var groupLengths : [Int] = []
+                            var currentGroupLength = 0
+                            
+                            for i in 0..<aaron.count {
+                                if i == 0 || aaron[i].dayTime! != aaron[i-1].dayTime! + 1{
+                                    if currentGroupLength > 0 {
+                                        groupLengths.append(currentGroupLength)
+                                    }
+                                    currentGroupLength = 1
+                                } else {
+                                    currentGroupLength += 1
+                                }
+                            }
+                            
+                            if currentGroupLength > 0 {
+                                groupLengths.append(currentGroupLength)
+                            }
+                            if estimatedTime > groupLengths.min() ?? 0{
+                                vm.available = false
+                            }
+                        }
                     }      
                     vm.xEndIndex = nil
                     vm.yEndIndex = nil
@@ -224,6 +266,8 @@ struct TableRow: View{
                                     vm.xArray = vm.xArray.map{$0 - (vm.xArray.min() ?? 0)}
                                     vm.yArray = vm.yArray.map{$0 - (vm.yArray.min() ?? 0)}
                                 }
+                                let temptemp = Int(day.replacingOccurrences(of: "-", with: "")) ?? 0
+                                vm.tableCalendar[day]![yindex].dayTime = temptemp * 100 + yindex
                             }
                         }
                     )
@@ -274,6 +318,7 @@ struct TableCell: View{
 class TableItem:Hashable, Equatable{
     var event: Event
     var location: CGRect? //UI 위치를 의미하는듯 하다.
+    var dayTime: Int? // 2023081302 ->
     var isSelected : Bool = false
     
     func canSelect() -> Bool{

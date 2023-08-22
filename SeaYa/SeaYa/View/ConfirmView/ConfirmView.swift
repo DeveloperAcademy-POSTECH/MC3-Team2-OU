@@ -130,7 +130,7 @@ struct ConfirmView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                 
                 Spacer()
-                if selectedMembers.count > 1 {
+                if selectedMembers.count >= 1 {
                     NavigationLink(
                         destination: ResultView(connectionManager: connectionManager)
                             .navigationBarBackButtonHidden(),
