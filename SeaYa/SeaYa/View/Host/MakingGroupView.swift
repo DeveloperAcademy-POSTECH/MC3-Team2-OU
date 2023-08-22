@@ -94,7 +94,7 @@ struct MakingGroupView: View {
                 }
                 .scaledToFit()
             }
-            .scrollDisabled(true)
+            .scrollDisabled(false)
             .background(Color.backgroundColor)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
