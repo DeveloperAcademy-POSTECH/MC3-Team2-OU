@@ -18,6 +18,7 @@ struct SettingView: View {
     
     @State var tempFixedTimeModel : FixedTimeModel
     @State var scrollDisabled = false
+    @State var Haptics = Date()
     let id: String?
     
     var isUpdate : Bool
@@ -251,9 +252,18 @@ struct SettingView: View {
                             .onChanged({ value in
                                 scrollDisabled = true
                                 onDrag(value: value, fromSlider: true)
-                                haptics(.warning)
                             })
                             .onEnded({_ in scrollDisabled = false})
+                    )
+                    .onChange(
+                        of: tempFixedTimeModel,
+                        perform :
+                            { _ in
+                                if Haptics.timeIntervalSinceNow < -0.1 {
+                                    UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                                    Haptics = Date()
+                                }
+                            }
                     )
                     .rotationEffect(.init(degrees: -90))
                 Image(systemName: "circle.fill")
@@ -268,10 +278,18 @@ struct SettingView: View {
                             .onChanged({ value in
                                 scrollDisabled = true
                                 onDrag(value: value, fromSlider: false)
-                                haptics(.warning)
-//                                print(getTime(angle: getAngle(progress: toProgress)).formatted(date: .omitted, time: .shortened))
                             })
                             .onEnded({_ in scrollDisabled = false})
+                    )
+                    .onChange(
+                        of: tempFixedTimeModel,
+                        perform :
+                            { _ in
+                                if Haptics.timeIntervalSinceNow < -0.1 {
+                                    UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                                    Haptics = Date()
+                                }
+                            }
                     )
                     .rotationEffect(.init(degrees: -90))
                 VStack(spacing: 6) {
