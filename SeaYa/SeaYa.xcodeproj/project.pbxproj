@@ -251,6 +251,21 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		738DE4662A983CBC002DB701 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
+			);
+			path = Legacy;
+			sourceTree = "<group>";
+		};
+		738DE4672A983CDD002DB701 /* Guest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Guest;
+			sourceTree = "<group>";
+		};
 		739FBB752A613CF30022386D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,16 +363,17 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BBDD707B2A735A4E00977775 /* SettingView */,
-				104555882A66408900562B98 /* TimeTableView */,
-				0EEFB6512A64D85900F5C5D2 /* Host */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
-				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
-				7382E9482A72155800837AB2 /* FixedTimeElementView.swift */,
 				BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */,
-				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
 				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
-				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
+				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
+				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
+				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
+				BBDD707B2A735A4E00977775 /* SettingView */,
+				0EEFB6512A64D85900F5C5D2 /* Host */,
+				104555882A66408900562B98 /* TimeTableView */,
+				7382E9482A72155800837AB2 /* FixedTimeElementView.swift */,
+				738DE4672A983CDD002DB701 /* Guest */,
 				EE14DBC02A64CF22004ECD86 /* SettingView.swift */,
 				73AA046E2A6ABE1F003FA06F /* ConfirmView */,
 				73CD8FE82A65A935003A274D /* ListUpView */,
@@ -365,8 +381,8 @@
 				0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */,
 				0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */,
 				0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */,
-				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
 				0E81B96A2A78F64D004AB171 /* ResultView.swift */,
+				738DE4662A983CBC002DB701 /* Legacy */,
 			);
 			path = View;
 			sourceTree = "<group>";
