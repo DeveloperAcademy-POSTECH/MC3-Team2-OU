@@ -70,79 +70,57 @@ struct MainView: View {
                         
                         if !startGroupping {
                             HStack {
-                                Button(
-                                    action: {
-                                    }, label: {
-                                        NavigationLink(
-                                            destination: {
-                                                UserInfoView().environmentObject(userData)
-                                            }, label: {
-                                                NavigationLink(
-                                                    destination: MakingGroupView(connectionManager: connectionManager)
-                                                        .environmentObject(userData)
-                                                        .navigationBarBackButtonHidden(),
-                                                    label: {
-                                                        VStack {
-                                                            ZStack {
-                                                                Circle()
-                                                                    .frame(maxWidth: 82)
-                                                                    .foregroundColor(Color.white.opacity(0.4))
-                                                                
-                                                                Image(systemName: "badge.plus.radiowaves.right")
-                                                                    .font(.system(size: 30))
-                                                                    .foregroundColor(Color.white)
-                                                                    .frame(width: 41, height: 48)
-                                                                    .padding(.horizontal, 21)
-                                                                    .padding(.vertical, 17)
-                                                            }
-                                                            Text("방 만들기")
-                                                              .context(textColor: Color.white)
-                                                              .multilineTextAlignment(.center)
-                                                        }
-                                                       .frame(maxWidth: 80)
-                                                    }
-
-                                                )
-
-                                                    
-                                       
+                                NavigationLink(
+                                    destination: MakingGroupView(connectionManager: connectionManager)
+                                        .environmentObject(userData)
+                                        .navigationBarBackButtonHidden(),
+                                    label: {
+                                        VStack {
+                                            ZStack {
+                                                Circle()
+                                                    .frame(maxWidth: 82)
+                                                    .foregroundColor(Color.white.opacity(0.4))
+                                                
+                                                Image(systemName: "badge.plus.radiowaves.right")
+                                                    .font(.system(size: 30))
+                                                    .foregroundColor(Color.white)
+                                                    .frame(width: 41, height: 48)
+                                                    .padding(.horizontal, 21)
+                                                    .padding(.vertical, 17)
                                             }
-                                        )
-                                    }
-                                    )
-                                .padding(.trailing, 70)
-                                
-                                Button(
-                                    action: {
-                                        
-                                    }, label: {
-                                        NavigationLink(
-                                            destination: {
-                                               UserInfoView()
-                                            }, label: {
-                                                VStack {
-                                                    ZStack {
-                                                        Circle()
-                                                            .frame(maxWidth: 82)
-                                                            .foregroundColor(Color.white.opacity(0.4))
-                                                        
-                                                        Image(systemName: "gear")
-                                                            .font(.system(size: 30))
-                                                            .foregroundColor(Color.white)
-                                                            .frame(width: 41, height: 48)
-                                                            .padding(.horizontal, 21)
-                                                            .padding(.vertical, 17)
-                                                    }
-                                                    
-                                                    Text("설정")
-                                                        .context(textColor: Color.white)
-                                                }
-                                                .frame(maxWidth: 80)
-                                            }
-                                        )
+                                            Text("방 만들기")
+                                              .context(textColor: Color.white)
+                                              .multilineTextAlignment(.center)
+                                        }
+                                       .frame(maxWidth: 80)
                                     }
                                 )
-                            }
+                                .padding(.trailing, 70)
+                                
+                                NavigationLink(
+                                    destination: {
+                                       UserInfoView()
+                                    }, label: {
+                                        VStack {
+                                            ZStack {
+                                                Circle()
+                                                    .frame(maxWidth: 82)
+                                                    .foregroundColor(Color.white.opacity(0.4))
+                                                
+                                                Image(systemName: "gear")
+                                                    .font(.system(size: 30))
+                                                    .foregroundColor(Color.white)
+                                                    .frame(width: 41, height: 48)
+                                                    .padding(.horizontal, 21)
+                                                    .padding(.vertical, 17)
+                                            }
+                                            
+                                            Text("설정")
+                                                .context(textColor: Color.white)
+                                        }
+                                        .frame(maxWidth: 80)
+                                    }
+                                )                            }
                             .padding(EdgeInsets(top: 102, leading: 78, bottom: 134, trailing: 78))
                         }
                         

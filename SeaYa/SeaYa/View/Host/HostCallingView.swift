@@ -139,12 +139,23 @@ struct HostCallingView: View {
     }
 }
 
-struct HostCallingView_Previews: PreviewProvider {
-    static var previews: some View {
+struct HostCallingViewTest : View{
+    @State var scheduleName = "Hello World"
+    @State var selectedDate = [Date()]
+    @State var estimatedTime = 2
+    var body: some View{
         HostCallingView(
             connectionManager: ConnectionService(),
-            scheduleName: .constant("저녁 회식"),
-            selectedDate: .constant([Date]()),
-            estimatedTime: .constant(1))
+            scheduleName: $scheduleName,
+            selectedDate: $selectedDate,
+            estimatedTime: $estimatedTime)
+        .environmentObject(UserData())
+    }
+}
+
+
+struct HostCallingView_Previews: PreviewProvider {
+    static var previews: some View {
+        HostCallingViewTest()
     }
 }

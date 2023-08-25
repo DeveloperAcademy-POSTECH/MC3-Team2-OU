@@ -69,7 +69,7 @@
 		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
 		BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC77A2A60E05F00F39E2B /* Typography.swift */; };
-		BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7802A60F1CD00F39E2B /* Color.swift */; };
+		BBBBC7812A60F1CD00F39E2B /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7802A60F1CD00F39E2B /* Color+.swift */; };
 		BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */; };
 		BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */; };
 		BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7862A67740F00F39E2B /* ButtonTheme.swift */; };
@@ -165,7 +165,7 @@
 		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BBBBC77A2A60E05F00F39E2B /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
-		BBBBC7802A60F1CD00F39E2B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		BBBBC7802A60F1CD00F39E2B /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostCallingDone.swift; sourceTree = "<group>"; };
 		BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundView.swift; sourceTree = "<group>"; };
 		BBBBC7862A67740F00F39E2B /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
@@ -216,6 +216,7 @@
 		0EEFB6512A64D85900F5C5D2 /* Host */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */,
 				0EEFB6702A6EC60B00F5C5D2 /* HostCallingView.swift */,
 				0EEFB6522A64D85F00F5C5D2 /* Group */,
 				0E5E16202A725F8A00143374 /* GuestList */,
@@ -249,6 +250,14 @@
 				1012D6622A755D3B0033BD72 /* UserInfoRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		738DE4662A983CBC002DB701 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
+			);
+			path = Legacy;
 			sourceTree = "<group>";
 		};
 		739FBB752A613CF30022386D /* Service */ = {
@@ -348,16 +357,16 @@
 		BBBBC72E2A5E322500F39E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BBDD707B2A735A4E00977775 /* SettingView */,
-				104555882A66408900562B98 /* TimeTableView */,
-				0EEFB6512A64D85900F5C5D2 /* Host */,
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
-				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
-				7382E9482A72155800837AB2 /* FixedTimeElementView.swift */,
 				BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */,
-				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
 				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
-				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
+				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
+				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
+				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
+				BBDD707B2A735A4E00977775 /* SettingView */,
+				0EEFB6512A64D85900F5C5D2 /* Host */,
+				104555882A66408900562B98 /* TimeTableView */,
+				7382E9482A72155800837AB2 /* FixedTimeElementView.swift */,
 				EE14DBC02A64CF22004ECD86 /* SettingView.swift */,
 				73AA046E2A6ABE1F003FA06F /* ConfirmView */,
 				73CD8FE82A65A935003A274D /* ListUpView */,
@@ -365,8 +374,8 @@
 				0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */,
 				0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */,
 				0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */,
-				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
 				0E81B96A2A78F64D004AB171 /* ResultView.swift */,
+				738DE4662A983CBC002DB701 /* Legacy */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -405,7 +414,6 @@
 				0E81B9382A774CB0004AB171 /* HomeView.json */,
 				ACB3AEE52A79F2E300BEB90D /* rank.json */,
 				ACB3AEE72A79F2FB00BEB90D /* pencil.json */,
-				BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */,
 				BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */,
 				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
 				BBDD706A2A68031C00977775 /* ResultCardView.swift */,
@@ -420,9 +428,9 @@
 			isa = PBXGroup;
 			children = (
 				BBBBC77A2A60E05F00F39E2B /* Typography.swift */,
-				BBBBC7802A60F1CD00F39E2B /* Color.swift */,
 				BBBBC7862A67740F00F39E2B /* ButtonTheme.swift */,
 				BBDD706E2A69453100977775 /* TextFieldTheme.swift */,
+				BBBBC7802A60F1CD00F39E2B /* Color+.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -605,7 +613,7 @@
 				73130BFE2A6A3C7800554A36 /* ConfirmView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,
 				0EEFB6732A6EC65200F5C5D2 /* ConnectionService.swift in Sources */,
-				BBBBC7812A60F1CD00F39E2B /* Color.swift in Sources */,
+				BBBBC7812A60F1CD00F39E2B /* Color+.swift in Sources */,
 				0EEFB6712A6EC60B00F5C5D2 /* HostCallingView.swift in Sources */,
 				0E5E161F2A725F7000143374 /* GuestListCellView.swift in Sources */,
 				BBBBC7632A5E3BCE00F39E2B /* FixedTimeView.swift in Sources */,

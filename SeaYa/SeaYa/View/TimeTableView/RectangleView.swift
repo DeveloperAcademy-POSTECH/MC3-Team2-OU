@@ -41,7 +41,7 @@ struct RectangleView: View {
                         height: abs(endy - starty) - CGFloat(lineWidth)
                     )
                     context.stroke(Path(rect), with: .color(.black), lineWidth: CGFloat(lineWidth))
-                    context.fill(Path(rect), with: .color(isSelected ?? true ? .white : .primary_selectedColor))
+                    context.fill(Path(rect), with: .color(isSelected ?? true ? .whiteColor : .primary_selectedColor))
                 }
             }
             

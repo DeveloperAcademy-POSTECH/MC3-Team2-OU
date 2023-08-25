@@ -71,6 +71,8 @@ struct ConfirmMemberModalView: View {
 struct ConfirmMemberModalView_Previews: PreviewProvider {
     static var previews: some View {
         ConfirmMemberModalTestView().environment(\.locale, .init(identifier: "ko"))
+        ConfirmMemberModalTestView().environment(\.locale, .init(identifier: "ko"))
+            .preferredColorScheme(.dark)
     }
 }
 

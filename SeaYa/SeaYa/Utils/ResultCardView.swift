@@ -73,7 +73,7 @@ struct ResultCardView: View {
             )
         }
         .frame(width: 300)
-        .background(Color.white)
+        .background(Color.whiteColor)
         .cornerRadius(32)
         .onAppear() {
             schedule = connectionManager.scheduleDone ?? ScheduleDone()
@@ -92,5 +92,7 @@ extension ResultCardView{
 struct ResultCardView_Previews: PreviewProvider {
     static var previews: some View {
         ResultCardView(connectionManager: ConnectionService())
+        ResultCardView(connectionManager: ConnectionService())
+            .preferredColorScheme(.dark)
     }
 }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HostCallingDone: View {
-    @ObservedObject var connectionManager: ConnectionService
     @State var clicked: Int? = 0
+    @ObservedObject var connectionManager: ConnectionService
     @EnvironmentObject private var userData: UserData
     var groupInfo: GroupInfo
     var body: some View {
@@ -17,7 +17,6 @@ struct HostCallingDone: View {
             Text("그룹이 확정되었어요")
                 .subtitle(textColor: Color.textColor)
                 .padding(.top, 40)
-            
             Image("guestCallingDoneImage")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -48,7 +47,7 @@ struct HostCallingDone: View {
             .padding(.bottom, 32)
         }
         .frame(width: 300)
-        .background(Color.white)
+        .background(Color.whiteColor)
         .cornerRadius(32)
         
     }
@@ -61,10 +60,17 @@ struct HostCallingDone: View {
     
 }
 
-
-//struct HostCallingDone_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HostCallingDone(connectionManager: ConnectionService())
-//    }
-//}
+struct HostCallingDone_Previews: PreviewProvider {
+    static var previews: some View {
+        HostCallingDone(
+            connectionManager: ConnectionService(),
+            groupInfo: GroupInfo.empty()
+        ).environmentObject(UserData())
+        HostCallingDone(
+            connectionManager: ConnectionService(),
+            groupInfo: GroupInfo.empty()
+        ).environmentObject(UserData())
+            .preferredColorScheme(.dark)
+    }
+}
 

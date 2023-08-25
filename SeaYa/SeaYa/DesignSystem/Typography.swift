@@ -82,17 +82,35 @@ extension Text {
             .foregroundColor(textColor)
     }
 }
-                  
-    
 
-struct Typography_Previews: PreviewProvider {
-    static var previews: some View {
+struct TypographyTemplate : View{
+    var body: some View{
         VStack(spacing:0) {
             Text("hello")
                 .title(textColor: Color.primaryColor)
             Text("hello2")
                 .caption(textColor: Color.textColor)
-           
+            Text("hello3")
+                .headline(textColor: Color.primaryColor)
+            Text("hello4")
+                .body(textColor: Color.primaryColor)
+            Text("hello5")
+                .caption(textColor: .primaryColor)
+            Text("hello5")
+                .bigButton(textColor: .primaryColor)
+            Text("hello6")
+                .smallButton(textColor: .primaryColor)
+            Text("hello7")
+                .context(textColor: .textColor)
+            
         }
+    }
+}
+    
+
+struct Typography_Previews: PreviewProvider {
+    static var previews: some View {
+        TypographyTemplate()
+        TypographyTemplate().preferredColorScheme(.dark)
     }
 }

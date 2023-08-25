@@ -15,17 +15,33 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    func toStringg() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d"
-        formatter.timeZone = TimeZone.current
-        let day = Calendar.current.date(byAdding: .day, value: -1, to: self)!
-        return formatter.string(from: day)
+    /// 현재 디바이스의 TimeZone에 맞춰 주어진 Date 날짜의 오전 0시 0분 값을 리턴합니다.
+    func toDate() -> Date {
+        let day = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        return Calendar.current.date(from: day)!
+    }
+    
+    /// 현재 디바이스의 TimeZone에 맞춰 주어진 날짜를 targetDate의 년도, 월, 일 로 대체합니다.
+    mutating func updateDay(_ targetDate : Date) -> Void {
+        let fromDay = Calendar.current.dateComponents([.hour, .minute], from: self)
+        var toDay = Calendar.current.dateComponents([.year, .month, .day], from : targetDate)
+        
+        toDay.hour = fromDay.hour
+        toDay.minute = fromDay.minute
+        
+        self = Calendar.current.date(from: toDay)!
     }
     
     func toStringDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "M월 dd일 EEEE"
+        formatter.timeZone = TimeZone.current
+        return formatter.string(from: self)
+    }
+    
+    func toStringDateHourMinute() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M월 dd일 EEEE hh시 mm분"
         formatter.timeZone = TimeZone.current
         return formatter.string(from: self)
     }

@@ -34,7 +34,7 @@ struct MakingGroupView: View {
                         .padding(EdgeInsets(top: 35, leading: 16, bottom: 0, trailing: 0))
                     ZStack {
                         Rectangle()
-                            .foregroundColor(.white)
+                            .foregroundColor(.textFieldColor)
                             .frame(maxWidth: 358, maxHeight: 200)
                             .cornerRadius(16)
                         CalendarView(selectedDate: $selectedDate)
@@ -65,32 +65,29 @@ struct MakingGroupView: View {
                         .clipped()
                     }
                     .frame(minHeight: 150)
+
                     if isNextButtonDisabled {
                         BigButton_Unactive(title: "다음", action: {})
                             .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
                     } else {
-                        BigButton_Blue(
-                            title: "다음",
-                            action: {
-                                moveToNextView = true
-                            }
-                        )
-                        .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
+                        NavigationLink(
+                            destination: HostCallingView(
+                                connectionManager: connectionManager,
+                                scheduleName: $scheduleName,
+                                selectedDate: $selectedDate,
+                                estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
+                            )
+                            .navigationBarBackButtonHidden()
+                            .environmentObject(userData),
+                            label: {
+                                Text("다음")
+                                    .bigButton(textColor: .white)
+                                        .frame(width: 358, height: 55, alignment: .center)
+                                        .background(Color.primaryColor)
+                                        .cornerRadius(16)
+                                .padding(EdgeInsets(top: 30, leading: 16, bottom: 25, trailing: 16))
+                            })
                     }
-                    
-                    NavigationLink(
-                        destination: HostCallingView(
-                            connectionManager: connectionManager,
-                            scheduleName: $scheduleName,
-                            selectedDate: $selectedDate,
-                            estimatedTime: .constant(selectedMinute == 30 ? selectedHour*2+1 : selectedHour*2)
-                        )
-                        .navigationBarBackButtonHidden()
-                        .environmentObject(userData),
-                        isActive: $moveToNextView,
-                        label: {
-                            EmptyView()
-                        })
                 }
                 .scaledToFit()
             }
@@ -101,7 +98,7 @@ struct MakingGroupView: View {
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text("방 만들기")
-                            .body(textColor: Color.black)
+                            .body(textColor: Color.textColor)
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -120,5 +117,7 @@ struct MakingGroupView: View {
 struct MakingGroupView_Previews: PreviewProvider {
     static var previews: some View {
         MakingGroupView(connectionManager: ConnectionService())
+        MakingGroupView(connectionManager: ConnectionService())
+            .preferredColorScheme(.dark)
     }
 }
