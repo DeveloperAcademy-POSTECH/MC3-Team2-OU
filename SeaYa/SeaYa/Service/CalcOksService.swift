@@ -36,7 +36,6 @@ class CalcOksService: ObservableObject {
             let period = Int(round(activity.end.timeIntervalSince1970/1800)) - startTime
             return Array(stride(from:startTime, to: startTime + period, by : 1))}
         
-        
         func getOktimes(_ member: DateMember) -> [Int]{
             let memberOkTimeMapped = member.dateEvents.map(getStride).flatMap{$0}
             return memberOkTimeMapped}
@@ -84,7 +83,7 @@ class CalcOksService: ObservableObject {
         // let memberTimeOks = boundedDatesMapped.map{getOKtimesBySubtract($0, using: countMembersOkTime)}.filter{$0.Oks != 0}.sorted(by: Nearest)
         let memberTimeOks = countMembersOkTime.map{TimeOks(timeInt: $0.key, Oks: $0.value)}
         // #2 가능 시간 기준 필터링 // 주어진 시간만큼 필터링하기
-//        let memberMinTimeOks = getMemberTimeOks(memberTimeOks, self.theTime)
+        // let memberMinTimeOks = getMemberTimeOks(memberTimeOks, self.theTime)
         guard let theTime = self.theTime else {
             print("기간 설정을 입력받지 않아 30분단위로 순위 정렬")
             return getMemberTimeOks(memberTimeOks, 1).sorted(by: OksAndNearest)

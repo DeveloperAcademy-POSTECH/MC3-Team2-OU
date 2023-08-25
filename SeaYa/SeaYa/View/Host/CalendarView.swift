@@ -70,7 +70,7 @@ struct CalendarView: View {
                                         Text(date.toString())
                                             .frame(maxWidth: .infinity)
                                             .padding(8)
-                                            .foregroundColor(isSelected ? .white : (day == 7 ? .red : .black))
+                                            .foregroundColor(isSelected ? .white : (day == 7 ? .red : .primary))
                                     }
                                 })
                             } else {
@@ -118,5 +118,6 @@ struct CalendarTestView: View{
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarTestView()
+        CalendarTestView().preferredColorScheme(.dark)
     }
 }

@@ -58,7 +58,7 @@ struct SettingView: View {
                     content: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.white)
+                                .fill(Color.whiteColor)
                             HStack {
                                 ForEach(categories, id: \.self) { category in
                                     Button(
@@ -86,7 +86,7 @@ struct SettingView: View {
                     },
                     header: {
                         HStack{
-                            Text("카테고리").title(textColor: .primary)
+                            Text("카테고리").title(textColor: .black)
                             Spacer()
                         }.padding(.leading, 21)
                     }
@@ -411,6 +411,8 @@ struct SettingTestView : View {
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         SettingTestView()
+        SettingTestView()
+            .preferredColorScheme(.dark)
     }
 }
 

@@ -36,21 +36,23 @@ class ConnectionService: NSObject, ObservableObject {
     
     //Host function
     func host(_ nickName: String) {
-        let myPeerId = MCPeerID(displayName: nickName)
-        
-        peers.removeAll()
-        foundPeers.removeAll()
-        
-        //create session
-        session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .required)
-        session?.delegate = self
-        
-        let serviceType = ConnectionService.service
-        
-        //find near by device
-        browser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceType)
-        browser?.delegate = self
-        browser?.startBrowsingForPeers()
+        if nickName != ""{
+            let myPeerId = MCPeerID(displayName: nickName)
+            
+            peers.removeAll()
+            foundPeers.removeAll()
+            
+            //create session
+            session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .required)
+            session?.delegate = self
+            
+            let serviceType = ConnectionService.service
+            
+            //find near by device
+            browser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceType)
+            browser?.delegate = self
+            browser?.startBrowsingForPeers()
+        }
     }
     
     //Guest function

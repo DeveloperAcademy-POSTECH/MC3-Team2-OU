@@ -100,8 +100,8 @@ struct SmallButton_White: View {
     }
 }
 
-struct ButtonTheme_Previews: PreviewProvider {
-    static var previews: some View {
+struct ButtonThemeTemplate : View{
+    var body: some View{
         VStack(spacing: 20) {
             BigButton_Blue(title: "Primary Button") {}
             BigButton_Selected(title: "Selected Button") {}
@@ -111,5 +111,12 @@ struct ButtonTheme_Previews: PreviewProvider {
             SmallButton_White(title: "White Small Button") {}
         }
         .padding()
+    }
+}
+
+struct ButtonTheme_Previews: PreviewProvider {
+    static var previews: some View {
+        ButtonThemeTemplate()
+        ButtonThemeTemplate().preferredColorScheme(.dark)
     }
 }

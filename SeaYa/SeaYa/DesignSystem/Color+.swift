@@ -14,6 +14,8 @@ extension Color {
     static let textColor = Color("text")
     static let unactiveColor = Color("unactive")
     static let gradientColor = Color("gradient")
+    static let textFieldColor = Color("textField")
+    static let whiteColor = Color("whiteColor")
     
     init(hex: String) {
         let scanner = Scanner(string: hex)

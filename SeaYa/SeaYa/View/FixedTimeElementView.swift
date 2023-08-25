@@ -13,7 +13,7 @@ struct FixedTimeElementView: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 16)
-                .foregroundColor(Color.white)
+                .foregroundColor(Color.whiteColor)
             VStack(alignment : .leading, spacing : 14){
                 HStack{
                     ZStack{
@@ -74,5 +74,9 @@ struct FixedTimeElementView_Previews: PreviewProvider {
         VStack{
             FixedTimeElementView(fixedTimeModel : FixedTimeModel())
         }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
+        VStack{
+            FixedTimeElementView(fixedTimeModel : FixedTimeModel())
+        }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
+            .preferredColorScheme(.dark)
     }
 }

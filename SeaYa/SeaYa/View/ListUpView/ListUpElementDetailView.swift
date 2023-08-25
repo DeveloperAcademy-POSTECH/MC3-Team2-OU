@@ -86,5 +86,7 @@ struct ListUpElementDetailTestView:View{
 struct ListUpElementDetailTestView_Previews: PreviewProvider {
     static var previews: some View {
         ListUpElementDetailTestView(forGuest : false)
+        ListUpElementDetailTestView(forGuest : false)
+            .preferredColorScheme(.dark)
     }
 }

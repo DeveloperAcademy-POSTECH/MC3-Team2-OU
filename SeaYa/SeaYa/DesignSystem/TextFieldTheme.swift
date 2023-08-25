@@ -16,7 +16,7 @@ struct TextFieldTheme: View {
             .padding(.horizontal, 18)
             .padding(.vertical, 10)
             .frame(width: 358, height: 47)
-            .background(Color.white)
+            .background(Color.textFieldColor)
             .cornerRadius(16)
             .font(Font.system(size: 17, weight: .regular))
             .lineSpacing(1.6 * 17 - 17)
@@ -25,13 +25,19 @@ struct TextFieldTheme: View {
     }
 }
 
-struct TextFieldTheme_Previews: PreviewProvider {
-    static var previews: some View {
+struct TextFieldThemeTemplate : View{
+    var body: some View{
         VStack {
             TextFieldTheme(placeholder: "Username", input: .constant(""))
             TextFieldTheme(placeholder: "Password", input: .constant(""))
-      
         }
         .padding()
+    }
+}
+
+struct TextFieldTheme_Previews: PreviewProvider {
+    static var previews: some View {
+        TextFieldThemeTemplate()
+        TextFieldThemeTemplate().preferredColorScheme(.dark)
     }
 }

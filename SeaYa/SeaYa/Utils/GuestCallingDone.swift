@@ -48,7 +48,7 @@ struct GuestCallingDone: View {
             .padding(.bottom, 32)
         }
         .frame(width: 300)
-        .background(Color.white)
+        .background(Color.whiteColor)
         .cornerRadius(32)
         
     }
@@ -63,5 +63,9 @@ struct GuestCallingDone: View {
 struct GuestCallingDone_Previews: PreviewProvider {
     static var previews: some View {
         GuestCallingDone(connectionManager: ConnectionService())
+            .environmentObject(UserData())
+        GuestCallingDone(connectionManager: ConnectionService())
+            .environmentObject(UserData())
+            .preferredColorScheme(.dark)
     }
 }
