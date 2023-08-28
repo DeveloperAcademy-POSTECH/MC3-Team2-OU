@@ -17,7 +17,7 @@ struct TimeTable: View {
         NavigationStack{
             if vm.calendar != nil{
                 VStack(spacing:16){
-                    Text("일정 입력").body(textColor: .black)
+                    Text("일정 입력").body(textColor: .primary)
                     VStack(spacing:0){
                         DayLayout(vm: vm)
                         HStack(spacing:0){
@@ -37,10 +37,7 @@ struct TimeTable: View {
                             clicked = 1
                         }
                     } else {
-                        Text("각 시간이" +
-                             (connectionManager.groupInfo!.estimatedTime != 1 ? " \(Int(connectionManager.groupInfo!.estimatedTime/2))시간" : "") +
-                             (connectionManager.groupInfo!.estimatedTime%2 == 1 ? " 30분" : "") +
-                             " 이상 묶여있어야 합니다")
+                        Text(timeTalbeAlert(connectionManager.groupInfo?.estimatedTime))
                             .bigButton(textColor: .whiteColor)
                             .frame(width: 358, alignment: .center)
                             .padding(.vertical, 18)
@@ -53,8 +50,16 @@ struct TimeTable: View {
                 ProgressView()
                 }
         }
-        }
     }
+    
+    private func timeTalbeAlert(_ estimatedTime : Int?) -> String{
+        let estimatedTime : Int = estimatedTime ?? 1
+        return "각 시간이" +
+        (estimatedTime != 1 ? " \(Int(estimatedTime/2))시간" : "") +
+        (estimatedTime % 2 == 1 ? " 30분" : "") +
+        " 이상 묶여있어야 합니다"
+    }
+}
 
 // 최상단 날짜 나열하는 UI
 struct DayLayout: View{
@@ -191,14 +196,14 @@ struct Table: View{
                         //해당 선택 원소 그룹이 주어진 시간보다 긴지 확인해야함
                         if let estimatedTime = connectionManager.groupInfo?.estimatedTime{
                             vm.available = true
-                            let aaron = vm.selectedItem.sorted(by: {
+                            let sortedSelecteItem = vm.selectedItem.sorted(by: {
                                 $0.dayTime ?? 0 < $1.dayTime ?? 0
                             })
                             var groupLengths : [Int] = []
                             var currentGroupLength = 0
                             
-                            for i in 0..<aaron.count {
-                                if i == 0 || aaron[i].dayTime! != aaron[i-1].dayTime! + 1{
+                            for i in 0..<sortedSelecteItem.count {
+                                if i == 0 || sortedSelecteItem[i].dayTime! != sortedSelecteItem[i-1].dayTime! + 1{
                                     if currentGroupLength > 0 {
                                         groupLengths.append(currentGroupLength)
                                     }
@@ -214,6 +219,8 @@ struct Table: View{
                             if estimatedTime > groupLengths.min() ?? 0{
                                 vm.available = false
                             }
+                        } else {
+                            vm.available = vm.selectedItem.isEmpty ? false : true
                         }
                     }      
                     vm.xEndIndex = nil
@@ -266,8 +273,7 @@ struct TableRow: View{
                                     vm.xArray = vm.xArray.map{$0 - (vm.xArray.min() ?? 0)}
                                     vm.yArray = vm.yArray.map{$0 - (vm.yArray.min() ?? 0)}
                                 }
-                                let temptemp = Int(day.replacingOccurrences(of: "-", with: "")) ?? 0
-                                vm.tableCalendar[day]![yindex].dayTime = temptemp * 100 + yindex
+                                vm.tableCalendar[day]![yindex].dayTime = (Int(day.replacingOccurrences(of: "-", with: "")) ?? 0) * 100 + yindex
                             }
                         }
                     )
@@ -343,9 +349,10 @@ class TableItem:Hashable, Equatable{
 }
 
 struct TimeTableTest : View{
+    var connectionManager =  ConnectionService()
     var body : some View{
         TimeTable(
-            connectionManager: ConnectionService(),
+            connectionManager: connectionManager,
             vm: TimeTableViewModel.preview
         ).environmentObject(UserData())
     }
@@ -354,5 +361,7 @@ struct TimeTableTest : View{
 struct TimeTable_Previews: PreviewProvider {
     static var previews: some View {
         TimeTableTest()
+        TimeTableTest()
+            .preferredColorScheme(.dark)
     }
 }

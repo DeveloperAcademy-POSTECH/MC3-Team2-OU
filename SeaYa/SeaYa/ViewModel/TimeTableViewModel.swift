@@ -89,7 +89,7 @@ final class TimeTableViewModel: ObservableObject{
         }
     }
     
-   @MainActor
+    @MainActor
     private func getCalendar() async -> Calendar {
         let localEvents = localCalendarRepo.getEvents()
         let start = DateUtil.formattedDayToDate(selectedDay.first!)
@@ -105,7 +105,111 @@ final class TimeTableViewModel: ObservableObject{
     //2. 선택된 event 반환
     
     static let preview: TimeTableViewModel = .init(true)
-    private init(_ a : Bool){
-
+    private init(_ boolVar : Bool){
+        calendar = Optional(
+            [
+                "2023-08-29":
+                    [
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 00:00"), end:  DateUtil.formattedDateToDate("2023-08-29 00:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 00:30"), end:  DateUtil.formattedDateToDate("2023-08-29 01:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 01:00"), end:  DateUtil.formattedDateToDate("2023-08-29 01:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 01:30"), end:  DateUtil.formattedDateToDate("2023-08-29 02:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 02:00"), end:  DateUtil.formattedDateToDate("2023-08-29 02:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 02:30"), end:  DateUtil.formattedDateToDate("2023-08-29 03:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 03:00"), end:  DateUtil.formattedDateToDate("2023-08-29 03:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 03:30"), end:  DateUtil.formattedDateToDate("2023-08-29 04:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 04:00"), end:  DateUtil.formattedDateToDate("2023-08-29 04:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 04:30"), end:  DateUtil.formattedDateToDate("2023-08-29 05:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 05:00"), end:  DateUtil.formattedDateToDate("2023-08-29 05:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 05:30"), end:  DateUtil.formattedDateToDate("2023-08-29 06:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 06:00"), end:  DateUtil.formattedDateToDate("2023-08-29 06:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 06:30"), end:  DateUtil.formattedDateToDate("2023-08-29 07:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 07:00"), end:  DateUtil.formattedDateToDate("2023-08-29 07:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 07:30"), end:  DateUtil.formattedDateToDate("2023-08-29 08:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 08:00"), end:  DateUtil.formattedDateToDate("2023-08-29 08:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 08:30"), end:  DateUtil.formattedDateToDate("2023-08-29 09:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 09:00"), end:  DateUtil.formattedDateToDate("2023-08-29 09:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 09:30"), end:  DateUtil.formattedDateToDate("2023-08-29 10:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 10:00"), end:  DateUtil.formattedDateToDate("2023-08-29 10:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 10:30"), end:  DateUtil.formattedDateToDate("2023-08-29 11:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 11:00"), end:  DateUtil.formattedDateToDate("2023-08-29 11:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 11:30"), end:  DateUtil.formattedDateToDate("2023-08-29 12:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 12:00"), end:  DateUtil.formattedDateToDate("2023-08-29 12:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 12:30"), end:  DateUtil.formattedDateToDate("2023-08-29 13:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 13:00"), end:  DateUtil.formattedDateToDate("2023-08-29 13:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 13:30"), end:  DateUtil.formattedDateToDate("2023-08-29 14:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 14:00"), end:  DateUtil.formattedDateToDate("2023-08-29 14:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-29 14:30"), end:  DateUtil.formattedDateToDate("2023-08-29 15:00"))
+                    ],
+                "2023-08-30":
+                    [
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 00:00"), end:  DateUtil.formattedDateToDate("2023-08-30 00:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 00:30"), end:  DateUtil.formattedDateToDate("2023-08-30 01:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 01:00"), end:  DateUtil.formattedDateToDate("2023-08-30 01:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 01:30"), end:  DateUtil.formattedDateToDate("2023-08-30 02:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 02:00"), end:  DateUtil.formattedDateToDate("2023-08-30 02:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 02:30"), end:  DateUtil.formattedDateToDate("2023-08-30 03:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 03:00"), end:  DateUtil.formattedDateToDate("2023-08-30 03:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 03:30"), end:  DateUtil.formattedDateToDate("2023-08-30 04:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 04:00"), end:  DateUtil.formattedDateToDate("2023-08-30 04:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 04:30"), end:  DateUtil.formattedDateToDate("2023-08-30 05:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 05:00"), end:  DateUtil.formattedDateToDate("2023-08-30 05:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 05:30"), end:  DateUtil.formattedDateToDate("2023-08-30 06:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 06:00"), end:  DateUtil.formattedDateToDate("2023-08-30 06:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 06:30"), end:  DateUtil.formattedDateToDate("2023-08-30 07:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 07:00"), end:  DateUtil.formattedDateToDate("2023-08-30 07:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 07:30"), end:  DateUtil.formattedDateToDate("2023-08-30 08:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 08:00"), end:  DateUtil.formattedDateToDate("2023-08-30 08:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 08:30"), end:  DateUtil.formattedDateToDate("2023-08-30 09:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 09:00"), end:  DateUtil.formattedDateToDate("2023-08-30 09:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 09:30"), end:  DateUtil.formattedDateToDate("2023-08-30 10:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 10:00"), end:  DateUtil.formattedDateToDate("2023-08-30 10:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 10:30"), end:  DateUtil.formattedDateToDate("2023-08-30 11:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 11:00"), end:  DateUtil.formattedDateToDate("2023-08-30 11:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 11:30"), end:  DateUtil.formattedDateToDate("2023-08-30 12:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 12:00"), end:  DateUtil.formattedDateToDate("2023-08-30 12:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 12:30"), end:  DateUtil.formattedDateToDate("2023-08-30 13:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 13:00"), end:  DateUtil.formattedDateToDate("2023-08-30 13:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 13:30"), end:  DateUtil.formattedDateToDate("2023-08-30 14:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 14:00"), end:  DateUtil.formattedDateToDate("2023-08-30 14:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-30 14:30"), end:  DateUtil.formattedDateToDate("2023-08-30 15:00"))
+                    ],
+                "2023-08-31":
+                    [
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 00:00"), end:  DateUtil.formattedDateToDate("2023-08-31 00:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 00:30"), end:  DateUtil.formattedDateToDate("2023-08-31 01:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 01:00"), end:  DateUtil.formattedDateToDate("2023-08-31 01:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 01:30"), end:  DateUtil.formattedDateToDate("2023-08-31 02:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 02:00"), end:  DateUtil.formattedDateToDate("2023-08-31 02:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 02:30"), end:  DateUtil.formattedDateToDate("2023-08-31 03:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 03:00"), end:  DateUtil.formattedDateToDate("2023-08-31 03:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 03:30"), end:  DateUtil.formattedDateToDate("2023-08-31 04:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 04:00"), end:  DateUtil.formattedDateToDate("2023-08-31 04:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 04:30"), end:  DateUtil.formattedDateToDate("2023-08-31 05:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 05:00"), end:  DateUtil.formattedDateToDate("2023-08-31 05:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 05:30"), end:  DateUtil.formattedDateToDate("2023-08-31 06:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 06:00"), end:  DateUtil.formattedDateToDate("2023-08-31 06:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 06:30"), end:  DateUtil.formattedDateToDate("2023-08-31 07:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 07:00"), end:  DateUtil.formattedDateToDate("2023-08-31 07:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 07:30"), end:  DateUtil.formattedDateToDate("2023-08-31 08:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 08:00"), end:  DateUtil.formattedDateToDate("2023-08-31 08:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 08:30"), end:  DateUtil.formattedDateToDate("2023-08-31 09:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 09:00"), end:  DateUtil.formattedDateToDate("2023-08-31 09:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 09:30"), end:  DateUtil.formattedDateToDate("2023-08-31 10:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 10:00"), end:  DateUtil.formattedDateToDate("2023-08-31 10:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 10:30"), end:  DateUtil.formattedDateToDate("2023-08-31 11:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 11:00"), end:  DateUtil.formattedDateToDate("2023-08-31 11:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 11:30"), end:  DateUtil.formattedDateToDate("2023-08-31 12:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 12:00"), end:  DateUtil.formattedDateToDate("2023-08-31 12:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 12:30"), end:  DateUtil.formattedDateToDate("2023-08-31 13:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 13:00"), end:  DateUtil.formattedDateToDate("2023-08-31 13:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 13:30"), end:  DateUtil.formattedDateToDate("2023-08-31 14:00")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 14:00"), end:  DateUtil.formattedDateToDate("2023-08-31 14:30")),
+                        SeaYa.Event(title: "blank", start: DateUtil.formattedDateToDate("2023-08-31 14:30"), end:  DateUtil.formattedDateToDate("2023-08-31 15:00"))
+                    ]
+            ]
+        )
+        tableCalendar = calToTableCal(calendar!)
+        selectedDay = ["2023-08-29", "2023-08-30", "2023-08-31"]
     }
 }
