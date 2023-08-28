@@ -97,7 +97,7 @@ struct SettingView: View {
                     content : {
                         ZStack{
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.white)
+                                .fill(Color.whiteColor)
                             HStack {
                                 ForEach(weekdays, id: \.self) { weekday in
                                     Button(
@@ -146,7 +146,7 @@ struct SettingView: View {
                                 VStack(alignment: .leading, spacing: 8) {
                                     Label {
                                         Text("Start")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.primary)
                                     } icon: {
                                         Image(systemName: "circle")
                                             .foregroundColor(Color.primaryColor)
@@ -160,7 +160,7 @@ struct SettingView: View {
                                 VStack(alignment: .leading, spacing: 8) {
                                     Label {
                                         Text("Finish")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.primary)
                                     } icon: {
                                         Image(systemName: "circle.fill")
                                             .foregroundColor(Color.primaryColor)
@@ -234,7 +234,7 @@ struct SettingView: View {
                 let reverseRotation = (startProgress > toProgress) ? -Double((1 - startProgress) * 360) : 0
                 
                 Circle()
-                    .stroke(.black.opacity(0.06), lineWidth: 50)
+                    .stroke(Color.unactiveColor.opacity(0.3), lineWidth: 50)
                 Circle()
                     .trim(from: startProgress > toProgress ? 0 : startProgress, to: toProgress + (-reverseRotation / 360))
                     .stroke(Color.primaryColor, style: StrokeStyle(lineWidth: 45, lineCap: .round, lineJoin: .round))
