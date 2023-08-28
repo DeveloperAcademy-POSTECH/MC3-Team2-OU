@@ -18,7 +18,7 @@ struct ListUpElementView: View {
         let endTime = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date(timeIntervalSince1970: TimeInterval((timeOks.last!.timeInt + period)*1800)))
         ZStack{
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white)
+                .fill(Color.whiteColor)
                 .animation(Animation
                     .spring(response: 0.6, dampingFraction: 0.8, blendDuration: 1),
                     value : showDetail
@@ -29,7 +29,7 @@ struct ListUpElementView: View {
                         Text("\(time.hour!):\(String(format: "%02d", time.minute!)) - " +
                              "\(endTime.hour!):\(String(format: "%02d", endTime.minute!))")
                         .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.primary)
                         HStack{
                             Text("\(time.month!)월 " +
                                  "\(time.day!)일" +
@@ -92,7 +92,8 @@ struct ListUpElementView: View {
 struct ListUpElementView_Previews: PreviewProvider {
     static var previews: some View {
         ListUpElementTestView(forGuest : false)
-        ListUpElementTestView(forGuest : true)
+        ListUpElementTestView(forGuest : false)
+            .preferredColorScheme(.dark)
     }
 }
 
@@ -115,6 +116,6 @@ struct ListUpElementTestView : View {
                                      TimeOks(timeInt: 940629, Oks: 5)], period: 1)
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.black)
+            .background(.primary)
     }
 }

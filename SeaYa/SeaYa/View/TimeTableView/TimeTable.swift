@@ -41,7 +41,7 @@ struct TimeTable: View {
                              (connectionManager.groupInfo!.estimatedTime != 1 ? " \(Int(connectionManager.groupInfo!.estimatedTime/2))시간" : "") +
                              (connectionManager.groupInfo!.estimatedTime%2 == 1 ? " 30분" : "") +
                              " 이상 묶여있어야 합니다")
-                            .bigButton(textColor: .white)
+                            .bigButton(textColor: .whiteColor)
                             .frame(width: 358, alignment: .center)
                             .padding(.vertical, 18)
                             .background(Color.primary_selectedColor)
@@ -342,8 +342,17 @@ class TableItem:Hashable, Equatable{
     }
 }
 
-//struct TimeTable_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TimeTable()
-//    }
-//}
+struct TimeTableTest : View{
+    var body : some View{
+        TimeTable(
+            connectionManager: ConnectionService(),
+            vm: TimeTableViewModel.preview
+        ).environmentObject(UserData())
+    }
+}
+
+struct TimeTable_Previews: PreviewProvider {
+    static var previews: some View {
+        TimeTableTest()
+    }
+}

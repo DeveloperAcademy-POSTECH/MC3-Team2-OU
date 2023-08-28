@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @State private var selectedButtons: [Date] = []
     @Binding var selectedDate: [Date]
+    
+    var isMultiDatesAvailable = true
     
     private let weekdays: [String] = ["월", "화", "수", "목", "금", "토", "일"]
     
@@ -52,11 +53,15 @@ struct CalendarView: View {
                     HStack {
                         ForEach(1...7, id: \.self) { day in
                             let date = dayText(week: week, day: day)
-                            let isSelected = selectedButtons.contains(date)
+                            let isSelected = selectedDate.contains(date)
                             
                             if date >= currentDate && date < nextDate {
                                 Button(action: {
-                                    toggleButtonSelection(date: date)
+                                    if isMultiDatesAvailable {
+                                        toggleButtonSelection(date: date)
+                                    } else {
+                                        ButtonSelection(date: date)
+                                    }
                                 }, label: {
                                     ZStack {
                                         Circle()
@@ -65,7 +70,7 @@ struct CalendarView: View {
                                         Text(date.toString())
                                             .frame(maxWidth: .infinity)
                                             .padding(8)
-                                            .foregroundColor(isSelected ? .white : (day == 7 ? .red : .black))
+                                            .foregroundColor(isSelected ? .white : (day == 7 ? .red : .primary))
                                     }
                                 })
                             } else {
@@ -81,25 +86,38 @@ struct CalendarView: View {
         }
     }
     
-    func toggleButtonSelection(date: Date) {
-        if let index = selectedButtons.firstIndex(of: date) {
-            selectedButtons.remove(at: index)
+    private func toggleButtonSelection(date: Date) {
+        if let _ = selectedDate.firstIndex(of: date) {
             selectedDate.removeAll { $0 == date }
-        } else if selectedButtons.count < 7 {
-            selectedButtons.append(date)
+        } else if selectedDate.count < 7 {
             selectedDate.append(date)
         }
+        
     }
     
-    func dayText(week: Int, day: Int) -> Date {
+    private func ButtonSelection(date: Date){
+        selectedDate.removeAll()
+        selectedDate.append(date)
+        print(date)
+    }
+    
+    private func dayText(week: Int, day: Int) -> Date {
         var dateComponents = calendar.dateComponents([.year, .month, .day], from: firstDayOfMonth)
         dateComponents.day! += ((week * 7) + day - calendar.component(.weekday, from: firstDayOfMonth) + 1)
         return calendar.date(from: dateComponents)!
     }
 }
 
+struct CalendarTestView: View{
+    @State var selectedDate = [Date()]
+    var body: some View{
+        CalendarView(selectedDate: $selectedDate)
+    }
+}
+
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView(selectedDate: .constant([Date]()))
+        CalendarTestView()
+        CalendarTestView().preferredColorScheme(.dark)
     }
 }

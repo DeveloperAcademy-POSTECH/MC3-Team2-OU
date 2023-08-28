@@ -46,7 +46,7 @@ struct UserInfoView: View {
                         .frame(width: 358, alignment: .leading)
                     ZStack{
                         RoundedRectangle(cornerRadius: 16)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.whiteColor)
                         HStack(spacing : 25){
                             Image(userData.characterImageName)
                                 .resizable()
@@ -100,7 +100,7 @@ struct UserInfoView: View {
                         }, label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 16)
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.whiteColor)
                                 HStack{
                                     Text("반복일정 추가")
                                         .body(textColor: .primaryColor)
@@ -158,8 +158,9 @@ struct UserInfoView: View {
 
 struct UserInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = UserData() 
-        return UserInfoView().environmentObject(userData)
+        UserInfoView().environmentObject(UserData())
+        UserInfoView().environmentObject(UserData())
+            .preferredColorScheme(.dark)
     }
 }
 

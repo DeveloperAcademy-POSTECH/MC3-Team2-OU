@@ -70,7 +70,7 @@ struct FixedTimeView: View {
                     }, label: {
                         ZStack(alignment: .leading) {
                             RoundedRectangle(cornerRadius: 16)
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.whiteColor)
                             Text("반복일정 추가")
                                 .body(textColor: .primaryColor)
                                 .padding(.leading, 18)
@@ -137,5 +137,6 @@ struct FixedTimeTestView : View{
 struct FixedTimeView_Previews: PreviewProvider {
     static var previews: some View {
         FixedTimeTestView()
+        FixedTimeTestView().preferredColorScheme(.dark)
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 final class TimeTableViewModel: ObservableObject{
     typealias Calendar = Dictionary<String,[Event]>
     static let shared: TimeTableViewModel = .init()
+    
     let localCalendarRepo = LocalCalendarRepository.shared
     let remoteCalendarRepo = RemoteCalendarRepository.shared
     let calendarService = CalendarService.shared
@@ -102,4 +103,9 @@ final class TimeTableViewModel: ObservableObject{
     }
     //1. timeTable에 넣을 데이터 준비 및 제공
     //2. 선택된 event 반환
+    
+    static let preview: TimeTableViewModel = .init(true)
+    private init(_ a : Bool){
+
+    }
 }

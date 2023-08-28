@@ -43,5 +43,6 @@ struct CardBackgroundView: View {
 struct CardBackgroundView_Previews: PreviewProvider {
     static var previews: some View {
         CardBackgroundView()
+        CardBackgroundView().preferredColorScheme(.dark)
     }
 }

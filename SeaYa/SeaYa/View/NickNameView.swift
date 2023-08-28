@@ -90,7 +90,7 @@ struct NicknameView: View {
                     }) {
                         Text("다음")
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(.whiteColor)
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(nickname.isEmpty ? Color.unactiveColor : Color.primaryColor)
@@ -143,9 +143,11 @@ struct NicknameView: View {
 }
 struct NicknameView_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = UserData() // UserData 객체를 생성하여 nickname 설정
-        
-        return NicknameView(isNicknameSettingCompleted: .constant(false)).environmentObject(userData)
+        NicknameView(isNicknameSettingCompleted: .constant(false))
+            .environmentObject(UserData())
+        NicknameView(isNicknameSettingCompleted: .constant(false))
+            .environmentObject(UserData())
+            .preferredColorScheme(.dark)
     }
 }
 

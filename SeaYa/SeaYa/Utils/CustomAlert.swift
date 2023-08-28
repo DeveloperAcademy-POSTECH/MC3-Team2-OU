@@ -41,7 +41,7 @@ struct CustomAlert: View {
             .padding(.bottom, 20)
         }
         .frame(width: 300)
-        .background(Color.white)
+        .background(Color.whiteColor)
         .cornerRadius(32)
 
     }
@@ -50,5 +50,6 @@ struct CustomAlert: View {
 struct CustomAlert_Previews: PreviewProvider {
     static var previews: some View {
         CustomAlert(showingAlert: .constant(true), moveToDoneView: .constant(true), guestCnt: 0)
+        CustomAlert(showingAlert: .constant(true), moveToDoneView: .constant(true), guestCnt: 0).preferredColorScheme(.dark)
     }
 }

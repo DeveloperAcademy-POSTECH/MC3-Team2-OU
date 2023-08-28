@@ -11,7 +11,6 @@ import SwiftUI
 struct ConfirmView: View {
     @ObservedObject var calcOksService =  CalcOksService.shared
     @ObservedObject var connectionManager: ConnectionService
-    
     @Environment(\.presentationMode) private var presentationMode
     @State var selectedEvent : DateEvent
     @State private var selectedMembers : [DateMember] = []
@@ -38,7 +37,7 @@ struct ConfirmView: View {
                 //일정 제목
                 ZStack{
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.white)
+                        .fill(Color.whiteColor)
                     HStack{
                         Text("제목").headline(textColor: .primaryColor)
                         Spacer()
@@ -50,7 +49,7 @@ struct ConfirmView: View {
                 //일정 날짜 설정
                 ZStack{
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.white)
+                        .fill(Color.whiteColor)
                     HStack{
                         Text("날짜").headline(textColor: .primaryColor)
                         Spacer()
@@ -70,7 +69,7 @@ struct ConfirmView: View {
                 //일정 시작 시간 설정
                 ZStack{
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.white)
+                        .fill(Color.whiteColor)
                     HStack{
                         Text("시작 시간").headline(textColor: .primaryColor)
                         Spacer()
@@ -92,7 +91,7 @@ struct ConfirmView: View {
                 //일정 종료 시간 설정
                 ZStack{
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.white)
+                        .fill(Color.whiteColor)
                     HStack{
                         Text("종료 시간").headline(textColor: .primaryColor)
                         Spacer()
@@ -114,7 +113,7 @@ struct ConfirmView: View {
                 //일정 참여 인원 설정
                 ZStack{
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.white)
+                        .fill(Color.whiteColor)
                     HStack{
                         Text("참여 인원").headline(textColor: .primaryColor)
                         Spacer()
@@ -141,7 +140,6 @@ struct ConfirmView: View {
                                 .background(Color.primaryColor)
                                 .cornerRadius(16)
                         }).simultaneousGesture(TapGesture().onEnded{
-                            
                             // 여기서 Send To Guest
                             let selecteMemberId = selectedMembers.map{$0.id.uuidString}
                             let membersId = (members ?? []).map{$0.id.uuidString}
@@ -229,5 +227,25 @@ struct ConfirmView_Previews: PreviewProvider {
                     DateMember(id: UUID(), name: "정국")
                 ]
             }
+        ConfirmView(
+            connectionManager: ConnectionService(),
+            selectedEvent: DateEvent(title: "아카데미 저녁 회식",
+                                    startDate: DateUtil.formattedDateToDate(2023, 07, 21, 18, 0),
+                                    endDate: DateUtil.formattedDateToDate(2023, 7, 21, 19, 0)
+                                    )
+        )
+        .environment(\.locale, .init(identifier: "ko"))
+            .environmentObject(CalcOksService.shared)
+            .onAppear{
+                CalcOksService.shared.dateMembers =  [
+                    DateMember(id: UUID(), name: "지민"),
+                    DateMember(id: UUID(), name: "RM"),
+                    DateMember(id: UUID(), name: "뷔"),
+                    DateMember(id: UUID(), name: "제이홉"),
+                    DateMember(id: UUID(), name: "슈가"),
+                    DateMember(id: UUID(), name: "정국")
+                ]
+            }
+            .preferredColorScheme(.dark)
     }
 }

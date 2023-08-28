@@ -85,6 +85,20 @@ struct ListUpView_Previews: PreviewProvider {
                                    TimeOks(timeInt: 940623, Oks: 1)],
                                   [TimeOks(timeInt: 940625, Oks: 1),
                                    TimeOks(timeInt: 940626, Oks: 1)]],
-        period: 1)
+                   period: 1)
+        ListUpView(connectionManager: ConnectionService(),
+                   forGuest: false,
+                   timeOkGroup : [[TimeOks(timeInt: 940614, Oks: 2)],
+                                  [TimeOks(timeInt: 940620, Oks: 2),
+                                   TimeOks(timeInt: 940621, Oks: 2)],
+                                  [TimeOks(timeInt: 940615, Oks: 1),
+                                   TimeOks(timeInt: 940616, Oks: 1)],
+                                  [TimeOks(timeInt: 940622, Oks: 1),
+                                   TimeOks(timeInt: 940623, Oks: 1)],
+                                  [TimeOks(timeInt: 940625, Oks: 1),
+                                   TimeOks(timeInt: 940626, Oks: 1)]],
+                   period: 1)
+        .preferredColorScheme(.dark)
     }
+    
 }
