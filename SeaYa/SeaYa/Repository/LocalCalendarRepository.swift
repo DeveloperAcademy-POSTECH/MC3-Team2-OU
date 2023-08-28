@@ -7,7 +7,7 @@ class LocalCalendarRepository {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     // MARK: - Lifecycle
-   private init(userDefaults: UserDefaults = .standard) {
+    private init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
     }
     
