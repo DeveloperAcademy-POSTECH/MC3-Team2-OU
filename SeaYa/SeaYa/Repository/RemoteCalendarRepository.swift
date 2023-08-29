@@ -12,24 +12,34 @@ class RemoteCalendarRepository{
     static let shared = RemoteCalendarRepository()
     // store 생성
     private let store : EKEventStore
-    private let newCalendar : EKCalendar
+    private var newCalendar : EKCalendar
     
     private init() {
         self.store = EKEventStore()
         self.newCalendar = EKCalendar.init(for: .event, eventStore: store)
-        self.newCalendar.title = "SeeYa"
-        if let source = store.sources.first(where: { $0.sourceType == .calDAV }){
-            newCalendar.source = source
+        let aaron = self.getCalendars()
+        
+        if let aa = (aaron.filter{$0.title.contains("SeaYa")}).first {
+            newCalendar = aa
+        } else {
+            self.newCalendar.title = "SeaYa"
+            if let source = store.sources.first(where: { $0.sourceType == .calDAV }){
+                newCalendar.source = source
+            }
+            else{
+                newCalendar.source = store.sources.first(where: { $0.sourceType == .local })
+            }
         }
-        else{
-            newCalendar.source = store.sources.first(where: { $0.sourceType == .local })
-        }
-        do{
-            try store.saveCalendar(newCalendar, commit: true)
-        }
-        catch{
-            print("saveCalendar error")
-        }
+            do{
+                try store.saveCalendar(newCalendar, commit: true)
+            }
+            catch{
+                print("saveCalendar error")
+            }
+        
+    
+        
+        print("done initialized")
     }
         //
     

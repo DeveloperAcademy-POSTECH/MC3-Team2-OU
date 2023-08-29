@@ -87,6 +87,10 @@ final class TimeTableViewModel: ObservableObject{
         else{
             connectionManager.sendTimeTableInfoToHost(dateMember)
         }
+        
+        //Array 초기화
+        self.xArray = []
+        self.yArray = []
     }
     
     @MainActor
