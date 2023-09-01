@@ -36,31 +36,31 @@ struct UserInfoView: View {
 //      }
     var body: some View {
         NavigationStack {
-            ZStack{
+            ZStack {
                 Color.backgroundColor
                     .edgesIgnoringSafeArea(.all)
-                VStack{
+                VStack {
                     Text("프로필 설정")
                         .caption(textColor: Color.unactiveColor)
                         .padding(EdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 25))
                         .frame(width: 358, alignment: .leading)
-                    ZStack{
+                    ZStack {
                         RoundedRectangle(cornerRadius: 16)
                             .foregroundColor(Color.whiteColor)
-                        HStack(spacing : 25){
+                        HStack(spacing: 25) {
                             Image(userData.characterImageName)
                                 .resizable()
                                 .frame(width: 70, height: 70)
-                            VStack(alignment: .leading){
+                            VStack(alignment: .leading) {
                                 Text(userData.nickname).body(textColor: Color.textColor)
-                                Button(action: {
-                                }, label: {
+                                Button(action: {}, label: {
                                     NavigationLink(
                                         destination: {
-                                            NicknameEditView().environmentObject(userData)
-                                        }, label:{
+                                            NicknameEditView()
+                                        }, label: {
                                             Text("프로필 편집").body(textColor: Color.primaryColor)
-                                        })
+                                        }
+                                    )
                                 })
                             }
                         }.padding(EdgeInsets(top: 17, leading: 19, bottom: 17, trailing: 167))
@@ -70,16 +70,16 @@ struct UserInfoView: View {
                         .caption(textColor: Color.unactiveColor)
                         .padding(EdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 25))
                         .frame(width: 358, alignment: .leading)
-                    ScrollView{
-                        VStack{
-                            ForEach(Array(fixedTimeViewModel.fixedTimeModels.enumerated()), id: \.offset){ index,
+                    ScrollView {
+                        VStack {
+                            ForEach(Array(fixedTimeViewModel.fixedTimeModels.enumerated()), id: \.offset) { _,
                                 fixedTimeModel in
                                 Button(
                                     action: {
-                                          state.isUpdate = true
-                                    showSettingViewModal = true
-                                    selectedIndex = 0
-                                    id = fixedTimeModel.id.uuidString
+                                        state.isUpdate = true
+                                        showSettingViewModal = true
+                                        selectedIndex = 0
+                                        id = fixedTimeModel.id.uuidString
                                     },
                                     label: {
                                         FixedTimeElementView(fixedTimeModel: fixedTimeModel)
@@ -90,23 +90,23 @@ struct UserInfoView: View {
                     }
                     Button(
                         action: {
-                             state.isUpdate = false
-                        showSettingViewModal = true
-                        id = UUID().uuidString
-                        //fixedTimeViewModel.fixedTimeModels.append(FixedTimeModel())
-                        if fixedTimeViewModel.fixedTimeModels.count >= 1 {
-                            selectedIndex = fixedTimeViewModel.fixedTimeModels.count-1
-                        }
+                            state.isUpdate = false
+                            showSettingViewModal = true
+                            id = UUID().uuidString
+                            // fixedTimeViewModel.fixedTimeModels.append(FixedTimeModel())
+                            if fixedTimeViewModel.fixedTimeModels.count >= 1 {
+                                selectedIndex = fixedTimeViewModel.fixedTimeModels.count - 1
+                            }
                         }, label: {
-                            ZStack{
+                            ZStack {
                                 RoundedRectangle(cornerRadius: 16)
                                     .foregroundColor(Color.whiteColor)
-                                HStack{
+                                HStack {
                                     Text("반복일정 추가")
                                         .body(textColor: .primaryColor)
                                     Spacer()
                                 }.padding(.leading, 18)
-                            }.frame(width: 358,height: 47)
+                            }.frame(width: 358, height: 47)
                         }
                     )
                     Spacer()
@@ -125,19 +125,19 @@ struct UserInfoView: View {
                 .sheet(isPresented: $showSettingViewModal, content: {
                     if let isUpdate = state.isUpdate {
                         SettingView(
-                             fixedTimeViewModel: fixedTimeViewModel,
-                        showSettingViewModal: $showSettingViewModal,
-                        selectedIndex : $selectedIndex,
+                            fixedTimeViewModel: fixedTimeViewModel,
+                            showSettingViewModal: $showSettingViewModal,
+                            selectedIndex: $selectedIndex,
 //                        tempFixedTimeModel : selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
-                        tempFixedTimeModel : fixedTimeViewModel.isExist(id) ? fixedTimeViewModel.getItem(id) : FixedTimeModel(),
-                        id : id, isUpdate: isUpdate,
-                        onDelete: {id in
-                            fixedTimeViewModel.deleteItem(withID: id)
-                        })
+                            tempFixedTimeModel: fixedTimeViewModel.isExist(id) ? fixedTimeViewModel.getItem(id) : FixedTimeModel(),
+                            id: id, isUpdate: isUpdate,
+                            onDelete: { id in
+                                fixedTimeViewModel.deleteItem(withID: id)
+                            }
+                        )
                         .presentationCornerRadius(32)
                     } else {
                         EmptyView()
-
                     }
                 })
             }
@@ -163,4 +163,3 @@ struct UserInfoView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
-

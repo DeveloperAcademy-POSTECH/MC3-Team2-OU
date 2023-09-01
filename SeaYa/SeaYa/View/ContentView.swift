@@ -12,37 +12,39 @@ struct ContentView: View {
     @AppStorage("isFixedTimeSettingCompleted") private var isFixedTimeSettingCompleted = false
     @AppStorage("isOnboardingCompleted") private var isOnboardingCompleted = false
     @State private var isLaunchScreenVisible = true
-    @StateObject private var userData = UserData()
-    
+    @EnvironmentObject private var connectionManager: ConnectionService
+    @EnvironmentObject private var userData: UserData
+
     var body: some View {
         Group {
-               if isLaunchScreenVisible {
-                   LaunchScreenView()
-                       .onAppear {
-                           DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                               withAnimation {
-                                   isLaunchScreenVisible = false
-                               }
-                           }
-                       }
-               } else if !isNicknameSettingCompleted {
-                   NicknameView(isNicknameSettingCompleted: $isNicknameSettingCompleted)
-                       .environmentObject(userData)
-               } else if !isFixedTimeSettingCompleted {
-                   FixedTimeView(isFixedTimeSettingCompleted: $isFixedTimeSettingCompleted)
-               } else if !isOnboardingCompleted{
-                   OnboardingDoneView(isOnboardingCompleted: $isOnboardingCompleted)
-               } else {
-                   MainView()
-                       .environmentObject(userData)
-               }
-           }
+            if isLaunchScreenVisible {
+                LaunchScreenView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                isLaunchScreenVisible = false
+                            }
+                        }
+                    }
+            } else if !isNicknameSettingCompleted {
+                NicknameView(isNicknameSettingCompleted: $isNicknameSettingCompleted)
+            } else if !isFixedTimeSettingCompleted {
+                FixedTimeView(isFixedTimeSettingCompleted: $isFixedTimeSettingCompleted)
+            } else if !isOnboardingCompleted {
+                OnboardingDoneView(isOnboardingCompleted: $isOnboardingCompleted)
+            } else {
+                MainView()
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(UserData())
+        ContentView()
+            .environmentObject(UserData())
+            .preferredColorScheme(.dark)
     }
 }
-

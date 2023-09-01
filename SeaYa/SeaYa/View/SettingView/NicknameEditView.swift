@@ -13,24 +13,23 @@ struct NicknameEditView: View {
     let userInfoRepository = UserInfoRepository.shared
     @State private var isSheetPresented = false
     @State private var nickname = ""
-  
+
     let columns: [GridItem] = Array(repeating: .init(), count: 3) // TODO: Dummy data
-   
-    
+
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ZStack {
                 Color.backgroundColor
                     .edgesIgnoringSafeArea(.all)
-                VStack{
-                    ZStack{
+                VStack {
+                    ZStack {
                         Image(userData.characterImageName)
                             .resizable()
                             .frame(width: 100, height: 100)
-                            .overlay(alignment: .bottomTrailing){
+                            .overlay(alignment: .bottomTrailing) {
                                 Image("edit")
                                     .resizable()
-                                    .frame(width: 36,height: 36, alignment: .bottomTrailing)
+                                    .frame(width: 36, height: 36, alignment: .bottomTrailing)
                                     .onTapGesture {
                                         isSheetPresented = true
                                     }
@@ -38,7 +37,7 @@ struct NicknameEditView: View {
                             .padding(.top, 55)
                             .padding(.bottom, 22)
                     }
-                    TextField("닉네임",text: $nickname)
+                    TextField("닉네임", text: $nickname)
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 18)
                         .frame(width: 185, alignment: .center)
@@ -55,28 +54,28 @@ struct NicknameEditView: View {
                     Spacer()
                 }
                 .sheet(isPresented: $isSheetPresented, content: {
-                    VStack{
+                    VStack {
                         RoundedRectangle(cornerRadius: 2.5)
                             .fill(Color.gray)
-                            .frame(width:34, height:5)
+                            .frame(width: 34, height: 5)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                         Text("프로필 이미지")
                             .body(textColor: Color.textColor)
                             .padding(.bottom, 30)
-                        LazyVGrid(columns: columns){
-                            ForEach(0..<9, id: \.self) { index in
+                        LazyVGrid(columns: columns) {
+                            ForEach(0 ..< 9, id: \.self) { index in
                                 Button(
                                     action: {
                                         print(userData.characterImageName)
-                                        userData.setImageName("0\(index+1)")
-                                        userInfoRepository.setImageName(imageName: "0\(index+1)")
+                                        userData.setImageName("0\(index + 1)")
+                                        userInfoRepository.setImageName(imageName: "0\(index + 1)")
                                     },
                                     label: {
-                                        ZStack{
-                                            VStack{
+                                        ZStack {
+                                            VStack {
                                                 Image("0" + "\(index + 1)")
                                                     .resizable()
-                                                    .frame(width: 66,height: 66)
+                                                    .frame(width: 66, height: 66)
                                             }
                                         }
                                         .padding(15)
@@ -108,8 +107,8 @@ struct NicknameEditView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                              userData.setNickName(nickname)
-                        presentationMode.wrappedValue.dismiss()
+                            userData.setNickName(nickname)
+                            presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("완료")
                                 .foregroundColor(Color.blue)
@@ -118,7 +117,7 @@ struct NicknameEditView: View {
                 }
             }
         }
-        .onAppear{
+        .onAppear {
             nickname = userData.nickname
         }
     }
@@ -126,7 +125,7 @@ struct NicknameEditView: View {
 
 struct NicknameEditView_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = UserData()
-              return NicknameEditView().environmentObject(userData)
+        NicknameEditView()
+            .environmentObject(UserData())
     }
 }

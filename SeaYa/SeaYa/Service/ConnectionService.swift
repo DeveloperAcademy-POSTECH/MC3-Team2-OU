@@ -24,7 +24,6 @@ class ConnectionService: NSObject, ObservableObject {
     @Published var listUP: [DateMember] = []
     @Published var isCheckTimeDone: CheckTimeDone = CheckTimeDone(isCheckTimeDone: false)
     @Published var scheduleDone: ScheduleDone?
-    
     @Published var listUpViewResult : ListUpViewResult?
 
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
@@ -165,7 +164,7 @@ extension ConnectionService: MCSessionDelegate {
                     if let listUPData = try? JSONSerialization.data(withJSONObject: jsonData) {
                         let data = try JSONDecoder().decode(DateMember.self, from: listUPData)
                         listUP.append(data)
-                        print(listUP ?? "")
+                        print(listUP)
                     }
                     
                 case .ScheduleDone:

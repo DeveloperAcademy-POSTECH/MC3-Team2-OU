@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct ResultView: View {
-    @ObservedObject var connectionManager: ConnectionService
-    
+    @EnvironmentObject var connectionManager: ConnectionService
+
     var body: some View {
         ZStack {
             Rectangle()
                 .foregroundColor(.black)
                 .opacity(0.5)
-                .edgesIgnoringSafeArea(.all )
-            
-            ResultCardView(connectionManager: connectionManager)
+                .edgesIgnoringSafeArea(.all)
+
+            ResultCardView()
         }
     }
 }
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(connectionManager: ConnectionService())
+        ResultView()
+            .environmentObject(ConnectionService())
     }
 }

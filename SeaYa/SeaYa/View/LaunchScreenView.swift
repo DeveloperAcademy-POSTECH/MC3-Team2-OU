@@ -16,4 +16,3 @@ struct LaunchScreenView: View {
             .frame(maxWidth: 90, maxHeight: .infinity)
     }
 }
-

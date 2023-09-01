@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HostCallingView: View {
-    @ObservedObject var connectionManager: ConnectionService
+    @EnvironmentObject private var connectionManager: ConnectionService
     @EnvironmentObject private var userData: UserData
     @State private var moveToDoneView = false
     @State private var showingAlert = false
@@ -16,7 +16,7 @@ struct HostCallingView: View {
     @Binding var scheduleName: String
     @Binding var selectedDate: [Date]
     @Binding var estimatedTime: Int
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -27,40 +27,40 @@ struct HostCallingView: View {
                     startPoint: .top, endPoint: .bottom
                 )
                 .edgesIgnoringSafeArea(.all)
-                
+
                 if !moveToDoneView {
                     VStack {
                         ZStack {
-                            GuestListView(connectionManager: connectionManager)
+                            GuestListView()
                                 .zIndex(1)
                                 .multilineTextAlignment(.center)
                                 .offset(y: -30)
-                            
+
                             ZStack {
                                 LottieView(jsonName: "HomeView")
                                     .zIndex(-1)
                                     .scaledToFit()
-                                
-                                Button (action: {
+
+                                Button(action: {
                                     showingAlert.toggle()
                                 }, label: {
                                     Circle()
                                         .frame(width: 145, height: 145)
                                         .foregroundColor(.white)
                                 })
-                   
+
                                 VStack {
                                     Text("그룹 확정")
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.primaryColor)
-                                    
+
                                     HStack {
                                         Image(systemName: "person.2.fill")
                                             .font(.system(size: 13, weight: .bold))
                                             .foregroundColor(.white)
                                             .padding(.vertical, 6)
                                             .padding(.leading, 10)
-                                        
+
                                         Text("\(connectionManager.peers.count)명")
                                             .font(.system(size: 13, weight: .bold))
                                             .foregroundColor(.white)
@@ -79,20 +79,19 @@ struct HostCallingView: View {
                                 .font(.system(size: 23, weight: .bold))
                                 .foregroundColor(.white)
                                 .padding(.bottom, 5)
-                            
+
                             Text("추가할 그룹원을 선택하고 그룹을 확정하세요")
                                 .caption(textColor: Color.white)
                                 .foregroundColor(.white)
                         }
                         .padding(EdgeInsets(top: 35, leading: 20, bottom: 140, trailing: 20))
                     }
-                    .onAppear() {
+                    .onAppear {
                         connectionManager.host(userData.nickname)
                     }
                     .ignoresSafeArea()
                     .toolbar {
-                        Button(action: {
-                        }, label: {
+                        Button(action: {}, label: {
                             NavigationLink(
                                 destination: {
                                     MainView()
@@ -103,13 +102,12 @@ struct HostCallingView: View {
                                         .font(.system(size: 20))
                                         .opacity(0.5)
                                         .padding(.trailing, 5)
-                                })
+                                }
+                            )
                         })
                     }
-                }
-                else {
+                } else {
                     HostCallingDone(
-                        connectionManager: connectionManager,
                         groupInfo: GroupInfo(
                             hostName: userData.nickname,
                             scheduleName: scheduleName,
@@ -117,8 +115,7 @@ struct HostCallingView: View {
                             estimatedTime: estimatedTime
                         )
                     )
-                    .environmentObject(userData)
-                    .onAppear() {
+                    .onAppear {
                         connectionManager.sendGroupInfoToGuest(GroupInfo(
                             hostName: userData.nickname,
                             scheduleName: scheduleName,
@@ -127,32 +124,31 @@ struct HostCallingView: View {
                         ))
                     }
                 }
-                
+
                 if showingAlert {
                     CustomAlert(showingAlert: $showingAlert, moveToDoneView: $moveToDoneView, guestCnt: connectionManager.peers.count)
                         .offset(y: -30)
                 }
             }
-                .ignoresSafeArea()
-                .multilineTextAlignment(.center)
+            .ignoresSafeArea()
+            .multilineTextAlignment(.center)
         }
     }
 }
 
-struct HostCallingViewTest : View{
+struct HostCallingViewTest: View {
     @State var scheduleName = "Hello World"
     @State var selectedDate = [Date()]
     @State var estimatedTime = 2
-    var body: some View{
+    var body: some View {
         HostCallingView(
-            connectionManager: ConnectionService(),
             scheduleName: $scheduleName,
             selectedDate: $selectedDate,
-            estimatedTime: $estimatedTime)
+            estimatedTime: $estimatedTime
+        )
         .environmentObject(UserData())
     }
 }
-
 
 struct HostCallingView_Previews: PreviewProvider {
     static var previews: some View {
