@@ -25,182 +25,199 @@ struct SettingView: View {
     var onDelete : (UUID) -> Void
     
     var body: some View {
-            ScrollView{
-                HStack{
-                    Button("취소"){
-                        showSettingViewModal = false
-                            
-                    }
-                    Spacer()
-                    Button("완료"){
-                        if fixedTimeViewModel.isExist(id ?? ""){
-                            print("isExist")
-                            fixedTimeViewModel.updateItem(item: tempFixedTimeModel)
-                        }
-                        else{
-                            print("notExist")
-                            fixedTimeViewModel.addItem(item: tempFixedTimeModel)
-                        }
-//                        if selectedIndex < 0 {
-//                            fixedTimeViewModel.fixedTimeModels.append(tempFixedTimeModel)
-//                        } else {
-//                            fixedTimeViewModel.fixedTimeModels[selectedIndex] = tempFixedTimeModel
-//                        }
-                        showSettingViewModal = false
-                    }
+        ScrollView{
+            HStack{
+                Button("취소"){
+                    showSettingViewModal = false
                 }
-                .padding(EdgeInsets(top: 17, leading: 17, bottom: 10, trailing: 16))
-                
-                Text("시간 지정 편집")
-                    .font(.system(size:32, weight: .semibold))
-                    .padding(.bottom, 20)
-                Section(
-                    content: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.whiteColor)
-                            HStack {
-                                ForEach(categories, id: \.self) { category in
-                                    Button(
-                                        action:{
-                                            tempFixedTimeModel.category = category
-                                        },
-                                        label:{
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 16)
-                                                    .foregroundColor(tempFixedTimeModel.category == category ? Color.primaryColor : Color(hex: "F3F3F3"))
-                                                
-                                                Text(category)
-                                                    .frame(maxWidth: .infinity)
-                                                    .font(.headline)
-                                                    .foregroundColor(
-                                                        tempFixedTimeModel.category == category ? .white : Color(hex: "A2A2A5"))
-                                            }.frame(width: 46, height: 32)
-                                        }
-                                    )
-                                }
-                                Spacer()
-                            }.padding(.leading, 21)
-                        }
-                        .frame(width : 357, height: 67)
-                    },
-                    header: {
-                        HStack{
-                            Text("카테고리").title(textColor: .black)
-                            Spacer()
-                        }.padding(.leading, 21)
+                .foregroundColor(Color.primaryColor)
+                Spacer()
+                Text("반복일정편집")
+                    .font(.headline.bold())
+                Spacer()
+                Button("완료"){
+                    if fixedTimeViewModel.isExist(id ?? ""){
+                        print("isExist")
+                        fixedTimeViewModel.updateItem(item: tempFixedTimeModel)
                     }
-                )
-                
-                // Section2 - 반복 요일 선택, 복수 선택 가능.
-                Section(
-                    content : {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.whiteColor)
-                            HStack {
-                                ForEach(weekdays, id: \.self) { weekday in
-                                    Button(
-                                        action:{
-                                            if tempFixedTimeModel.weekdays.contains(weekday){
-                                                if tempFixedTimeModel.weekdays.count != 1{
-                                                    tempFixedTimeModel.weekdays.removeAll{$0 == weekday}
-                                                }
-                                            } else {
-                                                tempFixedTimeModel.weekdays.append(weekday)
-                                                tempFixedTimeModel.weekdays.sort{$0.rawValue < $1.rawValue}
-                                            }
-                                        },
-                                        label: {
-                                            ZStack {
-                                                Circle()
-                                                    .foregroundColor(tempFixedTimeModel.weekdays.contains(weekday) ? Color.primaryColor : Color.clear)
-                                                Text(weekday.rawValue.dayOfWeek())
-                                                    .frame(maxWidth: .infinity)
-                                                    .font(.headline)
-                                                    .foregroundColor(tempFixedTimeModel.weekdays.contains(weekday) ? .white : .black)
-                                            }.frame(width: 32, height: 32)
-                                        }
-                                    )
-                                }
-                                Spacer()
-                            }.padding(.leading, 21)
-                        }
-                        .frame(width : 357, height: 78)
-                    },
-                    header: {
-                        HStack{
-                            Text("활성화된 요일").title(textColor: .primary)
-                            Spacer()
-                        }.padding(.leading, 21)
+                    else{
+                        print("notExist")
+                        fixedTimeViewModel.addItem(item: tempFixedTimeModel)
                     }
-                )
-                // Section3 - 시작/종료시간 설정.
-                Section(
-                    header: HStack{
-                        Text("시간 설정").title(textColor: .primary)
-                        Spacer()
-                    }.padding(.leading, 21))   {
-                        VStack {
-                            HStack(spacing: 25) {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Label {
-                                        Text("Start")
-                                            .foregroundColor(.primary)
-                                    } icon: {
-                                        Image(systemName: "circle")
-                                            .foregroundColor(Color.primaryColor)
-                                    }
-                                    .font(.callout)
-                                    Text(
-                                        DateUtil.getFormattedTime(tempFixedTimeModel.start))
-                                    .font(.title2.bold())
-                                }
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Label {
-                                        Text("Finish")
-                                            .foregroundColor(.primary)
-                                    } icon: {
-                                        Image(systemName: "circle.fill")
-                                            .foregroundColor(Color.primaryColor)
-                                    }
-                                    .font(.callout)
-                                    Text( DateUtil.getFormattedTime(tempFixedTimeModel.end))
-                                        .font(.title2.bold())
-                                }
-                                .frame(maxWidth: .infinity, alignment: .center)
-                            }
-                            .padding()
-                            .padding(.bottom, 25)
-                            SleepTimeSlider()
-                                .padding(.bottom, 30)
-                        }
-                    }
-                
-                if isUpdate{
-                    Button(
-                        action: {
-                            onDelete(tempFixedTimeModel.id)
-                            showSettingViewModal.toggle()
-                        }, label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(Color.white)
-                                Text("삭제").body(textColor: .red)
-                            }
-                            .frame(width: 357, height : 48)
-                        }
-                    )
-                    .padding(.top, 20)
-                    .padding(.bottom, 16)
+                    //                        if selectedIndex < 0 {
+                    //                            fixedTimeViewModel.fixedTimeModels.append(tempFixedTimeModel)
+                    //                        } else {
+                    //                            fixedTimeViewModel.fixedTimeModels[selectedIndex] = tempFixedTimeModel
+                    //                        }
+                    showSettingViewModal = false
                 }
+                .foregroundColor(Color.primaryColor)
+                
             }
+            .padding(EdgeInsets(top: 17, leading: 17, bottom: 10, trailing: 16))
+            
+            //   Text("시간 지정 편집")
+            //.font(.system(size:32, weight: .semibold))
+            //.padding(.bottom, 20)
+            Section(
+                content: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.whiteColor)
+                        HStack {
+                            ForEach(categories, id: \.self) { category in
+                                Button(
+                                    action:{
+                                        tempFixedTimeModel.category = category
+                                    },
+                                    label:{
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .foregroundColor(tempFixedTimeModel.category == category ? Color.primaryColor : Color(hex: "F3F3F3"))
+                                            
+                                            Text(category)
+                                                .frame(maxWidth: .infinity)
+                                                .font(.headline)
+                                                .foregroundColor(
+                                                    tempFixedTimeModel.category == category ? .white : Color(hex: "A2A2A5"))
+                                        }.frame(width: 46, height: 32)
+                                    }
+                                )
+                            }
+                            Spacer()
+                        }.padding(.leading, 21)
+                    }
+                    .frame(width : 357, height: 67)
+                },
+                header: {
+                    HStack{
+                        Text("카테고리")
+                            .caption(textColor: Color.unactiveColor)
+                        Spacer()
+                    }.padding(.leading, 21)
+                    
+                }
+                
+            )
+            .padding(.bottom, 8)
+            
+            
+            // Section2 - 반복 요일 선택, 복수 선택 가능.
+            Section(
+                content : {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.whiteColor)
+                        HStack {
+                            ForEach(weekdays, id: \.self) { weekday in
+                                Button(
+                                    action:{
+                                        if tempFixedTimeModel.weekdays.contains(weekday){
+                                            if tempFixedTimeModel.weekdays.count != 1{
+                                                tempFixedTimeModel.weekdays.removeAll{$0 == weekday}
+                                            }
+                                        } else {
+                                            tempFixedTimeModel.weekdays.append(weekday)
+                                            tempFixedTimeModel.weekdays.sort{$0.rawValue < $1.rawValue}
+                                        }
+                                    },
+                                    label: {
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(tempFixedTimeModel.weekdays.contains(weekday) ? Color.primaryColor : Color.clear)
+                                            Text(weekday.rawValue.dayOfWeek())
+                                                .frame(maxWidth: .infinity)
+                                                .font(.headline)
+                                                .foregroundColor(tempFixedTimeModel.weekdays.contains(weekday) ? .white : .black)
+                                        }.frame(width: 32, height: 32)
+                                    }
+                                )
+                            }
+                            Spacer()
+                        }
+                        .padding(.leading, 21)
+                    }
+                    .frame(width : 357, height: 78)
+                    .padding(.bottom, 21)
+                },
+                header: {
+                    HStack{
+                        Text("활성화된 요일")
+                            .caption(textColor: Color.unactiveColor)
+                        Spacer()
+                    }.padding(.leading, 21)
+                }
+                
+            )
+            .padding(.bottom, 8)
+            
+            // Section3 - 시작/종료시간 설정.
+            Section(
+                header: HStack{
+                    Text("시간 설정")
+                        .caption(textColor: Color.unactiveColor)
+                    Spacer()
+                }.padding(.leading, 21))   {
+                    VStack {
+                        HStack(spacing: 25) {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Label {
+                                    Text("Start")
+                                        .foregroundColor(.primary)
+                                } icon: {
+                                    Image(systemName: "circle")
+                                        .foregroundColor(Color.primaryColor)
+                                }
+                                .font(.callout)
+                                Text(
+                                    DateUtil.getFormattedTime(tempFixedTimeModel.start))
+                                .font(.title2.bold())
+                            }
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Label {
+                                    Text("Finish")
+                                        .foregroundColor(.primary)
+                                } icon: {
+                                    Image(systemName: "circle.fill")
+                                        .foregroundColor(Color.primaryColor)
+                                }
+                                .font(.callout)
+                                Text( DateUtil.getFormattedTime(tempFixedTimeModel.end))
+                                    .font(.title2.bold())
+                            }
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .padding()
+                        .padding(.bottom, 25)
+                        SleepTimeSlider()
+                            .padding(.bottom, 30)
+                    }
+                }
+            
+            if isUpdate{
+                Button(
+                    action: {
+                        onDelete(tempFixedTimeModel.id)
+                        showSettingViewModal.toggle()
+                    }, label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white)
+                            Text("삭제").body(textColor: .red)
+                        }
+                        .frame(width: 357, height : 48)
+                    }
+                )
+                .padding(.top, 20)
+                .padding(.bottom, 16)
+            }
+        }
         
-            .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
-            .scrollDisabled(scrollDisabled)
+        .frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
+        .scrollDisabled(scrollDisabled)
     }
-
+    
     @ViewBuilder
     func SleepTimeSlider() -> some View {
         GeometryReader { proxy in
@@ -400,7 +417,7 @@ struct SettingTestView : View {
                 id: "", isUpdate: isUpdate,
                 onDelete: {id in
                     fixedTimeViewModel.deleteItem(withID: id)
-            })
+                })
             .interactiveDismissDisabled()
             .presentationCornerRadius(32)
         })
