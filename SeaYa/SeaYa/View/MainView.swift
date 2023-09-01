@@ -73,6 +73,7 @@ struct MainView: View {
                                 NavigationLink(
                                     destination: MakingGroupView(connectionManager: connectionManager)
                                         .environmentObject(userData)
+                                        .foregroundColor(Color.textColor)
                                         .navigationBarBackButtonHidden(),
                                     label: {
                                         VStack {
@@ -100,6 +101,8 @@ struct MainView: View {
                                 NavigationLink(
                                     destination: {
                                        UserInfoView()
+                                            .foregroundColor(Color.textColor)
+
                                     }, label: {
                                         VStack {
                                             ZStack {
@@ -117,6 +120,7 @@ struct MainView: View {
                                             
                                             Text("설정")
                                                 .context(textColor: Color.white)
+                                                .multilineTextAlignment(.center)
                                         }
                                         .frame(maxWidth: 80)
                                     }
@@ -159,5 +163,7 @@ struct MainView_Previews: PreviewProvider {
         let userData = UserData() // UserData 객체를 생성하여 nickname 설정
         
         return MainView().environmentObject(userData)
+          //  .preferredColorScheme(.dark)
+
     }
 }
