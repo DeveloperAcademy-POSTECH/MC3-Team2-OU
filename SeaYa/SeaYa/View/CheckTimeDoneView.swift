@@ -56,5 +56,6 @@ struct CheckTimeDoneView: View {
 struct CheckTimeDoneView_Previews: PreviewProvider {
     static var previews: some View {
         CheckTimeDoneView(connectionManager: ConnectionService())
+        
     }
 }
