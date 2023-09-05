@@ -72,6 +72,7 @@ extension Text {
             .tracking(letterSpacing * fontSize)
             .foregroundColor(textColor)
     }
+    
     func context(textColor: Color) -> some View {
         let lineHeight: CGFloat = 1.6
         let letterSpacing: CGFloat = -0.015
@@ -80,6 +81,16 @@ extension Text {
             .lineSpacing(lineHeight * fontSize - fontSize)
             .tracking(letterSpacing * fontSize)
             .foregroundColor(textColor)
+    }
+    
+    func settingHeader() -> some View {
+        let lineHeight: CGFloat = 1.4
+        let letterSpacing: CGFloat = -0.025
+        let fontSize: CGFloat = 21
+        return self.font(Font.system(size: fontSize, weight: .bold))
+            .foregroundColor(Color.black)
+            .lineSpacing(lineHeight * fontSize - fontSize)
+            .tracking(letterSpacing * fontSize)
     }
 }
 

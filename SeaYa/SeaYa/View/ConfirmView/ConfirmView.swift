@@ -170,7 +170,7 @@ struct ConfirmView: View {
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.backgroundColor)
                 .sheet(isPresented: $showDateModal, content: {
-                    ConfirmDateModalView(selectedEvent: $selectedEvent)
+                    ConfirmDateModalView(selectedEvent: $selectedEvent, showDateModal: $showDateModal)
                         .presentationDetents([.height(354)])
                         .presentationCornerRadius(32)
                 })

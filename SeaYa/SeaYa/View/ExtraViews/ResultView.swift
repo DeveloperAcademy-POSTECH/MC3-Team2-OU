@@ -13,9 +13,9 @@ struct ResultView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.black)
+                .foregroundColor(.gray)
                 .opacity(0.5)
-                .edgesIgnoringSafeArea(.all )
+                .edgesIgnoringSafeArea(.all)
             
             ResultCardView(connectionManager: connectionManager)
         }

@@ -22,24 +22,33 @@ struct MakingGroupView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView() {
+            ScrollView {
                 VStack(alignment: .leading) {
                     Text("일정 제목")
                         .headline(textColor: Color.textColor)
                         .padding(EdgeInsets(top: 30, leading: 16, bottom: 0, trailing: 0))
-                    TextFieldTheme(placeholder: "제목을 입력하세요", input: $scheduleName)
-                        .padding(EdgeInsets(top: 6, leading: 16, bottom: 0, trailing: 16))
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.white)
+                            .frame(maxWidth: 358, maxHeight: 51)
+                            .cornerRadius(16)
+                        
+                        TextFieldTheme(placeholder: "제목을 입력하세요", input: $scheduleName)
+                    }
+                    .padding(.horizontal, 16)
+            
+                    
                     Text("기간 설정")
                         .headline(textColor: Color.textColor)
                         .padding(EdgeInsets(top: 35, leading: 16, bottom: 0, trailing: 0))
                     ZStack {
                         Rectangle()
-                            .foregroundColor(.textFieldColor)
-                            .frame(maxWidth: 358, maxHeight: 200)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: 358, maxHeight: 203)
                             .cornerRadius(16)
+                        
                         CalendarView(selectedDate: $selectedDate)
                             .padding(16)
-                        
                     }
                     .padding(EdgeInsets(top: 6, leading: 16, bottom: 0, trailing: 16))
                     
