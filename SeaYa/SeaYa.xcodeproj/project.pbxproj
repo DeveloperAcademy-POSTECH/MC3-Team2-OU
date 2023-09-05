@@ -18,6 +18,7 @@
 		0E81B9452A77A7FB004AB171 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9442A77A7FB004AB171 /* CustomAlert.swift */; };
 		0E81B9492A77C004004AB171 /* OnboardingDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */; };
 		0E81B96B2A78F64D004AB171 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B96A2A78F64D004AB171 /* ResultView.swift */; };
+		0E8D854E2AA7831F009F3E5D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D854D2AA7831F009F3E5D /* View+.swift */; };
 		0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */; };
 		0EEFB6572A64D89900F5C5D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */; };
 		0EEFB6592A64D8C300F5C5D2 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEFB6582A64D8C300F5C5D2 /* Date+.swift */; };
@@ -110,6 +111,7 @@
 		0E81B9442A77A7FB004AB171 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDoneView.swift; sourceTree = "<group>"; };
 		0E81B96A2A78F64D004AB171 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		0E8D854D2AA7831F009F3E5D /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		0EEFB6532A64D87100F5C5D2 /* MakingGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakingGroupView.swift; sourceTree = "<group>"; };
 		0EEFB6562A64D89900F5C5D2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0EEFB6582A64D8C300F5C5D2 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -216,13 +218,14 @@
 		0E8D854A2AA77DE4009F3E5D /* ExtraViews */ = {
 			isa = PBXGroup;
 			children = (
-				0E81B96A2A78F64D004AB171 /* ResultView.swift */,
+				0E81B9362A774C7B004AB171 /* LottieView.swift */,
+				BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */,
+				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
+				0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */,
 				0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */,
 				0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */,
-				0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */,
-				0E81B9362A774C7B004AB171 /* LottieView.swift */,
-				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
 				BBDD706A2A68031C00977775 /* ResultCardView.swift */,
+				0E81B96A2A78F64D004AB171 /* ResultView.swift */,
 				BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */,
 			);
 			path = ExtraViews;
@@ -252,7 +255,6 @@
 		0EEFB6512A64D85900F5C5D2 /* Host */ = {
 			isa = PBXGroup;
 			children = (
-				BBBBC7822A65235B00F39E2B /* HostCallingDone.swift */,
 				0EEFB6702A6EC60B00F5C5D2 /* HostCallingView.swift */,
 				0EEFB6522A64D85F00F5C5D2 /* Group */,
 				0E5E16202A725F8A00143374 /* GuestList */,
@@ -436,6 +438,7 @@
 				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
 				EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */,
 				0EEFB6582A64D8C300F5C5D2 /* Date+.swift */,
+				0E8D854D2AA7831F009F3E5D /* View+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				BBBBC75F2A5E3B5200F39E2B /* ContentView.swift in Sources */,
 				BBDD706B2A68031C00977775 /* ResultCardView.swift in Sources */,
 				7382E9432A7211A400837AB2 /* FixedTimeViewModel.swift in Sources */,
+				0E8D854E2AA7831F009F3E5D /* View+.swift in Sources */,
 				BBBBC7852A676F9F00F39E2B /* CardBackgroundView.swift in Sources */,
 				73130BFE2A6A3C7800554A36 /* ConfirmView.swift in Sources */,
 				BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */,

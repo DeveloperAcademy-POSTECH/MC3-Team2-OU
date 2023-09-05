@@ -17,15 +17,19 @@ struct TimeTable: View {
         NavigationStack{
             if vm.calendar != nil{
                 VStack(spacing:16){
-                    Text("일정 입력").body(textColor: .primary)
+                    Text("일정 입력")
+                        .body(textColor: .primary)
+                    
                     VStack(spacing:0){
                         DayLayout(vm: vm)
+                        
                         HStack(spacing:0){
                             TimeLayout()
                             Table(vm: vm,
                                   connectionManager: connectionManager)
                         }
                     }
+                    
                     //MARK: 페이지 넘기기
                     NavigationLink(
                         destination: CheckTimeDoneView(connectionManager: connectionManager).navigationBarBackButtonHidden(true),
@@ -44,11 +48,12 @@ struct TimeTable: View {
                             .background(Color.primary_selectedColor)
                             .cornerRadius(16)
                     }
-                }.padding(16)
+                }
+                .padding(16)
             }
             else{
                 ProgressView()
-                }
+            }
         }
     }
     
@@ -66,7 +71,9 @@ struct DayLayout: View{
     let vm: TimeTableViewModel
     var body: some View{
         HStack(spacing:0){
-            DayCell(title: "").frame(width:44)
+            DayCell(title: "")
+                .frame(width:44)
+            
             ForEach(vm.selectedDay.sorted(),id:\.self) { day in
                 DayCell(title: day)
             }
@@ -77,9 +84,13 @@ struct DayLayout: View{
 }
 struct DayCell: View{
     let title: String
+    
     var body: some View{
         ZStack{
-            Rectangle().stroke(Color.primaryColor, lineWidth: 1).foregroundColor(.clear)
+            Rectangle()
+                .stroke(Color.clear, lineWidth: 1)
+                .foregroundColor(.clear)
+            
             VStack{
                 Text(title == "" ? "" : DateUtil.dateToWeekDay(title).rawValue.dayOfWeek()).caption(textColor: Color.primaryColor)
                 Text(title.components(separatedBy: "-").last!).caption(textColor: Color.primaryColor)
@@ -106,8 +117,9 @@ struct TimeCell: View{
     let title: String
     var body: some View{
         ZStack{
-            Rectangle().stroke(Color.primaryColor, lineWidth: 1)
-            Text(title).caption(textColor: Color.primaryColor)
+            Rectangle().stroke(Color.clear, lineWidth: 1)
+            Text(title)
+                .caption(textColor: Color.primaryColor)
         }
     }
 }
@@ -118,6 +130,7 @@ struct Table: View{
     let connectionManager : ConnectionService
     @State var startPoint : CGPoint?
     @State var endPoint : CGPoint?
+    
     var body: some View{
         ZStack{
             HStack(spacing:0){
@@ -131,6 +144,7 @@ struct Table: View{
                     )
                 }
             }
+            
             RectangleView(startPoint: startPoint, endPoint: endPoint,
                           xArray: vm.xArray,
                           yArray: vm.yArray,
@@ -138,6 +152,7 @@ struct Table: View{
                           height: vm.cellSize?.height,
                           isSelected: vm.isFirstSelectd
                         )
+            
             HStack(spacing:0){
                 ForEach(Array(vm.calendar!.keys.sorted().enumerated()),id: \.offset) { xindex, day in
                     TableRow2(
@@ -222,7 +237,7 @@ struct Table: View{
                         } else {
                             vm.available = vm.selectedItem.isEmpty ? false : true
                         }
-                    }      
+                    }
                     vm.xEndIndex = nil
                     vm.yEndIndex = nil
                     vm.xStartIndex = nil

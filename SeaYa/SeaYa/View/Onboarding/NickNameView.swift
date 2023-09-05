@@ -55,11 +55,12 @@ struct NicknameView: View {
                                 Image("edit")
                                     .resizable()
                                     .frame(width: 36,height: 36, alignment: .bottomTrailing)
-                                    .onTapGesture {
-                                        print("isClicked!")
-                                        isSheetPresented = true
-                                    }
-                            }.padding(.bottom, 15)
+                            }
+                            .onTapGesture {
+                                print("isClicked!")
+                                isSheetPresented = true
+                            }
+                            .padding(.bottom, 15)
                     }
                     
                     TextField("닉네임", text: $nickname)
@@ -106,9 +107,11 @@ struct NicknameView: View {
                             .fill(Color.gray)
                             .frame(width:34, height:5)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                        
                         Text("프로필 이미지")
                             .body(textColor: Color.textColor)
                             .padding(.bottom, 20)
+                        
                         LazyVGrid(columns: columns){
                             ForEach(0..<9, id: \.self) { index in
                                 Button(
@@ -116,7 +119,7 @@ struct NicknameView: View {
                                         characterImageName = "0\(index+1)"
                                         userData.setImageName(characterImageName)
                                         print("캐릭터 설정", characterImageName);
-                                        
+                                        isSheetPresented.toggle()
                                     },
                                     label: {
                                         ZStack{

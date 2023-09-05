@@ -9,21 +9,28 @@ import SwiftUI
 
 struct ConfirmDateModalView: View {
     @Binding var selectedEvent : DateEvent
+    @Binding var showDateModal: Bool
     @State private var selectedButtons: [(week: Int, day: Int)] = []
     @State var selectedDate = [Date]()
+    
     var body: some View {
         VStack(spacing: 0){
             RoundedRectangle(cornerRadius: 2.5)
                 .fill(Color(hex: "#D3D3D3"))
                 .frame(width:34, height:5)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 26, trailing: 0))
-            Text("날짜").headline(textColor: .primaryColor).padding(.bottom, 43)
-            CalendarView(selectedDate: $selectedDate, isMultiDatesAvailable: false)
+            
+            Text("날짜")
+                .headline(textColor: .primaryColor)
+                .padding(.bottom, 43)
+            
+            CalendarView(selectedDate: $selectedDate, isMultiDatesAvailable: false, seletDate: selectedEvent.startDate)
                 .onChange(
                     of: selectedDate,
                     perform: { value in
                         selectedEvent.startDate.updateDay(value.first ?? Date())
                         selectedEvent.endDate.updateDay(value.first ?? Date())
+                        showDateModal = false
                     }
                 )
         }
@@ -54,7 +61,7 @@ struct ConfirmDateModalTestView : View{
             .padding()
         }
         .sheet(isPresented: $isModalPresented, content: {
-            ConfirmDateModalView(selectedEvent: $selectedEvent, selectedDate: [selectedEvent.startDate.toDate()])
+            ConfirmDateModalView(selectedEvent: $selectedEvent, showDateModal: .constant(true), selectedDate: [selectedEvent.startDate.toDate()])
                 .presentationDetents([.height(354)])
                 .presentationCornerRadius(32)
         })
