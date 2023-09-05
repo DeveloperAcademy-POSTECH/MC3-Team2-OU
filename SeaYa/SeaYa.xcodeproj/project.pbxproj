@@ -213,6 +213,42 @@
 			name = GuestList;
 			sourceTree = "<group>";
 		};
+		0E8D854A2AA77DE4009F3E5D /* ExtraViews */ = {
+			isa = PBXGroup;
+			children = (
+				0E81B96A2A78F64D004AB171 /* ResultView.swift */,
+				0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */,
+				0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */,
+				0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */,
+				0E81B9362A774C7B004AB171 /* LottieView.swift */,
+				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
+				BBDD706A2A68031C00977775 /* ResultCardView.swift */,
+				BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */,
+			);
+			path = ExtraViews;
+			sourceTree = "<group>";
+		};
+		0E8D854B2AA77E19009F3E5D /* FixedTime */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
+				7382E9482A72155800837AB2 /* FixedTimeElementView.swift */,
+				EE14DBC02A64CF22004ECD86 /* SettingView.swift */,
+			);
+			path = FixedTime;
+			sourceTree = "<group>";
+		};
+		0E8D854C2AA77E31009F3E5D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
+				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
+				0E8D854B2AA77E19009F3E5D /* FixedTime */,
+				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		0EEFB6512A64D85900F5C5D2 /* Host */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,14 +286,6 @@
 				1012D6622A755D3B0033BD72 /* UserInfoRepository.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		738DE4662A983CBC002DB701 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
-			);
-			path = Legacy;
 			sourceTree = "<group>";
 		};
 		739FBB752A613CF30022386D /* Service */ = {
@@ -359,23 +387,14 @@
 			children = (
 				BBBBC75E2A5E3B5200F39E2B /* ContentView.swift */,
 				BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */,
-				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
-				BBBBC7622A5E3BCE00F39E2B /* FixedTimeView.swift */,
-				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
+				0E8D854C2AA77E31009F3E5D /* Onboarding */,
 				BBBBC7662A5E3BFC00F39E2B /* MainView.swift */,
 				BBDD707B2A735A4E00977775 /* SettingView */,
 				0EEFB6512A64D85900F5C5D2 /* Host */,
 				104555882A66408900562B98 /* TimeTableView */,
-				7382E9482A72155800837AB2 /* FixedTimeElementView.swift */,
-				EE14DBC02A64CF22004ECD86 /* SettingView.swift */,
 				73AA046E2A6ABE1F003FA06F /* ConfirmView */,
 				73CD8FE82A65A935003A274D /* ListUpView */,
-				0E81B9362A774C7B004AB171 /* LottieView.swift */,
-				0E81B9402A7782C2004AB171 /* CheckTimeDoneView.swift */,
-				0E81B93E2A778162004AB171 /* WaitingForConfirmView.swift */,
-				0E81B9422A7786DF004AB171 /* GuestWaitingForConfirmView.swift */,
-				0E81B96A2A78F64D004AB171 /* ResultView.swift */,
-				738DE4662A983CBC002DB701 /* Legacy */,
+				0E8D854A2AA77DE4009F3E5D /* ExtraViews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,9 +433,6 @@
 				0E81B9382A774CB0004AB171 /* HomeView.json */,
 				ACB3AEE52A79F2E300BEB90D /* rank.json */,
 				ACB3AEE72A79F2FB00BEB90D /* pencil.json */,
-				BBBBC7842A676F9F00F39E2B /* CardBackgroundView.swift */,
-				BBDD70682A6802B400977775 /* GuestCallingDone.swift */,
-				BBDD706A2A68031C00977775 /* ResultCardView.swift */,
 				1092DD792A60E39800D4F6D3 /* DateUtil.swift */,
 				EE14DBC22A64CFE6004ECD86 /* HapticsManager.swift */,
 				0EEFB6582A64D8C300F5C5D2 /* Date+.swift */,
