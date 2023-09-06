@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GuestCallingDone: View {
-    @ObservedObject var connectionManager: ConnectionService
+    @EnvironmentObject private var connectionManager: ConnectionService
     @EnvironmentObject private var userData: UserData
     @State var clicked: Int? = 0
     var body: some View {
@@ -30,41 +30,45 @@ struct GuestCallingDone: View {
             Text("\(connectionManager.groupInfo?.hostName ?? "")님의 그룹에 초대됐어요.\n지금 바로 일정을 입력하세요!")
                 .context(textColor: Color.textColor)
                 .multilineTextAlignment(.center)
-                .padding(.vertical,30)
-            NavigationLink(
-                destination: TimeTable(
-                    connectionManager: connectionManager,
-                    vm:TimeTableViewModel.shared
-                )
-                    .environmentObject(connectionManager)
-                    .environmentObject(userData)
-                    .navigationBarBackButtonHidden(true),
-                tag: 1,
-                selection: $clicked) {}
-            SmallButton_Blue(title: "일정 입력하기", action: {
-                TimeTableViewModel.shared.setSelectedDay(selectedDay: getSelectedDate(connectionManager.groupInfo ?? GroupInfo.empty()))
-                clicked = 1;
-            })
+                .padding(.vertical, 30)
             .padding(.bottom, 32)
+            NavigationLink(destination:
+                            TimeTable(
+                                vm: TimeTableViewModel.shared)
+                                .navigationBarBackButtonHidden(true)
+                                .onAppear{
+                                    TimeTableViewModel.shared.setSelectedDay(
+                                        selectedDay: getSelectedDate(connectionManager.groupInfo ?? GroupInfo.empty()))
+                                },
+                           label: {
+                            Text("일정 입력하기")
+                            .smallButton(textColor: .white)
+                                .frame(width: 268, height: 45, alignment: .center)
+                                .background(Color.primaryColor)
+                                .cornerRadius(16)
+                                .padding(.vertical, 18)
+                }
+            )
         }
         .frame(width: 300)
         .background(Color.whiteColor)
         .cornerRadius(32)
-        
     }
-    func getSelectedDate(_ groupInfo: GroupInfo) -> [String]{
+
+    func getSelectedDate(_ groupInfo: GroupInfo) -> [String] {
         return groupInfo.selectedDate.map { date in
             DateUtil.getFormattedDate(date)
         }
-
     }
 }
 
 struct GuestCallingDone_Previews: PreviewProvider {
     static var previews: some View {
-        GuestCallingDone(connectionManager: ConnectionService())
+        GuestCallingDone()
+            .environmentObject(ConnectionService())
             .environmentObject(UserData())
-        GuestCallingDone(connectionManager: ConnectionService())
+        GuestCallingDone()
+            .environmentObject(ConnectionService())
             .environmentObject(UserData())
             .preferredColorScheme(.dark)
     }

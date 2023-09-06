@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct SeaYaApp: App {
+    @StateObject var connectionManger = ConnectionService()
+    @StateObject var userData = UserData()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-//                .environmentObject(userData)
-//            TimeTable()
-//            MainView()
-//                .environmentObject(userData)
+                .environmentObject(connectionManger)
+                .environmentObject(userData)
         }
     }
 }

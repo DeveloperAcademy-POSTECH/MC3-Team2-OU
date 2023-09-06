@@ -8,10 +8,10 @@
 import XCTest
 
 final class TimeTableServiceTest: XCTestCase {
-    typealias Calendar = Dictionary<String,[Event]>
+    typealias Calendar = [String: [Event]]
     let calendarService = CalendarService.shared
     let timeTableService = TimeTableService.shared
-    let selectedDays = ["2023-07-16","2023-07-17","2023-07-18"]
+    let selectedDays = ["2023-07-16", "2023-07-17", "2023-07-18"]
     let date1 = DateUtil.createDate(year: 2023, month: 7, day: 16, hour: 9, minute: 30)
     let date2 = DateUtil.createDate(year: 2023, month: 7, day: 17, hour: 18, minute: 00)
     let date3 = DateUtil.createDate(year: 2023, month: 7, day: 18, hour: 19, minute: 30)
@@ -19,15 +19,14 @@ final class TimeTableServiceTest: XCTestCase {
     let date5 = DateUtil.createDate(year: 2023, month: 7, day: 17, hour: 12, minute: 00)
     let date6 = DateUtil.createDate(year: 2023, month: 7, day: 18, hour: 13, minute: 30)
     var localEvents = [LocalEvent]()
-    var  remoteEvents = [Event]()
+    var remoteEvents = [Event]()
     var localCalendar = Calendar()
     var remoteCalendar = Calendar()
     var mergedCalendar = Calendar()
-    
 
     override func setUpWithError() throws {
         localEvents = [
-            LocalEvent(title: "test1", days: [.monday,.tuesday,.thursday], start: date1, end: date1.advanced(by: 3600)),
+            LocalEvent(title: "test1", days: [.monday, .tuesday, .thursday], start: date1, end: date1.advanced(by: 3600)),
             LocalEvent(title: "test2", days: [.wednesday], start: date2, end: date2.advanced(by: 3600)),
             LocalEvent(title: "test3", days: [.sunday], start: date3, end: date3.advanced(by: 3600)),
         ]
@@ -51,15 +50,13 @@ final class TimeTableServiceTest: XCTestCase {
 
     func testGetCalendarForTimeTable() throws {
         let timeTableCalendar = timeTableService.getCalendarForTimeTable(mergedCalendar)
-       // XCTAssertNil(timeTableCalendar)
-        
+        // XCTAssertNil(timeTableCalendar)
     }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

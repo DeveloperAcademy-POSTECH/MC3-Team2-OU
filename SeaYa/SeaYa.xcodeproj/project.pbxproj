@@ -52,6 +52,7 @@
 		739FBB712A613C3F0022386D /* DateMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB702A613C3F0022386D /* DateMember.swift */; };
 		739FBB772A613D100022386D /* CalcOksServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739FBB762A613D100022386D /* CalcOksServiceTest.swift */; };
 		73C746032A80710600D4ED7C /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C746022A80710600D4ED7C /* RectangleView.swift */; };
+		73C8376C2AA874B800270BB9 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C8376B2AA874B800270BB9 /* OnboardingView.swift */; };
 		73CD8FAB2A64DC99003A274D /* ListUpElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */; };
 		73CD8FAF2A6593E8003A274D /* ListUpElementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */; };
 		73FA05202A5E301A00EB176B /* SeaYaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA051F2A5E301A00EB176B /* SeaYaApp.swift */; };
@@ -67,7 +68,6 @@
 		BBBBC7652A5E3BE900F39E2B /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */; };
 		BBBBC7672A5E3BFC00F39E2B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7662A5E3BFC00F39E2B /* MainView.swift */; };
 		BBBBC7692A5E3C1900F39E2B /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */; };
-		BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */; };
 		BBBBC76D2A5E3C4200F39E2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC76C2A5E3C4200F39E2B /* UserData.swift */; };
 		BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC77A2A60E05F00F39E2B /* Typography.swift */; };
 		BBBBC7812A60F1CD00F39E2B /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBC7802A60F1CD00F39E2B /* Color+.swift */; };
@@ -146,6 +146,7 @@
 		739FBB702A613C3F0022386D /* DateMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMember.swift; sourceTree = "<group>"; };
 		739FBB762A613D100022386D /* CalcOksServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcOksServiceTest.swift; sourceTree = "<group>"; };
 		73C746022A80710600D4ED7C /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
+		73C8376B2AA874B800270BB9 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		73CD8FAA2A64DC99003A274D /* ListUpElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementView.swift; sourceTree = "<group>"; };
 		73CD8FAE2A6593E8003A274D /* ListUpElementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpElementDetailView.swift; sourceTree = "<group>"; };
 		73FA051C2A5E301A00EB176B /* SeaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +165,6 @@
 		BBBBC7642A5E3BE900F39E2B /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		BBBBC7662A5E3BFC00F39E2B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameView.swift; sourceTree = "<group>"; };
-		BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BBBBC76C2A5E3C4200F39E2B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		BBBBC77A2A60E05F00F39E2B /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		BBBBC7802A60F1CD00F39E2B /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
@@ -244,7 +244,6 @@
 		0E8D854C2AA77E31009F3E5D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				BBBBC76A2A5E3C2D00F39E2B /* OnboardingView.swift */,
 				BBBBC7682A5E3C1900F39E2B /* NickNameView.swift */,
 				0E8D854B2AA77E19009F3E5D /* FixedTime */,
 				0E81B9482A77C004004AB171 /* OnboardingDoneView.swift */,
@@ -309,6 +308,14 @@
 			path = ConfirmView;
 			sourceTree = "<group>";
 		};
+		73C8376A2AA8745300270BB9 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				73C8376B2AA874B800270BB9 /* OnboardingView.swift */,
+			);
+			path = Legacy;
+			sourceTree = "<group>";
+		};
 		73CD8FE82A65A935003A274D /* ListUpView */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				0EEFB6742A6EC74D00F5C5D2 /* Info.plist */,
+				73FA051F2A5E301A00EB176B /* SeaYaApp.swift */,
 				1092DD6E2A60DE0300D4F6D3 /* Repository */,
 				BBBBC7332A5E329200F39E2B /* Service */,
 				BBBBC7322A5E326400F39E2B /* DesignSystem */,
@@ -351,7 +359,7 @@
 				BBBBC7302A5E325700F39E2B /* ViewModel */,
 				BBBBC72F2A5E324800F39E2B /* Model */,
 				BBBBC72E2A5E322500F39E2B /* View */,
-				73FA051F2A5E301A00EB176B /* SeaYaApp.swift */,
+				73C8376A2AA8745300270BB9 /* Legacy */,
 				73FA05232A5E301C00EB176B /* Assets.xcassets */,
 				73FA05252A5E301C00EB176B /* Preview Content */,
 			);
@@ -670,9 +678,9 @@
 				0EEFB6782A6EE1B300F5C5D2 /* GroupInfo.swift in Sources */,
 				73130C042A6A97EA00554A36 /* ConfirmMemberModalView.swift in Sources */,
 				0E81B96B2A78F64D004AB171 /* ResultView.swift in Sources */,
+				73C8376C2AA874B800270BB9 /* OnboardingView.swift in Sources */,
 				BBBBC77B2A60E05F00F39E2B /* Typography.swift in Sources */,
 				0E81B9372A774C7B004AB171 /* LottieView.swift in Sources */,
-				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				BBBBC7872A67740F00F39E2B /* ButtonTheme.swift in Sources */,
 				BBBBC7832A65235B00F39E2B /* HostCallingDone.swift in Sources */,
 				BBDD707D2A735A6300977775 /* UserInfoView.swift in Sources */,
@@ -681,7 +689,6 @@
 				0EEFB6542A64D87100F5C5D2 /* MakingGroupView.swift in Sources */,
 				739FBB6F2A613C240022386D /* TimeOks.swift in Sources */,
 				7382E9492A72155800837AB2 /* FixedTimeElementView.swift in Sources */,
-				BBBBC76B2A5E3C2D00F39E2B /* OnboardingView.swift in Sources */,
 				1092DD722A60DE2200D4F6D3 /* RemoteCalendarRepository.swift in Sources */,
 				1092DD7A2A60E39800D4F6D3 /* DateUtil.swift in Sources */,
 				7369F97D2A64CB470050EB8F /* ListUpView.swift in Sources */,

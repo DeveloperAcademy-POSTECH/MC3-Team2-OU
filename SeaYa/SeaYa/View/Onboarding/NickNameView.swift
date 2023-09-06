@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct NicknameView: View {
-    @Binding var isNicknameSettingCompleted : Bool
+    @Binding var isNicknameSettingCompleted: Bool
     @EnvironmentObject private var userData: UserData
     @State private var nickname = ""
     @State private var characterImageName = "01"
-  
+
     @State private var isSheetPresented = false
     let userInfoRepository = UserInfoRepository.shared
-    
+
     let columns: [GridItem] = Array(repeating: .init(), count: 3) // TODO: Dummy data
     var body: some View {
         ZStack {
             Color.backgroundColor
-                 .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             GeometryReader { geometry in
                 let screenWidth = geometry.size.width
                 let itemWidth = screenWidth / 3 - 20
@@ -30,31 +30,31 @@ struct NicknameView: View {
                             .foregroundColor(Color.primaryColor)
                             .frame(width: itemWidth, height: 3)
                             .cornerRadius(2)
-                        
+
                         Rectangle()
                             .foregroundColor(.gray)
                             .frame(width: itemWidth, height: 3)
                             .cornerRadius(10)
-                        
+
                         Rectangle()
                             .foregroundColor(.gray)
                             .frame(width: itemWidth, height: 3)
                             .cornerRadius(10)
                     }
-                    
+
                     Text("앱에서 사용할\n프로필을 설정해주세요")
                         .title(textColor: Color.textColor)
                         .padding(.vertical, 30)
                         .frame(width: 340, alignment: .leading)
-                    
-                    ZStack{
+
+                    ZStack {
                         Image(characterImageName)
                             .resizable()
                             .frame(width: 100, height: 100)
-                            .overlay(alignment: .bottomTrailing){
+                            .overlay(alignment: .bottomTrailing) {
                                 Image("edit")
                                     .resizable()
-                                    .frame(width: 36,height: 36, alignment: .bottomTrailing)
+                                    .frame(width: 36, height: 36, alignment: .bottomTrailing)
                             }
                             .onTapGesture {
                                 print("isClicked!")
@@ -62,7 +62,7 @@ struct NicknameView: View {
                             }
                             .padding(.bottom, 15)
                     }
-                    
+
                     TextField("닉네임", text: $nickname)
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 15)
@@ -77,16 +77,16 @@ struct NicknameView: View {
                         )
                         .font(Font.system(size: 18, weight: .bold))
                         .foregroundColor(Color.textColor)
-                    
+
                     Spacer()
-                    
+
                     Button(action: {
                         if !nickname.isEmpty {
-                            userData.setNickName(nickname);
+                            userData.setNickName(nickname)
                             userData.setImageName(characterImageName)
                             userInfoRepository.setNickName(nickName: userData.nickname)
                             userInfoRepository.setImageName(imageName: userData.characterImageName)
-                            isNicknameSettingCompleted = true;
+                            isNicknameSettingCompleted = true
                         }
                     }) {
                         Text("다음")
@@ -98,35 +98,34 @@ struct NicknameView: View {
                             .cornerRadius(10)
                             .padding(.horizontal, 20)
                     }
-                    
                 }
                 .padding()
                 .sheet(isPresented: $isSheetPresented, content: {
-                    VStack{
+                    VStack {
                         RoundedRectangle(cornerRadius: 2.5)
                             .fill(Color.gray)
-                            .frame(width:34, height:5)
+                            .frame(width: 34, height: 5)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-                        
+
                         Text("프로필 이미지")
                             .body(textColor: Color.textColor)
                             .padding(.bottom, 20)
-                        
-                        LazyVGrid(columns: columns){
-                            ForEach(0..<9, id: \.self) { index in
+
+                        LazyVGrid(columns: columns) {
+                            ForEach(0 ..< 9, id: \.self) { index in
                                 Button(
                                     action: {
-                                        characterImageName = "0\(index+1)"
+                                        characterImageName = "0\(index + 1)"
                                         userData.setImageName(characterImageName)
-                                        print("캐릭터 설정", characterImageName);
+                                        print("캐릭터 설정", characterImageName)
                                         isSheetPresented.toggle()
                                     },
                                     label: {
-                                        ZStack{
-                                            VStack{
+                                        ZStack {
+                                            VStack {
                                                 Image("0" + "\(index + 1)")
                                                     .resizable()
-                                                    .frame(width: 66,height: 66)
+                                                    .frame(width: 66, height: 66)
                                             }
                                             .padding(15)
                                         }
@@ -134,7 +133,6 @@ struct NicknameView: View {
                                 )
                             }
                         }
-                        
                     }
                     .presentationDetents([.height(426)])
                     .presentationCornerRadius(32)
@@ -144,6 +142,7 @@ struct NicknameView: View {
         }
     }
 }
+
 struct NicknameView_Previews: PreviewProvider {
     static var previews: some View {
         NicknameView(isNicknameSettingCompleted: .constant(false))
@@ -153,7 +152,3 @@ struct NicknameView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
-
-
-
-
