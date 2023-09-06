@@ -48,7 +48,7 @@ struct BigButton_White: View {
         }
         .frame(width: 358, alignment: .center)
         .padding(.vertical, 18)
-        .background(.white)
+        .background(Color.whiteColor)
         .cornerRadius(16)
     }
 }
@@ -94,7 +94,7 @@ struct SmallButton_White: View {
                 .smallButton(textColor: Color.primaryColor)
                 .padding(.vertical, 18)
                 .frame(width: 268, height: 45, alignment: .center)
-                .background(.white)
+                .background(Color.whiteColor)
                 .cornerRadius(16)
         }
     }

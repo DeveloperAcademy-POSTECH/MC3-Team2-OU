@@ -224,53 +224,7 @@ extension ConnectionService: MCSessionDelegate {
         print("Receiving chat history")
     }
 
-    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        guard
-            let localURL = localURL,
-            let data = try? Data(contentsOf: localURL)
-        else { return }
-        
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            
-            if let messageTypeString = json?["messageType"] as? String,
-               let messageType = MessageType(rawValue: messageTypeString),
-               let jsonData = json?["data"] as? [String: Any] {
-                switch messageType {
-                case .GroupInfo:
-                    if let groupInfoData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        groupInfo = try JSONDecoder().decode(GroupInfo.self, from: groupInfoData)
-                        print(groupInfo ?? "")
-                    }
-                    
-                case .ListUP:
-                    if let listUPData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        let data = try JSONDecoder().decode(DateMember.self, from: listUPData)
-                        listUP.append(data)
-                        print(listUP ?? "")
-                    }
-                    
-                case .ScheduleDone:
-                    if let groupDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        scheduleDone = try JSONDecoder().decode(ScheduleDone.self, from: groupDoneData)
-                        print(scheduleDone ?? "")
-                    }
-                    
-                case .CheckTimeDone:
-                    if let isCheckTimeDoneData = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        isCheckTimeDone = try JSONDecoder().decode(CheckTimeDone.self, from: isCheckTimeDoneData)
-                    }
-                case .ListUpViewResult:
-                    if let nunnuna = try? JSONSerialization.data(withJSONObject: jsonData) {
-                        listUpViewResult = try JSONDecoder().decode(ListUpViewResult.self, from: nunnuna)
-                        print(listUpViewResult ?? "")
-                    }
-                }
-            }
-        } catch {
-            print("Decoding error: \(error)")
-        }
-    }
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {}
 }
     
 extension ConnectionService: MCNearbyServiceBrowserDelegate {

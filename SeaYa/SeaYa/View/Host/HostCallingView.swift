@@ -108,29 +108,33 @@ struct HostCallingView: View {
                     }
                 }
                 else {
-                    HostCallingDone(
-                        connectionManager: connectionManager,
-                        groupInfo: GroupInfo(
-                            hostName: userData.nickname,
-                            scheduleName: scheduleName,
-                            selectedDate: selectedDate,
-                            estimatedTime: estimatedTime
+                    ZStack {
+                        Color.gray
+                            .ignoresSafeArea()
+                            .opacity(0.5)
+                        HostCallingDone(
+                            connectionManager: connectionManager,
+                            groupInfo: GroupInfo(
+                                hostName: userData.nickname,
+                                scheduleName: scheduleName,
+                                selectedDate: selectedDate,
+                                estimatedTime: estimatedTime
+                            )
                         )
-                    )
-                    .environmentObject(userData)
-                    .onAppear() {
-                        connectionManager.sendGroupInfoToGuest(GroupInfo(
-                            hostName: userData.nickname,
-                            scheduleName: scheduleName,
-                            selectedDate: selectedDate,
-                            estimatedTime: estimatedTime
-                        ))
+                        .environmentObject(userData)
+                        .onAppear() {
+                            connectionManager.sendGroupInfoToGuest(GroupInfo(
+                                hostName: userData.nickname,
+                                scheduleName: scheduleName,
+                                selectedDate: selectedDate,
+                                estimatedTime: estimatedTime
+                            ))
+                        }
                     }
                 }
                 
                 if showingAlert {
                     CustomAlert(showingAlert: $showingAlert, moveToDoneView: $moveToDoneView, guestCnt: connectionManager.peers.count)
-                        .offset(y: -30)
                 }
             }
                 .ignoresSafeArea()

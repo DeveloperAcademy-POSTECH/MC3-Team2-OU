@@ -11,6 +11,7 @@ struct CalendarView: View {
     @Binding var selectedDate: [Date]
     
     var isMultiDatesAvailable = true
+    var seletDate: Date?
     
     private let weekdays: [String] = ["월", "화", "수", "목", "금", "토", "일"]
     
@@ -53,7 +54,7 @@ struct CalendarView: View {
                     HStack {
                         ForEach(1...7, id: \.self) { day in
                             let date = dayText(week: week, day: day)
-                            let isSelected = selectedDate.contains(date)
+                            let isSelected = selectedDate.contains(date) || (seletDate != nil ? date.toStringDate() == seletDate!.toStringDate() : false)
                             
                             if date >= currentDate && date < nextDate {
                                 Button(action: {
