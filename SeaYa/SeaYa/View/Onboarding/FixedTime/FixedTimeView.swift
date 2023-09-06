@@ -43,9 +43,9 @@ struct FixedTimeView: View {
                     .padding(.vertical, 30)
                     .frame(width: 340, alignment: .leading)
                 if fixedTimeViewModel.fixedTimeModels.count > 0 {
-                    ScrollView{
-                        VStack{
-                            ForEach(Array(fixedTimeViewModel.fixedTimeModels.enumerated()), id: \.offset){ index,
+                    ScrollView {
+                        VStack {
+                            ForEach(Array(fixedTimeViewModel.fixedTimeModels.enumerated()), id: \.offset) { index,
                                 fixedTimeModel in
                                 Button(
                                     action: {
@@ -65,8 +65,8 @@ struct FixedTimeView: View {
                 Button(
                     action: {
                         state.isUpdate = false
-                                showSettingViewModal = true
-                                id = UUID().uuidString
+                        showSettingViewModal = true
+                        id = UUID().uuidString
                     }, label: {
                         ZStack(alignment: .leading) {
                             RoundedRectangle(cornerRadius: 16)
@@ -79,7 +79,7 @@ struct FixedTimeView: View {
                     }
                 )
                 Spacer(minLength: 0)
-                
+
                 BigButton_Blue(
                     title: "다음",
                     action: {
@@ -89,8 +89,6 @@ struct FixedTimeView: View {
 //                                if let encodedData = try? encoder.encode(fixedTimeViewModel.fixedTimeModels) {
 //                                    UserDefaults.standard.set(encodedData, forKey: fixedTimeKey)
 //                                }
-
-                        
                     }
                 )
             }
@@ -101,12 +99,13 @@ struct FixedTimeView: View {
                     SettingView(
                         fixedTimeViewModel: fixedTimeViewModel,
                         showSettingViewModal: $showSettingViewModal,
-                        selectedIndex : $selectedIndex,
-                        tempFixedTimeModel : selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
-                        id:id, isUpdate: isUpdate,
-                        onDelete: {id in
+                        selectedIndex: $selectedIndex,
+                        tempFixedTimeModel: selectedIndex >= 0 ? fixedTimeViewModel.fixedTimeModels[selectedIndex] : FixedTimeModel(),
+                        id: id, isUpdate: isUpdate,
+                        onDelete: { id in
                             fixedTimeViewModel.deleteItem(withID: id)
-                        })
+                        }
+                    )
                     .presentationCornerRadius(32)
                 } else {
                     EmptyView()
@@ -117,16 +116,15 @@ struct FixedTimeView: View {
     }
 }
 
-
-struct FixedTimeTestView : View{
+struct FixedTimeTestView: View {
     @State var isFixedTimeSettingCompleted = false
     @State var fixedTimeViewModel = FixedTimeViewModel([
         FixedTimeModel(),
         FixedTimeModel(),
-        FixedTimeModel()
+        FixedTimeModel(),
     ])
-    
-    var body: some View{
+
+    var body: some View {
         FixedTimeView(
             isFixedTimeSettingCompleted: $isFixedTimeSettingCompleted,
             fixedTimeViewModel: fixedTimeViewModel

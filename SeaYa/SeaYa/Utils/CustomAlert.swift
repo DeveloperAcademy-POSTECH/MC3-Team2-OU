@@ -11,7 +11,7 @@ struct CustomAlert: View {
     @Binding var showingAlert: Bool
     @Binding var moveToDoneView: Bool
     let guestCnt: Int
-    
+
     var body: some View {
         ZStack {
             Color.gray
@@ -20,19 +20,19 @@ struct CustomAlert: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 32)
                     .foregroundColor(.whiteColor)
-                
+
                 VStack {
                     Text("그룹을 확정하시겠어요?")
                         .headline(textColor: Color.textColor)
                         .padding(.top, 43)
-                    
+
                     Text("\(guestCnt)명의 그룹원과\n그룹을 확정하시겠어요?")
                         .context(textColor: Color.textColor)
                         .padding()
                         .fixedSize()
                         .multilineTextAlignment(.center)
                         .padding(.top, 8)
-                    
+
                     SmallButton_Blue(
                         title: "확정할게요",
                         action: {
@@ -41,7 +41,7 @@ struct CustomAlert: View {
                         }
                     )
                     .padding(.top, 29)
-                    
+
                     SmallButton_White(
                         title: "아니요, 더 찾아볼게요",
                         action: {
