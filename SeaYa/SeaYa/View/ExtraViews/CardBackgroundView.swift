@@ -28,13 +28,11 @@ struct CardBackgroundView: View {
                 }
             }
             .blur(radius: isCardVisible ? 50 : 0)
-            
+
             if isCardVisible {
                 Rectangle()
                     .fill(Color(red: 0.45, green: 0.45, blue: 0.45).opacity(0.5))
                     .ignoresSafeArea()
-//                ResultView()
-                
             }
         }
     }

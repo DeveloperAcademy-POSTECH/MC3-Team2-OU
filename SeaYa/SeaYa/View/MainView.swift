@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var connectionManager = ConnectionService()
+    @EnvironmentObject private var connectionManager: ConnectionService
     @EnvironmentObject private var userData: UserData
     @State private var startGroupping = false
-   
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -22,7 +22,7 @@ struct MainView: View {
                     startPoint: .top, endPoint: .bottom
                 )
                 .edgesIgnoringSafeArea(.all)
-                
+
                 if connectionManager.groupInfo == nil {
                     VStack(alignment: .center) {
                         Spacer(minLength: 0)
@@ -35,20 +35,20 @@ struct MainView: View {
                             }
                             .padding(EdgeInsets(top: 272, leading: 137, bottom: 0, trailing: 137))
                         }
-                        
-                        //TODO: ADD Haptic
+
+                        // TODO: ADD Haptic
                         ZStack(alignment: .center) {
                             if startGroupping {
                                 LottieView(jsonName: "HomeView")
                                     .scaledToFit()
                                     .offset(y: 10)
                             }
-                            
+
                             ZStack {
                                 Circle()
                                     .frame(width: 145, height: 145)
                                     .foregroundColor(.white)
-                                
+
                                 Image("\(userData.characterImageName)")
                                     .resizable()
                                     .padding(10)
@@ -67,11 +67,11 @@ struct MainView: View {
                                 startGroupping = true
                             }
                         }
-                        
+
                         if !startGroupping {
                             HStack {
                                 NavigationLink(
-                                    destination: MakingGroupView(connectionManager: connectionManager)
+                                    destination: MakingGroupView()
                                         .environmentObject(userData)
                                         .foregroundColor(Color.textColor)
                                         .navigationBarBackButtonHidden(),
@@ -81,7 +81,7 @@ struct MainView: View {
                                                 Circle()
                                                     .frame(maxWidth: 82)
                                                     .foregroundColor(Color.white.opacity(0.4))
-                                                
+
                                                 Image(systemName: "badge.plus.radiowaves.right")
                                                     .font(.system(size: 30))
                                                     .foregroundColor(Color.white)
@@ -90,17 +90,17 @@ struct MainView: View {
                                                     .padding(.vertical, 17)
                                             }
                                             Text("방 만들기")
-                                              .context(textColor: Color.white)
-                                              .multilineTextAlignment(.center)
+                                                .context(textColor: Color.white)
+                                                .multilineTextAlignment(.center)
                                         }
-                                       .frame(maxWidth: 80)
+                                        .frame(maxWidth: 80)
                                     }
                                 )
                                 .padding(.trailing, 70)
-                                
+
                                 NavigationLink(
                                     destination: {
-                                       UserInfoView()
+                                        UserInfoView()
                                             .foregroundColor(Color.textColor)
 
                                     }, label: {
@@ -109,7 +109,7 @@ struct MainView: View {
                                                 Circle()
                                                     .frame(maxWidth: 82)
                                                     .foregroundColor(Color.white.opacity(0.4))
-                                                
+
                                                 Image(systemName: "gear")
                                                     .font(.system(size: 30))
                                                     .foregroundColor(Color.white)
@@ -117,37 +117,36 @@ struct MainView: View {
                                                     .padding(.horizontal, 21)
                                                     .padding(.vertical, 17)
                                             }
-                                            
+
                                             Text("설정")
                                                 .context(textColor: Color.white)
                                                 .multilineTextAlignment(.center)
                                         }
                                         .frame(maxWidth: 80)
                                     }
-                                )                            }
+                                )
+                            }
                             .padding(EdgeInsets(top: 102, leading: 78, bottom: 134, trailing: 78))
                         }
-                        
+
                         if startGroupping {
                             Text("잠시만 기다려주세요")
                                 .font(.system(size: 23, weight: .bold))
                                 .foregroundColor(.white)
                                 .padding(EdgeInsets(top: 35, leading: 100, bottom: 0, trailing: 100))
-                            
+
                             Text("호스트의 호출을 기다리고 있어요")
                                 .caption(textColor: Color.white)
                                 .padding(EdgeInsets(top: 5, leading: 95, bottom: 0, trailing: 95))
-                            
+
                             Spacer(minLength: 0)
-                            
                         }
                     }
                     .ignoresSafeArea()
-                }
-                else {
-                    GuestCallingDone(connectionManager: connectionManager)
+                } else {
+                    GuestCallingDone()
                         .environmentObject(userData)
-                        .onAppear(){
+                        .onAppear {
                             HapticManager.instance.notification(type: .success)
                             startGroupping = false
                         }
@@ -157,13 +156,15 @@ struct MainView: View {
     }
 }
 
-
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = UserData() // UserData 객체를 생성하여 nickname 설정
-        
-        return MainView().environmentObject(userData)
-          //  .preferredColorScheme(.dark)
+        MainView()
+            .environmentObject(ConnectionService())
+            .environmentObject(UserData())
 
+        MainView()
+            .environmentObject(ConnectionService())
+            .environmentObject(UserData())
+            .preferredColorScheme(.dark)
     }
 }

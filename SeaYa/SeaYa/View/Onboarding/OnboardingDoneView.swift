@@ -9,13 +9,13 @@ import SwiftUI
 
 struct OnboardingDoneView: View {
     @Binding var isOnboardingCompleted: Bool
-    
+
     var body: some View {
         GeometryReader { geometry in
             let screenWidth = geometry.size.width
             let itemWidth = screenWidth / 3 - 20
-            
-            VStack{
+
+            VStack {
                 HStack {
                     Rectangle()
                         .foregroundColor(Color.primaryColor)
@@ -39,7 +39,7 @@ struct OnboardingDoneView: View {
                     .frame(width: 288, height: 300)
                     .offset(x: 0, y: 64)
                 Spacer(minLength: 0)
-                BigButton_Blue(title: "약속 잡으러 가기", action: {isOnboardingCompleted = true})
+                BigButton_Blue(title: "약속 잡으러 가기", action: { isOnboardingCompleted = true })
             }
             .padding()
         }

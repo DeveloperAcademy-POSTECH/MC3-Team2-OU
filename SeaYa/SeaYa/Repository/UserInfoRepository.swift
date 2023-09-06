@@ -7,46 +7,47 @@
 
 import Foundation
 
-class UserInfoRepository{
+class UserInfoRepository {
     static let shared = UserInfoRepository()
     private let userDefaults: UserDefaults
     private init(userDefaults: UserDefaults = .standard) {
-         self.userDefaults = userDefaults
-     }
+        self.userDefaults = userDefaults
+    }
 
-    public func setUid(uid: String){
+    public func setUid(uid _: String) {
         let uid = UUID().uuidString
         userDefaults.set(uid, forKey: "uid")
     }
 
-    
-    public func getUid() -> String?{
+    public func getUid() -> String? {
         if let uid = UserDefaults.standard.object(forKey: "uid") as? String {
             return uid
         }
         return nil
     }
-    public func setNickName(nickName: String){
+
+    public func setNickName(nickName: String) {
         userDefaults.set(nickName, forKey: "nickName")
     }
-                
-    public func getNickName() -> String?{
+
+    public func getNickName() -> String? {
         if let nickName = UserDefaults.standard.object(forKey: "nickName") as? String {
             return nickName
         }
         return nil
     }
-    
-    public func setImageName(imageName: String){
+
+    public func setImageName(imageName: String) {
         userDefaults.set(imageName, forKey: "imageName")
     }
-    public func getImageName() -> String?{
+
+    public func getImageName() -> String? {
         if let imageName = UserDefaults.standard.object(forKey: "imageName") as? String {
             return imageName
         }
         return nil
     }
-    
+
 //    public func createUserInfo(userInfo: UserData){
 //        if let encoded = try? encoder.encode(userInfo) {
 //            userDefaults.set(encoded, forKey: "userInfo")

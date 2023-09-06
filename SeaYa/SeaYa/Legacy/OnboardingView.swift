@@ -13,13 +13,13 @@ struct OnboardingView: View {
     private let onboardingPages = [
         OnboardingPage(imageName: "onboarding1", title: "Onboarding 1", description: "Description 1"),
         OnboardingPage(imageName: "onboarding2", title: "Onboarding 2", description: "Description 2"),
-        OnboardingPage(imageName: "onboarding3", title: "Onboarding 3", description: "Description 3")
+        OnboardingPage(imageName: "onboarding3", title: "Onboarding 3", description: "Description 3"),
     ]
 
     var body: some View {
         VStack {
             TabView(selection: $currentPageIndex) {
-                ForEach(0..<onboardingPages.count) { index in
+                ForEach(0 ..< 3) { index in // 3 == onboardingPages.count
                     OnboardingPageView(onboardingPage: onboardingPages[index])
                 }
             }
@@ -76,4 +76,3 @@ struct OnboardingPageView: View {
         }
     }
 }
-
