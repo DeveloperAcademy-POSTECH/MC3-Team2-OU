@@ -208,42 +208,42 @@ struct ConfirmView: View {
     }
 }
 
-struct ConfirmView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfirmView(
-            selectedEvent: DateEvent(title: "아카데미 저녁 회식",
-                                     startDate: DateUtil.formattedDateToDate(2023, 07, 21, 18, 0),
-                                     endDate: DateUtil.formattedDateToDate(2023, 7, 21, 19, 0))
-        )
-        .environment(\.locale, .init(identifier: "ko"))
-        .environmentObject(CalcOksService.shared)
-        .onAppear {
-            CalcOksService.shared.dateMembers = [
-                DateMember(id: UUID(), name: "지민"),
-                DateMember(id: UUID(), name: "RM"),
-                DateMember(id: UUID(), name: "뷔"),
-                DateMember(id: UUID(), name: "제이홉"),
-                DateMember(id: UUID(), name: "슈가"),
-                DateMember(id: UUID(), name: "정국"),
-            ]
-        }
-        ConfirmView(
-            selectedEvent: DateEvent(title: "아카데미 저녁 회식",
-                                     startDate: DateUtil.formattedDateToDate(2023, 07, 21, 18, 0),
-                                     endDate: DateUtil.formattedDateToDate(2023, 7, 21, 19, 0))
-        )
-        .environment(\.locale, .init(identifier: "ko"))
-        .environmentObject(CalcOksService.shared)
-        .onAppear {
-            CalcOksService.shared.dateMembers = [
-                DateMember(id: UUID(), name: "지민"),
-                DateMember(id: UUID(), name: "RM"),
-                DateMember(id: UUID(), name: "뷔"),
-                DateMember(id: UUID(), name: "제이홉"),
-                DateMember(id: UUID(), name: "슈가"),
-                DateMember(id: UUID(), name: "정국"),
-            ]
-        }
-        .preferredColorScheme(.dark)
+#Preview("Light Mode"){
+    ConfirmView(
+        selectedEvent: DateEvent(title: "아카데미 저녁 회식",
+                                 startDate: DateUtil.formattedDateToDate(2023, 07, 21, 18, 0),
+                                 endDate: DateUtil.formattedDateToDate(2023, 7, 21, 19, 0))
+    )
+    .environment(\.locale, .init(identifier: "ko"))
+    .environmentObject(CalcOksService.shared)
+    .onAppear {
+        CalcOksService.shared.dateMembers = [
+            DateMember(id: UUID(), name: "지민"),
+            DateMember(id: UUID(), name: "RM"),
+            DateMember(id: UUID(), name: "뷔"),
+            DateMember(id: UUID(), name: "제이홉"),
+            DateMember(id: UUID(), name: "슈가"),
+            DateMember(id: UUID(), name: "정국"),
+        ]
     }
+}
+#Preview("Dark Mode"){
+    ConfirmView(
+        selectedEvent: DateEvent(title: "아카데미 저녁 회식",
+                                 startDate: DateUtil.formattedDateToDate(2023, 07, 21, 18, 0),
+                                 endDate: DateUtil.formattedDateToDate(2023, 7, 21, 19, 0))
+    )
+    .environment(\.locale, .init(identifier: "ko"))
+    .environmentObject(CalcOksService.shared)
+    .onAppear {
+        CalcOksService.shared.dateMembers = [
+            DateMember(id: UUID(), name: "지민"),
+            DateMember(id: UUID(), name: "RM"),
+            DateMember(id: UUID(), name: "뷔"),
+            DateMember(id: UUID(), name: "제이홉"),
+            DateMember(id: UUID(), name: "슈가"),
+            DateMember(id: UUID(), name: "정국"),
+        ]
+    }
+    .preferredColorScheme(.dark)
 }

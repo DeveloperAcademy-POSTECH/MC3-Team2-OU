@@ -273,7 +273,7 @@ struct TableRow: View {
                     .stroke(Color.primaryColor, lineWidth: 0.5)
                     .foregroundColor(.clear)
                     .background(
-                        GeometryReader { geo in
+                        GeometryReader { geo in //이쪽이 등록인데, 등록이 제대로 이루어지지 않고 있음
                             (item.isSelected ? Color.primary_selectedColor : Color.clear)
                                 .onAppear {
                                     if day == vm.tableCalendar.keys.first! {
@@ -381,10 +381,11 @@ struct TimeTableTest: View {
     }
 }
 
-struct TimeTable_Previews: PreviewProvider {
-    static var previews: some View {
-        TimeTableTest()
-        TimeTableTest()
-            .preferredColorScheme(.dark)
-    }
+#Preview("Light Mode"){
+    TimeTableTest()
+}
+
+#Preview("Dark Mode"){
+    TimeTableTest()
+        .preferredColorScheme(.dark)
 }

@@ -29,12 +29,6 @@ struct ConfirmStartModalView: View {
     }
 }
 
-struct ConfirmStartModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfirmStartModalTestView().environment(\.locale, .init(identifier: "ko"))
-    }
-}
-
 struct ConfirmStartModalTestView: View {
     @State private var isModalPresented = true
     @State private var selectedDate = Date(timeIntervalSinceNow: 60 * 60 * 24 * 2)
@@ -60,3 +54,14 @@ struct ConfirmStartModalTestView: View {
         })
     }
 }
+
+#Preview{
+    ConfirmStartModalTestView().environment(\.locale, .init(identifier: "ko"))
+}
+
+#Preview{
+    ConfirmStartModalTestView()
+        .environment(\.locale, .init(identifier: "ko"))
+        .preferredColorScheme(.dark)
+}
+

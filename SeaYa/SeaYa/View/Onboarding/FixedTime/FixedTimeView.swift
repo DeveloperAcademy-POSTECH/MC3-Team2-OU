@@ -132,9 +132,9 @@ struct FixedTimeTestView: View {
     }
 }
 
-struct FixedTimeView_Previews: PreviewProvider {
-    static var previews: some View {
-        FixedTimeTestView()
-        FixedTimeTestView().preferredColorScheme(.dark)
-    }
+#Preview{
+    FixedTimeTestView()
+}
+#Preview{
+    FixedTimeTestView().preferredColorScheme(.dark)
 }

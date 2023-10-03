@@ -156,15 +156,15 @@ struct MainView: View {
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-            .environmentObject(ConnectionService())
-            .environmentObject(UserData())
+#Preview("Light Mode") {
+    MainView()
+        .environmentObject(ConnectionService())
+        .environmentObject(UserData())
+}
 
-        MainView()
-            .environmentObject(ConnectionService())
-            .environmentObject(UserData())
-            .preferredColorScheme(.dark)
-    }
+#Preview("Dark Mode") {
+    MainView()
+        .environmentObject(ConnectionService())
+        .environmentObject(UserData())
+        .preferredColorScheme(.dark)
 }

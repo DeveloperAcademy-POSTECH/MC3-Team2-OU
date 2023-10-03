@@ -38,12 +38,6 @@ struct ConfirmDateModalView: View {
     }
 }
 
-struct ConfirmDateModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfirmDateModalTestView()
-    }
-}
-
 struct ConfirmDateModalTestView: View {
     @State private var isModalPresented = true
     @State private var selectedEvent = DateEvent(
@@ -66,4 +60,8 @@ struct ConfirmDateModalTestView: View {
                 .presentationCornerRadius(32)
         })
     }
+}
+
+#Preview{
+    ConfirmDateModalTestView()
 }

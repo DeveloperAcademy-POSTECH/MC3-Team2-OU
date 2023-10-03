@@ -143,12 +143,12 @@ struct NicknameView: View {
     }
 }
 
-struct NicknameView_Previews: PreviewProvider {
-    static var previews: some View {
-        NicknameView(isNicknameSettingCompleted: .constant(false))
-            .environmentObject(UserData())
-        NicknameView(isNicknameSettingCompleted: .constant(false))
-            .environmentObject(UserData())
-            .preferredColorScheme(.dark)
-    }
+#Preview{
+    NicknameView(isNicknameSettingCompleted: .constant(false))
+        .environmentObject(UserData())
+}
+#Preview{
+    NicknameView(isNicknameSettingCompleted: .constant(false))
+        .environmentObject(UserData())
+        .preferredColorScheme(.dark)
 }

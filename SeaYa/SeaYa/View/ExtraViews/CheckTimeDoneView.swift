@@ -57,12 +57,12 @@ struct CheckTimeDoneView: View {
     }
 }
 
-struct CheckTimeDoneView_Previews: PreviewProvider {
-    static var previews: some View {
-        CheckTimeDoneView()
-            .environmentObject(ConnectionService())
-        CheckTimeDoneView()
-            .environmentObject(ConnectionService())
-            .preferredColorScheme(.dark)
-    }
+#Preview{
+    CheckTimeDoneView()
+        .environmentObject(ConnectionService())
+}
+#Preview{
+    CheckTimeDoneView()
+        .environmentObject(ConnectionService())
+        .preferredColorScheme(.dark)
 }

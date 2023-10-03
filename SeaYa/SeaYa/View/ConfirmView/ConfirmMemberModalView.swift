@@ -67,14 +67,6 @@ struct ConfirmMemberModalView: View {
     }
 }
 
-struct ConfirmMemberModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfirmMemberModalTestView().environment(\.locale, .init(identifier: "ko"))
-        ConfirmMemberModalTestView().environment(\.locale, .init(identifier: "ko"))
-            .preferredColorScheme(.dark)
-    }
-}
-
 struct ConfirmMemberModalTestView: View {
     @State private var isModalPresented = true
     var members = [
@@ -100,3 +92,13 @@ struct ConfirmMemberModalTestView: View {
         })
     }
 }
+
+#Preview{
+    ConfirmMemberModalTestView().environment(\.locale, .init(identifier: "ko"))
+}
+#Preview{
+    ConfirmMemberModalTestView().environment(\.locale, .init(identifier: "ko"))
+        .preferredColorScheme(.dark)
+}
+
+

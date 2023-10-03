@@ -123,9 +123,12 @@ struct NicknameEditView: View {
     }
 }
 
-struct NicknameEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        let userData = UserData()
-        return NicknameEditView().environmentObject(userData)
-    }
+
+#Preview {
+    NicknameEditView().environmentObject(UserData())
+}
+#Preview {
+    NicknameEditView()
+        .environmentObject(UserData())
+        .preferredColorScheme(.dark)
 }

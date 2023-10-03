@@ -122,12 +122,13 @@ struct MakingGroupView: View {
     }
 }
 
-struct MakingGroupView_Previews: PreviewProvider {
-    static var previews: some View {
-        MakingGroupView()
-            .environmentObject(ConnectionService())
-        MakingGroupView()
-            .environmentObject(ConnectionService())
-            .preferredColorScheme(.dark)
-    }
+#Preview("Light Mode") {
+    MakingGroupView()
+        .environmentObject(ConnectionService())
+}
+
+#Preview("Dark Mode") {
+    MakingGroupView()
+        .environmentObject(ConnectionService())
+        .preferredColorScheme(.dark)
 }

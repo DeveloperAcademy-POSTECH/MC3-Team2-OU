@@ -117,11 +117,11 @@ struct TypographyTemplate : View{
         }
     }
 }
-    
 
-struct Typography_Previews: PreviewProvider {
-    static var previews: some View {
-        TypographyTemplate()
-        TypographyTemplate().preferredColorScheme(.dark)
-    }
+#Preview{
+    TypographyTemplate()
+}
+
+#Preview{
+    TypographyTemplate().preferredColorScheme(.dark)
 }

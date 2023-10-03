@@ -114,9 +114,10 @@ struct ButtonThemeTemplate : View{
     }
 }
 
-struct ButtonTheme_Previews: PreviewProvider {
-    static var previews: some View {
-        ButtonThemeTemplate()
-        ButtonThemeTemplate().preferredColorScheme(.dark)
-    }
+#Preview{
+    ButtonThemeTemplate()
 }
+#Preview{
+    ButtonThemeTemplate().preferredColorScheme(.dark)
+}
+

@@ -28,10 +28,10 @@ struct WaitingForConfirmView: View {
     }
 }
 
-struct WaitingForConfirmView_Previews: PreviewProvider {
-    static var previews: some View {
-        WaitingForConfirmView()
-        WaitingForConfirmView()
-            .preferredColorScheme(.dark)
-    }
+#Preview{
+    WaitingForConfirmView()
+}
+#Preview{
+    WaitingForConfirmView()
+        .preferredColorScheme(.dark)
 }

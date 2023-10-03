@@ -63,21 +63,23 @@ struct HostCallingDone: View {
     }
 }
 
-struct HostCallingDone_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack{
-            ZStack{
-                Rectangle()
-                    .foregroundColor(.gray)
-                    .opacity(0.5)
-                    .edgesIgnoringSafeArea(.all)
-                HostCallingDone(
-                    groupInfo: GroupInfo.empty()
-                )
-                .environmentObject(ConnectionService())
-                .environmentObject(UserData())
-            }
+#Preview{
+    NavigationStack{
+        ZStack{
+            Rectangle()
+                .foregroundColor(.gray)
+                .opacity(0.5)
+                .edgesIgnoringSafeArea(.all)
+            HostCallingDone(
+                groupInfo: GroupInfo.empty()
+            )
         }
+        .environmentObject(ConnectionService())
+        .environmentObject(UserData())
+    }
+}
+#Preview{
+    NavigationStack{
         ZStack{
             Rectangle()
                 .foregroundColor(.gray)

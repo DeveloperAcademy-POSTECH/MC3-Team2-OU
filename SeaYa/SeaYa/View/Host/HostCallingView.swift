@@ -156,8 +156,11 @@ struct HostCallingViewTest: View {
     }
 }
 
-struct HostCallingView_Previews: PreviewProvider {
-    static var previews: some View {
-        HostCallingViewTest()
-    }
+#Preview("Light Mode"){
+    HostCallingViewTest()
+}
+
+#Preview("Dark Mode"){
+    HostCallingViewTest()
+        .preferredColorScheme(.dark)
 }

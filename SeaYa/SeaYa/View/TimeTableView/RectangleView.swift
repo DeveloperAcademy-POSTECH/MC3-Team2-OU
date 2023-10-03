@@ -71,10 +71,11 @@ struct RectangleTestView: View {
     }
 }
 
-struct RectangleView_Previews: PreviewProvider {
-    static var previews: some View {
-        RectangleTestView()
-        RectangleTestView()
-            .preferredColorScheme(.dark)
-    }
+#Preview("Light Mode"){
+    RectangleTestView()
+}
+
+#Preview("Dark Mode"){
+    RectangleTestView()
+        .preferredColorScheme(.dark)
 }

@@ -21,12 +21,12 @@ struct ResultView: View {
     }
 }
 
-struct ResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResultView()
-            .environmentObject(ConnectionService())
-        ResultView()
-            .environmentObject(ConnectionService())
-            .preferredColorScheme(.dark)
-    }
+#Preview{
+    ResultView()
+        .environmentObject(ConnectionService())
+}
+#Preview{
+    ResultView()
+        .environmentObject(ConnectionService())
+        .preferredColorScheme(.dark)
 }

@@ -62,14 +62,14 @@ struct GuestCallingDone: View {
     }
 }
 
-struct GuestCallingDone_Previews: PreviewProvider {
-    static var previews: some View {
-        GuestCallingDone()
-            .environmentObject(ConnectionService())
-            .environmentObject(UserData())
-        GuestCallingDone()
-            .environmentObject(ConnectionService())
-            .environmentObject(UserData())
-            .preferredColorScheme(.dark)
-    }
+#Preview{
+    GuestCallingDone()
+        .environmentObject(ConnectionService())
+        .environmentObject(UserData())
+}
+#Preview{
+    GuestCallingDone()
+        .environmentObject(ConnectionService())
+        .environmentObject(UserData())
+        .preferredColorScheme(.dark)
 }

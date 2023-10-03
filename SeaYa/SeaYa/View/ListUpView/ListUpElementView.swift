@@ -89,13 +89,7 @@ struct ListUpElementView: View {
     }
 }
 
-struct ListUpElementView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListUpElementTestView(forGuest: false)
-        ListUpElementTestView(forGuest: false)
-            .preferredColorScheme(.dark)
-    }
-}
+
 
 struct ListUpElementTestView: View {
     @State private var selected: TimeOks? = nil
@@ -118,4 +112,12 @@ struct ListUpElementTestView: View {
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.primary)
     }
+}
+
+#Preview{
+    ListUpElementTestView(forGuest: false)
+}
+#Preview{
+    ListUpElementTestView(forGuest: false)
+        .preferredColorScheme(.dark)
 }

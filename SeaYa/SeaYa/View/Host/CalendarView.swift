@@ -115,9 +115,10 @@ struct CalendarTestView: View {
     }
 }
 
-struct CalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarTestView()
-        CalendarTestView().preferredColorScheme(.dark)
-    }
+#Preview("Light Mode"){
+    CalendarTestView()
+}
+
+#Preview("Dark Mode"){
+    CalendarTestView().preferredColorScheme(.dark)
 }

@@ -156,10 +156,13 @@ struct UserInfoView: View {
     }
 }
 
-struct UserInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserInfoView().environmentObject(UserData())
-        UserInfoView().environmentObject(UserData())
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    UserInfoView().environmentObject(UserData())
 }
+        
+#Preview {
+    UserInfoView().environmentObject(UserData())
+        .preferredColorScheme(.dark)
+}
+        
+

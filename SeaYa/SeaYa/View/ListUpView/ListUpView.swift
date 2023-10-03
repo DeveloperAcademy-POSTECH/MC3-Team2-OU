@@ -74,36 +74,36 @@ struct ListUpView: View {
     }
 }
 
-struct ListUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListUpView(
-            forGuest: false,
-            timeOkGroup: [[TimeOks(timeInt: 940_614, Oks: 2)],
-                          [TimeOks(timeInt: 940_620, Oks: 2),
-                           TimeOks(timeInt: 940_621, Oks: 2)],
-                          [TimeOks(timeInt: 940_615, Oks: 1),
-                           TimeOks(timeInt: 940_616, Oks: 1)],
-                          [TimeOks(timeInt: 940_622, Oks: 1),
-                           TimeOks(timeInt: 940_623, Oks: 1)],
-                          [TimeOks(timeInt: 940_625, Oks: 1),
-                           TimeOks(timeInt: 940_626, Oks: 1)]],
-            period: 1
-        )
-        .environmentObject(ConnectionService())
-        ListUpView(
-            forGuest: false,
-            timeOkGroup: [[TimeOks(timeInt: 940_614, Oks: 2)],
-                          [TimeOks(timeInt: 940_620, Oks: 2),
-                           TimeOks(timeInt: 940_621, Oks: 2)],
-                          [TimeOks(timeInt: 940_615, Oks: 1),
-                           TimeOks(timeInt: 940_616, Oks: 1)],
-                          [TimeOks(timeInt: 940_622, Oks: 1),
-                           TimeOks(timeInt: 940_623, Oks: 1)],
-                          [TimeOks(timeInt: 940_625, Oks: 1),
-                           TimeOks(timeInt: 940_626, Oks: 1)]],
-            period: 1
-        )
-        .environmentObject(ConnectionService())
-        .preferredColorScheme(.dark)
-    }
+#Preview{
+    ListUpView(
+        forGuest: false,
+        timeOkGroup: [[TimeOks(timeInt: 940_614, Oks: 2)],
+                      [TimeOks(timeInt: 940_620, Oks: 2),
+                       TimeOks(timeInt: 940_621, Oks: 2)],
+                      [TimeOks(timeInt: 940_615, Oks: 1),
+                       TimeOks(timeInt: 940_616, Oks: 1)],
+                      [TimeOks(timeInt: 940_622, Oks: 1),
+                       TimeOks(timeInt: 940_623, Oks: 1)],
+                      [TimeOks(timeInt: 940_625, Oks: 1),
+                       TimeOks(timeInt: 940_626, Oks: 1)]],
+        period: 1
+    )
+    .environmentObject(ConnectionService())
+}
+#Preview{
+    ListUpView(
+        forGuest: false,
+        timeOkGroup: [[TimeOks(timeInt: 940_614, Oks: 2)],
+                      [TimeOks(timeInt: 940_620, Oks: 2),
+                       TimeOks(timeInt: 940_621, Oks: 2)],
+                      [TimeOks(timeInt: 940_615, Oks: 1),
+                       TimeOks(timeInt: 940_616, Oks: 1)],
+                      [TimeOks(timeInt: 940_622, Oks: 1),
+                       TimeOks(timeInt: 940_623, Oks: 1)],
+                      [TimeOks(timeInt: 940_625, Oks: 1),
+                       TimeOks(timeInt: 940_626, Oks: 1)]],
+        period: 1
+    )
+    .environmentObject(ConnectionService())
+    .preferredColorScheme(.dark)
 }

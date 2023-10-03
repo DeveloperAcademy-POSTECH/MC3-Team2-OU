@@ -35,9 +35,9 @@ struct TextFieldThemeTemplate : View{
     }
 }
 
-struct TextFieldTheme_Previews: PreviewProvider {
-    static var previews: some View {
-        TextFieldThemeTemplate()
-        TextFieldThemeTemplate().preferredColorScheme(.dark)
-    }
+#Preview{
+    TextFieldThemeTemplate()
+}
+#Preview{
+    TextFieldThemeTemplate().preferredColorScheme(.dark)
 }

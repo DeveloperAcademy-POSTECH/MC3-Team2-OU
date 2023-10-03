@@ -46,8 +46,6 @@ struct OnboardingDoneView: View {
     }
 }
 
-struct OnboardingDoneView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingDoneView(isOnboardingCompleted: .constant(false))
-    }
+#Preview{
+    OnboardingDoneView(isOnboardingCompleted: .constant(false))
 }

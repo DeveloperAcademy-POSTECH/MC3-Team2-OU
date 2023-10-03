@@ -67,14 +67,14 @@ struct FixedTimeElementView: View {
     }
 }
 
-struct FixedTimeElementView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            FixedTimeElementView(fixedTimeModel: FixedTimeModel())
-        }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
-        VStack {
-            FixedTimeElementView(fixedTimeModel: FixedTimeModel())
-        }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
-            .preferredColorScheme(.dark)
-    }
+#Preview{
+    VStack {
+        FixedTimeElementView(fixedTimeModel: FixedTimeModel())
+    }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
+}
+#Preview{
+    VStack {
+        FixedTimeElementView(fixedTimeModel: FixedTimeModel())
+    }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.backgroundColor)
+        .preferredColorScheme(.dark)
 }

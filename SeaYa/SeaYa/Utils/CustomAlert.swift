@@ -56,9 +56,9 @@ struct CustomAlert: View {
     }
 }
 
-struct CustomAlert_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomAlert(showingAlert: .constant(true), moveToDoneView: .constant(true), guestCnt: 0)
-        CustomAlert(showingAlert: .constant(true), moveToDoneView: .constant(true), guestCnt: 0).preferredColorScheme(.dark)
-    }
+#Preview{
+    CustomAlert(showingAlert: .constant(true), moveToDoneView: .constant(true), guestCnt: 0)
+}
+#Preview{
+    CustomAlert(showingAlert: .constant(true), moveToDoneView: .constant(true), guestCnt: 0).preferredColorScheme(.dark)
 }
